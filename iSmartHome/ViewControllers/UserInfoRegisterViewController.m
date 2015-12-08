@@ -5,6 +5,7 @@
 //  Created by admin on 15/12/1.
 //  Copyright © 2015年 zzmax. All rights reserved.
 //
+//  This view is to complete the basic infos of the user
 
 #import <Foundation/Foundation.h>
 #import "UserInfoRegisterViewController.h"
@@ -19,7 +20,6 @@
 
 @implementation UserInfoRegisterViewController {
     NSArray *infoTitles;
-    NSArray *infoDetails;
 
 }
 
@@ -27,10 +27,9 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = NAVIGATION_COLOR;
+    self.tableView.backgroundColor = NAVIGATION_COLOR;
     //initiate table data
     infoTitles = [NSArray arrayWithObjects:@"性别", @"生日", @"身高", @"体重",nil];
-    infoDetails = [NSArray arrayWithObjects:@"男", @"170", @"66kg",nil];
-    
 }
 
 - (void)viewDidUnload
@@ -100,7 +99,7 @@
             [datePicker setDate:[NSDate date]];
             [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
             
-            //set tool bar for dismiss datepicker
+            //set tool bar to dismiss datepicker
             UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
             pickerToolbar.barStyle = UIBarStyleBlackOpaque;
             [pickerToolbar sizeToFit];
@@ -116,18 +115,11 @@
             
             //set textField for birthday
             _birthdayTF = [[UITextField alloc] init];
-            _birthdayTF.frame = CGRectMake(200, 7, 130, 28);
+            _birthdayTF.frame = CGRectMake(210, 7, 130, 28);
             _birthdayTF.inputView = datePicker;
             _birthdayTF.inputAccessoryView = pickerToolbar;
             [self updateTextField:(id)_birthdayTF];
             [cell.contentView addSubview:_birthdayTF];
-//            UITextField *test = [[UITextField alloc] initWithFrame:CGRectMake(200, 7, 130, 28)];
-//            test.userInteractionEnabled = YES;
-//            test.text = @"1960年1月1日";
-//            //detect press action
-//            UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:test action:@selector(callDP:)];
-//            [test addGestureRecognizer:tapRecognizer];
-//            [cell.contentView addSubview:test];
         }
     }
     
@@ -149,6 +141,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [infoTitles count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
