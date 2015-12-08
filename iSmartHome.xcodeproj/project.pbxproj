@@ -55,6 +55,7 @@
 		840F2A281C1533A40083833B /* image_small_button_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A041C1533A40083833B /* image_small_button_right.png */; };
 		840F2A291C1533A40083833B /* image_small_button_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A051C1533A40083833B /* image_small_button_right@2x.png */; };
 		840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A061C1533A40083833B /* image_small_button_right@3x.png */; };
+		8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CF2B1C16A106007D964D /* UsersCreationViewController.m */; };
 		8458E1E61C02AFA3009D0772 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E1E51C02AFA3009D0772 /* Utility.m */; };
 		8458E25C1C06F6D2009D0772 /* big_icon_sofa_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EA1C06F6D2009D0772 /* big_icon_sofa_control.png */; };
 		8458E25D1C06F6D2009D0772 /* big_icon_sofa_control@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EB1C06F6D2009D0772 /* big_icon_sofa_control@2x.png */; };
@@ -233,6 +234,8 @@
 		840F2A041C1533A40083833B /* image_small_button_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_small_button_right.png; sourceTree = "<group>"; };
 		840F2A051C1533A40083833B /* image_small_button_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_small_button_right@2x.png"; sourceTree = "<group>"; };
 		840F2A061C1533A40083833B /* image_small_button_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_small_button_right@3x.png"; sourceTree = "<group>"; };
+		8425CF2A1C16A106007D964D /* UsersCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersCreationViewController.h; sourceTree = "<group>"; };
+		8425CF2B1C16A106007D964D /* UsersCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersCreationViewController.m; sourceTree = "<group>"; };
 		8458E1E31C02A961009D0772 /* ConstraintMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstraintMacros.h; sourceTree = "<group>"; };
 		8458E1E41C02AF8D009D0772 /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		8458E1E51C02AFA3009D0772 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
@@ -444,6 +447,8 @@
 				84E18E091C10139900213372 /* RegisterLastViewController.m */,
 				8458E2BC1C0B35AC009D0772 /* RootViewController.m */,
 				84E18E021C10137900213372 /* RootViewController.h */,
+				8425CF2A1C16A106007D964D /* UsersCreationViewController.h */,
+				8425CF2B1C16A106007D964D /* UsersCreationViewController.m */,
 				84E26D6D1C0D4ADE00B2E429 /* UserInfoRegisterViewController.h */,
 				84E26D6E1C0D4B0400B2E429 /* UserInfoRegisterViewController.m */,
 				84E18DFE1C1010D000213372 /* SexSwitchCell.h */,
@@ -1139,6 +1144,7 @@
 				5FB56D3E1BDE1132005D80AA /* User.m in Sources */,
 				5FB56D051BDDFF75005D80AA /* iSmartHome.xcdatamodeld in Sources */,
 				84E18E0B1C10139900213372 /* RegisterFirstViewController.m in Sources */,
+				8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */,
 				8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */,
 				8458E1E61C02AFA3009D0772 /* Utility.m in Sources */,
 				5FB56CFC1BDDFF75005D80AA /* AppDelegate.m in Sources */,

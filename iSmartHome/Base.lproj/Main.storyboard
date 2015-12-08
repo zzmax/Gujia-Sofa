@@ -214,10 +214,10 @@
             </objects>
             <point key="canvasLocation" x="958" y="-8"/>
         </scene>
-        <!--View Controller-->
+        <!--Users Creation View Controller-->
         <scene sceneID="BdO-DK-Qin">
             <objects>
-                <viewController id="Vd9-gv-BAI" sceneMemberID="viewController">
+                <viewController id="Vd9-gv-BAI" customClass="UsersCreationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sg9-ex-uFL"/>
                         <viewControllerLayoutGuide type="bottom" id="5j7-qC-qmc"/>
