@@ -1,0 +1,13 @@
+//
+//  CoreDataiSmartHome_Prefix.pch
+//  iSmartHome
+//
+//  Created by zwwang on 15/10/26.
+//  Copyright © 2015年 zwwang. All rights reserved.
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#endif
