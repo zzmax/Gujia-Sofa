@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "UserInfoRegisterViewController.h"
 #import "ConstraintMacros.h"
-#import "HeightPickerView.h"
+#import "CustomPickerView.h"
 
 
 @interface UserInfoRegisterViewController()
@@ -19,7 +19,7 @@
 @property (strong, nonatomic)UITextField *heightTF;
 @property (strong, nonatomic)UITextField *weightTF;
 @property (strong, nonatomic)NSMutableArray *heightPickerArray;
-
+@property (strong, nonatomic)NSMutableArray *weightPickerArray;
 - (IBAction)popView:(id)sender;
 @end
 
@@ -127,6 +127,7 @@
             [self updateTextField:(id)_birthdayTF];
             [cell.contentView addSubview:_birthdayTF];
         }
+        //height line
         else if(indexPath.row == 2)
         {
             UIPickerView *heightPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
@@ -140,8 +141,9 @@
             heightPicker.delegate = self;
             heightPicker.dataSource = self;
             heightPicker.showsSelectionIndicator = YES;
+            heightPicker.tag = 100;
             
-            //set textField for birthday
+            //set textField for height
             _heightTF = [[UITextField alloc] init];
             _heightTF.frame = CGRectMake(275, 7, 80, 28);
             _heightTF.inputView = heightPicker;
@@ -151,6 +153,33 @@
             //Set the default value to 170cm
             [heightPicker selectRow:20 inComponent:0 animated:YES];
             [cell.contentView addSubview:_heightTF];
+        }
+        //weight line
+        else if(indexPath.row == 3)
+        {
+            UIPickerView *weightPicker = [[UIPickerView alloc] init];
+            _weightPickerArray = [[NSMutableArray alloc] init];
+            
+            for (int weight = 40; weight <= 140; weight++) {
+                NSString *weightString = [NSString stringWithFormat:@"%d%", weight];
+                [_weightPickerArray addObject:weightString];
+            }
+            weightPicker.delegate = self;
+            weightPicker.dataSource = self;
+            weightPicker.showsSelectionIndicator = YES;
+            weightPicker.tag = 101;
+            
+            //set textField for _weightTF
+            _weightTF = [[UITextField alloc] init];
+            _weightTF.frame = CGRectMake(275, 7, 80, 28);
+            _weightTF.inputView = weightPicker;
+            _weightTF.inputAccessoryView = pickerToolbar;
+            _weightTF.textColor = [UIColor whiteColor];
+            [self pickerView:_weightTF didSelectRow:20 inComponent:0];
+            //Set the default value to 60kg
+            [weightPicker selectRow:20 inComponent:0 animated:YES];
+            [cell.contentView addSubview:_weightTF];
+            
         }
     }
     
@@ -208,6 +237,7 @@
 {
     [self.birthdayTF resignFirstResponder];
     [self.heightTF resignFirstResponder];
+    [self.weightTF resignFirstResponder];
 }
 
 #pragma mark - heightPicker
@@ -215,22 +245,35 @@
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
 }
--(NSInteger)pickerView:(UIPickerView *)pickerView
-numberOfRowsInComponent:(NSInteger)component{
-    return _heightPickerArray.count;
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    if (pickerView.tag == 100) {
+        return _heightPickerArray.count;
+    }
+    else return _weightPickerArray.count;
 }
 
 #pragma mark- Picker View Delegate
 
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:
-(NSInteger)row inComponent:(NSInteger)component
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component
 {
-    [_heightTF setText: [NSString stringWithFormat:@"%@%@",[_heightPickerArray objectAtIndex:row],@" cm"]];
+    if (pickerView.tag == 100) {
+        [_heightTF setText: [NSString stringWithFormat:@"%@%@",[_heightPickerArray objectAtIndex:row],@" cm"]];
+    }
+    else
+    {
+        [_weightTF setText: [NSString stringWithFormat:@"%@%@",[_weightPickerArray objectAtIndex:row],@" kg"]];
+
+    }
 }
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:
-(NSInteger)row forComponent:(NSInteger)component
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow: (NSInteger)row forComponent:(NSInteger)component
 {
-    return [_heightPickerArray objectAtIndex:row];
+    if (pickerView.tag == 100) {
+        return [_heightPickerArray objectAtIndex:row];
+    }
+    else
+    {
+       return [_weightPickerArray objectAtIndex:row];
+    }
 }
 
 

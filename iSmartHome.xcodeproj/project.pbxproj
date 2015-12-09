@@ -56,7 +56,6 @@
 		840F2A291C1533A40083833B /* image_small_button_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A051C1533A40083833B /* image_small_button_right@2x.png */; };
 		840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A061C1533A40083833B /* image_small_button_right@3x.png */; };
 		8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CF2B1C16A106007D964D /* UsersCreationViewController.m */; };
-		8425CF331C16C4FC007D964D /* HeightPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CF321C16C4FC007D964D /* HeightPickerView.m */; };
 		8458E1E61C02AFA3009D0772 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E1E51C02AFA3009D0772 /* Utility.m */; };
 		8458E25C1C06F6D2009D0772 /* big_icon_sofa_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EA1C06F6D2009D0772 /* big_icon_sofa_control.png */; };
 		8458E25D1C06F6D2009D0772 /* big_icon_sofa_control@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EB1C06F6D2009D0772 /* big_icon_sofa_control@2x.png */; };
@@ -237,8 +236,6 @@
 		840F2A061C1533A40083833B /* image_small_button_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_small_button_right@3x.png"; sourceTree = "<group>"; };
 		8425CF2A1C16A106007D964D /* UsersCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersCreationViewController.h; sourceTree = "<group>"; };
 		8425CF2B1C16A106007D964D /* UsersCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersCreationViewController.m; sourceTree = "<group>"; };
-		8425CF311C16C4FC007D964D /* HeightPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeightPickerView.h; sourceTree = "<group>"; };
-		8425CF321C16C4FC007D964D /* HeightPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeightPickerView.m; sourceTree = "<group>"; };
 		8458E1E31C02A961009D0772 /* ConstraintMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstraintMacros.h; sourceTree = "<group>"; };
 		8458E1E41C02AF8D009D0772 /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		8458E1E51C02AFA3009D0772 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
@@ -591,8 +588,6 @@
 		8425CF301C16C4FC007D964D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8425CF311C16C4FC007D964D /* HeightPickerView.h */,
-				8425CF321C16C4FC007D964D /* HeightPickerView.m */,
 			);
 			name = Views;
 			path = ../Views;
@@ -1164,7 +1159,6 @@
 				5FB56CFC1BDDFF75005D80AA /* AppDelegate.m in Sources */,
 				84E26D6F1C0D4B0400B2E429 /* UserInfoRegisterViewController.m in Sources */,
 				5FB56CF91BDDFF75005D80AA /* main.m in Sources */,
-				8425CF331C16C4FC007D964D /* HeightPickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
