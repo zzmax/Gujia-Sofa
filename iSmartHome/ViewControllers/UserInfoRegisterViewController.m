@@ -10,12 +10,17 @@
 #import <Foundation/Foundation.h>
 #import "UserInfoRegisterViewController.h"
 #import "ConstraintMacros.h"
-#import "SexSwitchCell.h"
+#import "HeightPickerView.h"
 
 
 @interface UserInfoRegisterViewController()
-- (IBAction)popView:(id)sender;
+
 @property (strong, nonatomic)UITextField *birthdayTF;
+@property (strong, nonatomic)UITextField *heightTF;
+@property (strong, nonatomic)UITextField *weightTF;
+@property (strong, nonatomic)NSMutableArray *heightPickerArray;
+
+- (IBAction)popView:(id)sender;
 @end
 
 @implementation UserInfoRegisterViewController {
@@ -118,8 +123,46 @@
             _birthdayTF.frame = CGRectMake(210, 7, 130, 28);
             _birthdayTF.inputView = datePicker;
             _birthdayTF.inputAccessoryView = pickerToolbar;
+            _birthdayTF.textColor = [UIColor whiteColor];
             [self updateTextField:(id)_birthdayTF];
             [cell.contentView addSubview:_birthdayTF];
+        }
+        else if(indexPath.row == 2)
+        {
+            UIPickerView *heightPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+            _heightPickerArray = [[NSMutableArray alloc] init];
+            
+            for (int height = 150; height<=200; height++) {
+                NSString *heightString = [NSString stringWithFormat:@"%d%",height];
+                [_heightPickerArray addObject:heightString];
+            }
+            
+            heightPicker.delegate = self;
+            heightPicker.dataSource = self;
+            heightPicker.showsSelectionIndicator = YES;
+            
+            //set tool bar to dismiss datepicker
+            UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+            pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+            [pickerToolbar sizeToFit];
+            
+            NSMutableArray *barItems = [[NSMutableArray alloc] init];
+            
+            UIBarButtonItem *flexSpace = SYSBARBUTTON(UIBarButtonSystemItemFlexibleSpace,nil);
+            [barItems addObject:flexSpace];
+            
+            UIBarButtonItem *doneBtn = SYSBARBUTTON(UIBarButtonSystemItemDone, @selector(doneButtonPressed:));
+            [barItems addObject:doneBtn];
+            [pickerToolbar setItems:barItems animated:YES];
+            
+            //set textField for birthday
+            _heightTF = [[UITextField alloc] init];
+            _heightTF.frame = CGRectMake(275, 7, 80, 28);
+            _heightTF.inputView = heightPicker;
+            _heightTF.inputAccessoryView = pickerToolbar;
+            _heightTF.textColor = [UIColor whiteColor];
+            [self pickerView:heightPicker didSelectRow:20 inComponent:0];
+            [cell.contentView addSubview:_heightTF];
         }
     }
     
@@ -176,10 +219,31 @@
 -(void)doneButtonPressed:(id)sender
 {
     [self.birthdayTF resignFirstResponder];
+    [self.heightTF resignFirstResponder];
 }
 
+#pragma mark - heightPicker
+#pragma mark - Picker View Data source
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component{
+    return _heightPickerArray.count;
+}
 
+#pragma mark- Picker View Delegate
 
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:
+(NSInteger)row inComponent:(NSInteger)component
+{
+    [_heightTF setText: [NSString stringWithFormat:@"%@%@",[_heightPickerArray objectAtIndex:row],@" cm"]];
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:
+(NSInteger)row forComponent:(NSInteger)component
+{
+    return [_heightPickerArray objectAtIndex:row];
+}
 
 
 
