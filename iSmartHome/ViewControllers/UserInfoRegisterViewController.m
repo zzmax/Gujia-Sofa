@@ -10,7 +10,6 @@
 #import <Foundation/Foundation.h>
 #import "UserInfoRegisterViewController.h"
 #import "ConstraintMacros.h"
-#import "CustomPickerView.h"
 
 
 @interface UserInfoRegisterViewController()
@@ -34,7 +33,7 @@
     self.view.backgroundColor = NAVIGATION_COLOR;
     self.tableView.backgroundColor = NAVIGATION_COLOR;
     //initiate table data
-    infoTitles = [NSArray arrayWithObjects:@"性别", @"生日", @"身高", @"体重",nil];
+    infoTitles = [NSArray arrayWithObjects:@"",@"性别", @"生日", @"身高", @"体重",nil];
 }
 
 - (void)viewDidUnload
@@ -79,8 +78,11 @@
         [barItems addObject:doneBtn];
         [pickerToolbar setItems:barItems animated:YES];
        
+        if (indexPath.row == 0) {
+            [cell.contentView addSubview: [[UILabel alloc] initWithFrame:CGRectZero]];
+        }
         //sex select line in table view
-        if (indexPath.row == 0)
+        if (indexPath.row == 1)
         {
             // set the sex (male, female)
             UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"男性",@"女性"]];
@@ -110,7 +112,7 @@
 
         }
         //birthday choose line
-        else if (indexPath.row == 1)
+        else if (indexPath.row == 2)
         {
             
             UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
@@ -120,15 +122,16 @@
             
             //set textField for birthday
             _birthdayTF = [[UITextField alloc] init];
-            _birthdayTF.frame = CGRectMake(210, 7, 130, 28);
+            _birthdayTF.frame = CGRectMake(200, 7, 130, 28);
             _birthdayTF.inputView = datePicker;
             _birthdayTF.inputAccessoryView = pickerToolbar;
             _birthdayTF.textColor = [UIColor whiteColor];
+            _birthdayTF.textAlignment = UITextAlignmentRight;
             [self updateTextField:(id)_birthdayTF];
             [cell.contentView addSubview:_birthdayTF];
         }
         //height line
-        else if(indexPath.row == 2)
+        else if(indexPath.row == 3)
         {
             UIPickerView *heightPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
             _heightPickerArray = [[NSMutableArray alloc] init];
@@ -145,17 +148,18 @@
             
             //set textField for height
             _heightTF = [[UITextField alloc] init];
-            _heightTF.frame = CGRectMake(275, 7, 80, 28);
+            _heightTF.frame = CGRectMake(245, 7, 80, 28);
             _heightTF.inputView = heightPicker;
             _heightTF.inputAccessoryView = pickerToolbar;
             _heightTF.textColor = [UIColor whiteColor];
+            _heightTF.textAlignment = UITextAlignmentRight;
             [self pickerView:heightPicker didSelectRow:20 inComponent:0];
             //Set the default value to 170cm
             [heightPicker selectRow:20 inComponent:0 animated:YES];
             [cell.contentView addSubview:_heightTF];
         }
         //weight line
-        else if(indexPath.row == 3)
+        else if(indexPath.row == 4)
         {
             UIPickerView *weightPicker = [[UIPickerView alloc] init];
             _weightPickerArray = [[NSMutableArray alloc] init];
@@ -171,10 +175,11 @@
             
             //set textField for _weightTF
             _weightTF = [[UITextField alloc] init];
-            _weightTF.frame = CGRectMake(275, 7, 80, 28);
+            _weightTF.frame = CGRectMake(245, 7, 80, 28);
             _weightTF.inputView = weightPicker;
             _weightTF.inputAccessoryView = pickerToolbar;
             _weightTF.textColor = [UIColor whiteColor];
+            _weightTF.textAlignment = UITextAlignmentRight;
             [self pickerView:_weightTF didSelectRow:20 inComponent:0];
             //Set the default value to 60kg
             [weightPicker selectRow:20 inComponent:0 animated:YES];
@@ -183,12 +188,11 @@
         }
     }
     
-
     // either if the cell could be dequeued or you created a new cell,
     // segmentedControl will contain a valid instance
     UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:42];
     segmentedControl.selectedSegmentIndex = indexPath.row;
-    cell.textLabel.text = [infoTitles objectAtIndex:indexPath.row];
+    cell.textLabel.text = [infoTitles objectAtIndex: indexPath.row];
     cell.backgroundColor = NAVIGATION_COLOR;
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.clipsToBounds = YES;
@@ -210,6 +214,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row == 0) {
+        return 120.0f;
+    }
     return 44.0f;
 }
 

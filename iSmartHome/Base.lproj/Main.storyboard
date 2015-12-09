@@ -305,7 +305,6 @@
         <!--User Info Register View Controller-->
         <scene sceneID="VJA-oy-jj7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WdJ-JF-0dJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="0y1-DJ-0hx" customClass="UserInfoRegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4zI-Qh-odu"/>
@@ -316,7 +315,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uYn-NY-2D1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="0y1-DJ-0hx" id="PiL-RT-TTE"/>
@@ -329,7 +328,7 @@
                             <constraint firstAttribute="trailing" secondItem="uYn-NY-2D1" secondAttribute="trailing" id="2iM-nR-a5c"/>
                             <constraint firstItem="uYn-NY-2D1" firstAttribute="leading" secondItem="9vx-W1-Q2M" secondAttribute="leading" id="U2p-0P-w5w"/>
                             <constraint firstItem="uYn-NY-2D1" firstAttribute="top" secondItem="4zI-Qh-odu" secondAttribute="bottom" constant="-64" id="nyD-qD-Rq5"/>
-                            <constraint firstItem="4d3-ki-RY3" firstAttribute="top" secondItem="uYn-NY-2D1" secondAttribute="bottom" constant="426" id="vmz-1H-fBV"/>
+                            <constraint firstItem="4d3-ki-RY3" firstAttribute="top" secondItem="uYn-NY-2D1" secondAttribute="bottom" constant="306" id="vmz-1H-fBV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0KS-Eu-OpA">
@@ -357,6 +356,7 @@
                         <outlet property="tableView" destination="uYn-NY-2D1" id="7or-qc-vJf"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WdJ-JF-0dJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1985" y="19"/>
         </scene>
