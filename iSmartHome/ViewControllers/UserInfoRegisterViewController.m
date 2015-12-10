@@ -19,6 +19,8 @@
 @property (strong, nonatomic)UITextField *weightTF;
 @property (strong, nonatomic)NSMutableArray *heightPickerArray;
 @property (strong, nonatomic)NSMutableArray *weightPickerArray;
+
+@property (weak, nonatomic) IBOutlet UIButton *startBtn;
 - (IBAction)popView:(id)sender;
 @end
 
@@ -34,6 +36,14 @@
     self.tableView.backgroundColor = NAVIGATION_COLOR;
     //initiate table data
     infoTitles = [NSArray arrayWithObjects:@"",@"性别", @"生日", @"身高", @"体重",nil];
+    
+    _startBtn.frame = BOTTOM_RECT;
+    PREPCONSTRAINTS(_startBtn);
+    ALIGN_VIEW_LEFT_CONSTANT(_startBtn.superview,_startBtn, 10);
+    ALIGN_VIEW_RIGHT_CONSTANT(_startBtn.superview, _startBtn, -10);
+    ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
+    [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
+    _startBtn.titleLabel.textColor = [UIColor blackColor];
 }
 
 - (void)viewDidUnload
@@ -86,7 +96,7 @@
         {
             // set the sex (male, female)
             UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"男性",@"女性"]];
-            segmentedControl.frame = CGRectMake(130, 7, 200, 28);
+            segmentedControl.frame = CGRectMake(150, 7, 200, 28);
             [cell.contentView addSubview:segmentedControl];
             
             // add an action so we can change our model if the view changes
@@ -122,7 +132,7 @@
             
             //set textField for birthday
             _birthdayTF = [[UITextField alloc] init];
-            _birthdayTF.frame = CGRectMake(200, 7, 130, 28);
+            _birthdayTF.frame = CGRectMake(220, 7, 130, 28);
             _birthdayTF.inputView = datePicker;
             _birthdayTF.inputAccessoryView = pickerToolbar;
             _birthdayTF.textColor = [UIColor whiteColor];
@@ -148,7 +158,7 @@
             
             //set textField for height
             _heightTF = [[UITextField alloc] init];
-            _heightTF.frame = CGRectMake(245, 7, 80, 28);
+            _heightTF.frame = CGRectMake(265, 7, 80, 28);
             _heightTF.inputView = heightPicker;
             _heightTF.inputAccessoryView = pickerToolbar;
             _heightTF.textColor = [UIColor whiteColor];
@@ -175,7 +185,7 @@
             
             //set textField for _weightTF
             _weightTF = [[UITextField alloc] init];
-            _weightTF.frame = CGRectMake(245, 7, 80, 28);
+            _weightTF.frame = CGRectMake(265, 7, 80, 28);
             _weightTF.inputView = weightPicker;
             _weightTF.inputAccessoryView = pickerToolbar;
             _weightTF.textColor = [UIColor whiteColor];
@@ -191,7 +201,7 @@
     // either if the cell could be dequeued or you created a new cell,
     // segmentedControl will contain a valid instance
     UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:42];
-    segmentedControl.selectedSegmentIndex = indexPath.row;
+    segmentedControl.selectedSegmentIndex = 0;
     cell.textLabel.text = [infoTitles objectAtIndex: indexPath.row];
     cell.backgroundColor = NAVIGATION_COLOR;
     cell.textLabel.textColor = [UIColor whiteColor];
