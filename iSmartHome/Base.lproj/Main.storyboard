@@ -17,25 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-QD-X20">
-                                <rect key="frame" x="20" y="196" width="374" height="99"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="99" id="DAb-Nl-Ibx"/>
-                                </constraints>
-                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="-20" maxX="0.0" maxY="20"/>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">我们为每一个智能沙发配套了一个数据账户，您只需要扫描沙发（确定具体二维码印制的位置后修改）上的二维码登陆。                                                                                        </string>
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="STHeitiSC-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="2" firstLineHeadIndent="32"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="dlm-d6-OFm">
                                 <rect key="frame" x="20" y="282" width="374" height="99"/>
                                 <constraints>
@@ -76,6 +57,25 @@
                                     <segue destination="x25-BR-Sot" kind="push" id="mIY-9v-9Q7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-QD-X20">
+                                <rect key="frame" x="20" y="196" width="374" height="99"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="99" id="DAb-Nl-Ibx"/>
+                                </constraints>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="-20" maxX="0.0" maxY="20"/>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">我们为每一个智能沙发配套了一个数据账户，您只需要扫描沙发（确定具体二维码印制的位置后修改）上的二维码登陆。                                                                                        </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" lineSpacing="2" firstLineHeadIndent="32"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.88116813027033758" green="0.95260405498119094" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -141,14 +141,14 @@
                                     <action selector="startStopReading:" destination="x25-BR-Sot" eventType="touchUpInside" id="X94-TP-Okc"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5n-fM-GTy">
-                                <rect key="frame" x="0.0" y="124" width="414" height="550"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5n-fM-GTy">
+                                <rect key="frame" x="36" y="124" width="342" height="454"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C2a-QM-Wnx">
-                                        <rect key="frame" x="87" y="69" width="240" height="316"/>
+                                        <rect key="frame" x="51" y="69" width="240" height="316"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="280" verticalHuggingPriority="255" misplaced="YES" text="Scanning for QR Code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="377" translatesAutoresizingMaskIntoConstraints="NO" id="rtG-9e-b0F">
-                                        <rect key="frame" x="19" y="202" width="377" height="50"/>
+                                        <rect key="frame" x="-17" y="202" width="377" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -281,13 +281,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="8FH-CP-Ccc">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="9oK-xs-2ae">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ynh-xm-tD8">
-                                <rect key="frame" x="20" y="2" width="40" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="icon_back.png"/>
-                            </button>
-                        </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3a4-QK-tM3">
                             <rect key="frame" x="124.5" y="7" width="165" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -315,21 +308,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uYn-NY-2D1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="430"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="386"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="386" id="Lfv-P3-dNe"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="0y1-DJ-0hx" id="PiL-RT-TTE"/>
                                     <outlet property="delegate" destination="0y1-DJ-0hx" id="1x9-3u-L76"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-q4-AeY">
+                                <rect key="frame" x="24" y="657" width="360" height="50"/>
+                                <accessibility key="accessibilityConfiguration" label="">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" backgroundImage="image_button_gray.png">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hrK-dS-v8S" kind="push" id="eaE-69-ynU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="uYn-NY-2D1" secondAttribute="trailing" id="2iM-nR-a5c"/>
-                            <constraint firstItem="uYn-NY-2D1" firstAttribute="leading" secondItem="9vx-W1-Q2M" secondAttribute="leading" id="U2p-0P-w5w"/>
-                            <constraint firstItem="uYn-NY-2D1" firstAttribute="top" secondItem="4zI-Qh-odu" secondAttribute="bottom" constant="-64" id="nyD-qD-Rq5"/>
-                            <constraint firstItem="4d3-ki-RY3" firstAttribute="top" secondItem="uYn-NY-2D1" secondAttribute="bottom" constant="306" id="vmz-1H-fBV"/>
+                            <constraint firstItem="uYn-NY-2D1" firstAttribute="top" secondItem="9vx-W1-Q2M" secondAttribute="top" id="IOT-hi-y8l"/>
+                            <constraint firstAttribute="trailing" secondItem="uYn-NY-2D1" secondAttribute="trailing" id="K4w-f1-xf4"/>
+                            <constraint firstItem="uYn-NY-2D1" firstAttribute="leading" secondItem="9vx-W1-Q2M" secondAttribute="leading" id="KaB-jd-9Ry"/>
+                            <constraint firstItem="4d3-ki-RY3" firstAttribute="top" secondItem="Mof-q4-AeY" secondAttribute="bottom" constant="29" id="qgi-tM-cCn"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="qgi-tM-cCn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="0KS-Eu-OpA">
                         <nil key="title"/>
@@ -353,6 +367,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="startBtn" destination="Mof-q4-AeY" id="rHk-hF-7iB"/>
                         <outlet property="tableView" destination="uYn-NY-2D1" id="7or-qc-vJf"/>
                     </connections>
                 </viewController>
@@ -360,46 +375,161 @@
             </objects>
             <point key="canvasLocation" x="1985" y="19"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="m4k-fi-tJL">
+        <!--Wifi Config Note View Controller-->
+        <scene sceneID="QQf-yB-jGM">
             <objects>
-                <viewController id="Q3b-en-Nkg" sceneMemberID="viewController">
+                <viewController id="hrK-dS-v8S" customClass="WifiConfigNoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="N3h-eE-7VV"/>
-                        <viewControllerLayoutGuide type="bottom" id="cZe-4I-4V6"/>
+                        <viewControllerLayoutGuide type="top" id="SFz-Nv-6zY"/>
+                        <viewControllerLayoutGuide type="bottom" id="xKa-7x-dS2"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ny2-dq-fPE">
+                    <view key="view" contentMode="scaleToFill" id="ORO-hn-4qs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="button_arrow_up.png" translatesAutoresizingMaskIntoConstraints="NO" id="AuG-WQ-sDe">
-                                <rect key="frame" x="157" y="172" width="100" height="100"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyN-rF-GYq" userLabel="Back Button">
-                                <rect key="frame" x="20" y="28" width="30" height="30"/>
-                                <state key="normal" title="返回"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibn-a1-nGU">
+                                <rect key="frame" x="38" y="177" width="338" height="196"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="设备还未进行配置，需要扫描沙发上的二维码把您的智能沙发配置到您的无线路由器下，以实现对智能沙发的控制和数据上传。">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="STHeitiSC-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural" lineSpacing="2" paragraphSpacingBefore="2" firstLineHeadIndent="33"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJL-Bq-N1r">
+                                <rect key="frame" x="41" y="659" width="332" height="46"/>
+                                <state key="normal" title="配置" backgroundImage="image_button_blue.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="oU2-6q-Emg" kind="push" id="dGE-M8-4ry"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="big_icon_sofa_control.png" translatesAutoresizingMaskIntoConstraints="NO" id="H9S-LW-5fI">
-                                <rect key="frame" x="157" y="275" width="100" height="100"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLa-zP-8wg">
-                                <rect key="frame" x="186" y="625" width="42" height="30"/>
-                                <state key="normal" title="Log in"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.5525138651" green="0.77478983739999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xKa-7x-dS2" firstAttribute="top" secondItem="fJL-Bq-N1r" secondAttribute="bottom" constant="31" id="ZB1-et-2c7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ibn-a1-nGU" secondAttribute="trailing" constant="18" id="cHn-Wk-IFh"/>
+                            <constraint firstItem="Ibn-a1-nGU" firstAttribute="top" secondItem="SFz-Nv-6zY" secondAttribute="bottom" constant="113" id="l6r-S6-cYT"/>
+                            <constraint firstItem="xKa-7x-dS2" firstAttribute="top" secondItem="Ibn-a1-nGU" secondAttribute="bottom" constant="363" id="oER-5V-ieZ"/>
+                            <constraint firstItem="Ibn-a1-nGU" firstAttribute="leading" secondItem="ORO-hn-4qs" secondAttribute="leadingMargin" constant="18" id="vur-SE-fen"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ZB1-et-2c7"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="d1K-4S-OvL">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="qeu-AL-RDS">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cc6-iT-rqL">
+                                <rect key="frame" x="20" y="2" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icon_back.png"/>
+                                <connections>
+                                    <action selector="popView:" destination="hrK-dS-v8S" eventType="touchUpInside" id="ADH-pt-ZjW"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_heart_rate.png" translatesAutoresizingMaskIntoConstraints="NO" id="MSt-q5-uPV">
-                                <rect key="frame" x="106" y="532" width="107" height="85"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="button_arrow_down.png" translatesAutoresizingMaskIntoConstraints="NO" id="JhM-Ff-y9g">
-                                <rect key="frame" x="157" y="392" width="100" height="100"/>
-                            </imageView>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jsT-bM-k4q">
+                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="配置">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="configBtn" destination="fJL-Bq-N1r" id="TtB-ZQ-HVP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bZV-B4-N9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2429" y="19"/>
+        </scene>
+        <!--Wifi Config View Controller-->
+        <scene sceneID="n25-zF-URm">
+            <objects>
+                <viewController id="oU2-6q-Emg" customClass="WifiConfigViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9oI-d1-i1r"/>
+                        <viewControllerLayoutGuide type="bottom" id="f4A-IA-dHW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="r4c-le-7Tn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="路由器名称" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-dr-hZE">
+                                <rect key="frame" x="37" y="108" width="340" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="KDj-6r-CYW">
+                                <rect key="frame" x="37" y="184" width="340" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-IX-rEu">
+                                <rect key="frame" x="37" y="191" width="35" height="35"/>
+                                <state key="normal" title="Button" image="icon_code.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWb-NR-geh">
+                                <rect key="frame" x="187" y="458" width="43" height="30"/>
+                                <state key="normal" title="配置" backgroundImage="image_button_blue.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnq-hE-P64">
+                                <rect key="frame" x="37" y="115" width="35" height="35"/>
+                                <state key="normal" title="Button" image="icon_wifi.png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="KDj-6r-CYW" secondAttribute="trailing" constant="37" id="7Jd-7x-w32"/>
+                            <constraint firstItem="Dk7-IX-rEu" firstAttribute="top" secondItem="Hnq-hE-P64" secondAttribute="bottom" constant="41" id="EaF-ez-ITa"/>
+                            <constraint firstItem="f4A-IA-dHW" firstAttribute="top" secondItem="KWb-NR-geh" secondAttribute="bottom" constant="53" id="a7X-Yg-LUV"/>
+                            <constraint firstItem="HzU-dr-hZE" firstAttribute="top" secondItem="9oI-d1-i1r" secondAttribute="bottom" constant="44" id="lCY-zX-JYc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HzU-dr-hZE" secondAttribute="trailing" constant="37" id="oQZ-38-Uwl"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lCY-zX-JYc"/>
+                                <exclude reference="oQZ-38-Uwl"/>
+                                <exclude reference="7Jd-7x-w32"/>
+                                <exclude reference="EaF-ez-ITa"/>
+                                <exclude reference="a7X-Yg-LUV"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="q0e-dg-LKT">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JF8-IS-x0M">
+                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="配置">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="codeIcon" destination="Dk7-IX-rEu" id="6ra-YL-IHU"/>
+                        <outlet property="codeTF" destination="KDj-6r-CYW" id="wAJ-5R-nUn"/>
+                        <outlet property="routerTF" destination="HzU-dr-hZE" id="JM2-yF-AOh"/>
+                        <outlet property="startBtn" destination="KWb-NR-geh" id="deC-Gt-IQz"/>
+                        <outlet property="wifiIcon" destination="Hnq-hE-P64" id="6ml-pp-hcr"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jKE-Od-nYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pYd-Az-MFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3588" y="-16"/>
+            <point key="canvasLocation" x="2890" y="19"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R0t-xt-np7">
@@ -425,11 +555,11 @@
     </scenes>
     <resources>
         <image name="background_circles.png" width="414" height="600"/>
-        <image name="big_icon_sofa_control.png" width="100" height="100"/>
-        <image name="button_arrow_down.png" width="100" height="100"/>
-        <image name="button_arrow_up.png" width="100" height="100"/>
         <image name="button_plus.png" width="100" height="100"/>
         <image name="icon_back.png" width="100" height="100"/>
-        <image name="icon_heart_rate.png" width="100" height="100"/>
+        <image name="icon_code.png" width="100" height="100"/>
+        <image name="icon_wifi.png" width="100" height="100"/>
+        <image name="image_button_blue.png" width="330" height="50"/>
+        <image name="image_button_gray.png" width="330" height="50"/>
     </resources>
 </document>
