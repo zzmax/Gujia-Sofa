@@ -53,6 +53,6 @@
     ALIGN_VIEW_LEFT_CONSTANT(_codeIcon.superview,_codeIcon, 30);
 
     
-//    self.navigationController
+    self.navigationController.navigationItem.backBarButtonItem = nil;
 }
 @end

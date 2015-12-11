@@ -174,6 +174,7 @@
 		84E18E121C10144300213372 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18E111C10144300213372 /* ViewController.m */; };
 		84E18E141C1014B200213372 /* SexSwitch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E18E131C1014B200213372 /* SexSwitch.xib */; };
 		84E26D6F1C0D4B0400B2E429 /* UserInfoRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E26D6E1C0D4B0400B2E429 /* UserInfoRegisterViewController.m */; };
+		84E593E81C1A86A600D1F89C /* ConfiguratingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -382,6 +383,8 @@
 		84E18E131C1014B200213372 /* SexSwitch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SexSwitch.xib; sourceTree = "<group>"; };
 		84E26D6D1C0D4ADE00B2E429 /* UserInfoRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoRegisterViewController.h; sourceTree = "<group>"; };
 		84E26D6E1C0D4B0400B2E429 /* UserInfoRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoRegisterViewController.m; sourceTree = "<group>"; };
+		84E593E61C1A86A600D1F89C /* ConfiguratingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfiguratingViewController.h; sourceTree = "<group>"; };
+		84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfiguratingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +496,8 @@
 				840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */,
 				848CC7021C19577700265848 /* WifiConfigViewController.h */,
 				848CC7031C19577700265848 /* WifiConfigViewController.m */,
+				84E593E61C1A86A600D1F89C /* ConfiguratingViewController.h */,
+				84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */,
 				8425CF301C16C4FC007D964D /* Views */,
 			);
 			name = "View Controllers";
@@ -1253,6 +1258,7 @@
 				84E18E0A1C10139900213372 /* QRCodeScanViewController.m in Sources */,
 				84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */,
 				5FB56D3E1BDE1132005D80AA /* User.m in Sources */,
+				84E593E81C1A86A600D1F89C /* ConfiguratingViewController.m in Sources */,
 				5FB56D051BDDFF75005D80AA /* iSmartHome.xcdatamodeld in Sources */,
 				84E18E0B1C10139900213372 /* RegisterFirstViewController.m in Sources */,
 				8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */,

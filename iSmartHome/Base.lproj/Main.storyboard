@@ -333,6 +333,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="uYn-NY-2D1" firstAttribute="top" secondItem="9vx-W1-Q2M" secondAttribute="top" id="IOT-hi-y8l"/>
                             <constraint firstAttribute="trailing" secondItem="uYn-NY-2D1" secondAttribute="trailing" id="K4w-f1-xf4"/>
@@ -484,6 +485,9 @@
                                 <state key="normal" title="配置" backgroundImage="image_button_blue.png">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="vkA-f7-K9f" kind="push" id="2Cn-qo-LTB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnq-hE-P64">
                                 <rect key="frame" x="37" y="115" width="35" height="35"/>
@@ -530,6 +534,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYd-Az-MFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2890" y="19"/>
+        </scene>
+        <!--Configurating View Controller-->
+        <scene sceneID="w60-1r-QdG">
+            <objects>
+                <viewController id="vkA-f7-K9f" customClass="ConfiguratingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RIi-KM-64e"/>
+                        <viewControllerLayoutGuide type="bottom" id="hp4-wr-MW1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QM5-go-Cqf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" progressViewStyle="bar" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0i0-pd-4sp">
+                                <rect key="frame" x="121" y="232" width="150" height="2.5"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96l-xO-1hm">
+                                <rect key="frame" x="175" y="269" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebY-OR-PTb">
+                                <rect key="frame" x="184" y="653" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="取消" backgroundImage="image_button_blue.png"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hp4-wr-MW1" firstAttribute="top" secondItem="ebY-OR-PTb" secondAttribute="bottom" constant="53" id="YmB-wU-bl9"/>
+                            <constraint firstItem="96l-xO-1hm" firstAttribute="top" secondItem="0i0-pd-4sp" secondAttribute="bottom" constant="35" id="ijy-0f-Umn"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ijy-0f-Umn"/>
+                                <exclude reference="YmB-wU-bl9"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="rwe-Zu-8OJ">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="bpb-Xo-3tH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hzT-hV-MWH">
+                                <rect key="frame" x="20" y="2" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icon_back.png"/>
+                                <connections>
+                                    <action selector="popView:" destination="vkA-f7-K9f" eventType="touchUpInside" id="Ee3-vo-Cra"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XVC-BA-8Ya">
+                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="配置">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="cancelBtn" destination="ebY-OR-PTb" id="ucf-sE-cfh"/>
+                        <outlet property="progressBar" destination="0i0-pd-4sp" id="ctP-xe-eQU"/>
+                        <outlet property="progressDescription" destination="96l-xO-1hm" id="8yY-wV-HgF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2q0-Pz-esB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3334" y="19"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="R0t-xt-np7">
