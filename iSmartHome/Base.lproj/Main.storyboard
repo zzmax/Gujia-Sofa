@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="i9e-ka-4D5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="i9e-ka-4D5">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -454,6 +454,74 @@
             </objects>
             <point key="canvasLocation" x="2429" y="19"/>
         </scene>
+        <!--Navigation View Controller-->
+        <scene sceneID="NXU-nu-oA6">
+            <objects>
+                <viewController id="ek5-Io-B3O" customClass="NavigationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3wc-m6-uUB"/>
+                        <viewControllerLayoutGuide type="bottom" id="iNc-ao-caT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rKo-g5-byC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BZE-yR-tVn">
+                                <rect key="frame" x="0.0" y="101" width="374" height="599"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ek5-Io-B3O" id="GRf-Cu-VCZ"/>
+                                    <outlet property="delegate" destination="ek5-Io-B3O" id="f23-LW-kSB"/>
+                                </connections>
+                            </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_small_white_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="GRK-h3-bgV">
+                                <rect key="frame" x="30" y="20" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="8Lm-Ef-g0S"/>
+                                    <constraint firstAttribute="width" constant="90" id="Our-t6-hwF"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BWW-6U-QrA">
+                                <rect key="frame" x="138" y="63" width="80" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hPN-Xf-gLR"/>
+                                    <constraint firstAttribute="width" constant="80" id="qQq-aM-zh0"/>
+                                </constraints>
+                                <state key="normal" title="切换用户">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="父亲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-WK-SkV">
+                                <rect key="frame" x="151" y="43" width="44" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="qGB-6R-Fju"/>
+                                    <constraint firstAttribute="height" constant="21" id="qPQ-J2-th0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GRK-h3-bgV" firstAttribute="leading" secondItem="rKo-g5-byC" secondAttribute="leading" constant="30" id="497-TW-wXz"/>
+                            <constraint firstItem="lFc-WK-SkV" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="43" id="4zp-F8-lVy"/>
+                            <constraint firstItem="BWW-6U-QrA" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="63" id="9Qn-yw-gsh"/>
+                            <constraint firstItem="BWW-6U-QrA" firstAttribute="leading" secondItem="GRK-h3-bgV" secondAttribute="trailing" constant="18" id="IZ3-p5-gCg"/>
+                            <constraint firstItem="GRK-h3-bgV" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="20" id="YSR-7E-GJC"/>
+                            <constraint firstItem="lFc-WK-SkV" firstAttribute="leading" secondItem="GRK-h3-bgV" secondAttribute="trailing" constant="31" id="vfR-JF-3XH"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="tableView" destination="BZE-yR-tVn" id="73S-MI-be4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bC3-fj-2B0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3334" y="880"/>
+        </scene>
         <!--Wifi Config View Controller-->
         <scene sceneID="n25-zF-URm">
             <objects>
@@ -553,13 +621,16 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96l-xO-1hm">
                                 <rect key="frame" x="175" y="269" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebY-OR-PTb">
                                 <rect key="frame" x="184" y="653" width="46" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="取消" backgroundImage="image_button_blue.png"/>
+                                <connections>
+                                    <segue destination="ek5-Io-B3O" kind="show" id="QJi-gr-EyE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -629,6 +700,7 @@
     </scenes>
     <resources>
         <image name="background_circles.png" width="414" height="600"/>
+        <image name="background_small_white_circle.png" width="100" height="100"/>
         <image name="button_plus.png" width="100" height="100"/>
         <image name="icon_back.png" width="100" height="100"/>
         <image name="icon_code.png" width="100" height="100"/>

@@ -16,7 +16,6 @@
 		5FB56D331BDE0206005D80AA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D321BDE0206005D80AA /* CoreData.framework */; };
 		5FB56D351BDE0213005D80AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D341BDE0213005D80AA /* CoreGraphics.framework */; };
 		5FB56D371BDE0220005D80AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D361BDE0220005D80AA /* Foundation.framework */; };
-		5FB56D391BDE0229005D80AA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D381BDE0229005D80AA /* UIKit.framework */; };
 		5FB56D3E1BDE1132005D80AA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB56D3D1BDE1132005D80AA /* User.m */; };
 		840F29D91C13C9BA0083833B /* WifiConfigNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */; };
 		840F2A071C1533A40083833B /* background_big_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F29DB1C1533A40083833B /* background_big_circle.png */; };
@@ -55,6 +54,7 @@
 		840F2A281C1533A40083833B /* image_small_button_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A041C1533A40083833B /* image_small_button_right.png */; };
 		840F2A291C1533A40083833B /* image_small_button_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A051C1533A40083833B /* image_small_button_right@2x.png */; };
 		840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A061C1533A40083833B /* image_small_button_right@3x.png */; };
+		842422271C20271600F4D051 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D381BDE0229005D80AA /* UIKit.framework */; };
 		8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CF2B1C16A106007D964D /* UsersCreationViewController.m */; };
 		8458E1E61C02AFA3009D0772 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E1E51C02AFA3009D0772 /* Utility.m */; };
 		8458E25C1C06F6D2009D0772 /* big_icon_sofa_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EA1C06F6D2009D0772 /* big_icon_sofa_control.png */; };
@@ -167,6 +167,7 @@
 		848CDFAE1C196AF600265848 /* icon_temp_signal_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */; };
 		848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */; };
 		848CDFB01C196AF600265848 /* icon_temp_signal_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */; };
+		84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D155851C1FFD1500405915 /* NavigationViewController.m */; };
 		84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18DFF1C1010D000213372 /* SexSwitchCell.m */; };
 		84E18E0A1C10139900213372 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18E051C10139900213372 /* QRCodeScanViewController.m */; };
 		84E18E0B1C10139900213372 /* RegisterFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18E071C10139900213372 /* RegisterFirstViewController.m */; };
@@ -368,6 +369,8 @@
 		848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp_signal_2.png; sourceTree = "<group>"; };
 		848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@2x.png"; sourceTree = "<group>"; };
 		848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@3x.png"; sourceTree = "<group>"; };
+		84D155841C1FFD1500405915 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		84D155851C1FFD1500405915 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		84E18DFE1C1010D000213372 /* SexSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SexSwitchCell.h; sourceTree = "<group>"; };
 		84E18DFF1C1010D000213372 /* SexSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexSwitchCell.m; sourceTree = "<group>"; };
 		84E18E021C10137900213372 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
@@ -392,7 +395,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FB56D391BDE0229005D80AA /* UIKit.framework in Frameworks */,
+				842422271C20271600F4D051 /* UIKit.framework in Frameworks */,
 				5FB56D371BDE0220005D80AA /* Foundation.framework in Frameworks */,
 				5FB56D351BDE0213005D80AA /* CoreGraphics.framework in Frameworks */,
 				5FB56D331BDE0206005D80AA /* CoreData.framework in Frameworks */,
@@ -498,6 +501,8 @@
 				848CC7031C19577700265848 /* WifiConfigViewController.m */,
 				84E593E61C1A86A600D1F89C /* ConfiguratingViewController.h */,
 				84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */,
+				84D155841C1FFD1500405915 /* NavigationViewController.h */,
+				84D155851C1FFD1500405915 /* NavigationViewController.m */,
 				8425CF301C16C4FC007D964D /* Views */,
 			);
 			name = "View Controllers";
@@ -1042,7 +1047,7 @@
 				TargetAttributes = {
 					5FB56CF31BDDFF75005D80AA = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = VUSWPE2N27;
+						DevelopmentTeam = KQ9N6VN35J;
 					};
 					5FB56D0F1BDDFF75005D80AA = {
 						CreatedOnToolsVersion = 7.0;
@@ -1264,6 +1269,7 @@
 				8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */,
 				8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */,
 				8458E1E61C02AFA3009D0772 /* Utility.m in Sources */,
+				84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */,
 				5FB56CFC1BDDFF75005D80AA /* AppDelegate.m in Sources */,
 				84E26D6F1C0D4B0400B2E429 /* UserInfoRegisterViewController.m in Sources */,
 				5FB56CF91BDDFF75005D80AA /* main.m in Sources */,
@@ -1405,13 +1411,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iSmartHome/CoreDataiSmartHome_Prefix.pch;
 				INFOPLIST_FILE = iSmartHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = iSmartHome;
+				PRODUCT_BUNDLE_IDENTIFIER = jiecang.iSmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1421,13 +1428,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iSmartHome/CoreDataiSmartHome_Prefix.pch;
 				INFOPLIST_FILE = iSmartHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = iSmartHome;
+				PRODUCT_BUNDLE_IDENTIFIER = jiecang.iSmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

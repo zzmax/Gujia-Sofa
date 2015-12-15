@@ -14,6 +14,7 @@
 
 @interface UserInfoRegisterViewController()
 
+@property (strong, nonatomic)NSArray *infoTitles;
 @property (strong, nonatomic)UITextField *birthdayTF;
 @property (strong, nonatomic)UITextField *heightTF;
 @property (strong, nonatomic)UITextField *weightTF;
@@ -22,10 +23,11 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 - (IBAction)popView:(id)sender;
+
 @end
 
 @implementation UserInfoRegisterViewController {
-    NSArray *infoTitles;
+    
 
 }
 
@@ -34,8 +36,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = NAVIGATION_COLOR;
     self.tableView.backgroundColor = NAVIGATION_COLOR;
+     self.tableView.scrollEnabled = NO;
     //initiate table data
-    infoTitles = [NSArray arrayWithObjects:@"",@"性别", @"生日", @"身高", @"体重",nil];
+    _infoTitles = [NSArray arrayWithObjects:@"",@"性别", @"生日", @"身高", @"体重",nil];
     
     _startBtn.frame = BOTTOM_RECT;
     PREPCONSTRAINTS(_startBtn);
@@ -202,7 +205,7 @@
     // segmentedControl will contain a valid instance
     UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:42];
     segmentedControl.selectedSegmentIndex = 0;
-    cell.textLabel.text = [infoTitles objectAtIndex: indexPath.row];
+    cell.textLabel.text = [_infoTitles objectAtIndex: indexPath.row];
     cell.backgroundColor = NAVIGATION_COLOR;
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.clipsToBounds = YES;
@@ -214,7 +217,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [infoTitles count];
+    return [_infoTitles count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -228,6 +231,23 @@
         return 120.0f;
     }
     return 44.0f;
+}
+
+//set the inset of the separator to zero
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setPreservesSuperviewLayoutMargins:)])
+    {
+        [cell setPreservesSuperviewLayoutMargins:NO];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)])
+    {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 #pragma mark - actionDetect
