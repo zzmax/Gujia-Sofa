@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NavigationViewController : UIViewController
+@interface NavigationViewController : UIViewController <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end

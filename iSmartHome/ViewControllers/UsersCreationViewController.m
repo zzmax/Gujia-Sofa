@@ -20,6 +20,5 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = BACKGROUND_COLOR;
-    
 }
 @end

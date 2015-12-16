@@ -5,9 +5,11 @@
 //  Created by admin on 15/12/15.
 //  Copyright © 2015年 zzmax. All rights reserved.
 //
+//  This view is a table view which contains the whole fonctionnalities of this application.
 
 #import "NavigationViewController.h"
 #import "ConstraintMacros.h"
+#import "SofaControlViewController.h"
 
 @interface NavigationViewController()
 
@@ -104,8 +106,97 @@
     bgColorView.backgroundColor = [UIColor colorWithRed:0 green:0.47843f blue:1.0f alpha:0.85f];
     [cell setSelectedBackgroundView:bgColorView];
     
+    //set a tag to each cell to distinct which view we will push
+    //tag begin with 100
+    switch (indexPath.section) {
+        case 0:
+            cell.tag = indexPath.row + 100;
+            break;
+        case 1:
+            cell.tag = indexPath.row + 2 + 100;
+            break;
+        case 2:
+            cell.tag = indexPath.row + 2 + 4 + 100;
+            break;
+        default:
+            break;
+    }
+    
     
     return cell;
+}
+
+//push the view
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.section == 0)
+    {
+        if (indexPath.row == 0) {
+            //GujiarenView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+        else
+        {
+            //DeviceControlView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+    }
+    else if (indexPath.section == 1)
+    {
+        if (indexPath.row == 0) {
+            //SofaControlView
+            SofaControlViewController *sofaConttrolVC = [[SofaControlViewController alloc] init];
+            [self.navigationController pushViewController:sofaConttrolVC animated:YES];
+        }
+        else if (indexPath.row == 1)
+        {
+            //SofaHeatView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+        else if (indexPath.row == 2)
+        {
+            //HealthExamView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+        else if (indexPath.row == 3)
+        {
+            //WeightView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+    }
+    else if (indexPath.section == 2)
+    {
+        if (indexPath.row == 0) {
+            //HealthReminderView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+        else if (indexPath.row == 1)
+        {
+            //HelpView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+        else if (indexPath.row == 2)
+        {
+            //SetView
+            //
+            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
+            ////            [self.navigationController pushViewController:module1VC animated:YES];
+        }
+    }
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -165,6 +256,5 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
 }
-
 
 @end
