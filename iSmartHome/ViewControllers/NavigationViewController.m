@@ -106,22 +106,6 @@
     bgColorView.backgroundColor = [UIColor colorWithRed:0 green:0.47843f blue:1.0f alpha:0.85f];
     [cell setSelectedBackgroundView:bgColorView];
     
-    //set a tag to each cell to distinct which view we will push
-    //tag begin with 100
-    switch (indexPath.section) {
-        case 0:
-            cell.tag = indexPath.row + 100;
-            break;
-        case 1:
-            cell.tag = indexPath.row + 2 + 100;
-            break;
-        case 2:
-            cell.tag = indexPath.row + 2 + 4 + 100;
-            break;
-        default:
-            break;
-    }
-    
     
     return cell;
 }

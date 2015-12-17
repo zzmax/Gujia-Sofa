@@ -178,6 +178,7 @@
 		84E26D6F1C0D4B0400B2E429 /* UserInfoRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E26D6E1C0D4B0400B2E429 /* UserInfoRegisterViewController.m */; };
 		84E593E81C1A86A600D1F89C /* ConfiguratingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */; };
 		84F070611C20FDF300832BB8 /* SofaControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F070601C20FDF300832BB8 /* SofaControlView.xib */; };
+		84F070631C2241F300832BB8 /* SofaHeatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F070621C2241F300832BB8 /* SofaHeatView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -393,6 +394,7 @@
 		84E593E61C1A86A600D1F89C /* ConfiguratingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfiguratingViewController.h; sourceTree = "<group>"; };
 		84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfiguratingViewController.m; sourceTree = "<group>"; };
 		84F070601C20FDF300832BB8 /* SofaControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SofaControlView.xib; sourceTree = "<group>"; };
+		84F070621C2241F300832BB8 /* SofaHeatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SofaHeatView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,6 +512,7 @@
 				84D155851C1FFD1500405915 /* NavigationViewController.m */,
 				842422281C2050AD00F4D051 /* SofaControlViewController.h */,
 				842422291C2050AD00F4D051 /* SofaControlViewController.m */,
+				84F070621C2241F300832BB8 /* SofaHeatView.xib */,
 				84F070601C20FDF300832BB8 /* SofaControlView.xib */,
 				8425CF301C16C4FC007D964D /* Views */,
 			);
@@ -1183,6 +1186,7 @@
 				8458E29B1C06F6D3009D0772 /* icon_manage_device@3x.png in Resources */,
 				8458E2A81C06F6D3009D0772 /* Contents.json in Resources */,
 				8458E27B1C06F6D2009D0772 /* icon_blood_pressure@3x.png in Resources */,
+				84F070631C2241F300832BB8 /* SofaHeatView.xib in Resources */,
 				8458E2641C06F6D2009D0772 /* button_arrow_up.png in Resources */,
 				8458E2761C06F6D2009D0772 /* icon_blood_o2@2x.png in Resources */,
 				8458E2861C06F6D2009D0772 /* icon_gujiaren@2x.png in Resources */,

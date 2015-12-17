@@ -6,7 +6,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SofaControlViewController">
             <connections>
+                <outlet property="backgroundImg" destination="YJs-Qv-rpa" id="IaH-DG-nEA"/>
+                <outlet property="bigBlueCircleImg" destination="5Nb-ZS-azk" id="Udb-XL-hvP"/>
+                <outlet property="downBtn" destination="LPT-RS-kSZ" id="8Ef-l6-q6B"/>
+                <outlet property="liftBtn" destination="YL4-Wc-hre" id="b5E-Az-cks"/>
                 <outlet property="sofaControlView" destination="iN0-l3-epB" id="Lc8-Ls-H54"/>
+                <outlet property="sofaImg" destination="7Cv-r0-fAy" id="0GO-BN-kce"/>
                 <outlet property="view" destination="iN0-l3-epB" id="3Cf-u0-nJk"/>
             </connections>
         </placeholder>
@@ -15,16 +20,48 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-Qv-rpa">
-                    <rect key="frame" x="8" y="64" width="406" height="667"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-Qv-rpa">
+                    <rect key="frame" x="0.0" y="61" width="406" height="667"/>
                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background_big_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Nb-ZS-azk">
+                    <rect key="frame" x="57" y="245" width="300" height="300"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL4-Wc-hre">
+                    <rect key="frame" x="130" y="156" width="154" height="100"/>
+                    <state key="normal" image="button_arrow_up.png"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="big_icon_sofa_control.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-r0-fAy">
+                    <rect key="frame" x="107" y="295" width="200" height="200"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPT-RS-kSZ">
+                    <rect key="frame" x="130" y="553" width="154" height="100"/>
+                    <state key="normal" image="button_arrow_down.png">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="LPT-RS-kSZ" firstAttribute="top" secondItem="7Cv-r0-fAy" secondAttribute="bottom" constant="58" id="JVN-Vc-prr"/>
+                <constraint firstItem="5Nb-ZS-azk" firstAttribute="leading" secondItem="YL4-Wc-hre" secondAttribute="trailing" constant="-227" id="LNc-o6-ceM"/>
+                <constraint firstItem="YJs-Qv-rpa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Q58-4D-o9V"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Q58-4D-o9V"/>
+                    <exclude reference="LNc-o6-ceM"/>
+                    <exclude reference="JVN-Vc-prr"/>
+                </mask>
+            </variation>
         </view>
     </objects>
     <resources>
+        <image name="background_big_circle.png" width="300" height="300"/>
         <image name="background_circles-2.png" width="414" height="650"/>
+        <image name="big_icon_sofa_control.png" width="100" height="100"/>
+        <image name="button_arrow_down.png" width="100" height="100"/>
+        <image name="button_arrow_up.png" width="100" height="100"/>
     </resources>
 </document>
