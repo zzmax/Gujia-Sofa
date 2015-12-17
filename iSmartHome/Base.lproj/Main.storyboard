@@ -489,7 +489,7 @@
                                     <constraint firstAttribute="width" constant="80" id="qQq-aM-zh0"/>
                                 </constraints>
                                 <state key="normal" title="切换用户">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="父亲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-WK-SkV">
@@ -513,6 +513,9 @@
                             <constraint firstItem="lFc-WK-SkV" firstAttribute="leading" secondItem="GRK-h3-bgV" secondAttribute="trailing" constant="31" id="vfR-JF-3XH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Nbf-Yf-l1g">
+                        <nil key="title"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="BZE-yR-tVn" id="73S-MI-be4"/>
@@ -520,7 +523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC3-fj-2B0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3334" y="880"/>
+            <point key="canvasLocation" x="3960" y="880"/>
         </scene>
         <!--Wifi Config View Controller-->
         <scene sceneID="n25-zF-URm">
@@ -629,7 +632,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="取消" backgroundImage="image_button_blue.png"/>
                                 <connections>
-                                    <segue destination="ek5-Io-B3O" kind="show" id="QJi-gr-EyE"/>
+                                    <segue destination="dQ1-eA-Rkv" kind="show" id="QJi-gr-EyE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -696,6 +699,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Lx-aW-w6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-143.5" y="-50.5"/>
+        </scene>
+        <!--Nav2 View Controller-->
+        <scene sceneID="3fh-CM-oMl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dQ1-eA-Rkv" customClass="Nav2ViewController" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="giQ-J2-LeC"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ysj-yd-bdF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ek5-Io-B3O" kind="relationship" relationship="rootViewController" id="Sd0-Rb-2Wy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AAa-HV-zrH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3334" y="880"/>
         </scene>
     </scenes>
     <resources>

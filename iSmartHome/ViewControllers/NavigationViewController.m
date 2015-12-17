@@ -10,6 +10,7 @@
 #import "NavigationViewController.h"
 #import "ConstraintMacros.h"
 #import "SofaControlViewController.h"
+#import "SofaHeatViewController.h"
 
 @interface NavigationViewController()
 
@@ -23,11 +24,21 @@
 -(void)viewDidLoad
 {
     self.view.backgroundColor = NAVIGATION_COLOR;
-    self.navigationController.navigationBarHidden = YES;
+    
     self.tableView.backgroundColor = NAVIGATION_COLOR;
     //set tableview width = screen width
     self.tableView.transform = CGAffineTransformMakeScale(SCREEN_WIDTH/self.tableView.bounds.size.width, 1);
     self.tableView.scrollEnabled = NO;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = YES;
+    //set back button to white color
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    //set title to white color
+    [self.navigationController.navigationBar
+     setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 }
 
 #pragma mark - table view
@@ -110,7 +121,12 @@
     return cell;
 }
 
-//push the view
+/**
+ *  push the view
+ *
+ *  @param tableView : the Navigation table
+ *  @param indexPath : index in Navigation table
+ */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0)
@@ -139,9 +155,18 @@
         else if (indexPath.row == 1)
         {
             //SofaHeatView
-            //
-            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
-            ////            [self.navigationController pushViewController:module1VC animated:YES];
+            //animation
+            SofaHeatViewController *sofaHeatVC = [[SofaHeatViewController alloc]init];
+            [self.navigationController pushViewController:sofaHeatVC animated:YES];
+//            SofaHeatViewController *nextView = [[SofaHeatViewController alloc] init];
+//            [UIView animateWithDuration:0.75
+//                             animations:^{
+//                                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//                                 [self.navigationController pushViewController:nextView animated:NO];
+//                                 [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+//                             }];
+//
+            
         }
         else if (indexPath.row == 2)
         {
@@ -239,6 +264,8 @@
     {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
+    
+//    [tableView setTableFooterView:[[UIView alloc]initWithFrame:CGRectZero]];
 }
 
 @end

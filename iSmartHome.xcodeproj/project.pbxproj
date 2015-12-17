@@ -17,6 +17,8 @@
 		5FB56D351BDE0213005D80AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D341BDE0213005D80AA /* CoreGraphics.framework */; };
 		5FB56D371BDE0220005D80AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D361BDE0220005D80AA /* Foundation.framework */; };
 		5FB56D3E1BDE1132005D80AA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB56D3D1BDE1132005D80AA /* User.m */; };
+		84008C9A1C22A0C7007536B4 /* Nav2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84008C991C22A0C7007536B4 /* Nav2ViewController.m */; };
+		84008C9E1C22ACBF007536B4 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */; };
 		840F29D91C13C9BA0083833B /* WifiConfigNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */; };
 		840F2A071C1533A40083833B /* background_big_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F29DB1C1533A40083833B /* background_big_circle.png */; };
 		840F2A081C1533A40083833B /* background_big_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F29DC1C1533A40083833B /* background_big_circle@2x.png */; };
@@ -179,6 +181,7 @@
 		84E593E81C1A86A600D1F89C /* ConfiguratingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */; };
 		84F070611C20FDF300832BB8 /* SofaControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F070601C20FDF300832BB8 /* SofaControlView.xib */; };
 		84F070631C2241F300832BB8 /* SofaHeatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F070621C2241F300832BB8 /* SofaHeatView.xib */; };
+		84F070661C2246AC00832BB8 /* SofaHeatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F070651C2246AC00832BB8 /* SofaHeatViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +221,10 @@
 		5FB56D3B1BDE1132005D80AA /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
 		5FB56D3C1BDE1132005D80AA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		5FB56D3D1BDE1132005D80AA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		84008C981C22A0C7007536B4 /* Nav2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nav2ViewController.h; sourceTree = "<group>"; };
+		84008C991C22A0C7007536B4 /* Nav2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nav2ViewController.m; sourceTree = "<group>"; };
+		84008C9C1C22ACBF007536B4 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		840F29D71C13C99A0083833B /* WifiConfigNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiConfigNoteViewController.h; sourceTree = "<group>"; };
 		840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiConfigNoteViewController.m; sourceTree = "<group>"; };
 		840F29DB1C1533A40083833B /* background_big_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_big_circle.png; sourceTree = "<group>"; };
@@ -395,6 +402,8 @@
 		84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfiguratingViewController.m; sourceTree = "<group>"; };
 		84F070601C20FDF300832BB8 /* SofaControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SofaControlView.xib; sourceTree = "<group>"; };
 		84F070621C2241F300832BB8 /* SofaHeatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SofaHeatView.xib; sourceTree = "<group>"; };
+		84F070641C2246AC00832BB8 /* SofaHeatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SofaHeatViewController.h; sourceTree = "<group>"; };
+		84F070651C2246AC00832BB8 /* SofaHeatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SofaHeatViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,10 +519,14 @@
 				84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */,
 				84D155841C1FFD1500405915 /* NavigationViewController.h */,
 				84D155851C1FFD1500405915 /* NavigationViewController.m */,
+				84F070601C20FDF300832BB8 /* SofaControlView.xib */,
 				842422281C2050AD00F4D051 /* SofaControlViewController.h */,
 				842422291C2050AD00F4D051 /* SofaControlViewController.m */,
 				84F070621C2241F300832BB8 /* SofaHeatView.xib */,
-				84F070601C20FDF300832BB8 /* SofaControlView.xib */,
+				84F070641C2246AC00832BB8 /* SofaHeatViewController.h */,
+				84F070651C2246AC00832BB8 /* SofaHeatViewController.m */,
+				84008C981C22A0C7007536B4 /* Nav2ViewController.h */,
+				84008C991C22A0C7007536B4 /* Nav2ViewController.m */,
 				8425CF301C16C4FC007D964D /* Views */,
 			);
 			name = "View Controllers";
@@ -532,6 +545,7 @@
 		5FB56D311BDE007A005D80AA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84008C9B1C22ACBF007536B4 /* GCD */,
 				8458E1E31C02A961009D0772 /* ConstraintMacros.h */,
 				5FB56D001BDDFF75005D80AA /* Main.storyboard */,
 				5FB56D061BDDFF75005D80AA /* Assets.xcassets */,
@@ -542,6 +556,15 @@
 				8458E1E51C02AFA3009D0772 /* Utility.m */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		84008C9B1C22ACBF007536B4 /* GCD */ = {
+			isa = PBXGroup;
+			children = (
+				84008C9C1C22ACBF007536B4 /* GCDAsyncSocket.h */,
+				84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */,
+			);
+			path = GCD;
 			sourceTree = "<group>";
 		};
 		840F29DA1C1533A40083833B /* background_big_circle.imageset */ = {
@@ -1276,15 +1299,18 @@
 				84E18E0A1C10139900213372 /* QRCodeScanViewController.m in Sources */,
 				84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */,
 				5FB56D3E1BDE1132005D80AA /* User.m in Sources */,
+				84F070661C2246AC00832BB8 /* SofaHeatViewController.m in Sources */,
 				84E593E81C1A86A600D1F89C /* ConfiguratingViewController.m in Sources */,
 				5FB56D051BDDFF75005D80AA /* iSmartHome.xcdatamodeld in Sources */,
 				84E18E0B1C10139900213372 /* RegisterFirstViewController.m in Sources */,
 				8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */,
+				84008C9E1C22ACBF007536B4 /* GCDAsyncSocket.m in Sources */,
 				8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */,
 				8458E1E61C02AFA3009D0772 /* Utility.m in Sources */,
 				84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */,
 				5FB56CFC1BDDFF75005D80AA /* AppDelegate.m in Sources */,
 				8424222A1C2050AD00F4D051 /* SofaControlViewController.m in Sources */,
+				84008C9A1C22A0C7007536B4 /* Nav2ViewController.m in Sources */,
 				84E26D6F1C0D4B0400B2E429 /* UserInfoRegisterViewController.m in Sources */,
 				5FB56CF91BDDFF75005D80AA /* main.m in Sources */,
 			);

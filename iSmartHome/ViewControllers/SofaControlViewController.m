@@ -26,6 +26,13 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
+    // show the naviagtion bar
+    self.navigationController.navigationBarHidden = NO;
+    // set title
+    self.navigationItem.title = @"沙发控制";
+    
     [[NSBundle mainBundle] loadNibNamed:@"SofaControlView" owner:self options:nil];
     self.sofaControlView.backgroundColor = BACKGROUND_COLOR;
     
