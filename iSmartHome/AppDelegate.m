@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Nav1ViewController.h"
 #import "RootViewController.h"
 
 @interface AppDelegate ()
@@ -32,7 +33,9 @@
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    RootViewController *root = [[RootViewController alloc] init];
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:root];
-//    
+//
+//    Nav1ViewController *nav = [[Nav1ViewController alloc] initWithRootViewController:root];
+    
     // Override point for customization after application launch.
     
     NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.managedObjectContext];

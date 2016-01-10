@@ -11,6 +11,8 @@
 #import "ConstraintMacros.h"
 #import "SofaControlViewController.h"
 #import "SofaHeatViewController.h"
+#import "HealthExamResultViewController.h"
+#import "WeightResetViewController.h"
 
 @interface NavigationViewController()
 
@@ -171,16 +173,15 @@
         else if (indexPath.row == 2)
         {
             //HealthExamView
-            //
-            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
-            ////            [self.navigationController pushViewController:module1VC animated:YES];
+            HealthExamResultViewController *healthExamResultVC = [[HealthExamResultViewController alloc]init];
+            [self.navigationController pushViewController:healthExamResultVC animated:YES];
         }
         else if (indexPath.row == 3)
         {
-            //WeightView
+            //WeightResetView
             //
-            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
-            ////            [self.navigationController pushViewController:module1VC animated:YES];
+            WeightResetViewController *weightResetVC = [[WeightResetViewController alloc]init];
+            [self.navigationController pushViewController:weightResetVC animated:YES];
         }
     }
     else if (indexPath.section == 2)

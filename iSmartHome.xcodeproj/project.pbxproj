@@ -19,6 +19,7 @@
 		5FB56D3E1BDE1132005D80AA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FB56D3D1BDE1132005D80AA /* User.m */; };
 		84008C9A1C22A0C7007536B4 /* Nav2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84008C991C22A0C7007536B4 /* Nav2ViewController.m */; };
 		84008C9E1C22ACBF007536B4 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */; };
+		840E44931C25227C0013476F /* GlobalSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E44921C25227C0013476F /* GlobalSocket.m */; };
 		840F29D91C13C9BA0083833B /* WifiConfigNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */; };
 		840F2A071C1533A40083833B /* background_big_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F29DB1C1533A40083833B /* background_big_circle.png */; };
 		840F2A081C1533A40083833B /* background_big_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F29DC1C1533A40083833B /* background_big_circle@2x.png */; };
@@ -153,6 +154,13 @@
 		8458E2B61C06F6D3009D0772 /* icon_temp_signal_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25A1C06F6D2009D0772 /* icon_temp_signal_1@2x.png */; };
 		8458E2B71C06F6D3009D0772 /* icon_temp_signal_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */; };
 		8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E2BC1C0B35AC009D0772 /* RootViewController.m */; };
+		8482CE0A1C29440900F9608B /* HealthExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE081C29440900F9608B /* HealthExamResultViewController.m */; };
+		8482CE0B1C29440900F9608B /* HealthExamResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8482CE091C29440900F9608B /* HealthExamResultViewController.xib */; };
+		8482CE0F1C2A720B00F9608B /* WeightResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE0D1C2A720B00F9608B /* WeightResetViewController.m */; };
+		8482CE101C2A720B00F9608B /* WeightResetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8482CE0E1C2A720B00F9608B /* WeightResetViewController.xib */; };
+		8482CE141C2A84B100F9608B /* WeightResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE121C2A84B100F9608B /* WeightResultViewController.m */; };
+		8482CE151C2A84B100F9608B /* WeightResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8482CE131C2A84B100F9608B /* WeightResultViewController.xib */; };
+		8482CE181C2A96D400F9608B /* Nav1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE171C2A96D400F9608B /* Nav1ViewController.m */; };
 		848CC7041C19577700265848 /* WifiConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848CC7031C19577700265848 /* WifiConfigViewController.m */; };
 		848CDF921C1968CE00265848 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 848CDF8E1C1968CE00265848 /* Contents.json */; };
 		848CDF931C1968CE00265848 /* icon_wifi.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDF8F1C1968CE00265848 /* icon_wifi.png */; };
@@ -170,6 +178,8 @@
 		848CDFAE1C196AF600265848 /* icon_temp_signal_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */; };
 		848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */; };
 		848CDFB01C196AF600265848 /* icon_temp_signal_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */; };
+		84952CDB1C424D49005D2DCF /* UserChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84952CD91C424D49005D2DCF /* UserChangeViewController.m */; };
+		84952CDC1C424D49005D2DCF /* UserChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84952CDA1C424D49005D2DCF /* UserChangeViewController.xib */; };
 		84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D155851C1FFD1500405915 /* NavigationViewController.m */; };
 		84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18DFF1C1010D000213372 /* SexSwitchCell.m */; };
 		84E18E0A1C10139900213372 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18E051C10139900213372 /* QRCodeScanViewController.m */; };
@@ -225,6 +235,8 @@
 		84008C991C22A0C7007536B4 /* Nav2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nav2ViewController.m; sourceTree = "<group>"; };
 		84008C9C1C22ACBF007536B4 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		840E44911C25227C0013476F /* GlobalSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalSocket.h; sourceTree = "<group>"; };
+		840E44921C25227C0013476F /* GlobalSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalSocket.m; sourceTree = "<group>"; };
 		840F29D71C13C99A0083833B /* WifiConfigNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiConfigNoteViewController.h; sourceTree = "<group>"; };
 		840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiConfigNoteViewController.m; sourceTree = "<group>"; };
 		840F29DB1C1533A40083833B /* background_big_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_big_circle.png; sourceTree = "<group>"; };
@@ -363,6 +375,17 @@
 		8458E25A1C06F6D2009D0772 /* icon_temp_signal_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_1@2x.png"; sourceTree = "<group>"; };
 		8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_1@3x.png"; sourceTree = "<group>"; };
 		8458E2BC1C0B35AC009D0772 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		8482CE071C29440900F9608B /* HealthExamResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthExamResultViewController.h; sourceTree = "<group>"; };
+		8482CE081C29440900F9608B /* HealthExamResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthExamResultViewController.m; sourceTree = "<group>"; };
+		8482CE091C29440900F9608B /* HealthExamResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthExamResultViewController.xib; sourceTree = "<group>"; };
+		8482CE0C1C2A720B00F9608B /* WeightResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeightResetViewController.h; sourceTree = "<group>"; };
+		8482CE0D1C2A720B00F9608B /* WeightResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeightResetViewController.m; sourceTree = "<group>"; };
+		8482CE0E1C2A720B00F9608B /* WeightResetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightResetViewController.xib; sourceTree = "<group>"; };
+		8482CE111C2A84B100F9608B /* WeightResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeightResultViewController.h; sourceTree = "<group>"; };
+		8482CE121C2A84B100F9608B /* WeightResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeightResultViewController.m; sourceTree = "<group>"; };
+		8482CE131C2A84B100F9608B /* WeightResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeightResultViewController.xib; sourceTree = "<group>"; };
+		8482CE161C2A96D400F9608B /* Nav1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nav1ViewController.h; sourceTree = "<group>"; };
+		8482CE171C2A96D400F9608B /* Nav1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nav1ViewController.m; sourceTree = "<group>"; };
 		848CC7021C19577700265848 /* WifiConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiConfigViewController.h; sourceTree = "<group>"; };
 		848CC7031C19577700265848 /* WifiConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiConfigViewController.m; sourceTree = "<group>"; };
 		848CDF8E1C1968CE00265848 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
@@ -381,6 +404,9 @@
 		848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp_signal_2.png; sourceTree = "<group>"; };
 		848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@2x.png"; sourceTree = "<group>"; };
 		848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@3x.png"; sourceTree = "<group>"; };
+		84952CD81C424D49005D2DCF /* UserChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChangeViewController.h; sourceTree = "<group>"; };
+		84952CD91C424D49005D2DCF /* UserChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChangeViewController.m; sourceTree = "<group>"; };
+		84952CDA1C424D49005D2DCF /* UserChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChangeViewController.xib; sourceTree = "<group>"; };
 		84D155841C1FFD1500405915 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		84D155851C1FFD1500405915 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		84E18DFE1C1010D000213372 /* SexSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SexSwitchCell.h; sourceTree = "<group>"; };
@@ -502,8 +528,8 @@
 				84E18E071C10139900213372 /* RegisterFirstViewController.m */,
 				84E18E081C10139900213372 /* RegisterLastViewController.h */,
 				84E18E091C10139900213372 /* RegisterLastViewController.m */,
-				8458E2BC1C0B35AC009D0772 /* RootViewController.m */,
 				84E18E021C10137900213372 /* RootViewController.h */,
+				8458E2BC1C0B35AC009D0772 /* RootViewController.m */,
 				8425CF2A1C16A106007D964D /* UsersCreationViewController.h */,
 				8425CF2B1C16A106007D964D /* UsersCreationViewController.m */,
 				84E26D6D1C0D4ADE00B2E429 /* UserInfoRegisterViewController.h */,
@@ -525,8 +551,22 @@
 				84F070621C2241F300832BB8 /* SofaHeatView.xib */,
 				84F070641C2246AC00832BB8 /* SofaHeatViewController.h */,
 				84F070651C2246AC00832BB8 /* SofaHeatViewController.m */,
+				8482CE091C29440900F9608B /* HealthExamResultViewController.xib */,
+				8482CE071C29440900F9608B /* HealthExamResultViewController.h */,
+				8482CE081C29440900F9608B /* HealthExamResultViewController.m */,
+				8482CE0E1C2A720B00F9608B /* WeightResetViewController.xib */,
+				8482CE0C1C2A720B00F9608B /* WeightResetViewController.h */,
+				8482CE0D1C2A720B00F9608B /* WeightResetViewController.m */,
+				8482CE131C2A84B100F9608B /* WeightResultViewController.xib */,
+				8482CE111C2A84B100F9608B /* WeightResultViewController.h */,
+				8482CE121C2A84B100F9608B /* WeightResultViewController.m */,
 				84008C981C22A0C7007536B4 /* Nav2ViewController.h */,
 				84008C991C22A0C7007536B4 /* Nav2ViewController.m */,
+				8482CE161C2A96D400F9608B /* Nav1ViewController.h */,
+				8482CE171C2A96D400F9608B /* Nav1ViewController.m */,
+				84952CD81C424D49005D2DCF /* UserChangeViewController.h */,
+				84952CD91C424D49005D2DCF /* UserChangeViewController.m */,
+				84952CDA1C424D49005D2DCF /* UserChangeViewController.xib */,
 				8425CF301C16C4FC007D964D /* Views */,
 			);
 			name = "View Controllers";
@@ -554,6 +594,8 @@
 				5FB56D031BDDFF75005D80AA /* iSmartHome.xcdatamodeld */,
 				8458E1E41C02AF8D009D0772 /* Utility.h */,
 				8458E1E51C02AFA3009D0772 /* Utility.m */,
+				840E44911C25227C0013476F /* GlobalSocket.h */,
+				840E44921C25227C0013476F /* GlobalSocket.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1144,6 +1186,7 @@
 				8458E2A11C06F6D3009D0772 /* icon_next.png in Resources */,
 				840F2A131C1533A40083833B /* background_small_circle.png in Resources */,
 				8458E2951C06F6D3009D0772 /* icon_help.png in Resources */,
+				8482CE0B1C29440900F9608B /* HealthExamResultViewController.xib in Resources */,
 				840F2A1F1C1533A40083833B /* Contents.json in Resources */,
 				840F2A1B1C1533A40083833B /* Contents.json in Resources */,
 				848CDFA11C196AAC00265848 /* icon_temp_signal_3.png in Resources */,
@@ -1174,6 +1217,7 @@
 				840F2A221C1533A40083833B /* image_button_gray@3x.png in Resources */,
 				8458E28D1C06F6D2009D0772 /* icon_health_reminder.png in Resources */,
 				8458E26F1C06F6D2009D0772 /* Contents.json in Resources */,
+				84952CDC1C424D49005D2DCF /* UserChangeViewController.xib in Resources */,
 				8458E2AD1C06F6D3009D0772 /* icon_sofa_control.png in Resources */,
 				8458E2B21C06F6D3009D0772 /* icon_sofa_heat@2x.png in Resources */,
 				840F2A191C1533A40083833B /* background_small_white_circle@3x.png in Resources */,
@@ -1205,6 +1249,7 @@
 				840F2A0B1C1533A40083833B /* background_circles-2.png in Resources */,
 				840F2A0A1C1533A40083833B /* Contents.json in Resources */,
 				8458E26C1C06F6D2009D0772 /* button_plus.png in Resources */,
+				8482CE101C2A720B00F9608B /* WeightResetViewController.xib in Resources */,
 				840F2A0E1C1533A40083833B /* Contents.json in Resources */,
 				8458E29B1C06F6D3009D0772 /* icon_manage_device@3x.png in Resources */,
 				8458E2A81C06F6D3009D0772 /* Contents.json in Resources */,
@@ -1232,6 +1277,7 @@
 				8458E28F1C06F6D2009D0772 /* icon_health_reminder@3x.png in Resources */,
 				848CDFA61C196AAC00265848 /* icon_weight@2x.png in Resources */,
 				8458E2A51C06F6D3009D0772 /* icon_option.png in Resources */,
+				8482CE151C2A84B100F9608B /* WeightResultViewController.xib in Resources */,
 				848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */,
 				840F2A161C1533A40083833B /* Contents.json in Resources */,
 				840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */,
@@ -1296,15 +1342,20 @@
 				840F29D91C13C9BA0083833B /* WifiConfigNoteViewController.m in Sources */,
 				84E18E0C1C10139900213372 /* RegisterLastViewController.m in Sources */,
 				848CC7041C19577700265848 /* WifiConfigViewController.m in Sources */,
+				84952CDB1C424D49005D2DCF /* UserChangeViewController.m in Sources */,
 				84E18E0A1C10139900213372 /* QRCodeScanViewController.m in Sources */,
 				84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */,
 				5FB56D3E1BDE1132005D80AA /* User.m in Sources */,
 				84F070661C2246AC00832BB8 /* SofaHeatViewController.m in Sources */,
+				8482CE0F1C2A720B00F9608B /* WeightResetViewController.m in Sources */,
+				8482CE0A1C29440900F9608B /* HealthExamResultViewController.m in Sources */,
 				84E593E81C1A86A600D1F89C /* ConfiguratingViewController.m in Sources */,
 				5FB56D051BDDFF75005D80AA /* iSmartHome.xcdatamodeld in Sources */,
+				8482CE141C2A84B100F9608B /* WeightResultViewController.m in Sources */,
 				84E18E0B1C10139900213372 /* RegisterFirstViewController.m in Sources */,
 				8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */,
 				84008C9E1C22ACBF007536B4 /* GCDAsyncSocket.m in Sources */,
+				840E44931C25227C0013476F /* GlobalSocket.m in Sources */,
 				8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */,
 				8458E1E61C02AFA3009D0772 /* Utility.m in Sources */,
 				84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */,
@@ -1312,6 +1363,7 @@
 				8424222A1C2050AD00F4D051 /* SofaControlViewController.m in Sources */,
 				84008C9A1C22A0C7007536B4 /* Nav2ViewController.m in Sources */,
 				84E26D6F1C0D4B0400B2E429 /* UserInfoRegisterViewController.m in Sources */,
+				8482CE181C2A96D400F9608B /* Nav1ViewController.m in Sources */,
 				5FB56CF91BDDFF75005D80AA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1451,16 +1503,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iSmartHome/CoreDataiSmartHome_Prefix.pch;
 				INFOPLIST_FILE = iSmartHome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiecang.iSmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1468,16 +1522,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iSmartHome/CoreDataiSmartHome_Prefix.pch;
 				INFOPLIST_FILE = iSmartHome/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jiecang.iSmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

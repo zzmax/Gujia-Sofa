@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "UserInfoRegisterViewController.h"
 #import "ConstraintMacros.h"
+#import "AppDelegate.h"
 
 
 @interface UserInfoRegisterViewController()
@@ -20,6 +21,8 @@
 @property (strong, nonatomic)UITextField *weightTF;
 @property (strong, nonatomic)NSMutableArray *heightPickerArray;
 @property (strong, nonatomic)NSMutableArray *weightPickerArray;
+
+@property (strong, nonatomic) NSNumber *sex;//variable for data
 
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 - (IBAction)popView:(id)sender;
@@ -259,7 +262,11 @@
     
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderOriginInTableView];
     NSAssert(indexPath, @"must have a valid indexPath");
-    NSLog(@"test");
+    //if changed, we change the value of sex
+//    if(sender.state == )
+//    {
+//        _sex = NSnumb;
+//    }
 }
 
 #pragma mark - datePicker
@@ -313,7 +320,51 @@
     }
 }
 
+#pragma mark - save data 
+- (void)registerLandingAccount:(UIButton *)sender
+{
+    NSError __autoreleasing *error;
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+    
+//    appDelegate.registerUser.username = self.userName.text;
+    
+//    if (self.code1.text ==  self.code2.text)
+//    {
+//        appDelegate.registerUser.password = self.code1.text;
+//    }
+    
+    NSManagedObjectContext *context = appDelegate.managedObjectContext;
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
+    
+    User *newUser = (User *)newManagedObject;
+    newUser.name = appDelegate.registerUser.name;
+    newUser.password = appDelegate.registerUser.password ;
+    newUser.sex =appDelegate.registerUser.sex ;
+//    newUser.birthday =appDelegate.registerUser.birthday ;
+    newUser.birthday = (NSString *)_birthdayTF.text;
+    newUser.height = _heightTF.text;
+    newUser.weight = _weightTF.text;
+//    newUser.height = appDelegate.registerUser.height;
+//    newUser.weight = appDelegate.registerUser.weight ;
+//    newUser.username = appDelegate.registerUser.username ;
+    
+    BOOL success;
+    
+    if (!(success = [context save:&error]))
+    {
+        NSLog(@"Unresolved error %@, %@",error, [error userInfo]);
+        abort();
+    }
+}
 
+//NSString *name;
+//@property (nullable, nonatomic, retain) NSString *password;
+//@property (nullable, nonatomic, retain) NSNumber *sex;
+//@property (nullable, nonatomic, retain) NSDate *birthday;
+//@property (nullable, nonatomic, retain) NSNumber *height;
+//@property (nullable, nonatomic, retain) NSNumber *weight;
+//@property (nullable, nonatomic, retain) NSString *username;
 
 
 @end

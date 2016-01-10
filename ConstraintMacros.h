@@ -5,7 +5,10 @@
  Use at your own risk. Do no harm.
  
  */
-
+/**
+ *  define color, button, screen width, etc something we use frequentely
+ *
+ */
 #define COOKBOOK_PURPLE_COLOR	[UIColor colorWithRed:0.20392f green:0.19607f blue:0.61176f alpha:1.0f]
 #define NAVIGATION_COLOR	[UIColor colorWithRed:0.07451f green:0.73333f blue:1.0f alpha:1.0f]
 #define BACKGROUND_COLOR	[UIColor colorWithRed:0.88235f green:0.95294f blue:1.0f alpha:1.0f]

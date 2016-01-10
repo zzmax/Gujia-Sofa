@@ -7,7 +7,10 @@
 //
 
 #import "WifiConfigViewController.h"
+#import "ConfiguratingViewController.h"
 #import "ConstraintMacros.h"
+#import "Utility.h"
+#import "GlobalSocket.h"
 
 @interface WifiConfigViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *routerTF;
@@ -15,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *wifiIcon;
 @property (weak, nonatomic) IBOutlet UIButton *codeIcon;
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
+
+@property Utility *utility;
+@property GlobalSocket *globalSocket;
 @end
 
 @implementation WifiConfigViewController
@@ -23,6 +29,9 @@
 {
     self.view.backgroundColor = BACKGROUND_COLOR;
     
+    //Initiate the utility object
+    _utility = [[Utility alloc] init];
+    [self.utility activeDismissableKeyboard:self];
     
     PREPCONSTRAINTS(_routerTF);
     ALIGN_VIEW_LEFT_CONSTANT(_routerTF.superview,_routerTF, 10);
@@ -52,7 +61,37 @@
     ALIGN_VIEW_TOP_CONSTANT(self.view, _codeIcon, 190);
     ALIGN_VIEW_LEFT_CONSTANT(_codeIcon.superview,_codeIcon, 30);
 
+//    self.navigationController.navigationItem.backBarButtonItem = nil;
     
-    self.navigationController.navigationItem.backBarButtonItem = nil;
+   
+}
+
+/**
+ *  Connect to the server
+ *
+ *  @param sender : Cnnection button
+ */
+- (IBAction)connectionBtn:(id)sender
+{
+     _globalSocket = [GlobalSocket sharedGlobalSocket];
+    if ([_globalSocket.message isEqualToString:@"连接成功"]) {
+        [_startBtn setTitle:@"连接成功" forState:UIControlStateNormal];
+        //After 1s, push to the view of weigh the body
+//        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(pushToConfigratingView) userInfo:nil repeats:NO ];
+    }
+}
+
+- (void)pushToConfigratingView
+{
+    ConfiguratingViewController *configratingVC = [[ConfiguratingViewController alloc]init];
+    [self.navigationController pushViewController:configratingVC animated:YES];
+}
+
+//cancel the first responder of the keyborad until we active next textField
+//dismiss the keyboard
+- (BOOL)textFieldShouldReturn: (UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 @end

@@ -11,6 +11,7 @@
 
 @implementation Utility
 
+
 -(void)activeDismissableKeyboard : (UIViewController *)aViewController
 {
     for (UIView *view in aViewController.view.subviews)
@@ -32,6 +33,5 @@
         }
     }
 }
-
 @end
 

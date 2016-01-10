@@ -11,5 +11,4 @@
 @interface Utility : NSObject
 
 - (void)activeDismissableKeyboard: (UIViewController *) aViewController;
-- (void)test;
 @end

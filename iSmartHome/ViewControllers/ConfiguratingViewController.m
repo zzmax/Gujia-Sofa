@@ -24,10 +24,11 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = BACKGROUND_COLOR;
+    self.navigationItem.title = @"配置";
     
     self.progressDescription.text = @"正在努力配置您的智能沙发";//"搜索设备"？
     self.progressDescription.textColor = [UIColor blackColor];
-    self.progressDescription.textAlignment = UITextAlignmentCenter;
+    self.progressDescription.textAlignment = NSTextAlignmentCenter;
     PREPCONSTRAINTS(_progressDescription);
     CENTER_VIEW_H(_progressDescription.superview,_progressDescription);
     ALIGN_VIEW_TOP_CONSTANT(self.view, _progressDescription, 350);
@@ -47,6 +48,8 @@
     ALIGN_VIEW_LEFT_CONSTANT(_cancelBtn.superview,_cancelBtn, 10);
     ALIGN_VIEW_RIGHT_CONSTANT(_cancelBtn.superview, _cancelBtn, -10);
     ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _cancelBtn, -40);
+    
+   
 }
 
 - (IBAction)popView:(id) sender
