@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UsersCreationViewController : UIViewController
-
+@property (nonatomic)NSString *navTitle;
 @end

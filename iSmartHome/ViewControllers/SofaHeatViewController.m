@@ -39,8 +39,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    // show the naviagtion bar
-    self.navigationController.navigationBarHidden = NO;
     // set title
     self.navigationItem.title = @"座椅加热";
     self.view.backgroundColor = BACKGROUND_COLOR;

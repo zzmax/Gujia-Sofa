@@ -178,8 +178,6 @@
 		848CDFAE1C196AF600265848 /* icon_temp_signal_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */; };
 		848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */; };
 		848CDFB01C196AF600265848 /* icon_temp_signal_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */; };
-		84952CDB1C424D49005D2DCF /* UserChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84952CD91C424D49005D2DCF /* UserChangeViewController.m */; };
-		84952CDC1C424D49005D2DCF /* UserChangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84952CDA1C424D49005D2DCF /* UserChangeViewController.xib */; };
 		84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D155851C1FFD1500405915 /* NavigationViewController.m */; };
 		84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18DFF1C1010D000213372 /* SexSwitchCell.m */; };
 		84E18E0A1C10139900213372 /* QRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E18E051C10139900213372 /* QRCodeScanViewController.m */; };
@@ -404,9 +402,6 @@
 		848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp_signal_2.png; sourceTree = "<group>"; };
 		848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@2x.png"; sourceTree = "<group>"; };
 		848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@3x.png"; sourceTree = "<group>"; };
-		84952CD81C424D49005D2DCF /* UserChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserChangeViewController.h; sourceTree = "<group>"; };
-		84952CD91C424D49005D2DCF /* UserChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserChangeViewController.m; sourceTree = "<group>"; };
-		84952CDA1C424D49005D2DCF /* UserChangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserChangeViewController.xib; sourceTree = "<group>"; };
 		84D155841C1FFD1500405915 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		84D155851C1FFD1500405915 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		84E18DFE1C1010D000213372 /* SexSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SexSwitchCell.h; sourceTree = "<group>"; };
@@ -564,9 +559,6 @@
 				84008C991C22A0C7007536B4 /* Nav2ViewController.m */,
 				8482CE161C2A96D400F9608B /* Nav1ViewController.h */,
 				8482CE171C2A96D400F9608B /* Nav1ViewController.m */,
-				84952CD81C424D49005D2DCF /* UserChangeViewController.h */,
-				84952CD91C424D49005D2DCF /* UserChangeViewController.m */,
-				84952CDA1C424D49005D2DCF /* UserChangeViewController.xib */,
 				8425CF301C16C4FC007D964D /* Views */,
 			);
 			name = "View Controllers";
@@ -1217,7 +1209,6 @@
 				840F2A221C1533A40083833B /* image_button_gray@3x.png in Resources */,
 				8458E28D1C06F6D2009D0772 /* icon_health_reminder.png in Resources */,
 				8458E26F1C06F6D2009D0772 /* Contents.json in Resources */,
-				84952CDC1C424D49005D2DCF /* UserChangeViewController.xib in Resources */,
 				8458E2AD1C06F6D3009D0772 /* icon_sofa_control.png in Resources */,
 				8458E2B21C06F6D3009D0772 /* icon_sofa_heat@2x.png in Resources */,
 				840F2A191C1533A40083833B /* background_small_white_circle@3x.png in Resources */,
@@ -1342,7 +1333,6 @@
 				840F29D91C13C9BA0083833B /* WifiConfigNoteViewController.m in Sources */,
 				84E18E0C1C10139900213372 /* RegisterLastViewController.m in Sources */,
 				848CC7041C19577700265848 /* WifiConfigViewController.m in Sources */,
-				84952CDB1C424D49005D2DCF /* UserChangeViewController.m in Sources */,
 				84E18E0A1C10139900213372 /* QRCodeScanViewController.m in Sources */,
 				84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */,
 				5FB56D3E1BDE1132005D80AA /* User.m in Sources */,

@@ -218,7 +218,7 @@
         <!--Users Creation View Controller-->
         <scene sceneID="BdO-DK-Qin">
             <objects>
-                <viewController id="Vd9-gv-BAI" customClass="UsersCreationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UsersCreationViewController" id="Vd9-gv-BAI" customClass="UsersCreationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sg9-ex-uFL"/>
                         <viewControllerLayoutGuide type="bottom" id="5j7-qC-qmc"/>
@@ -282,15 +282,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8FH-CP-Ccc">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3a4-QK-tM3">
-                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="创建用户">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mOH-2d-86E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -559,7 +551,6 @@
                                 </state>
                                 <connections>
                                     <action selector="connectionBtn:" destination="oU2-6q-Emg" eventType="touchUpInside" id="3cY-RJ-58q"/>
-                                    <segue destination="vkA-f7-K9f" kind="push" id="cxh-5b-TNd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnq-hE-P64">
@@ -611,7 +602,7 @@
         <!--Configurating View Controller-->
         <scene sceneID="w60-1r-QdG">
             <objects>
-                <viewController id="vkA-f7-K9f" customClass="ConfiguratingViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfiguratingViewController" id="vkA-f7-K9f" customClass="ConfiguratingViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RIi-KM-64e"/>
                         <viewControllerLayoutGuide type="bottom" id="hp4-wr-MW1"/>

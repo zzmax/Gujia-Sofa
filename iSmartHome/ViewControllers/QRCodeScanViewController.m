@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "QRCodeScanViewController.h"
 #import "AppDelegate.h"
+#import "UsersCreationViewController.h"
 
 @interface QRCodeScanViewController ()<AVCaptureMetadataOutputObjectsDelegate>
 @property (weak, nonatomic) IBOutlet UIView *viewPreview;
@@ -196,6 +197,7 @@
 {
     return NO;
 }
+
 
 
 @end

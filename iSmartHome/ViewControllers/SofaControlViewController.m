@@ -46,8 +46,6 @@
     _utility = [[Utility alloc] init];
     [self.utility activeDismissableKeyboard:self];
     
-    // show the naviagtion bar
-    self.navigationController.navigationBarHidden = NO;
     // set title
     self.navigationItem.title = @"沙发控制";
     

@@ -31,8 +31,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    // show the naviagtion bar
-    self.navigationController.navigationBarHidden = NO;
     // set title
     self.navigationItem.title = @"健康检测";
     self.view.backgroundColor = BACKGROUND_COLOR;

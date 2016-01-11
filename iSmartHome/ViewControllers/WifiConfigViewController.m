@@ -76,14 +76,14 @@
      _globalSocket = [GlobalSocket sharedGlobalSocket];
     if ([_globalSocket.message isEqualToString:@"连接成功"]) {
         [_startBtn setTitle:@"连接成功" forState:UIControlStateNormal];
-        //After 1s, push to the view of weigh the body
-//        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(pushToConfigratingView) userInfo:nil repeats:NO ];
+//        After 1s, push to the view of weigh the body
+        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(pushToConfigratingView) userInfo:nil repeats:NO ];
     }
 }
 
 - (void)pushToConfigratingView
 {
-    ConfiguratingViewController *configratingVC = [[ConfiguratingViewController alloc]init];
+    ConfiguratingViewController *configratingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfiguratingViewController"];
     [self.navigationController pushViewController:configratingVC animated:YES];
 }
 

@@ -13,6 +13,7 @@
 #import "SofaHeatViewController.h"
 #import "HealthExamResultViewController.h"
 #import "WeightResetViewController.h"
+#import "UsersCreationViewController.h"
 
 @interface NavigationViewController()
 
@@ -134,10 +135,16 @@
     if(indexPath.section == 0)
     {
         if (indexPath.row == 0) {
-            //GujiarenView
-            //
-            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
-            ////            [self.navigationController pushViewController:module1VC animated:YES];
+            //     GujiarenView
+            //     Change user
+//            UserChangeViewController *userChangeVC = [[UserChangeViewController alloc]init];
+//            userChangeVC.navigationItem.title = @"家人健康信息";
+//            [self.navigationController pushViewController:userChangeVC animated:YES];
+//            UsersCreationViewController *userChangeVC = [[UsersCreationViewController alloc]init];
+            UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
+            userChangeVC.navTitle = @"家人健康信息";
+            [self.navigationController pushViewController:userChangeVC animated:YES];
+
         }
         else
         {
@@ -268,5 +275,11 @@
     
 //    [tableView setTableFooterView:[[UIView alloc]initWithFrame:CGRectZero]];
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
+}
+
 
 @end
