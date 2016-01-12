@@ -63,7 +63,7 @@
     if ([[segue identifier]isEqualToString:@"ToRegisterLastPage"])
     {
    
-        appDelegate.registerUser.name = self.registerName.text;
+//        appDelegate.registerUser.name = self.registerName.text;
         appDelegate.registerUser.birthday =[appDelegate  stringToDate : self.birthday.text];
         appDelegate.registerUser.weight = @([self.weight.text floatValue]);
         appDelegate.registerUser.height = @([self.height.text floatValue]);

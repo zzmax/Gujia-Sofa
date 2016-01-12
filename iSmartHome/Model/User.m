@@ -2,11 +2,12 @@
 //  User.m
 //  iSmartHome
 //
-//  Created by zwwang on 15/10/26.
-//  Copyright © 2015年 zwwang. All rights reserved.
+//  Created by admin on 16/1/11.
+//  Copyright © 2016年 zzmax. All rights reserved.
 //
 
 #import "User.h"
+#import "HealthExamResults.h"
 
 @implementation User
 

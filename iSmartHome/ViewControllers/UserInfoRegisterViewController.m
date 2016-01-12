@@ -11,9 +11,13 @@
 #import "UserInfoRegisterViewController.h"
 #import "ConstraintMacros.h"
 #import "AppDelegate.h"
+#import "CoreDataHelper.h"
 
 
 @interface UserInfoRegisterViewController()
+{
+    CoreDataHelper *dataHelper;
+}
 
 @property (strong, nonatomic)NSArray *infoTitles;
 @property (strong, nonatomic)UITextField *birthdayTF;
@@ -26,17 +30,21 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 - (IBAction)popView:(id)sender;
-
 @end
 
-@implementation UserInfoRegisterViewController {
-    
-
-}
+@implementation UserInfoRegisterViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Establish Core Data
+    dataHelper = [[CoreDataHelper alloc] init];
+    dataHelper.entityName = @"User";
+    dataHelper.defaultSortAttribute = @"userName";
+    // Setup
+    [dataHelper setupCoreData];
+    
     self.view.backgroundColor = NAVIGATION_COLOR;
     self.tableView.backgroundColor = NAVIGATION_COLOR;
      self.tableView.scrollEnabled = NO;
@@ -263,10 +271,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderOriginInTableView];
     NSAssert(indexPath, @"must have a valid indexPath");
     //if changed, we change the value of sex
-//    if(sender.state == )
-//    {
-//        _sex = NSnumb;
-//    }
+    _sex = [NSNumber numberWithInteger:[sender selectedSegmentIndex]];
 }
 
 #pragma mark - datePicker
@@ -321,50 +326,56 @@
 }
 
 #pragma mark - save data 
-- (void)registerLandingAccount:(UIButton *)sender
+- (IBAction)addItem: (UIButton *)sender
 {
-    NSError __autoreleasing *error;
-    
-    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-    
-//    appDelegate.registerUser.username = self.userName.text;
-    
-//    if (self.code1.text ==  self.code2.text)
-//    {
-//        appDelegate.registerUser.password = self.code1.text;
-//    }
-    
-    NSManagedObjectContext *context = appDelegate.managedObjectContext;
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
-    
-    User *newUser = (User *)newManagedObject;
-    newUser.name = appDelegate.registerUser.name;
-    newUser.password = appDelegate.registerUser.password ;
-    newUser.sex =appDelegate.registerUser.sex ;
-//    newUser.birthday =appDelegate.registerUser.birthday ;
-    newUser.birthday = (NSString *)_birthdayTF.text;
-    newUser.height = _heightTF.text;
-    newUser.weight = _weightTF.text;
-//    newUser.height = appDelegate.registerUser.height;
-//    newUser.weight = appDelegate.registerUser.weight ;
-//    newUser.username = appDelegate.registerUser.username ;
-    
-    BOOL success;
-    
-    if (!(success = [context save:&error]))
+    // Surround the "add" functionality with undo grouping
+    NSUndoManager *manager = dataHelper.context.undoManager;
+    [manager beginUndoGrouping];
     {
-        NSLog(@"Unresolved error %@, %@",error, [error userInfo]);
-        abort();
+        User *user = (User *)[dataHelper newObject];
+        [self setupNewUser:user];
+    }
+    [manager endUndoGrouping];
+    [manager setActionName:@"Add"];
+    [dataHelper save];
+    
+    // Test listing all FailedBankInfos from the store
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSError *error;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"User"
+                                              inManagedObjectContext:dataHelper.context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [dataHelper.context executeFetchRequest:fetchRequest error:&error];
+    for (User *user in fetchedObjects) {
+        NSLog(@"Weight: %@", user.weight.stringValue);
+        NSLog(@"Height: %@", user.height.stringValue);
+        NSLog(@"Birthday: %@", user.birthday);
+        NSLog(@"Sex: %@", user.sex.stringValue);
     }
 }
 
-//NSString *name;
-//@property (nullable, nonatomic, retain) NSString *password;
-//@property (nullable, nonatomic, retain) NSNumber *sex;
-//@property (nullable, nonatomic, retain) NSDate *birthday;
-//@property (nullable, nonatomic, retain) NSNumber *height;
-//@property (nullable, nonatomic, retain) NSNumber *weight;
-//@property (nullable, nonatomic, retain) NSString *username;
-
-
+- (void)setupNewUser: (User *) user
+{
+    // Add a new item to the database
+    
+    // split the string, we want only the number instead of unit
+    NSArray *array = [self.weightTF.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    NSNumber *aNumber = [f numberFromString: array.firstObject];
+    
+    user.weight = aNumber;
+    
+    array = [self.heightTF.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    aNumber = [f numberFromString: array.firstObject];
+    user.height = aNumber;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy年MM月dd日"];
+    NSDate *date = [dateFormat dateFromString:self.birthdayTF.text];
+    //We should add one day because of a default unexplainable error from the datePicker
+    user.birthday = [date dateByAddingTimeInterval:60*60*24*1];
+    
+    user.sex = self.sex == nil? [NSNumber numberWithInteger:0]: self.sex;
+}
 @end

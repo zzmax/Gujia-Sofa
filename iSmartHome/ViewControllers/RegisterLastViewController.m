@@ -41,7 +41,7 @@
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     
-    appDelegate.registerUser.username = self.userName.text;
+    appDelegate.registerUser.userName = self.userName.text;
     
     if (self.code1.text ==  self.code2.text)
     {
@@ -52,13 +52,13 @@
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:context];
     
     User *newUser = (User *)newManagedObject;
-    newUser.name = appDelegate.registerUser.name;
+//    newUser.name = appDelegate.registerUser.name;
     newUser.password = appDelegate.registerUser.password ;
     newUser.sex =appDelegate.registerUser.sex ;
     newUser.birthday =appDelegate.registerUser.birthday ;
     newUser.height = appDelegate.registerUser.height;
     newUser.weight = appDelegate.registerUser.weight ;
-    newUser.username = appDelegate.registerUser.username ;
+    newUser.userName = appDelegate.registerUser.userName ;
     
     BOOL success;
     

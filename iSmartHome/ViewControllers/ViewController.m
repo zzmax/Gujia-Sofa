@@ -66,7 +66,7 @@
     for (User *user in self.fetchedResultsController.fetchedObjects)
     {
         iCount++;
-        strTempUserName=[strTempUserName stringByAppendingFormat: @"#%d,# %@",iCount,user.username];
+        strTempUserName=[strTempUserName stringByAppendingFormat: @"#%d,# %@",iCount,user.userName];
         strTempPassowrd=[strTempPassowrd stringByAppendingFormat: @"#%d,# %@",iCount,user.password];
     }
     
