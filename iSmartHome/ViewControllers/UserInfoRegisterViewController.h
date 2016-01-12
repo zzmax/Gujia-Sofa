@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface UserInfoRegisterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface UserInfoRegisterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 

@@ -12,6 +12,7 @@
 #import "ConstraintMacros.h"
 #import "AppDelegate.h"
 #import "CoreDataHelper.h"
+#import "Utility.h"
 
 
 @interface UserInfoRegisterViewController()
@@ -20,6 +21,8 @@
 }
 
 @property (strong, nonatomic)NSArray *infoTitles;
+@property (strong, nonatomic)UIImageView *userPhoto;
+@property (strong, nonatomic)UITextField *userNameTF;
 @property (strong, nonatomic)UITextField *birthdayTF;
 @property (strong, nonatomic)UITextField *heightTF;
 @property (strong, nonatomic)UITextField *weightTF;
@@ -30,6 +33,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 - (IBAction)popView:(id)sender;
+
+@property Utility *utility;
 @end
 
 @implementation UserInfoRegisterViewController
@@ -58,6 +63,7 @@
     ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
     [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
     _startBtn.titleLabel.textColor = [UIColor blackColor];
+    
 }
 
 - (void)viewDidUnload
@@ -66,10 +72,9 @@
     // Release any retained subviews of the main view.
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
+- (void)viewDidAppear:(BOOL)animated
 {
-    [textField resignFirstResponder];
-    return YES;
+    [self.userNameTF becomeFirstResponder];
 }
 
 - (IBAction)popView:(id) sender
@@ -102,8 +107,26 @@
         [barItems addObject:doneBtn];
         [pickerToolbar setItems:barItems animated:YES];
        
+        //set userName and it's photo
         if (indexPath.row == 0) {
-            [cell.contentView addSubview: [[UILabel alloc] initWithFrame:CGRectZero]];
+             UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
+            CGFloat widthScale = 90/image.size.width;
+            CGFloat heightScale = 90/image.size.height;
+            cell.imageView.image = image;
+            //change the size of the imageview in cell to (90,90)
+            cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+            //set textField for userName
+            _userNameTF = [[UITextField alloc] init];
+            _userNameTF.frame = CGRectMake(150, 35, 200, 50);
+            _userNameTF.layer.cornerRadius = 5;
+            _userNameTF.textAlignment = NSTextAlignmentLeft;
+            _userNameTF.backgroundColor = BACKGROUND_COLOR;
+            [_userNameTF setFont:[UIFont systemFontOfSize:20]];
+            _userNameTF.delegate = self;
+            _userNameTF.returnKeyType = UIReturnKeyDone;
+            _userNameTF.clearButtonMode = UITextFieldViewModeWhileEditing;
+            _userNameTF.placeholder = @"姓名";
+            [cell.contentView addSubview:_userNameTF];
         }
         //sex select line in table view
         if (indexPath.row == 1)
@@ -150,7 +173,7 @@
             _birthdayTF.inputView = datePicker;
             _birthdayTF.inputAccessoryView = pickerToolbar;
             _birthdayTF.textColor = [UIColor whiteColor];
-            _birthdayTF.textAlignment = UITextAlignmentRight;
+            _birthdayTF.textAlignment = NSTextAlignmentRight;
             [self updateTextField:(id)_birthdayTF];
             [cell.contentView addSubview:_birthdayTF];
         }
@@ -161,7 +184,7 @@
             _heightPickerArray = [[NSMutableArray alloc] init];
             
             for (int height = 150; height<=200; height++) {
-                NSString *heightString = [NSString stringWithFormat:@"%d%",height];
+                NSString *heightString = [NSString stringWithFormat:@"%d",height];
                 [_heightPickerArray addObject:heightString];
             }
             
@@ -176,7 +199,7 @@
             _heightTF.inputView = heightPicker;
             _heightTF.inputAccessoryView = pickerToolbar;
             _heightTF.textColor = [UIColor whiteColor];
-            _heightTF.textAlignment = UITextAlignmentRight;
+            _heightTF.textAlignment = NSTextAlignmentRight;
             [self pickerView:heightPicker didSelectRow:20 inComponent:0];
             //Set the default value to 170cm
             [heightPicker selectRow:20 inComponent:0 animated:YES];
@@ -189,7 +212,7 @@
             _weightPickerArray = [[NSMutableArray alloc] init];
             
             for (int weight = 40; weight <= 140; weight++) {
-                NSString *weightString = [NSString stringWithFormat:@"%d%", weight];
+                NSString *weightString = [NSString stringWithFormat:@"%d", weight];
                 [_weightPickerArray addObject:weightString];
             }
             weightPicker.delegate = self;
@@ -203,8 +226,8 @@
             _weightTF.inputView = weightPicker;
             _weightTF.inputAccessoryView = pickerToolbar;
             _weightTF.textColor = [UIColor whiteColor];
-            _weightTF.textAlignment = UITextAlignmentRight;
-            [self pickerView:_weightTF didSelectRow:20 inComponent:0];
+            _weightTF.textAlignment = NSTextAlignmentRight;
+            [self pickerView:weightPicker didSelectRow:20 inComponent:0];
             //Set the default value to 60kg
             [weightPicker selectRow:20 inComponent:0 animated:YES];
             [cell.contentView addSubview:_weightTF];
@@ -284,9 +307,26 @@
 
 -(void)doneButtonPressed:(id)sender
 {
-    [self.birthdayTF resignFirstResponder];
-    [self.heightTF resignFirstResponder];
-    [self.weightTF resignFirstResponder];
+    if (self.birthdayTF.isFirstResponder) {
+        [self.birthdayTF resignFirstResponder];
+        [self.heightTF becomeFirstResponder];
+    }
+    else if (self.heightTF.isFirstResponder)
+    {
+        [self.heightTF resignFirstResponder];
+        [self.weightTF becomeFirstResponder];
+    }
+    else
+    {
+        [self.weightTF resignFirstResponder];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
 }
 
 #pragma mark - heightPicker
@@ -347,6 +387,7 @@
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [dataHelper.context executeFetchRequest:fetchRequest error:&error];
     for (User *user in fetchedObjects) {
+        NSLog(@"NAme: %@", user.userName);
         NSLog(@"Weight: %@", user.weight.stringValue);
         NSLog(@"Height: %@", user.height.stringValue);
         NSLog(@"Birthday: %@", user.birthday);
@@ -358,6 +399,7 @@
 {
     // Add a new item to the database
     
+    user.userName = self.userNameTF.text;
     // split the string, we want only the number instead of unit
     NSArray *array = [self.weightTF.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
