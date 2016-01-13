@@ -36,9 +36,6 @@
     self.tableView.transform = CGAffineTransformMakeScale(SCREEN_WIDTH/self.tableView.bounds.size.width, 1);
     self.tableView.scrollEnabled = NO;
     
-    _currentUser = [CurrentUser staticCurrentUser];
-    _userNameLbl.text = _currentUser.userName;
-    
     //add a tap gesture recognizer to change the view to the user photo
     UITapGestureRecognizer *photoTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushViewToModifyUserInfo:)];
     photoTapRecognizer.delegate = self;
@@ -54,6 +51,9 @@
     //set title to white color
     [self.navigationController.navigationBar
      setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    _currentUser = [CurrentUser staticCurrentUser];
+    _userNameLbl.text = _currentUser.userName;
 }
 
 #pragma mark - table view

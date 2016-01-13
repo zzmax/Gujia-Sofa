@@ -13,6 +13,7 @@
 
 @implementation User (CoreDataProperties)
 
+
 @dynamic birthday;
 @dynamic height;
 @dynamic password;
@@ -20,5 +21,9 @@
 @dynamic userName;
 @dynamic weight;
 @dynamic healthInfo;
+
+- (NSString *)section {
+    return [[self.userName substringFromIndex:0] substringToIndex:1];
+}
 
 @end

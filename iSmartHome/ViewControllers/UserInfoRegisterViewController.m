@@ -62,14 +62,6 @@
     //initiate table data
     _infoTitles = [NSArray arrayWithObjects:@"",@"性别", @"生日", @"身高", @"体重",nil];
     
-    _startBtn.frame = BOTTOM_RECT;
-    PREPCONSTRAINTS(_startBtn);
-    ALIGN_VIEW_LEFT_CONSTANT(_startBtn.superview,_startBtn, 10);
-    ALIGN_VIEW_RIGHT_CONSTANT(_startBtn.superview, _startBtn, -10);
-    ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
-    [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
-    _startBtn.titleLabel.textColor = [UIColor blackColor];
-    
     // set title
     if (self.navTitle == nil) {
         self.navTitle = @"创建用户";
@@ -81,13 +73,23 @@
         _isCreationMode = YES;
     }
     else _isCreationMode = NO;
+    
+    if ( _isCreationMode) {
+         _startBtn.hidden = NO;
+        _startBtn.frame = BOTTOM_RECT;
+        PREPCONSTRAINTS(_startBtn);
+        ALIGN_VIEW_LEFT_CONSTANT(_startBtn.superview,_startBtn, 10);
+        ALIGN_VIEW_RIGHT_CONSTANT(_startBtn.superview, _startBtn, -10);
+        ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
+        [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
+        _startBtn.titleLabel.textColor = [UIColor blackColor];
+    }
+    else {
+        _startBtn.hidden = YES;
+    }
+    
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -96,6 +98,11 @@
 
 - (IBAction)popView:(id) sender
 {
+    // if the view is modification mode, we will save data before quit the view
+    if (!_isCreationMode)
+    {
+        [self modifyCurrentUser];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -244,10 +251,6 @@
         }
     }
     
-    // either if the cell could be dequeued or you created a new cell,
-    // segmentedControl will contain a valid instance
-//    UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:42];
-//    segmentedControl.selectedSegmentIndex = 0;
     cell.textLabel.text = [_infoTitles objectAtIndex: indexPath.row];
     cell.backgroundColor = NAVIGATION_COLOR;
     cell.textLabel.textColor = [UIColor whiteColor];
@@ -447,7 +450,6 @@
     [dataHelper save];
     //set current user to the newUser
     [_currentUser setCurrentUser:newUser];
-//    NSLog(@"Cur_NAme: %@", _currentUser.userName);
     
     // Test listing all FailedBankInfos from the store
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -463,6 +465,18 @@
         NSLog(@"Birthday: %@", user.birthday);
         NSLog(@"Sex: %@", user.sex.stringValue);
     }
+}
+
+- (void)modifyCurrentUser
+{
+    [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
+    if (dataHelper.fetchedResultsController.fetchedObjects.count == 1) {
+        User *user = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
+        [self setupNewUser:user];
+        [dataHelper save];
+        [_currentUser setCurrentUser:user];
+    }
+    else NSLog(@"Error: Many results for the same user.");
 }
 
 - (void)setupNewUser: (User *) user
@@ -490,4 +504,5 @@
     
     user.sex = self.sex == nil? [NSNumber numberWithInteger:0]: self.sex;
 }
+
 @end

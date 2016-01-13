@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface User (CoreDataProperties)
 
+@property (nonatomic, retain) NSString * section;
 @property (nullable, nonatomic, retain) NSDate *birthday;
 @property (nullable, nonatomic, retain) NSNumber *height;
 @property (nullable, nonatomic, retain) NSString *password;
