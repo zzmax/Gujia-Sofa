@@ -291,7 +291,7 @@
         <!--User Info Register View Controller-->
         <scene sceneID="VJA-oy-jj7">
             <objects>
-                <viewController id="0y1-DJ-0hx" customClass="UserInfoRegisterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoRegisterViewController" id="0y1-DJ-0hx" customClass="UserInfoRegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4zI-Qh-odu"/>
                         <viewControllerLayoutGuide type="bottom" id="4d3-ki-RY3"/>
@@ -352,14 +352,6 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4zE-6r-HCk">
-                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="创建用户">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                        </button>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
@@ -489,9 +481,9 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="父亲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-WK-SkV">
-                                <rect key="frame" x="151" y="43" width="44" height="21"/>
+                                <rect key="frame" x="151" y="43" width="100" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="qGB-6R-Fju"/>
+                                    <constraint firstAttribute="width" constant="100" id="qGB-6R-Fju"/>
                                     <constraint firstAttribute="height" constant="21" id="qPQ-J2-th0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -515,6 +507,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="BZE-yR-tVn" id="73S-MI-be4"/>
+                        <outlet property="userNameLbl" destination="lFc-WK-SkV" id="XaH-7P-1gk"/>
+                        <outlet property="userPhoto" destination="GRK-h3-bgV" id="s6F-hu-yLF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bC3-fj-2B0" userLabel="First Responder" sceneMemberID="firstResponder"/>

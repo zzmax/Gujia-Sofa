@@ -5,7 +5,7 @@
 //  Created by admin on 15/12/1.
 //  Copyright © 2015年 zzmax. All rights reserved.
 //
-//  This view is to complete the basic infos of the user
+//  This view is to create or modify the basic infos for a user
 
 #import <Foundation/Foundation.h>
 #import "UserInfoRegisterViewController.h"
@@ -35,6 +35,10 @@
 - (IBAction)popView:(id)sender;
 
 @property CurrentUser *currentUser;
+//This view contains two modes: creation or modification
+//Yes => CreationMode
+//NO =>  ModificationMode
+@property BOOL isCreationMode;
 @end
 
 @implementation UserInfoRegisterViewController
@@ -47,8 +51,10 @@
     dataHelper = [[CoreDataHelper alloc] init];
     dataHelper.entityName = @"User";
     dataHelper.defaultSortAttribute = @"userName";
-    // Setup
+    // Setup data
     [dataHelper setupCoreData];
+    // Set to the current user
+    _currentUser = [CurrentUser staticCurrentUser];
     
     self.view.backgroundColor = NAVIGATION_COLOR;
     self.tableView.backgroundColor = NAVIGATION_COLOR;
@@ -64,7 +70,17 @@
     [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
     _startBtn.titleLabel.textColor = [UIColor blackColor];
     
-    _currentUser = [CurrentUser staticCurrentUser];
+    // set title
+    if (self.navTitle == nil) {
+        self.navTitle = @"创建用户";
+    }
+    self.navigationItem.title = self.navTitle;
+    
+    //set view mode
+    if (_currentUser.userName == nil || [self.navTitle isEqualToString:@"创建用户"]) {
+        _isCreationMode = YES;
+    }
+    else _isCreationMode = NO;
 }
 
 - (void)viewDidUnload
@@ -89,6 +105,10 @@
 {
     static NSString *simpleTableIdentifier = @"InfoCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"男性",@"女性"]];
+    UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
+    UIPickerView *heightPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    UIPickerView *weightPicker = [[UIPickerView alloc] init];
     
     if (!cell)
     {
@@ -110,7 +130,8 @@
        
         //set userName and it's photo
         if (indexPath.row == 0) {
-             UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
+            
+            UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
             CGFloat widthScale = 90/image.size.width;
             CGFloat heightScale = 90/image.size.height;
             cell.imageView.image = image;
@@ -133,7 +154,6 @@
         if (indexPath.row == 1)
         {
             // set the sex (male, female)
-            UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"男性",@"女性"]];
             segmentedControl.frame = CGRectMake(150, 7, 200, 28);
             [cell.contentView addSubview:segmentedControl];
             
@@ -162,10 +182,7 @@
         //birthday choose line
         else if (indexPath.row == 2)
         {
-            
-            UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectZero];
             datePicker.datePickerMode = UIDatePickerModeDate;
-            [datePicker setDate:[NSDate date]];
             [datePicker addTarget:self action:@selector(updateTextField:) forControlEvents:UIControlEventValueChanged];
             
             //set textField for birthday
@@ -181,7 +198,6 @@
         //height line
         else if(indexPath.row == 3)
         {
-            UIPickerView *heightPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
             _heightPickerArray = [[NSMutableArray alloc] init];
             
             for (int height = 150; height<=200; height++) {
@@ -201,15 +217,11 @@
             _heightTF.inputAccessoryView = pickerToolbar;
             _heightTF.textColor = [UIColor whiteColor];
             _heightTF.textAlignment = NSTextAlignmentRight;
-            [self pickerView:heightPicker didSelectRow:20 inComponent:0];
-            //Set the default value to 170cm
-            [heightPicker selectRow:20 inComponent:0 animated:YES];
             [cell.contentView addSubview:_heightTF];
         }
         //weight line
         else if(indexPath.row == 4)
         {
-            UIPickerView *weightPicker = [[UIPickerView alloc] init];
             _weightPickerArray = [[NSMutableArray alloc] init];
             
             for (int weight = 40; weight <= 140; weight++) {
@@ -228,24 +240,78 @@
             _weightTF.inputAccessoryView = pickerToolbar;
             _weightTF.textColor = [UIColor whiteColor];
             _weightTF.textAlignment = NSTextAlignmentRight;
-            [self pickerView:weightPicker didSelectRow:20 inComponent:0];
-            //Set the default value to 60kg
-            [weightPicker selectRow:20 inComponent:0 animated:YES];
             [cell.contentView addSubview:_weightTF];
-            
         }
     }
     
     // either if the cell could be dequeued or you created a new cell,
     // segmentedControl will contain a valid instance
-    UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:42];
-    segmentedControl.selectedSegmentIndex = 0;
+//    UISegmentedControl *segmentedControl = (UISegmentedControl *)[cell.contentView viewWithTag:42];
+//    segmentedControl.selectedSegmentIndex = 0;
     cell.textLabel.text = [_infoTitles objectAtIndex: indexPath.row];
     cell.backgroundColor = NAVIGATION_COLOR;
     cell.textLabel.textColor = [UIColor whiteColor];
     cell.clipsToBounds = YES;
     //disable cell selected effect
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    //set value for each cell
+    if (!_isCreationMode) {
+        int shouldSelectHeightPickerRow = [_currentUser.height intValue] - [_heightPickerArray.firstObject intValue];
+        int shouldSelectWeightPickerRow = [_currentUser.weight intValue] - [_weightPickerArray.firstObject intValue];
+        switch (indexPath.row) {
+            case 0:
+                _userNameTF.text = _currentUser.userName;
+                break;
+            case 1:
+                segmentedControl.selectedSegmentIndex = [_currentUser.sex intValue];
+                break;
+            case 2:
+                [datePicker setDate: _currentUser.birthday];
+                [self updateTextField:(id)_birthdayTF];
+                break;
+            case 3:
+                [self pickerView:heightPicker didSelectRow:shouldSelectHeightPickerRow inComponent:0];
+                [heightPicker selectRow:shouldSelectHeightPickerRow inComponent:0 animated:YES];
+                break;
+            case 4:
+                [self pickerView:weightPicker didSelectRow:shouldSelectWeightPickerRow inComponent:0];
+                [weightPicker selectRow:shouldSelectWeightPickerRow inComponent:0 animated:YES];
+
+                break;
+                
+            default:
+                break;
+        }
+    }
+    else
+    {
+        switch (indexPath.row) {
+            case 0:
+                _userNameTF.text = nil;
+                break;
+            case 1:
+                segmentedControl.selectedSegmentIndex = 0;
+                break;
+            case 2:
+                [datePicker setDate: [NSDate date]];
+                [self updateTextField:(id)_birthdayTF];
+                break;
+            case 3:
+                [self pickerView:heightPicker didSelectRow:20 inComponent:0];
+                //Set the default value to 170cm
+                [heightPicker selectRow:20 inComponent:0 animated:YES];
+                break;
+            case 4:
+                [self pickerView:weightPicker didSelectRow:20 inComponent:0];
+                //Set the default value to 60kg
+                [weightPicker selectRow:20 inComponent:0 animated:YES];
+                break;
+                
+            default:
+                break;
+        }
+    }
 
     return cell;
 }

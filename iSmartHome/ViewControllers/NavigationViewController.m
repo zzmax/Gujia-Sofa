@@ -14,10 +14,13 @@
 #import "HealthExamResultViewController.h"
 #import "WeightResetViewController.h"
 #import "UsersCreationViewController.h"
+#import "CurrentUser.h"
+#import "UserInfoRegisterViewController.h"
 
 @interface NavigationViewController()
-
-
+@property (weak, nonatomic) IBOutlet UILabel *userNameLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *userPhoto;
+@property CurrentUser *currentUser;
 
 @end
 
@@ -32,6 +35,15 @@
     //set tableview width = screen width
     self.tableView.transform = CGAffineTransformMakeScale(SCREEN_WIDTH/self.tableView.bounds.size.width, 1);
     self.tableView.scrollEnabled = NO;
+    
+    _currentUser = [CurrentUser staticCurrentUser];
+    _userNameLbl.text = _currentUser.userName;
+    
+    //add a tap gesture recognizer to change the view to the user photo
+    UITapGestureRecognizer *photoTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushViewToModifyUserInfo:)];
+    photoTapRecognizer.delegate = self;
+    self.userPhoto.userInteractionEnabled = YES;
+    [self.userPhoto addGestureRecognizer:photoTapRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -125,7 +137,7 @@
 }
 
 /**
- *  push the view
+ *  push the view from tableView
  *
  *  @param tableView : the Navigation table
  *  @param indexPath : index in Navigation table
@@ -281,5 +293,11 @@
     self.navigationController.navigationBarHidden = NO;
 }
 
+- (void)pushViewToModifyUserInfo:(UITapGestureRecognizer*)sender
+{
+    UserInfoRegisterViewController *userInfoRegisterVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UserInfoRegisterViewController"];
+    userInfoRegisterVC.navTitle = @"修改用户信息";
+    [self.navigationController pushViewController:userInfoRegisterVC animated:YES];
+}
 
 @end
