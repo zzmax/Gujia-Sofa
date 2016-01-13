@@ -18,10 +18,10 @@
         <attribute name="sex" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="weight" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="healthInfo" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="HealthExamResults" inverseName="fromTherUser" inverseEntity="HealthExamResults" syncable="YES"/>
+        <relationship name="healthInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="HealthExamResults" inverseName="fromTherUser" inverseEntity="HealthExamResults" syncable="YES"/>
     </entity>
     <elements>
+        <element name="User" positionX="126" positionY="36" width="128" height="148"/>
         <element name="HealthExamResults" positionX="-63" positionY="35" width="128" height="178"/>
-        <element name="User" positionX="151" positionY="36" width="128" height="148"/>
     </elements>
 </model>

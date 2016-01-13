@@ -12,7 +12,7 @@
 #import "ConstraintMacros.h"
 #import "AppDelegate.h"
 #import "CoreDataHelper.h"
-#import "Utility.h"
+#import "CurrentUser.h"
 
 
 @interface UserInfoRegisterViewController()
@@ -34,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 - (IBAction)popView:(id)sender;
 
-@property Utility *utility;
+@property CurrentUser *currentUser;
 @end
 
 @implementation UserInfoRegisterViewController
@@ -64,6 +64,7 @@
     [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
     _startBtn.titleLabel.textColor = [UIColor blackColor];
     
+    _currentUser = [CurrentUser staticCurrentUser];
 }
 
 - (void)viewDidUnload
@@ -125,7 +126,7 @@
             _userNameTF.delegate = self;
             _userNameTF.returnKeyType = UIReturnKeyDone;
             _userNameTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-            _userNameTF.placeholder = @"姓名";
+            _userNameTF.placeholder = @"张三";
             [cell.contentView addSubview:_userNameTF];
         }
         //sex select line in table view
@@ -369,15 +370,18 @@
 - (IBAction)addItem: (UIButton *)sender
 {
     // Surround the "add" functionality with undo grouping
+    User *newUser = (User *)[dataHelper newObject];
     NSUndoManager *manager = dataHelper.context.undoManager;
     [manager beginUndoGrouping];
     {
-        User *user = (User *)[dataHelper newObject];
-        [self setupNewUser:user];
+        [self setupNewUser:newUser];
     }
     [manager endUndoGrouping];
     [manager setActionName:@"Add"];
     [dataHelper save];
+    //set current user to the newUser
+    [_currentUser setCurrentUser:newUser];
+//    NSLog(@"Cur_NAme: %@", _currentUser.userName);
     
     // Test listing all FailedBankInfos from the store
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

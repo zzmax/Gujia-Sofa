@@ -153,6 +153,7 @@
 		8458E2B61C06F6D3009D0772 /* icon_temp_signal_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25A1C06F6D2009D0772 /* icon_temp_signal_1@2x.png */; };
 		8458E2B71C06F6D3009D0772 /* icon_temp_signal_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */; };
 		8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E2BC1C0B35AC009D0772 /* RootViewController.m */; };
+		84639E8D1C45FE23006D9064 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84639E8C1C45FE23006D9064 /* CurrentUser.m */; };
 		8482CE0A1C29440900F9608B /* HealthExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE081C29440900F9608B /* HealthExamResultViewController.m */; };
 		8482CE0B1C29440900F9608B /* HealthExamResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8482CE091C29440900F9608B /* HealthExamResultViewController.xib */; };
 		8482CE0F1C2A720B00F9608B /* WeightResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE0D1C2A720B00F9608B /* WeightResetViewController.m */; };
@@ -375,6 +376,8 @@
 		8458E25A1C06F6D2009D0772 /* icon_temp_signal_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_1@2x.png"; sourceTree = "<group>"; };
 		8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_1@3x.png"; sourceTree = "<group>"; };
 		8458E2BC1C0B35AC009D0772 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		84639E8B1C45FE23006D9064 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
+		84639E8C1C45FE23006D9064 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		8482CE071C29440900F9608B /* HealthExamResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthExamResultViewController.h; sourceTree = "<group>"; };
 		8482CE081C29440900F9608B /* HealthExamResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthExamResultViewController.m; sourceTree = "<group>"; };
 		8482CE091C29440900F9608B /* HealthExamResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthExamResultViewController.xib; sourceTree = "<group>"; };
@@ -595,6 +598,8 @@
 				8458E1E51C02AFA3009D0772 /* Utility.m */,
 				840E44911C25227C0013476F /* GlobalSocket.h */,
 				840E44921C25227C0013476F /* GlobalSocket.m */,
+				84639E8B1C45FE23006D9064 /* CurrentUser.h */,
+				84639E8C1C45FE23006D9064 /* CurrentUser.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1375,6 +1380,7 @@
 				8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */,
 				8458E1E61C02AFA3009D0772 /* Utility.m in Sources */,
 				84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */,
+				84639E8D1C45FE23006D9064 /* CurrentUser.m in Sources */,
 				5FB56CFC1BDDFF75005D80AA /* AppDelegate.m in Sources */,
 				8424222A1C2050AD00F4D051 /* SofaControlViewController.m in Sources */,
 				84AA4BCE1C43EF6C00EE4388 /* HealthExamResults.m in Sources */,

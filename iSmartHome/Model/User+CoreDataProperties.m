@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.m
 //  iSmartHome
 //
-//  Created by admin on 16/1/11.
+//  Created by admin on 16/1/13.
 //  Copyright © 2016年 zzmax. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

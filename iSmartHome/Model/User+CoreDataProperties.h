@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.h
 //  iSmartHome
 //
-//  Created by admin on 16/1/11.
+//  Created by admin on 16/1/13.
 //  Copyright © 2016年 zzmax. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -21,7 +21,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *sex;
 @property (nullable, nonatomic, retain) NSString *userName;
 @property (nullable, nonatomic, retain) NSNumber *weight;
-@property (nullable, nonatomic, retain) HealthExamResults *healthInfo;
+@property (nullable, nonatomic, retain) NSSet<HealthExamResults *> *healthInfo;
+
+@end
+
+@interface User (CoreDataGeneratedAccessors)
+
+- (void)addHealthInfoObject:(HealthExamResults *)value;
+- (void)removeHealthInfoObject:(HealthExamResults *)value;
+- (void)addHealthInfo:(NSSet<HealthExamResults *> *)values;
+- (void)removeHealthInfo:(NSSet<HealthExamResults *> *)values;
 
 @end
 
