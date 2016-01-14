@@ -16,6 +16,7 @@
 #import "UsersCreationViewController.h"
 #import "CurrentUser.h"
 #import "UserInfoRegisterViewController.h"
+#import "HealthConditionTrendencyViewController.h"
 
 @interface NavigationViewController()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLbl;
@@ -78,7 +79,7 @@
     [infoTitlesSectionTwo addObject:@"称重"];
     //section 2
     [infoTitlesSectionThree addObject:@"健康提醒"];
-    [infoTitlesSectionThree addObject:@"健康使用说明"];
+    [infoTitlesSectionThree addObject:@"健康结果趋势"];
     [infoTitlesSectionThree addObject:@"设置"];
     //add to 2-dimension array
     [infoTitlesSectionArray addObject:infoTitlesSectionOne];
@@ -213,10 +214,10 @@
         }
         else if (indexPath.row == 1)
         {
-            //HelpView
+            //HealthConditionTrendencyView
             //
-            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
-            ////            [self.navigationController pushViewController:module1VC animated:YES];
+            HealthConditionTrendencyViewController *healthConditionTrendencyVC = [[HealthConditionTrendencyViewController alloc]init];
+            [self.navigationController pushViewController:healthConditionTrendencyVC animated:YES];
         }
         else if (indexPath.row == 2)
         {
