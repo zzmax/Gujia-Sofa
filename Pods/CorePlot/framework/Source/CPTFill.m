@@ -46,6 +46,7 @@
     return [[_CPTFillImage alloc] initWithImage:anImage];
 }
 
+
 /** @brief Initializes a newly allocated CPTFill object with the provided color.
  *  @param aColor The color.
  *  @return The initialized CPTFill object.

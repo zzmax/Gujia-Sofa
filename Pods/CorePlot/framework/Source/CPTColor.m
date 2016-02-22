@@ -283,6 +283,38 @@
     return color;
 }
 
+/** @brief Returns a shared instance of CPTColor initialized with the app background color.
+ *
+ *  @return A shared CPTColor object initialized with the app background color.
+ **/
++(instancetype)appBackGroundColor
+{
+    static CPTColor *color           = nil;
+    static dispatch_once_t onceToken = 0;
+    
+    dispatch_once(&onceToken, ^{
+        color = [[CPTColor alloc] initWithComponentRed:CPTFloat(0.88235) green:CPTFloat(0.95294) blue:CPTFloat(1.0) alpha:CPTFloat(1.0)];
+    });
+    
+    return color;
+}
+
+/** @brief Returns a shared instance of CPTColor initialized with the app navigation color.
+ *
+ *  @return A shared CPTColor object initialized with the app navigation color.
+ **/
++(instancetype)appNavColor
+{
+    static CPTColor *color           = nil;
+    static dispatch_once_t onceToken = 0;
+    
+    dispatch_once(&onceToken, ^{
+        color = [[CPTColor alloc] initWithComponentRed:CPTFloat(0.07451) green:CPTFloat(0.73333) blue:CPTFloat(1.0) alpha:CPTFloat(1.0)];
+    });
+    
+    return color;
+}
+
 /** @brief Creates and returns a new CPTColor instance initialized with the provided @ref CGColorRef.
  *  @param newCGColor The color to wrap.
  *  @return A new CPTColor instance initialized with the provided @ref CGColorRef.

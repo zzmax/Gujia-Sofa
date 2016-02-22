@@ -7,15 +7,65 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HealthConditionTrendencyViewController">
             <connections>
+                <outlet property="monthBtn" destination="USX-Ro-gWL" id="smb-Jk-RJo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="weekBtn" destination="Cyx-0o-eeP" id="Tmd-HH-KLM"/>
+                <outlet property="yearBtn" destination="JYw-vV-LsG" id="WYD-G1-JD0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_button_blue.png" translatesAutoresizingMaskIntoConstraints="NO" id="p3s-qH-cnq">
+                    <rect key="frame" x="42" y="75" width="330" height="50"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyx-0o-eeP">
+                    <rect key="frame" x="107" y="83" width="30" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="周">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="setXAxisToWeek:" destination="-1" eventType="touchUpInside" id="62S-u1-cKx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USX-Ro-gWL">
+                    <rect key="frame" x="192" y="85" width="30" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="月">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="setXAxisToMonth:" destination="-1" eventType="touchUpInside" id="JdY-Zi-D4K"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JYw-vV-LsG">
+                    <rect key="frame" x="277" y="83" width="30" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="年">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="setXAxisToYear:" destination="-1" eventType="touchUpInside" id="cwZ-RW-2hf"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="p3s-qH-cnq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="429-jb-gHG"/>
+                <constraint firstItem="USX-Ro-gWL" firstAttribute="leading" secondItem="Cyx-0o-eeP" secondAttribute="trailing" constant="55" id="LFh-M8-JHe"/>
+                <constraint firstItem="JYw-vV-LsG" firstAttribute="leading" secondItem="USX-Ro-gWL" secondAttribute="trailing" constant="55" id="UMz-lg-xOj"/>
+                <constraint firstItem="USX-Ro-gWL" firstAttribute="centerY" secondItem="p3s-qH-cnq" secondAttribute="centerY" id="ah8-kJ-VAm"/>
+                <constraint firstItem="USX-Ro-gWL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uNx-cf-Av4"/>
+                <constraint firstItem="p3s-qH-cnq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uc4-Vc-f2s"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="312" y="61"/>
         </view>
     </objects>
+    <resources>
+        <image name="image_button_blue.png" width="330" height="50"/>
+    </resources>
 </document>

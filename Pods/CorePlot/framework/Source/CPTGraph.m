@@ -208,7 +208,7 @@ NSString *const CPTGraphPlotSpaceNotificationKey       = @"CPTGraphPlotSpaceNoti
         self.paddingLeft   = CPTFloat(20.0);
         self.paddingTop    = CPTFloat(20.0);
         self.paddingRight  = CPTFloat(20.0);
-        self.paddingBottom = CPTFloat(20.0);
+        self.paddingBottom = CPTFloat(0.0);
 
         // Plot area
         CPTPlotAreaFrame *newArea = [[CPTPlotAreaFrame alloc] initWithFrame:self.bounds];

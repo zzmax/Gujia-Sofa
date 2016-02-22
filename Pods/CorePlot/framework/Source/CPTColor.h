@@ -20,6 +20,8 @@
 +(nonnull instancetype)orangeColor;
 +(nonnull instancetype)purpleColor;
 +(nonnull instancetype)brownColor;
++(nonnull instancetype)appBackGroundColor;
++(nonnull instancetype)appNavColor;
 
 +(nonnull instancetype)colorWithCGColor:(nonnull CGColorRef)newCGColor;
 +(nonnull instancetype)colorWithComponentRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
