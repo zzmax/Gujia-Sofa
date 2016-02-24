@@ -183,6 +183,7 @@
 		848CDFAE1C196AF600265848 /* icon_temp_signal_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */; };
 		848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */; };
 		848CDFB01C196AF600265848 /* icon_temp_signal_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */; };
+		84A94FF41C7C57450087D211 /* SingleCorePlotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */; };
 		84AA4BB51C43A2F500EE4388 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */; };
 		84AA4BCB1C43EF6C00EE4388 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */; };
 		84AA4BCC1C43EF6C00EE4388 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC61C43EF6C00EE4388 /* User.m */; };
@@ -518,6 +519,8 @@
 		848CDFAA1C196AF600265848 /* icon_temp_signal_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp_signal_2.png; sourceTree = "<group>"; };
 		848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@2x.png"; sourceTree = "<group>"; };
 		848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@3x.png"; sourceTree = "<group>"; };
+		84A94FF21C7C57450087D211 /* SingleCorePlotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCorePlotViewController.h; sourceTree = "<group>"; };
+		84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCorePlotViewController.m; sourceTree = "<group>"; };
 		84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84AA4BC31C43EF6C00EE4388 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
 		84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -899,6 +902,8 @@
 				8413D2EB1C468CEA0083CC92 /* HealthConditionTrendencyViewController.h */,
 				8413D2EC1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m */,
 				8413D2ED1C468CEA0083CC92 /* HealthConditionTrendencyViewController.xib */,
+				84A94FF21C7C57450087D211 /* SingleCorePlotViewController.h */,
+				84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */,
 				8425CF301C16C4FC007D964D /* Views */,
 			);
 			name = "View Controllers";
@@ -2099,6 +2104,7 @@
 				84C8BBE61C47489E0038D4C3 /* NSCoderExtensions.m in Sources */,
 				84E26D6F1C0D4B0400B2E429 /* UserInfoRegisterViewController.m in Sources */,
 				8482CE181C2A96D400F9608B /* Nav1ViewController.m in Sources */,
+				84A94FF41C7C57450087D211 /* SingleCorePlotViewController.m in Sources */,
 				84C8BB9D1C47489E0038D4C3 /* _CPTXYTheme.m in Sources */,
 				84C8BBE01C47489E0038D4C3 /* CPTTradingRangePlot.m in Sources */,
 				84C8BBE41C47489E0038D4C3 /* CPTXYGraph.m in Sources */,

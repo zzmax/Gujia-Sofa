@@ -7,7 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HealthConditionTrendencyViewController">
             <connections>
+                <outlet property="firstView" destination="bHC-kS-vze" id="OtX-vK-5D5"/>
                 <outlet property="monthBtn" destination="USX-Ro-gWL" id="smb-Jk-RJo"/>
+                <outlet property="pageControl" destination="RSL-RI-lSN" id="dsy-Jp-XBB"/>
+                <outlet property="secondView" destination="rCd-Jt-9oN" id="GoV-YJ-88m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="weekBtn" destination="Cyx-0o-eeP" id="Tmd-HH-KLM"/>
                 <outlet property="yearBtn" destination="JYw-vV-LsG" id="WYD-G1-JD0"/>
@@ -51,13 +54,46 @@
                         <action selector="setXAxisToYear:" destination="-1" eventType="touchUpInside" id="cwZ-RW-2hf"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHC-kS-vze">
+                    <rect key="frame" x="0.0" y="135" width="414" height="224"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="224" id="ysf-eV-0nv"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rCd-Jt-9oN">
+                    <rect key="frame" x="0.0" y="369" width="414" height="274"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="RSL-RI-lSN">
+                    <rect key="frame" x="57" y="683" width="300" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="bUC-WF-WzF"/>
+                    </constraints>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="currentPageIndicatorTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="pageChange:" destination="-1" eventType="valueChanged" id="YyF-sW-mdx"/>
+                    </connections>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="p3s-qH-cnq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="429-jb-gHG"/>
+                <constraint firstItem="rCd-Jt-9oN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6CB-M7-sTJ"/>
+                <constraint firstItem="bHC-kS-vze" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="7no-zy-qGA"/>
+                <constraint firstItem="rCd-Jt-9oN" firstAttribute="top" secondItem="bHC-kS-vze" secondAttribute="bottom" constant="10" id="8O5-w8-xPY"/>
                 <constraint firstItem="USX-Ro-gWL" firstAttribute="leading" secondItem="Cyx-0o-eeP" secondAttribute="trailing" constant="55" id="LFh-M8-JHe"/>
+                <constraint firstAttribute="bottom" secondItem="RSL-RI-lSN" secondAttribute="bottom" constant="10" id="NR1-CM-0Ns"/>
+                <constraint firstItem="rCd-Jt-9oN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="OyT-To-gBp"/>
+                <constraint firstAttribute="bottom" secondItem="rCd-Jt-9oN" secondAttribute="bottom" constant="93" id="T7N-rk-9XK"/>
+                <constraint firstItem="bHC-kS-vze" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Try-hI-9XC"/>
+                <constraint firstItem="RSL-RI-lSN" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="U6n-sO-MUz"/>
                 <constraint firstItem="JYw-vV-LsG" firstAttribute="leading" secondItem="USX-Ro-gWL" secondAttribute="trailing" constant="55" id="UMz-lg-xOj"/>
+                <constraint firstItem="bHC-kS-vze" firstAttribute="top" secondItem="p3s-qH-cnq" secondAttribute="bottom" constant="10" id="Wgj-sl-7cB"/>
                 <constraint firstItem="USX-Ro-gWL" firstAttribute="centerY" secondItem="p3s-qH-cnq" secondAttribute="centerY" id="ah8-kJ-VAm"/>
+                <constraint firstItem="RSL-RI-lSN" firstAttribute="top" secondItem="rCd-Jt-9oN" secondAttribute="bottom" constant="40" id="iYc-2z-eTP"/>
                 <constraint firstItem="USX-Ro-gWL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uNx-cf-Av4"/>
                 <constraint firstItem="p3s-qH-cnq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="uc4-Vc-f2s"/>
             </constraints>
