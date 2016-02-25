@@ -464,7 +464,7 @@
         <!--Navigation View Controller-->
         <scene sceneID="NXU-nu-oA6">
             <objects>
-                <viewController id="ek5-Io-B3O" customClass="NavigationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NavigationViewController" id="ek5-Io-B3O" customClass="NavigationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3wc-m6-uUB"/>
                         <viewControllerLayoutGuide type="bottom" id="iNc-ao-caT"/>
@@ -473,8 +473,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BZE-yR-tVn">
-                                <rect key="frame" x="0.0" y="101" width="374" height="599"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BZE-yR-tVn">
+                                <rect key="frame" x="0.0" y="101" width="414" height="599"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                 <connections>
@@ -515,8 +515,11 @@
                             <constraint firstItem="GRK-h3-bgV" firstAttribute="leading" secondItem="rKo-g5-byC" secondAttribute="leading" constant="30" id="497-TW-wXz"/>
                             <constraint firstItem="lFc-WK-SkV" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="43" id="4zp-F8-lVy"/>
                             <constraint firstItem="BWW-6U-QrA" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="63" id="9Qn-yw-gsh"/>
+                            <constraint firstAttribute="trailing" secondItem="BZE-yR-tVn" secondAttribute="trailing" id="DXN-Pu-xtJ"/>
                             <constraint firstItem="BWW-6U-QrA" firstAttribute="leading" secondItem="GRK-h3-bgV" secondAttribute="trailing" constant="18" id="IZ3-p5-gCg"/>
+                            <constraint firstItem="BZE-yR-tVn" firstAttribute="centerX" secondItem="rKo-g5-byC" secondAttribute="centerX" id="QYC-P5-tic"/>
                             <constraint firstItem="GRK-h3-bgV" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="20" id="YSR-7E-GJC"/>
+                            <constraint firstItem="BZE-yR-tVn" firstAttribute="leading" secondItem="rKo-g5-byC" secondAttribute="leading" id="gXf-g6-COw"/>
                             <constraint firstItem="lFc-WK-SkV" firstAttribute="leading" secondItem="GRK-h3-bgV" secondAttribute="trailing" constant="31" id="vfR-JF-3XH"/>
                         </constraints>
                     </view>
@@ -642,7 +645,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="取消" backgroundImage="image_button_blue.png"/>
                                 <connections>
-                                    <segue destination="dQ1-eA-Rkv" kind="show" id="QJi-gr-EyE"/>
+                                    <action selector="cancelToConnectSofa:" destination="vkA-f7-K9f" eventType="touchUpInside" id="j1y-K6-sBd"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oh5-tY-1y9">

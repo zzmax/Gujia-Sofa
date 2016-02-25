@@ -34,8 +34,15 @@
     
     self.tableView.backgroundColor = NAVIGATION_COLOR;
     //set tableview width = screen width
-    self.tableView.transform = CGAffineTransformMakeScale(SCREEN_WIDTH/self.tableView.bounds.size.width, 1);
-    self.tableView.scrollEnabled = NO;
+//    self.tableView.transform = CGAffineTransformMakeScale(SCREEN_WIDTH/self.tableView.bounds.size.width, 1);
+    CGSize aSize = CGSizeMake(SCREEN_HEIGHT - 100, SCREEN_WIDTH);
+    CGRect aRect = self.tableView.frame;
+    aRect.size = aSize;
+    self.tableView.frame = aRect;
+    self.tableView.scrollEnabled = YES;
+//    if (SCREEN_HEIGHT <= 500) {
+//        ALIGN_VIEW_BOTTOM(self.view, self.tableView);
+//    }
     
     //add a tap gesture recognizer to change the view to the user photo
     UITapGestureRecognizer *photoTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pushViewToModifyUserInfo:)];
@@ -267,6 +274,9 @@
 //set cell height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (SCREEN_HEIGHT < 500) {
+        return SCREEN_HEIGHT / 13;
+    }
     return SCREEN_HEIGHT/12;
 }
 

@@ -10,6 +10,7 @@
 #import "ConfiguratingViewController.h"
 #import "ConstraintMacros.h"
 #import "THProgressView.h"
+#import "NavigationViewController.h"
 
 
 @interface ConfiguratingViewController ()
@@ -85,12 +86,28 @@
     ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _cancelBtn, -40);
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [self.timer invalidate];
 }
+
+-(void) getToNextVC
+{
+    [self.timer invalidate];
+    NavigationViewController *navigationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
+    [self.navigationController pushViewController:navigationVC animated:YES];
+
+}
+
+- (IBAction)cancelToConnectSofa:(id)aButton
+{
+    [self.timer invalidate];
+    [self popView:self.cancelBtn];
+}
+
 
 - (IBAction)popView:(id) sender
 {

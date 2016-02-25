@@ -25,6 +25,11 @@
 
 @implementation WifiConfigViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [_startBtn setTitle:@"配置" forState:UIControlStateNormal];
+}
+
 - (void)viewDidLoad
 {
     self.view.backgroundColor = BACKGROUND_COLOR;
