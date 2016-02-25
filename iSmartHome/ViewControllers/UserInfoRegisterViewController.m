@@ -146,7 +146,16 @@
             cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
             //set textField for userName
             _userNameTF = [[UITextField alloc] init];
-            _userNameTF.frame = CGRectMake(150, 35, 200, 50);
+            //set size and location
+//            CGRect frameRect = _userNameTF.frame;
+//            frameRect.size = CGSizeMake(200, 50);//150, 35,
+//            _userNameTF.frame = frameRect;
+            _userNameTF.frame = CGRectMake(SCREEN_WIDTH * 5/12 - 10, 35, SCREEN_WIDTH * 7/12, 50);
+//            CONSTRAIN_SIZE(_userNameTF.viewForFirstBaselineLayout,200,50);
+////            CONSTRAIN_HEIGHT(_userNameTF.viewForFirstBaselineLayout, 50);
+            
+            
+            
             _userNameTF.layer.cornerRadius = 5;
             _userNameTF.textAlignment = NSTextAlignmentLeft;
             _userNameTF.backgroundColor = BACKGROUND_COLOR;
@@ -161,7 +170,7 @@
         if (indexPath.row == 1)
         {
             // set the sex (male, female)
-            segmentedControl.frame = CGRectMake(150, 7, 200, 28);
+            segmentedControl.frame = CGRectMake(SCREEN_WIDTH * 5/12 - 10, 7, SCREEN_WIDTH * 7/12, 28);
             [cell.contentView addSubview:segmentedControl];
             
             // add an action so we can change our model if the view changes
@@ -194,8 +203,7 @@
             
             //set textField for birthday
             _birthdayTF = [[UITextField alloc] init];
-            _birthdayTF.frame = CGRectMake(220, 7, 130, 28);
-            _birthdayTF.inputView = datePicker;
+            _birthdayTF.frame = CGRectMake(SCREEN_WIDTH * 5/12 - 10,7, SCREEN_WIDTH * 7/12, 28);            _birthdayTF.inputView = datePicker;
             _birthdayTF.inputAccessoryView = pickerToolbar;
             _birthdayTF.textColor = [UIColor whiteColor];
             _birthdayTF.textAlignment = NSTextAlignmentRight;
@@ -219,8 +227,7 @@
             
             //set textField for height
             _heightTF = [[UITextField alloc] init];
-            _heightTF.frame = CGRectMake(265, 7, 80, 28);
-            _heightTF.inputView = heightPicker;
+            _heightTF.frame = CGRectMake(SCREEN_WIDTH * 5/12 - 10, 7, SCREEN_WIDTH * 7/12, 28);            _heightTF.inputView = heightPicker;
             _heightTF.inputAccessoryView = pickerToolbar;
             _heightTF.textColor = [UIColor whiteColor];
             _heightTF.textAlignment = NSTextAlignmentRight;
@@ -242,7 +249,7 @@
             
             //set textField for _weightTF
             _weightTF = [[UITextField alloc] init];
-            _weightTF.frame = CGRectMake(265, 7, 80, 28);
+            _weightTF.frame = CGRectMake(SCREEN_WIDTH * 5/12 - 10, 7, SCREEN_WIDTH * 7/12, 28);
             _weightTF.inputView = weightPicker;
             _weightTF.inputAccessoryView = pickerToolbar;
             _weightTF.textColor = [UIColor whiteColor];

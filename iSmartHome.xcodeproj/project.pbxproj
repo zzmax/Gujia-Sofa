@@ -184,6 +184,7 @@
 		848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAB1C196AF600265848 /* icon_temp_signal_2@2x.png */; };
 		848CDFB01C196AF600265848 /* icon_temp_signal_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */; };
 		84A94FF41C7C57450087D211 /* SingleCorePlotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */; };
+		84A94FFD1C7EA4B30087D211 /* THProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A94FFC1C7EA4B30087D211 /* THProgressView.m */; };
 		84AA4BB51C43A2F500EE4388 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */; };
 		84AA4BCB1C43EF6C00EE4388 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */; };
 		84AA4BCC1C43EF6C00EE4388 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC61C43EF6C00EE4388 /* User.m */; };
@@ -521,6 +522,8 @@
 		848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_2@3x.png"; sourceTree = "<group>"; };
 		84A94FF21C7C57450087D211 /* SingleCorePlotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleCorePlotViewController.h; sourceTree = "<group>"; };
 		84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCorePlotViewController.m; sourceTree = "<group>"; };
+		84A94FFB1C7EA4B30087D211 /* THProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THProgressView.h; sourceTree = "<group>"; };
+		84A94FFC1C7EA4B30087D211 /* THProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THProgressView.m; sourceTree = "<group>"; };
 		84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84AA4BC31C43EF6C00EE4388 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
 		84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -922,6 +925,7 @@
 		5FB56D311BDE007A005D80AA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84A94FFA1C7EA4B30087D211 /* THProgressView */,
 				84008C9B1C22ACBF007536B4 /* GCD */,
 				84AA4BCF1C43F0C800EE4388 /* CoreDataHelper.h */,
 				84AA4BD01C43F0C800EE4388 /* CoreDataHelper.m */,
@@ -1403,6 +1407,15 @@
 				848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */,
 			);
 			path = icon_temp_signal_2.imageset;
+			sourceTree = "<group>";
+		};
+		84A94FFA1C7EA4B30087D211 /* THProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				84A94FFB1C7EA4B30087D211 /* THProgressView.h */,
+				84A94FFC1C7EA4B30087D211 /* THProgressView.m */,
+			);
+			path = THProgressView;
 			sourceTree = "<group>";
 		};
 		84AA4BC21C43EE2900EE4388 /* Model */ = {
@@ -1998,6 +2011,7 @@
 				84AA4BCD1C43EF6C00EE4388 /* HealthExamResults+CoreDataProperties.m in Sources */,
 				84C8BBD61C47489E0038D4C3 /* CPTPlotSpaceAnnotation.m in Sources */,
 				84C8BBC61C47489E0038D4C3 /* CPTMutableShadow.m in Sources */,
+				84A94FFD1C7EA4B30087D211 /* THProgressView.m in Sources */,
 				84C8BB941C47489E0038D4C3 /* _CPTDarkGradientTheme.m in Sources */,
 				84E18E0C1C10139900213372 /* RegisterLastViewController.m in Sources */,
 				848CC7041C19577700265848 /* WifiConfigViewController.m in Sources */,
