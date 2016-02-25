@@ -42,7 +42,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 //    // set title
-//    self.navigationItem.title = @"健康结果趋势";
+    self.navigationItem.title = @"健康结果趋势";
     self.view.backgroundColor = BACKGROUND_COLOR;
     self.firstView.backgroundColor = BACKGROUND_COLOR;
     self.secondView.backgroundColor = BACKGROUND_COLOR;
@@ -81,8 +81,10 @@
 
 #pragma mark - Chart behavior
 -(void)initPlot {
+    //make graph clear
     [self.hostVC2.view removeFromSuperview];
     [self.hostVC.view removeFromSuperview];
+    
     CGRect parentRect = self.view.bounds;
 //    CGSize navibarSize = self.navigationController.navigationBar.bounds.size;
     // 1 - Set up view frame

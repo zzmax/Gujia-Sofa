@@ -12,6 +12,7 @@
 
 @interface WifiConfigNoteViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *configBtn;
+@property (weak, nonatomic) IBOutlet UILabel *explanationLbl;
 //Some useful methodes we can share
 @property Utility *utility;
 
@@ -30,6 +31,9 @@
     ALIGN_VIEW_LEFT_CONSTANT(_configBtn.superview,_configBtn, 10);
     ALIGN_VIEW_RIGHT_CONSTANT(_configBtn.superview, _configBtn, -10);
     ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _configBtn, -40);
+    
+    PREPCONSTRAINTS(_explanationLbl);
+    ALIGN_VIEW_TOP_CONSTANT(self.view, _explanationLbl, SCREEN_HEIGHT/4);
 }
 
 - (IBAction)popView:(id) sender

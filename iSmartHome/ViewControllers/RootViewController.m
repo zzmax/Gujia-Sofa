@@ -15,6 +15,8 @@
 
 @interface RootViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *startScanBtn;
+//the first paragraph to show the explanation
+@property (weak, nonatomic) IBOutlet UILabel *firstLabel;
 @end
 
 
@@ -22,6 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    PREPCONSTRAINTS(self.firstLabel);
+    ALIGN_VIEW_TOP_CONSTANT(self.view, self.firstLabel, SCREEN_HEIGHT/4);
     //    NSArray * networkInterfaces = [NEHotspotHelper supportedNetworkInterfaces];
 //    NSLog(@"Networks %@",networkInterfaces);
 //    self.navigationItem.rightBarButtonItem = BARBUTTON(@"Test", @selector(action:));

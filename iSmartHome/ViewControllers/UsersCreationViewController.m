@@ -11,7 +11,7 @@
 #import "ConstraintMacros.h"
 
 @interface UsersCreationViewController()
-
+@property (nonatomic,weak)IBOutlet UIButton *plusUser;
 @end
 
 @implementation UsersCreationViewController
@@ -30,5 +30,6 @@
     self.navigationItem.title = self.navTitle;
     //set title color
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [self.view bringSubviewToFront:self.plusUser];
 }
 @end
