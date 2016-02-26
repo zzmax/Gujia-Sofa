@@ -22,6 +22,7 @@
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define IS_IPHONE_PLUS (SCREEN_WIDTH == 414)
+#define IS_IPHONE_6 (SCREEN_WIDTH == 375)
 
 #define ESTABLISH_WEAK_SELF __weak typeof(self) weakSelf = self
 #define ESTABLISH_STRONG_SELF __strong typeof(self) strongSelf = weakSelf;
@@ -51,7 +52,9 @@
 #define ALIGN_VIEW_LEFT_CONSTANT(PARENT, VIEW, CONSTANT) [PARENT addConstraint:[NSLayoutConstraint constraintWithItem:VIEW attribute: NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:PARENT attribute:NSLayoutAttributeLeft multiplier:1.0f constant:CONSTANT]]
 #define ALIGN_VIEW_RIGHT_CONSTANT(PARENT, VIEW, CONSTANT) [PARENT addConstraint:[NSLayoutConstraint constraintWithItem:VIEW attribute: NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:PARENT attribute:NSLayoutAttributeRight multiplier:1.0f constant:CONSTANT]]
 #define ALIGN_VIEW_TOP_CONSTANT(PARENT, VIEW, CONSTANT) [PARENT addConstraint:[NSLayoutConstraint constraintWithItem:VIEW attribute: NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:PARENT attribute:NSLayoutAttributeTop multiplier:1.0f constant:CONSTANT]]
+#define ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(PARENT, VIEW1, VIEW2, CONSTANT) [PARENT addConstraint:[NSLayoutConstraint constraintWithItem:VIEW1 attribute: NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:VIEW2 attribute:NSLayoutAttributeTop multiplier:1.0f constant:CONSTANT]]
 #define ALIGN_VIEW_BOTTOM_CONSTANT(PARENT, VIEW, CONSTANT) [PARENT addConstraint:[NSLayoutConstraint constraintWithItem:VIEW attribute: NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:PARENT attribute:NSLayoutAttributeBottom multiplier:1.0f constant:CONSTANT]]
+#define ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(PARENT, VIEW1, VIEW2, CONSTANT) [PARENT addConstraint:[NSLayoutConstraint constraintWithItem:VIEW1 attribute: NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:VIEW2 attribute:NSLayoutAttributeBottom multiplier:1.0f constant:CONSTANT]]
 
 // Set Size
 #define CONSTRAIN_WIDTH(VIEW, WIDTH) [VIEW addConstraint:[NSLayoutConstraint constraintWithItem:VIEW attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0f constant:WIDTH]];

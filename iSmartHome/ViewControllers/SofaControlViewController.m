@@ -52,8 +52,8 @@
     [[NSBundle mainBundle] loadNibNamed:@"SofaControlView" owner:self options:nil];
     self.sofaControlView.backgroundColor = BACKGROUND_COLOR;
     
-    CGFloat widthScale = SCREEN_WIDTH/_backgroundImg.frame.size.width;
-    CGFloat heightScale = (SCREEN_HEIGHT * 0.9) / _backgroundImg.frame.size.height;
+    CGFloat widthScale = SCREEN_WIDTH / _backgroundImg.frame.size.width;
+    CGFloat heightScale = SCREEN_HEIGHT / _backgroundImg.frame.size.height;
     _backgroundImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
     PREPCONSTRAINTS(_backgroundImg);
     CENTER_VIEW(self.sofaControlView, self.backgroundImg);
@@ -69,11 +69,25 @@
     CENTER_VIEW_H(self.sofaControlView, self.sofaImg);
     
     PREPCONSTRAINTS(_liftBtn);
-    ALIGN_VIEW_TOP_CONSTANT(self.sofaControlView, self.liftBtn, SCREEN_HEIGHT * 0.19f);
+    if (IS_IPHONE_PLUS)
+    {
+        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/10);
+    }
+    else if (IS_IPHONE_6) {
+        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/11);
+    }
+    else    ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/12);
     CENTER_VIEW_H(self.sofaControlView, self.liftBtn);
     
     PREPCONSTRAINTS(_downBtn);
-    ALIGN_VIEW_TOP_CONSTANT(self.sofaControlView, self.downBtn, SCREEN_HEIGHT * 0.68f);
+    if (IS_IPHONE_PLUS)
+    {
+        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/10);
+    }
+    else if (IS_IPHONE_6) {
+        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/11);
+    }
+   else    ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/12);
     CENTER_VIEW_H(self.sofaControlView, self.downBtn);
 
     _globalSocket = [GlobalSocket sharedGlobalSocket];
