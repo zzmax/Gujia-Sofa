@@ -17,19 +17,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background_big_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-kv-ZIY">
-                    <rect key="frame" x="57" y="205" width="300" height="300"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="WZh-gT-YUx">
+                    <rect key="frame" x="0.0" y="63" width="414" height="650"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      为了测量的精确，请您先离座并点击清零键后进行称重。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyq-eS-SAh">
-                    <rect key="frame" x="108" y="314" width="198" height="82"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="198" id="3Rx-YQ-DcG"/>
-                        <constraint firstAttribute="height" constant="82" id="7bA-WA-PmX"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_big_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="8tK-kv-ZIY">
+                    <rect key="frame" x="57" y="238" width="300" height="300"/>
+                </imageView>
                 <button contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5t-ke-qKO">
                     <rect key="frame" x="186" y="687" width="30" height="30"/>
                     <constraints>
@@ -47,19 +40,27 @@
                         <action selector="resetWeightDown:" destination="-1" eventType="touchUpInside" id="Pzu-0R-xsR"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="WZh-gT-YUx">
-                    <rect key="frame" x="0.0" y="30" width="414" height="650"/>
-                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="      为了测量的精确，请您先离座并点击清零键后进行称重。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyq-eS-SAh">
+                    <rect key="frame" x="108" y="347" width="198" height="82"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="198" id="3Rx-YQ-DcG"/>
+                        <constraint firstAttribute="height" constant="82" id="7bA-WA-PmX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="Cyq-eS-SAh" firstAttribute="centerY" secondItem="8tK-kv-ZIY" secondAttribute="centerY" id="1Ov-ol-QM9"/>
                 <constraint firstItem="WZh-gT-YUx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2lL-V1-WgA"/>
-                <constraint firstItem="8tK-kv-ZIY" firstAttribute="centerX" secondItem="WZh-gT-YUx" secondAttribute="centerX" id="7pA-8T-row"/>
-                <constraint firstItem="Cyq-eS-SAh" firstAttribute="centerX" secondItem="8tK-kv-ZIY" secondAttribute="centerX" id="Jgk-EZ-gwz"/>
+                <constraint firstItem="Cyq-eS-SAh" firstAttribute="centerX" secondItem="8tK-kv-ZIY" secondAttribute="centerX" id="KSF-dv-UuJ"/>
                 <constraint firstAttribute="trailing" secondItem="WZh-gT-YUx" secondAttribute="trailing" id="MYV-I2-9Sf"/>
-                <constraint firstItem="Cyq-eS-SAh" firstAttribute="centerY" secondItem="8tK-kv-ZIY" secondAttribute="centerY" id="Za4-1V-rLu"/>
-                <constraint firstItem="WZh-gT-YUx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="bko-SB-8MW"/>
-                <constraint firstItem="8tK-kv-ZIY" firstAttribute="centerY" secondItem="WZh-gT-YUx" secondAttribute="centerY" id="tmz-05-Bs9"/>
+                <constraint firstItem="8tK-kv-ZIY" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="20" id="Nzl-tB-D3X"/>
+                <constraint firstItem="WZh-gT-YUx" firstAttribute="centerX" secondItem="8tK-kv-ZIY" secondAttribute="centerX" id="XeP-s1-Uyr"/>
+                <constraint firstItem="WZh-gT-YUx" firstAttribute="centerY" secondItem="8tK-kv-ZIY" secondAttribute="centerY" id="b0g-RG-qVo"/>
+                <constraint firstItem="8tK-kv-ZIY" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="o7o-0o-33U"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
         </view>
