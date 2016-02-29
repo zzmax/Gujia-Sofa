@@ -38,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[NSBundle mainBundle] loadNibNamed:@"SofaHeatView" owner:self options:nil];
     
     // set title
     self.navigationItem.title = @"座椅加热";
@@ -51,30 +52,47 @@
     ALIGN_VIEW_BOTTOM_CONSTANT(self.sofaHeatView, _stopHeatBtn, -20);
 //
     
-    CGFloat widthScale = SCREEN_WIDTH/_backgroundImg.frame.size.width;
-    CGFloat heightScale = (SCREEN_HEIGHT * 0.9) / _backgroundImg.frame.size.height;
-    _backgroundImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    PREPCONSTRAINTS(_backgroundImg);
-    CENTER_VIEW(self.sofaHeatView, self.backgroundImg);
-    
+    CGFloat widthScale = SCREEN_WIDTH / _backgroundImg.frame.size.width;
+    CGFloat heightScale = SCREEN_HEIGHT / _backgroundImg.frame.size.height;    
     PREPCONSTRAINTS(_bigBlueCircleImg);
     CENTER_VIEW(self.sofaHeatView, self.bigBlueCircleImg);
     widthScale = (SCREEN_WIDTH * 0.7 )/_bigBlueCircleImg.frame.size.width;
     heightScale = (SCREEN_WIDTH * 0.7 ) / _bigBlueCircleImg.frame.size.height;
     _bigBlueCircleImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-//    PREPCONSTRAINTS(_sofaHeatImg);
-//    ALIGN_VIEW_TOP_CONSTANT(self.sofaHeatView, self.sofaHeatImg, SCREEN_HEIGHT * 0.48f);
-//    CENTER_VIEW_H(self.sofaHeatView, self.sofaHeatImg);
     
-//    PREPCONSTRAINTS(_plusBtn);
-//    CONSTRAIN_SIZE(_plusBtn, 80, 80);
-//    ALIGN_VIEW_TOP_CONSTANT(self.sofaHeatView, self.plusBtn, SCREEN_HEIGHT * 0.18f);
-//    CENTER_VIEW_H(self.sofaHeatView, self.plusBtn);
-//    
-//    PREPCONSTRAINTS(_minusBtn);
-//    CONSTRAIN_SIZE(_minusBtn, 80, 80);
-//    ALIGN_VIEW_TOP_CONSTANT(self.sofaHeatView, self.minusBtn, SCREEN_HEIGHT * 0.68f);
-//    CENTER_VIEW_H(self.sofaHeatView, self.minusBtn);
+    PREPCONSTRAINTS(_plusBtn);
+    if (IS_IPHONE_PLUS)
+    {
+        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaHeatView, self.bigBlueCircleImg, self.plusBtn
+                                              , SCREEN_HEIGHT/10);
+    }
+    else if (IS_IPHONE_6) {
+        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaHeatView, self.bigBlueCircleImg, self.plusBtn, SCREEN_HEIGHT/11);
+    }
+    else
+    {
+        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaHeatView, self.bigBlueCircleImg, self.plusBtn, SCREEN_HEIGHT/13);
+        _plusBtn.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    }
+    CENTER_VIEW_H(self.sofaHeatView, self.plusBtn);
+    
+    PREPCONSTRAINTS(_minusBtn);
+    if (IS_IPHONE_PLUS)
+    {
+        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
+                                              , self.bigBlueCircleImg,  SCREEN_HEIGHT/10);
+    }
+    else if (IS_IPHONE_6) {
+        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
+                                              , self.bigBlueCircleImg, SCREEN_HEIGHT/11);
+    }
+    else
+    {
+        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
+                                                  , self.bigBlueCircleImg, SCREEN_HEIGHT/13);
+        _minusBtn.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    }
+    CENTER_VIEW_H(self.sofaHeatView, self.minusBtn);
     
     _globalSocket = [GlobalSocket sharedGlobalSocket];
     [self initControlMessage];
