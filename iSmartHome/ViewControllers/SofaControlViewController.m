@@ -52,42 +52,34 @@
     [[NSBundle mainBundle] loadNibNamed:@"SofaControlView" owner:self options:nil];
     self.sofaControlView.backgroundColor = BACKGROUND_COLOR;
     
-    CGFloat widthScale = SCREEN_WIDTH / _backgroundImg.frame.size.width;
-    CGFloat heightScale = SCREEN_HEIGHT / _backgroundImg.frame.size.height;
-    _backgroundImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    PREPCONSTRAINTS(_backgroundImg);
-    CENTER_VIEW(self.sofaControlView, self.backgroundImg);
-    
+    CGFloat widthScale = (SCREEN_WIDTH * 0.7 ) / _bigBlueCircleImg.frame.size.width;
+    CGFloat heightScale = (SCREEN_WIDTH * 0.7 ) / _bigBlueCircleImg.frame.size.height;
     PREPCONSTRAINTS(_bigBlueCircleImg);
-    CENTER_VIEW(self.sofaControlView, self.bigBlueCircleImg);
-    widthScale = (SCREEN_WIDTH * 0.7 )/_bigBlueCircleImg.frame.size.width;
-    heightScale = (SCREEN_WIDTH * 0.7 ) / _bigBlueCircleImg.frame.size.height;
     _bigBlueCircleImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    
-    PREPCONSTRAINTS(_sofaImg);
-    ALIGN_VIEW_TOP_CONSTANT(self.sofaControlView, self.sofaImg, SCREEN_HEIGHT * 0.45f);
-    CENTER_VIEW_H(self.sofaControlView, self.sofaImg);
+
+    //Change the size of images if the screen is small
+    if (!IS_IPHONE_PLUS && !IS_IPHONE_6)
+    {
+        widthScale = 80 / _liftBtn.frame.size.width;
+        heightScale = 80 / _liftBtn.frame.size.height;
+        _liftBtn.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        _downBtn.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+    }
     
     PREPCONSTRAINTS(_liftBtn);
-    if (IS_IPHONE_PLUS)
+    if (IS_IPHONE_PLUS || IS_IPHONE_6)
     {
-        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/10);
+        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/9);
     }
-    else if (IS_IPHONE_6) {
-        ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/11);
-    }
-    else    ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/12);
+    else    ALIGN_VIEW1_TOP_TO_VIEW2_TOP_CONSTANT(self.sofaControlView, self.bigBlueCircleImg, self.liftBtn, SCREEN_HEIGHT/13);
     CENTER_VIEW_H(self.sofaControlView, self.liftBtn);
     
     PREPCONSTRAINTS(_downBtn);
-    if (IS_IPHONE_PLUS)
+    if (IS_IPHONE_PLUS || IS_IPHONE_6)
     {
-        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/10);
+        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/9);
     }
-    else if (IS_IPHONE_6) {
-        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/11);
-    }
-   else    ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/12);
+   else    ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/13);
     CENTER_VIEW_H(self.sofaControlView, self.downBtn);
 
     _globalSocket = [GlobalSocket sharedGlobalSocket];

@@ -21,26 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-Qv-rpa">
-                    <rect key="frame" x="0.0" y="61" width="406" height="667"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="YJs-Qv-rpa">
+                    <rect key="frame" x="0.0" y="63" width="414" height="650"/>
                     <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background_big_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Nb-ZS-azk">
-                    <rect key="frame" x="57" y="245" width="300" height="300"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="big_icon_sofa_control.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-r0-fAy">
-                    <rect key="frame" x="107" y="295" width="200" height="200"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPT-RS-kSZ">
-                    <rect key="frame" x="130" y="553" width="100" height="100"/>
-                    <state key="normal" image="button_arrow_down.png">
-                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="s2Down:" destination="-1" eventType="touchDown" id="Uyl-Uy-fru"/>
-                        <action selector="s2Up:" destination="-1" eventType="touchUpInside" id="iCk-7S-l1y"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YL4-Wc-hre">
                     <rect key="frame" x="157" y="156" width="100" height="100"/>
                     <state key="normal" image="button_arrow_up.png"/>
@@ -49,21 +33,45 @@
                         <action selector="s1Up:" destination="-1" eventType="touchUpInside" id="EAj-gb-cNC"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPT-RS-kSZ">
+                    <rect key="frame" x="157" y="546" width="100" height="100"/>
+                    <state key="normal" image="button_arrow_down.png">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="s2Down:" destination="-1" eventType="touchDown" id="Uyl-Uy-fru"/>
+                        <action selector="s2Up:" destination="-1" eventType="touchUpInside" id="iCk-7S-l1y"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_icon_sofa_control.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-r0-fAy">
+                    <rect key="frame" x="132" y="313" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="0YS-Pr-YjO"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XOg-Nv-Xyx"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_big_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Nb-ZS-azk">
+                    <rect key="frame" x="57" y="238" width="300" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="GqM-Ce-9JK"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="SgF-Fz-8rT"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="LPT-RS-kSZ" firstAttribute="top" secondItem="7Cv-r0-fAy" secondAttribute="bottom" constant="58" id="JVN-Vc-prr"/>
-                <constraint firstItem="5Nb-ZS-azk" firstAttribute="leading" secondItem="YL4-Wc-hre" secondAttribute="trailing" constant="-227" id="LNc-o6-ceM"/>
-                <constraint firstItem="YJs-Qv-rpa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Q58-4D-o9V"/>
+                <constraint firstItem="YJs-Qv-rpa" firstAttribute="centerY" secondItem="5Nb-ZS-azk" secondAttribute="centerY" id="G68-Kl-xdL"/>
+                <constraint firstItem="7Cv-r0-fAy" firstAttribute="centerY" secondItem="5Nb-ZS-azk" secondAttribute="centerY" id="Tti-0O-hRA"/>
+                <constraint firstItem="YL4-Wc-hre" firstAttribute="centerX" secondItem="5Nb-ZS-azk" secondAttribute="centerX" id="Yza-Vh-0cN"/>
+                <constraint firstItem="LPT-RS-kSZ" firstAttribute="centerX" secondItem="5Nb-ZS-azk" secondAttribute="centerX" id="bQk-8J-Lg6"/>
+                <constraint firstItem="5Nb-ZS-azk" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="20" id="fY6-md-kZK"/>
+                <constraint firstAttribute="trailing" secondItem="YJs-Qv-rpa" secondAttribute="trailing" id="gFB-SY-3YD"/>
+                <constraint firstItem="5Nb-ZS-azk" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hFP-hD-F9g"/>
+                <constraint firstItem="7Cv-r0-fAy" firstAttribute="centerX" secondItem="5Nb-ZS-azk" secondAttribute="centerX" id="ix9-fe-TiV"/>
+                <constraint firstItem="YJs-Qv-rpa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jlv-QW-Hp1"/>
+                <constraint firstItem="YJs-Qv-rpa" firstAttribute="centerX" secondItem="5Nb-ZS-azk" secondAttribute="centerX" id="tYK-va-eOB"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="Q58-4D-o9V"/>
-                    <exclude reference="LNc-o6-ceM"/>
-                    <exclude reference="JVN-Vc-prr"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>
