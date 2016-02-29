@@ -16,6 +16,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UILabel  *weightLbl;
+@property (weak, nonatomic) IBOutlet UIImageView  *bigBlueCircleImg;
 
 @property GlobalSocket *globalSocket;
 @end
@@ -28,6 +29,12 @@
     // set title
     self.navigationItem.title = @"健康检测";
     self.view.backgroundColor = BACKGROUND_COLOR;
+    
+    CGFloat widthScale = (SCREEN_WIDTH * 0.7 )/_bigBlueCircleImg.frame.size.width;
+    CGFloat heightScale = (SCREEN_WIDTH * 0.7 ) / _bigBlueCircleImg.frame.size.height;
+    _bigBlueCircleImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+
+    
     //set data
     _globalSocket = [GlobalSocket sharedGlobalSocket];
 //    [self initAcquireSensorDataMessage];

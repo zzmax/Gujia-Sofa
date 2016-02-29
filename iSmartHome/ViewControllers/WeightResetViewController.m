@@ -19,6 +19,7 @@
 
 @property (nonatomic, retain) IBOutlet UIView *weightResetView;
 @property (weak, nonatomic) IBOutlet UIButton *weightResetBtn;
+@property (weak, nonatomic) IBOutlet UIImageView  *bigBlueCircleImg;
 
 @property GlobalSocket *globalSocket;
 @end
@@ -38,6 +39,10 @@
     ALIGN_VIEW_LEFT_CONSTANT(_weightResetBtn.superview,_weightResetBtn, 10);
     ALIGN_VIEW_RIGHT_CONSTANT(_weightResetBtn.superview, _weightResetBtn, -10);
     ALIGN_VIEW_BOTTOM_CONSTANT(self.weightResetView, _weightResetBtn, -20);
+    
+    CGFloat widthScale = (SCREEN_WIDTH * 0.7 )/_bigBlueCircleImg.frame.size.width;
+    CGFloat heightScale = (SCREEN_WIDTH * 0.7 ) / _bigBlueCircleImg.frame.size.height;
+    _bigBlueCircleImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
     
     //set data
     _globalSocket = [GlobalSocket sharedGlobalSocket]; 
