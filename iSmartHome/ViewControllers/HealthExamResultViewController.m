@@ -20,6 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel  *heartRateLbl;
 @property (weak, nonatomic) IBOutlet UILabel  *bloodO2Lbl;
 @property (weak, nonatomic) IBOutlet UILabel  *bodyTempLbl;
+@property (weak, nonatomic) IBOutlet UIButton  *bloodPressureBtn;
+@property (weak, nonatomic) IBOutlet UIButton  *heartRateBtn;
+@property (weak, nonatomic) IBOutlet UIButton  *bloodO2Btn;
+@property (weak, nonatomic) IBOutlet UIButton  *bodyTempBtn;
 
 @property GlobalSocket *globalSocket;
 
@@ -34,6 +38,20 @@
     // set title
     self.navigationItem.title = @"健康检测";
     self.view.backgroundColor = BACKGROUND_COLOR;
+    
+    //Change the size of photos if screen is small
+    if (!IS_IPHONE_PLUS && !IS_IPHONE_6)
+    {
+        _bloodPressureBtn.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
+        _heartRateBtn.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
+        _bloodO2Btn.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
+        _bodyTempBtn.transform = CGAffineTransformMakeScale(0.9f, 0.9f);
+        _bloodPressureLbl.transform = CGAffineTransformMakeScale(0.7f, 0.7f);
+        _heartRateLbl.transform = CGAffineTransformMakeScale(0.7f, 0.7f);
+        _bloodO2Lbl.transform = CGAffineTransformMakeScale(0.7f, 0.7f);
+        _bodyTempLbl.transform = CGAffineTransformMakeScale(0.7f, 0.7f);
+    }
+
     
     //set data
     _globalSocket = [GlobalSocket sharedGlobalSocket];
