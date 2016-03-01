@@ -185,6 +185,10 @@
 		848CDFB01C196AF600265848 /* icon_temp_signal_2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 848CDFAC1C196AF600265848 /* icon_temp_signal_2@3x.png */; };
 		84A94FF41C7C57450087D211 /* SingleCorePlotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */; };
 		84A94FFD1C7EA4B30087D211 /* THProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A94FFC1C7EA4B30087D211 /* THProgressView.m */; };
+		84A950031C8568B30087D211 /* chart_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A94FFF1C8568B30087D211 /* chart_background.png */; };
+		84A950041C8568B30087D211 /* chart_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A950001C8568B30087D211 /* chart_background@2x.png */; };
+		84A950051C8568B30087D211 /* chart_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A950011C8568B30087D211 /* chart_background@3x.png */; };
+		84A950061C8568B30087D211 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 84A950021C8568B30087D211 /* Contents.json */; };
 		84AA4BB51C43A2F500EE4388 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */; };
 		84AA4BCB1C43EF6C00EE4388 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */; };
 		84AA4BCC1C43EF6C00EE4388 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC61C43EF6C00EE4388 /* User.m */; };
@@ -524,6 +528,10 @@
 		84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleCorePlotViewController.m; sourceTree = "<group>"; };
 		84A94FFB1C7EA4B30087D211 /* THProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THProgressView.h; sourceTree = "<group>"; };
 		84A94FFC1C7EA4B30087D211 /* THProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THProgressView.m; sourceTree = "<group>"; };
+		84A94FFF1C8568B30087D211 /* chart_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chart_background.png; sourceTree = "<group>"; };
+		84A950001C8568B30087D211 /* chart_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chart_background@2x.png"; sourceTree = "<group>"; };
+		84A950011C8568B30087D211 /* chart_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chart_background@3x.png"; sourceTree = "<group>"; };
+		84A950021C8568B30087D211 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84AA4BC31C43EF6C00EE4388 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
 		84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -902,9 +910,9 @@
 				84008C991C22A0C7007536B4 /* Nav2ViewController.m */,
 				8482CE161C2A96D400F9608B /* Nav1ViewController.h */,
 				8482CE171C2A96D400F9608B /* Nav1ViewController.m */,
+				8413D2ED1C468CEA0083CC92 /* HealthConditionTrendencyViewController.xib */,
 				8413D2EB1C468CEA0083CC92 /* HealthConditionTrendencyViewController.h */,
 				8413D2EC1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m */,
-				8413D2ED1C468CEA0083CC92 /* HealthConditionTrendencyViewController.xib */,
 				84A94FF21C7C57450087D211 /* SingleCorePlotViewController.h */,
 				84A94FF31C7C57450087D211 /* SingleCorePlotViewController.m */,
 				8425CF301C16C4FC007D964D /* Views */,
@@ -1064,6 +1072,7 @@
 		8458E1E81C06F6D2009D0772 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				84A94FFE1C8568B30087D211 /* chart_background.imageset */,
 				848CDFA81C196AF600265848 /* icon_temp_signal_2.imageset */,
 				848CDF961C196AAC00265848 /* icon_temp_signal_3.imageset */,
 				848CDF9B1C196AAC00265848 /* icon_weight.imageset */,
@@ -1418,6 +1427,17 @@
 			path = THProgressView;
 			sourceTree = "<group>";
 		};
+		84A94FFE1C8568B30087D211 /* chart_background.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				84A94FFF1C8568B30087D211 /* chart_background.png */,
+				84A950001C8568B30087D211 /* chart_background@2x.png */,
+				84A950011C8568B30087D211 /* chart_background@3x.png */,
+				84A950021C8568B30087D211 /* Contents.json */,
+			);
+			path = chart_background.imageset;
+			sourceTree = "<group>";
+		};
 		84AA4BC21C43EE2900EE4388 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1765,6 +1785,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A950031C8568B30087D211 /* chart_background.png in Resources */,
 				848CDFA31C196AAC00265848 /* icon_temp_signal_3@3x.png in Resources */,
 				8458E2821C06F6D2009D0772 /* icon_code@2x.png in Resources */,
 				8458E2901C06F6D2009D0772 /* Contents.json in Resources */,
@@ -1856,6 +1877,7 @@
 				8458E26C1C06F6D2009D0772 /* button_plus.png in Resources */,
 				8482CE101C2A720B00F9608B /* WeightResetViewController.xib in Resources */,
 				840F2A0E1C1533A40083833B /* Contents.json in Resources */,
+				84A950041C8568B30087D211 /* chart_background@2x.png in Resources */,
 				8458E29B1C06F6D3009D0772 /* icon_manage_device@3x.png in Resources */,
 				8458E2A81C06F6D3009D0772 /* Contents.json in Resources */,
 				8458E27B1C06F6D2009D0772 /* icon_blood_pressure@3x.png in Resources */,
@@ -1883,10 +1905,12 @@
 				8458E28F1C06F6D2009D0772 /* icon_health_reminder@3x.png in Resources */,
 				848CDFA61C196AAC00265848 /* icon_weight@2x.png in Resources */,
 				8458E2A51C06F6D3009D0772 /* icon_option.png in Resources */,
+				84A950051C8568B30087D211 /* chart_background@3x.png in Resources */,
 				8482CE151C2A84B100F9608B /* WeightResultViewController.xib in Resources */,
 				848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */,
 				840F2A161C1533A40083833B /* Contents.json in Resources */,
 				840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */,
+				84A950061C8568B30087D211 /* Contents.json in Resources */,
 				8458E2AF1C06F6D3009D0772 /* icon_sofa_control@3x.png in Resources */,
 				8458E25E1C06F6D2009D0772 /* big_icon_sofa_control@3x.png in Resources */,
 				5FB56D021BDDFF75005D80AA /* Main.storyboard in Resources */,

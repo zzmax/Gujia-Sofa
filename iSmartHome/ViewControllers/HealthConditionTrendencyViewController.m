@@ -22,11 +22,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *weekBtn;
 @property (weak, nonatomic) IBOutlet UIButton *monthBtn;
 @property (weak, nonatomic) IBOutlet UIButton *yearBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *btnBackgroundView;
+
 //These views contain the charts seperately
 @property (weak, nonatomic) IBOutlet UIView *firstView;
 @property (weak, nonatomic) IBOutlet UIView *secondView;
 
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+
 
 -(void)initPlot;
 
@@ -46,6 +49,24 @@
     self.view.backgroundColor = BACKGROUND_COLOR;
     self.firstView.backgroundColor = BACKGROUND_COLOR;
     self.secondView.backgroundColor = BACKGROUND_COLOR;
+    
+    PREPCONSTRAINTS(_firstView);
+    PREPCONSTRAINTS(_secondView);
+    PREPCONSTRAINTS(_pageControl);
+    if (!IS_IPHONE_PLUS && !IS_IPHONE_6 && !IS_IPHONE_SMALL)
+    {
+        _firstView.transform = CGAffineTransformMakeScale(0.95, 0.9);
+        _secondView.transform = CGAffineTransformMakeScale(0.95, 0.9);
+        _btnBackgroundView.transform = CGAffineTransformMakeScale(0.9, 1);
+    }
+    else if (IS_IPHONE_SMALL)
+    {
+        CENTER_VIEW_V_CONSTANT(self.view, _secondView, 100);
+        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.view, self.pageControl, self.secondView, 30);
+        _firstView.transform = CGAffineTransformMakeScale(0.9, 0.8);
+        _secondView.transform = CGAffineTransformMakeScale(0.9, 0.8);
+        _btnBackgroundView.transform = CGAffineTransformMakeScale(0.9, 1);
+    }
     
     // Init Page Control
     self.pageControl = [[UIPageControl alloc] init];
@@ -86,12 +107,14 @@
     [self.hostVC.view removeFromSuperview];
     
     CGRect parentRect = self.view.bounds;
+    
+    
 //    CGSize navibarSize = self.navigationController.navigationBar.bounds.size;
     // 1 - Set up view frame
     parentRect = CGRectMake(parentRect.origin.x,
                             parentRect.origin.y,//+ navibarSize.height + 80
-                            parentRect.size.width,
-                            (parentRect.size.height / 3));
+                            SCREEN_WIDTH,
+                            (SCREEN_HEIGHT / 3));
     
     if (self.pageControl.currentPage == 0) {
         // 2 - Create host view
@@ -119,7 +142,7 @@
         [self.secondView addSubview:self.hostVC2.view];
     }
     
-     [self.view clipsToBounds];
+    [self.view clipsToBounds];
 }
 
 -(void) initHostViewController

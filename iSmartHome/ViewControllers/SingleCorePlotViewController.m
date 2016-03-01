@@ -64,13 +64,13 @@
     CPTTheme *theme = [CPTTheme themeNamed:kCPTSlateTheme];
     [graph applyTheme:theme];
     
-    graph.fill = [CPTFill fillWithColor:[CPTColor appBackGroundColor]];
-    CPTGradient *gradient = [CPTGradient gradientWithBeginningColor:[CPTColor grayColor]
-                                                        endingColor:[CPTColor appBackGroundColor]];
-    gradient.angle = CPTFloat(90.0);
+    graph.plotAreaFrame.borderLineStyle = nil;
     
-    graph.plotAreaFrame.fill = [CPTFill fillWithGradient: gradient];
+    graph.fill = [CPTFill fillWithColor:[CPTColor appBackGroundColor]];
+    graph.plotAreaFrame.fill = [CPTFill fillWithImage:[CPTImage imageNamed:@"chart_background"]];
     self.hostView.hostedGraph = graph;
+    
+    
     
     // 2 - Set graph title
     graph.title = title;
@@ -97,14 +97,16 @@
     titleStyle.fontSize = 16.0f;
     graph.titleTextStyle = titleStyle;
     graph.titlePlotAreaFrameAnchor = CPTRectAnchorTopLeft;
-    graph.titleDisplacement = CGPointMake(10.0f, 0.0f);
+    graph.titleDisplacement = CGPointMake(10.0f, -10.0f);
     // 4 - Set padding for plot area
-    [graph.plotAreaFrame setPaddingLeft:30.0f];
+    [graph.plotAreaFrame setPaddingLeft:5.0f];
     [graph.plotAreaFrame setPaddingTop:30.0f];
-    [graph.plotAreaFrame setPaddingBottom:20.0f];
+    [graph.plotAreaFrame setPaddingBottom:30.0f];
     // 5 - Enable user interactions for plot space
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     plotSpace.allowsUserInteraction = YES;
+    
+    [graph setPaddingBottom:5.0f];
 }
 
 -(void)configurePlots{
