@@ -153,7 +153,7 @@
     }
 
     // Create establish the context
-    _context = [[NSManagedObjectContext alloc] init];
+    _context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     _context.persistentStoreCoordinator = persistentStoreCoordinator;
     _context.undoManager = [[NSUndoManager alloc] init];
     _context.undoManager.levelsOfUndo = 999;
