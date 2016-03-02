@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "CoreDataHelper.h"
 #import "CurrentUser.h"
+#import "UsersCreationViewController.h"
 
 
 @interface UserInfoRegisterViewController()
@@ -86,6 +87,19 @@
     }
     else {
         _startBtn.hidden = YES;
+        
+        UIButton *deleteUserBtn = [[UIButton alloc] initWithFrame:BOTTOM_RECT];
+        [self.view addSubview:deleteUserBtn];
+        PREPCONSTRAINTS(deleteUserBtn);
+        ALIGN_VIEW_LEFT_CONSTANT(deleteUserBtn.superview,deleteUserBtn, 10);
+        ALIGN_VIEW_RIGHT_CONSTANT(deleteUserBtn.superview, deleteUserBtn, -10);
+        ALIGN_VIEW_BOTTOM_CONSTANT(self.view, deleteUserBtn, -40);
+        [deleteUserBtn setTitle:@"删除用户" forState:UIControlStateNormal];
+        deleteUserBtn.titleLabel.textColor = [UIColor blackColor];
+        deleteUserBtn.backgroundColor = [UIColor redColor];
+        deleteUserBtn.layer.cornerRadius = 5;
+        CONSTRAIN_SIZE(deleteUserBtn, SCREEN_HEIGHT / 12, SCREEN_WIDTH - 40);
+        [deleteUserBtn addTarget:self action:@selector(deleteUser) forControlEvents:UIControlEventTouchUpInside];
     }
     
 }
@@ -510,6 +524,16 @@
     user.birthday = [date dateByAddingTimeInterval:60*60*24*1];
     
     user.sex = self.sex == nil? [NSNumber numberWithInteger:0]: self.sex;
+}
+
+- (void)deleteUser
+{
+    [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
+    if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject]) {
+            UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
+        userChangeVC.navTitle = @"家人健康信息";
+        [self.navigationController pushViewController:userChangeVC animated:YES];
+    }
 }
 
 @end
