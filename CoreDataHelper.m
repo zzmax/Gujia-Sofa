@@ -43,7 +43,23 @@
 
 - (void)fetchData
 {
-    [self fetchItemsMatching:nil forAttribute:nil sortingBy:nil];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Configure the request's entity, and optionally its predicate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:_defaultSortAttribute ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:self.entityName inManagedObjectContext:_context];
+        [fetchRequest setEntity:entity];
+    NSFetchedResultsController *controller = [[NSFetchedResultsController alloc]
+                                              initWithFetchRequest:fetchRequest
+                                              managedObjectContext:_context
+                                              sectionNameKeyPath:nil
+                                              cacheName:nil];
+    
+    NSError *error;
+    [controller performFetch:&error];
+    _fetchedResultsController = controller;
 }
 
 #pragma mark - Info
@@ -99,7 +115,7 @@
 // Delete one object
 - (BOOL)deleteObject:(NSManagedObject *)object
 {
-    [self fetchData];
+//    [self fetchData];
     if (!_fetchedResultsController.fetchedObjects.count) return NO;
     [_context.undoManager beginUndoGrouping];
     [_context deleteObject:object];
