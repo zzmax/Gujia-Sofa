@@ -33,5 +33,18 @@
         }
     }
 }
+
+- (void)setAlert: (NSString *)aTitle message: (NSString *)aMsg
+{
+    _anAlert = [UIAlertController alertControllerWithTitle:aTitle
+                                                            message:aMsg
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [_anAlert addAction:defaultAction];
+}
+
 @end
 

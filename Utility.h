@@ -10,5 +10,8 @@
 
 @interface Utility : NSObject
 
-- (void)activeDismissableKeyboard: (UIViewController *) aViewController;
+@property (nonatomic, strong, nullable) UIAlertController *anAlert;
+
+- (void)setAlert: (nullable NSString *)aTitle message: (nullable NSString *)aMsg;
+- (void)activeDismissableKeyboard: (nonnull UIViewController *) aViewController;
 @end
