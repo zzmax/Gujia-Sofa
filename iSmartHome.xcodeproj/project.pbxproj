@@ -189,6 +189,7 @@
 		84A950041C8568B30087D211 /* chart_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A950001C8568B30087D211 /* chart_background@2x.png */; };
 		84A950051C8568B30087D211 /* chart_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84A950011C8568B30087D211 /* chart_background@3x.png */; };
 		84A950061C8568B30087D211 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 84A950021C8568B30087D211 /* Contents.json */; };
+		84A950081C87D9A80087D211 /* Model.xcmappingmodel in Sources */ = {isa = PBXBuildFile; fileRef = 84A950071C87D9A80087D211 /* Model.xcmappingmodel */; };
 		84AA4BB51C43A2F500EE4388 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */; };
 		84AA4BCB1C43EF6C00EE4388 /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */; };
 		84AA4BCC1C43EF6C00EE4388 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC61C43EF6C00EE4388 /* User.m */; };
@@ -532,6 +533,8 @@
 		84A950001C8568B30087D211 /* chart_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chart_background@2x.png"; sourceTree = "<group>"; };
 		84A950011C8568B30087D211 /* chart_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chart_background@3x.png"; sourceTree = "<group>"; };
 		84A950021C8568B30087D211 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
+		84A950071C87D9A80087D211 /* Model.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; name = Model.xcmappingmodel; path = iSmartHome/Model/Model.xcmappingmodel; sourceTree = "<group>"; };
+		84A950091C87E2500087D211 /* iSmartHome 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iSmartHome 2.xcdatamodel"; sourceTree = "<group>"; };
 		84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84AA4BC31C43EF6C00EE4388 /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
 		84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -943,6 +946,7 @@
 				5FB56D081BDDFF75005D80AA /* LaunchScreen.storyboard */,
 				5FB56D0B1BDDFF75005D80AA /* Info.plist */,
 				5FB56D031BDDFF75005D80AA /* iSmartHome.xcdatamodeld */,
+				84A950071C87D9A80087D211 /* Model.xcmappingmodel */,
 				8458E1E41C02AF8D009D0772 /* Utility.h */,
 				8458E1E51C02AFA3009D0772 /* Utility.m */,
 				840E44911C25227C0013476F /* GlobalSocket.h */,
@@ -2064,6 +2068,7 @@
 				84C8BBDF1C47489E0038D4C3 /* CPTTimeFormatter.m in Sources */,
 				84C8BBEA1C47489E0038D4C3 /* CorePlot-dummy.m in Sources */,
 				8413D2EE1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m in Sources */,
+				84A950081C87D9A80087D211 /* Model.xcmappingmodel in Sources */,
 				84C8BBCE1C47489E0038D4C3 /* CPTPlatformSpecificDefines.m in Sources */,
 				84C8BBE11C47489E0038D4C3 /* CPTUtilities.m in Sources */,
 				84C8BBC81C47489E0038D4C3 /* CPTNumericData.m in Sources */,
@@ -2429,9 +2434,10 @@
 		5FB56D031BDDFF75005D80AA /* iSmartHome.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				84A950091C87E2500087D211 /* iSmartHome 2.xcdatamodel */,
 				5FB56D041BDDFF75005D80AA /* iSmartHome.xcdatamodel */,
 			);
-			currentVersion = 5FB56D041BDDFF75005D80AA /* iSmartHome.xcdatamodel */;
+			currentVersion = 84A950091C87E2500087D211 /* iSmartHome 2.xcdatamodel */;
 			name = iSmartHome.xcdatamodeld;
 			path = iSmartHome/iSmartHome.xcdatamodeld;
 			sourceTree = "<group>";

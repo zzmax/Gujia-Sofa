@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.m
 //  iSmartHome
 //
-//  Created by admin on 16/1/13.
+//  Created by admin on 16/3/3.
 //  Copyright © 2016年 zzmax. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -13,17 +13,13 @@
 
 @implementation User (CoreDataProperties)
 
-
 @dynamic birthday;
 @dynamic height;
 @dynamic password;
 @dynamic sex;
 @dynamic userName;
 @dynamic weight;
+@dynamic isCurrentUser;
 @dynamic healthInfo;
-
-- (NSString *)section {
-    return [[self.userName substringFromIndex:0] substringToIndex:1];
-}
 
 @end
