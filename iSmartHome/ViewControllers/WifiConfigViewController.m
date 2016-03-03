@@ -38,6 +38,10 @@
     _utility = [[Utility alloc] init];
     [self.utility activeDismissableKeyboard:self];
     
+    //set the keyboard of routerTextField to UIKeyboardTypeDecimalPad
+    [_routerTF setKeyboardType:UIKeyboardTypeDecimalPad];
+    [_routerTF becomeFirstResponder];
+    
     PREPCONSTRAINTS(_routerTF);
     ALIGN_VIEW_LEFT_CONSTANT(_routerTF.superview,_routerTF, 10);
     ALIGN_VIEW_RIGHT_CONSTANT(_routerTF.superview, _routerTF, -10);
@@ -78,7 +82,31 @@
  */
 - (IBAction)connectionBtn:(id)sender
 {
-     _globalSocket = [GlobalSocket sharedGlobalSocket];
+    
+    _globalSocket = [GlobalSocket sharedGlobalSocket];
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"IP地址输入错误！"
+                                                                   message:@"This is an alert."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    if (!_routerTF.text)
+    {
+        alert.message = @"IP地址不能为空。";
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else if (_routerTF.text.length < 7 || _routerTF.text.length > 15)
+    {
+        alert.message = @"请输入正确形式的IP地址。";
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    
+    [_globalSocket setHost:_routerTF.text];
+    [_globalSocket initNetworkCommunication];
+    
+    
     if ([_globalSocket.message isEqualToString:@"连接成功"]) {
         [_startBtn setTitle:@"连接成功" forState:UIControlStateNormal];
 //        After 1s, push to the view of weigh the body
