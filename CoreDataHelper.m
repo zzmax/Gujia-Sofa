@@ -34,7 +34,7 @@
 
     // Init the fetched results controller
     NSError __autoreleasing *error;
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_context sectionNameKeyPath:@"section" cacheName:nil];
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_context sectionNameKeyPath:nil cacheName:nil];
     
     // Perform the fetch
     if (![_fetchedResultsController performFetch:&error])
@@ -160,9 +160,14 @@
     // Create the store coordinator
     NSPersistentStoreCoordinator *persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel];
 
+    NSDictionary *options = @{
+                              NSMigratePersistentStoresAutomaticallyOption : @YES,
+                              NSInferMappingModelAutomaticallyOption : @YES
+                              };
+    
     // Connect to store
     NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@-collection.sqlite", DOCUMENTS_FOLDER, _entityName]];
-    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:nil error:&error])
+    if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:options error:&error])
     {
         NSLog(@"Error creating persistent store coordinator: %@", error.localizedFailureReason);
         return;

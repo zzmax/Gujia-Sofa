@@ -330,7 +330,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addItem:" destination="0y1-DJ-0hx" eventType="touchUpInside" id="pNN-vE-mJ2"/>
-                                    <segue destination="hrK-dS-v8S" kind="push" id="eaE-69-ynU"/>
+                                    <segue destination="hrK-dS-v8S" kind="push" identifier="toWifiConfigNoteViewController" id="eaE-69-ynU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -365,6 +365,7 @@
                     <connections>
                         <outlet property="startBtn" destination="Mof-q4-AeY" id="rHk-hF-7iB"/>
                         <outlet property="tableView" destination="uYn-NY-2D1" id="7or-qc-vJf"/>
+                        <segue destination="ek5-Io-B3O" kind="push" identifier="toNavigationViewController" id="Vxn-fG-J3X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WdJ-JF-0dJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -745,4 +746,7 @@
         <image name="image_button_blue.png" width="330" height="50"/>
         <image name="image_button_gray.png" width="330" height="50"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vxn-fG-J3X"/>
+    </inferredMetricsTieBreakers>
 </document>

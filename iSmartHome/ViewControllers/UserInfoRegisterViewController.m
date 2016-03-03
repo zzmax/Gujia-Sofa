@@ -14,11 +14,13 @@
 #import "CoreDataHelper.h"
 #import "CurrentUser.h"
 #import "UsersCreationViewController.h"
+#import "GlobalSocket.h"
 
 
 @interface UserInfoRegisterViewController()
 {
     CoreDataHelper *dataHelper;
+    GlobalSocket *globalSocket;
 }
 
 @property (strong, nonatomic)NSArray *infoTitles;
@@ -57,6 +59,9 @@
     // Set to the current user
     _currentUser = [CurrentUser staticCurrentUser];
     
+    //initiate connection to wifi
+    globalSocket = [GlobalSocket sharedGlobalSocket];
+    
     self.view.backgroundColor = NAVIGATION_COLOR;
     self.tableView.backgroundColor = NAVIGATION_COLOR;
      self.tableView.scrollEnabled = NO;
@@ -76,7 +81,7 @@
     else _isCreationMode = NO;
     
     if ( _isCreationMode) {
-         _startBtn.hidden = NO;
+//         _startBtn.hidden = NO;
         _startBtn.frame = BOTTOM_RECT;
         PREPCONSTRAINTS(_startBtn);
         ALIGN_VIEW_LEFT_CONSTANT(_startBtn.superview,_startBtn, 10);
@@ -86,7 +91,8 @@
         _startBtn.titleLabel.textColor = [UIColor blackColor];
     }
     else {
-        _startBtn.hidden = YES;
+//        _startBtn.hidden = YES;
+        [_startBtn removeFromSuperview];
         
         UIButton *deleteUserBtn = [[UIButton alloc] initWithFrame:BOTTOM_RECT];
         [self.view addSubview:deleteUserBtn];
@@ -485,7 +491,28 @@
         NSLog(@"Height: %@", user.height.stringValue);
         NSLog(@"Birthday: %@", user.birthday);
         NSLog(@"Sex: %@", user.sex.stringValue);
+        NSLog(@"isCurrentUser: %@", user.isCurrentUser);
     }
+    if ([globalSocket.message isEqualToString:@"连接成功"]) {
+        [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
+    }
+    
+}
+
+//override the methode to determine which view controller to push
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    
+    //we will test the connection of socket
+    //if we've already get the connection, we should directly go to navigationVC
+    //if not, we connect
+    if ([globalSocket.message isEqualToString:@"连接成功"] && [identifier isEqualToString:@"toNavigationViewController"]) {
+        return  YES;    }
+    else if (![globalSocket.message isEqualToString:@"连接成功"] && [identifier isEqualToString:@"toWifiConfigNoteViewController" ])
+    {
+        return  YES;
+    };
+    return NO;
 }
 
 - (void)modifyCurrentUser
@@ -524,10 +551,22 @@
     user.birthday = [date dateByAddingTimeInterval:60*60*24*1];
     
     user.sex = self.sex == nil? [NSNumber numberWithInteger:0]: self.sex;
+    
+    //change current user to a normal user
+    [dataHelper fetchItemsMatching:@"1" forAttribute:@"isCurrentUser" sortingBy:nil];
+    if (dataHelper.fetchedResultsController.fetchedObjects.count > 1)
+    {
+        [NSException raise:@"系统错误" format:@"Too many current user : %lu", dataHelper.fetchedResultsController.fetchedObjects.count];
+    }
+    User *oldUser = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
+    oldUser.isCurrentUser = [NSNumber numberWithInteger:0];
+    
+    user.isCurrentUser = [NSNumber numberWithInteger:1];
 }
 
 - (void)deleteUser
 {
+    [dataHelper clearData];
     [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
     if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject]) {
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
