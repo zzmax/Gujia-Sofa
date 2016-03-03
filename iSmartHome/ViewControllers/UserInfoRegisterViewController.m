@@ -15,12 +15,14 @@
 #import "CurrentUser.h"
 #import "UsersCreationViewController.h"
 #import "GlobalSocket.h"
+#import "Utility.h"
 
 
 @interface UserInfoRegisterViewController()
 {
     CoreDataHelper *dataHelper;
     GlobalSocket *globalSocket;
+    Utility *utility;
 }
 
 @property (strong, nonatomic)NSArray *infoTitles;
@@ -42,6 +44,7 @@
 //Yes => CreationMode
 //NO =>  ModificationMode
 @property BOOL isCreationMode;
+@property BOOL didUserNameChanged;
 @end
 
 @implementation UserInfoRegisterViewController
@@ -61,6 +64,12 @@
     
     //initiate connection to wifi
     globalSocket = [GlobalSocket sharedGlobalSocket];
+    
+    //initiate variable
+    utility = [[Utility alloc]init];
+    
+    //add an observer to _userNameTF
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userNameDidChange:) name:UITextFieldTextDidChangeNotification object:_userNameTF];
     
     self.view.backgroundColor = NAVIGATION_COLOR;
     self.tableView.backgroundColor = NAVIGATION_COLOR;
@@ -394,6 +403,11 @@
     _sex = [NSNumber numberWithInteger:[sender selectedSegmentIndex]];
 }
 
+- (void)userNameDidChange:(NSNotification *)notification
+{
+    _didUserNameChanged = YES;
+}
+
 #pragma mark - datePicker
 -(void)updateTextField:(id)sender
 {
@@ -465,6 +479,16 @@
 #pragma mark - save data 
 - (IBAction)addItem: (UIButton *)sender
 {
+    //test the name if it has already been used
+    [dataHelper fetchItemsMatching:_userNameTF.text forAttribute:@"userName" sortingBy:nil];
+    if (dataHelper.fetchedResultsController.fetchedObjects.count > 0)
+    {
+        [utility setAlert:@"错误" message:@"已经有相同名字的用户。"];
+        [self presentViewController:utility.anAlert animated:YES completion:nil];
+        NSLog(@"Error1: Many results for the same user.");
+    }
+
+    
     // Surround the "add" functionality with undo grouping
     User *newUser = (User *)[dataHelper newObject];
     NSUndoManager *manager = dataHelper.context.undoManager;
@@ -517,20 +541,45 @@
 
 - (void)modifyCurrentUser
 {
-    [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
-    if (dataHelper.fetchedResultsController.fetchedObjects.count == 1) {
-        User *user = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
-        [self setupNewUser:user];
-        [dataHelper save];
-        [_currentUser setCurrentUser:user];
+    [dataHelper fetchItemsMatching:_userNameTF.text forAttribute:@"userName" sortingBy:nil];
+    //if we don't change the user name or if we've changed the name and after a second we changed it back
+    if (!_didUserNameChanged || [_currentUser.userName isEqualToString:_userNameTF.text]) {
+        if (dataHelper.fetchedResultsController.fetchedObjects.count == 1) {
+            User *user = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
+            [self setupNewUser:user];
+            [dataHelper save];
+            [_currentUser setCurrentUser:user];
+        }
+        else if (dataHelper.fetchedResultsController.fetchedObjects.count > 1)
+        {
+            [utility setAlert:@"系统错误" message:@"已经有相同名字的用户。"];
+            [self presentViewController:utility.anAlert animated:YES completion:nil];
+            NSLog(@"Error1: Many results for the same user.");
+        }
     }
-    else NSLog(@"Error: Many results for the same user.");
+    //if we changed the name and it is not the same as the old one.
+    else
+    {
+        if (dataHelper.fetchedResultsController.fetchedObjects.count == 0) {
+            [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
+            User *user = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
+            [self setupNewUser:user];
+            [dataHelper save];
+            [_currentUser setCurrentUser:user];
+        }
+        else if (dataHelper.fetchedResultsController.fetchedObjects.count > 0)
+        {
+            [utility setAlert:@"错误" message:@"已经有相同名字的用户。"];
+            [self presentViewController:utility.anAlert animated:YES completion:nil];
+            NSLog(@"Error2: Many results for the same user.");
+        }
+
+    }
 }
 
 - (void)setupNewUser: (User *) user
 {
     // Add a new item to the database
-    
     user.userName = self.userNameTF.text;
     // split the string, we want only the number instead of unit
     NSArray *array = [self.weightTF.text componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -566,7 +615,7 @@
 
 - (void)deleteUser
 {
-    [dataHelper clearData];
+//    [dataHelper clearData];
     [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
     if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject]) {
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];

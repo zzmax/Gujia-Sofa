@@ -182,6 +182,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4xn-H5-yr5" firstAttribute="top" secondItem="eAi-ec-tAD" secondAttribute="bottom" constant="50" id="6kI-Ha-Vnn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AUM-Zl-099" secondAttribute="trailing" constant="80" id="8AK-iH-aOG"/>
                             <constraint firstItem="f5n-fM-GTy" firstAttribute="leading" secondItem="EP7-Hc-rSS" secondAttribute="leadingMargin" constant="16" id="IX5-6D-djh"/>
                             <constraint firstItem="eAi-ec-tAD" firstAttribute="top" secondItem="f5n-fM-GTy" secondAttribute="bottom" constant="78" id="MsJ-Bu-i2b"/>
                             <constraint firstItem="4xn-H5-yr5" firstAttribute="top" secondItem="AUM-Zl-099" secondAttribute="bottom" constant="50" id="UKI-Cj-Wha"/>
@@ -365,7 +366,7 @@
                     <connections>
                         <outlet property="startBtn" destination="Mof-q4-AeY" id="rHk-hF-7iB"/>
                         <outlet property="tableView" destination="uYn-NY-2D1" id="7or-qc-vJf"/>
-                        <segue destination="ek5-Io-B3O" kind="push" identifier="toNavigationViewController" id="Vxn-fG-J3X"/>
+                        <segue destination="ek5-Io-B3O" kind="push" identifier="toNavigationViewController" id="98i-MD-5yK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WdJ-JF-0dJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -542,14 +543,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="路由器名称" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-dr-hZE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="沙发IP地址" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-dr-hZE">
                                 <rect key="frame" x="37" y="108" width="340" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="KDj-6r-CYW">
                                 <rect key="frame" x="37" y="184" width="340" height="50"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-IX-rEu">
@@ -747,6 +748,6 @@
         <image name="image_button_gray.png" width="330" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vxn-fG-J3X"/>
+        <segue reference="98i-MD-5yK"/>
     </inferredMetricsTieBreakers>
 </document>
