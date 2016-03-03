@@ -32,6 +32,8 @@
 
 - (UInt8 *)getInputBuffer;
 
+- (void)setHost:(NSString *)aHost;
+
 - (void)setInputBuffer:(int)order and:(UInt8)anInputBuffer;
 
 -(void)initControlMessage;

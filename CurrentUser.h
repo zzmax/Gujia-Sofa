@@ -18,6 +18,6 @@
 @property (nullable, nonatomic, retain) NSString *userName;
 @property (nullable, nonatomic, retain) NSNumber *weight;
 
-+ (id)staticCurrentUser;
-- (void)setCurrentUser: (User *)user;
++ (nonnull id)staticCurrentUser;
+- (void)setCurrentUser: (nonnull User *)user;
 @end

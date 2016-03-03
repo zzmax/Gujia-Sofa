@@ -30,7 +30,11 @@
     
     // Setup predicate
     if (searchString && searchString.length && attribute && attribute.length)
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", attribute, searchString];
+    {
+        NSString *filter = @"%K == %@";
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:filter, attribute, searchString];
+    }
+    
 
     // Init the fetched results controller
     NSError __autoreleasing *error;

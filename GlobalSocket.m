@@ -32,6 +32,16 @@
     return inputBuffer;
 }
 
+- (void)setHost:(NSString *)aHost
+{
+    host = aHost;
+}
+
+- (NSString *)getHost
+{
+    return host;
+}
+
 /**
  *  set the value of inputBuffer form another class
  *
@@ -132,7 +142,8 @@
  */
 -(void)initNetworkCommunication
 {
-    host = @"192.168.1.250";
+//    host = @"192.168.1.250";
+//    host = @"";
     port = (uint16_t)[@"8080" intValue];
     
     //    _messageLabel.text = _host;
