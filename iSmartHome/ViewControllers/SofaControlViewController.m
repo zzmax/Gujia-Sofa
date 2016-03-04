@@ -77,9 +77,9 @@
     PREPCONSTRAINTS(_downBtn);
     if (IS_IPHONE_PLUS || IS_IPHONE_6)
     {
-        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/9);
+        ALIGN_VIEW1_BOTTOM_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/9);
     }
-   else    ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/13);
+   else    ALIGN_VIEW1_BOTTOM_TO_VIEW2_BOTTOM_CONSTANT(self.sofaControlView, self.downBtn, self.bigBlueCircleImg, SCREEN_HEIGHT/13);
     CENTER_VIEW_H(self.sofaControlView, self.downBtn);
 
     _globalSocket = [GlobalSocket sharedGlobalSocket];

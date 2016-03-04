@@ -79,16 +79,16 @@
     PREPCONSTRAINTS(_minusBtn);
     if (IS_IPHONE_PLUS)
     {
-        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
+        ALIGN_VIEW1_BOTTOM_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
                                               , self.bigBlueCircleImg,  SCREEN_HEIGHT/10);
     }
     else if (IS_IPHONE_6) {
-        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
+        ALIGN_VIEW1_BOTTOM_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
                                               , self.bigBlueCircleImg, SCREEN_HEIGHT/11);
     }
     else
     {
-        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
+        ALIGN_VIEW1_BOTTOM_TO_VIEW2_BOTTOM_CONSTANT(self.sofaHeatView, self.minusBtn
                                                   , self.bigBlueCircleImg, SCREEN_HEIGHT/13);
         _minusBtn.transform = CGAffineTransformMakeScale(0.8, 0.8);
     }

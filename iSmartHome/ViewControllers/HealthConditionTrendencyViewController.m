@@ -62,7 +62,7 @@
     else if (IS_IPHONE_SMALL)
     {
         CENTER_VIEW_V_CONSTANT(self.view, _secondView, 100);
-        ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.view, self.pageControl, self.secondView, 30);
+        ALIGN_VIEW1_BOTTOM_TO_VIEW2_BOTTOM_CONSTANT(self.view, self.pageControl, self.secondView, 30);
         _firstView.transform = CGAffineTransformMakeScale(0.9, 0.8);
         _secondView.transform = CGAffineTransformMakeScale(0.9, 0.8);
         _btnBackgroundView.transform = CGAffineTransformMakeScale(0.9, 1);
