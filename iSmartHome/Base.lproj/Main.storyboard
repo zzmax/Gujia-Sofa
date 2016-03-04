@@ -544,21 +544,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="沙发IP地址" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-dr-hZE">
-                                <rect key="frame" x="37" y="108" width="340" height="50"/>
+                                <rect key="frame" x="57" y="108" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QQT-WY-G89"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="dVS-kl-d0s"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="KDj-6r-CYW">
-                                <rect key="frame" x="37" y="184" width="340" height="50"/>
+                                <rect key="frame" x="57" y="183" width="300" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FSf-eB-Hxw"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="cex-hq-dTo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-IX-rEu">
-                                <rect key="frame" x="37" y="191" width="35" height="35"/>
-                                <state key="normal" title="Button" image="icon_code.png"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWb-NR-geh">
-                                <rect key="frame" x="187" y="458" width="43" height="30"/>
+                                <rect key="frame" x="186" y="458" width="43" height="30"/>
                                 <state key="normal" title="配置" backgroundImage="image_button_blue.png">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -567,27 +571,32 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnq-hE-P64">
-                                <rect key="frame" x="37" y="115" width="35" height="35"/>
+                                <rect key="frame" x="72" y="115" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="aKJ-7U-eZM"/>
+                                    <constraint firstAttribute="width" constant="35" id="zQb-a3-JFh"/>
+                                </constraints>
                                 <state key="normal" title="Button" image="icon_wifi.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-IX-rEu">
+                                <rect key="frame" x="72" y="191" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="8JJ-A0-da3"/>
+                                    <constraint firstAttribute="height" constant="35" id="j6h-kS-29Y"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icon_code.png"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="KDj-6r-CYW" secondAttribute="trailing" constant="37" id="7Jd-7x-w32"/>
-                            <constraint firstItem="Dk7-IX-rEu" firstAttribute="top" secondItem="Hnq-hE-P64" secondAttribute="bottom" constant="41" id="EaF-ez-ITa"/>
-                            <constraint firstItem="f4A-IA-dHW" firstAttribute="top" secondItem="KWb-NR-geh" secondAttribute="bottom" constant="53" id="a7X-Yg-LUV"/>
-                            <constraint firstItem="HzU-dr-hZE" firstAttribute="top" secondItem="9oI-d1-i1r" secondAttribute="bottom" constant="44" id="lCY-zX-JYc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HzU-dr-hZE" secondAttribute="trailing" constant="37" id="oQZ-38-Uwl"/>
+                            <constraint firstItem="KWb-NR-geh" firstAttribute="centerX" secondItem="r4c-le-7Tn" secondAttribute="centerX" id="0KM-f1-mtt"/>
+                            <constraint firstItem="KDj-6r-CYW" firstAttribute="leading" secondItem="Dk7-IX-rEu" secondAttribute="trailing" constant="-50" id="DAc-qj-KaR"/>
+                            <constraint firstItem="HzU-dr-hZE" firstAttribute="leading" secondItem="Hnq-hE-P64" secondAttribute="trailing" constant="-50" id="OvI-Ox-hfJ"/>
+                            <constraint firstItem="Dk7-IX-rEu" firstAttribute="centerY" secondItem="KDj-6r-CYW" secondAttribute="centerY" id="hba-Sa-JhK"/>
+                            <constraint firstItem="KDj-6r-CYW" firstAttribute="centerX" secondItem="r4c-le-7Tn" secondAttribute="centerX" id="qhI-7A-pjL"/>
+                            <constraint firstItem="Hnq-hE-P64" firstAttribute="centerY" secondItem="HzU-dr-hZE" secondAttribute="centerY" id="srH-3z-0cc"/>
+                            <constraint firstItem="HzU-dr-hZE" firstAttribute="centerX" secondItem="r4c-le-7Tn" secondAttribute="centerX" id="zdO-h1-x7e"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="lCY-zX-JYc"/>
-                                <exclude reference="oQZ-38-Uwl"/>
-                                <exclude reference="7Jd-7x-w32"/>
-                                <exclude reference="EaF-ez-ITa"/>
-                                <exclude reference="a7X-Yg-LUV"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="q0e-dg-LKT">
                         <nil key="title"/>

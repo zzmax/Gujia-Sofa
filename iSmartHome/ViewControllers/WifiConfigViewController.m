@@ -42,17 +42,26 @@
     [_routerTF setKeyboardType:UIKeyboardTypeDecimalPad];
     [_routerTF becomeFirstResponder];
     
-    PREPCONSTRAINTS(_routerTF);
-    ALIGN_VIEW_LEFT_CONSTANT(_routerTF.superview,_routerTF, 10);
-    ALIGN_VIEW_RIGHT_CONSTANT(_routerTF.superview, _routerTF, -10);
-    ALIGN_VIEW_TOP_CONSTANT(self.view, _routerTF, 100);
-    CONSTRAIN_HEIGHT(_routerTF,50);
+    //set tool bar to dismiss the keyboard of _routerTF
+    UIToolbar *textFieldToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    textFieldToolbar.barStyle = UIBarStyleDefault;
+    [textFieldToolbar sizeToFit];
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *flexSpace = SYSBARBUTTON(UIBarButtonSystemItemFlexibleSpace,nil);
+    [barItems addObject:flexSpace];
+    UIBarButtonItem *doneBtn = SYSBARBUTTON(UIBarButtonSystemItemDone, @selector(doneButtonPressed:));
+    [barItems addObject:doneBtn];
+    [textFieldToolbar setItems:barItems animated:YES];
+    _routerTF.inputAccessoryView = textFieldToolbar;
     
+//
+    PREPCONSTRAINTS(_routerTF);
+    ALIGN_VIEW_TOP_CONSTANT(self.view, _routerTF, 64 + SCREEN_HEIGHT / 12);
+    CONSTRAIN_WIDTH(_routerTF,SCREEN_WIDTH - 40);
+//
     PREPCONSTRAINTS(_codeTF);
-    ALIGN_VIEW_LEFT_CONSTANT(_codeTF.superview,_codeTF, 10);
-    ALIGN_VIEW_RIGHT_CONSTANT(_startBtn.superview, _codeTF, -10);
-    ALIGN_VIEW_TOP_CONSTANT(self.view, _codeTF, 180);
-    CONSTRAIN_HEIGHT(_codeTF,50);
+    CONSTRAIN_WIDTH(_codeTF,SCREEN_WIDTH - 40);
+    ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.view, _codeTF, _routerTF, 25);
     
     _startBtn.frame = BOTTOM_RECT;
     PREPCONSTRAINTS(_startBtn);
@@ -60,16 +69,6 @@
     ALIGN_VIEW_RIGHT_CONSTANT(_startBtn.superview, _startBtn, -10);
     ALIGN_VIEW_TOP_CONSTANT(self.view, _startBtn, 300);
     
-    PREPCONSTRAINTS(_wifiIcon);
-    CONSTRAIN_SIZE(_wifiIcon, 35, 35);
-    ALIGN_VIEW_TOP_CONSTANT(self.view, _wifiIcon, 110);
-    ALIGN_VIEW_LEFT_CONSTANT(_wifiIcon.superview,_wifiIcon, 30);
-    
-    PREPCONSTRAINTS(_codeIcon);
-    CONSTRAIN_SIZE(_codeIcon, 35, 35);
-    ALIGN_VIEW_TOP_CONSTANT(self.view, _codeIcon, 190);
-    ALIGN_VIEW_LEFT_CONSTANT(_codeIcon.superview,_codeIcon, 30);
-
 //    self.navigationController.navigationItem.backBarButtonItem = nil;
     
    
@@ -126,5 +125,10 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)doneButtonPressed: (id)sender
+{
+    [_routerTF resignFirstResponder];
 }
 @end
