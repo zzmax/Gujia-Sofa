@@ -146,6 +146,8 @@
     UIPickerView *heightPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
     UIPickerView *weightPicker = [[UIPickerView alloc] init];
     
+    NSDateFormatter *dformat = [[NSDateFormatter alloc]init];
+    
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
@@ -333,7 +335,8 @@
                 segmentedControl.selectedSegmentIndex = 0;
                 break;
             case 2:
-                [datePicker setDate: [NSDate date]];
+                [dformat setDateFormat:@"yyyy-MM-dd"];
+                [datePicker setDate: [dformat dateFromString:@"1950-01-01"]];
                 [self updateTextField:(id)_birthdayTF];
                 break;
             case 3:
@@ -594,10 +597,10 @@
     user.height = aNumber;
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy年MM月dd日"];
+    [dateFormat setDateStyle:NSDateFormatterMediumStyle];
     NSDate *date = [dateFormat dateFromString:self.birthdayTF.text];
     //We should add one day because of a default unexplainable error from the datePicker
-    user.birthday = [date dateByAddingTimeInterval:60*60*24*1];
+    user.birthday = date;//[date dateByAddingTimeInterval:60*60*24*1];
     
     user.sex = self.sex == nil? [NSNumber numberWithInteger:0]: self.sex;
     
