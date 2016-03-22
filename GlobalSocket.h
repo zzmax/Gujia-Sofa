@@ -23,8 +23,8 @@
 @property (strong, retain)NSString *bloodPressure;
 @property (strong, retain)NSString *heartRate;
 @property (strong, retain)NSString *weight;
-@property bool  *btnS1;    //button s1
-@property bool  *btnS2;    //button s2
+@property bool  btnS1;    //button s1
+@property bool  btnS2;    //button s2
 
 + (id)sharedGlobalSocket;
 

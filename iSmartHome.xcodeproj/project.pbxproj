@@ -1455,8 +1455,8 @@
 				84AA4BCA1C43EF6C00EE4388 /* HealthExamResults.m */,
 			);
 			name = Model;
-			path = /Users/admin/Desktop/iSmartHome/iSmartHome/Model;
-			sourceTree = "<absolute>";
+			path = iSmartHome/Model;
+			sourceTree = SOURCE_ROOT;
 		};
 		84C8BB881C47489E0038D4C3 /* Support Files */ = {
 			isa = PBXGroup;

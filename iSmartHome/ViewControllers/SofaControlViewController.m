@@ -111,7 +111,7 @@
  */
 - (IBAction)s1Down:(id)sender
 {
-    _globalSocket.btnS1 = true;
+    _globalSocket.btnS1 = YES;
     [_globalSocket startSendMessageTimer];
 }
 
@@ -136,7 +136,7 @@
  */
 - (IBAction)s2Down:(id)sender
 {
-    _globalSocket.btnS2 = YES;
+    _globalSocket.btnS2 = true;
     [_globalSocket startSendMessageTimer];
 }
 

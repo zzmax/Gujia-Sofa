@@ -14,6 +14,7 @@
 
 
 @interface RootViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *startBtn;
 @property (weak, nonatomic) IBOutlet UIButton *startScanBtn;
 //the first paragraph to show the explanation
 @property (weak, nonatomic) IBOutlet UILabel *firstLabel;
@@ -26,6 +27,15 @@
     [super viewDidLoad];
     PREPCONSTRAINTS(self.firstLabel);
     ALIGN_VIEW_TOP_CONSTANT(self.view, self.firstLabel, SCREEN_HEIGHT/4);
+    
+    _startBtn.frame = BOTTOM_RECT;
+    PREPCONSTRAINTS(_startBtn);
+    ALIGN_VIEW_LEFT_CONSTANT(_startBtn.superview,_startBtn, 10);
+    ALIGN_VIEW_RIGHT_CONSTANT(_startBtn.superview, _startBtn, -10);
+    ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
+    [_startBtn setTitle:@"扫描二维码登陆数据账户" forState:UIControlStateNormal];
+    _startBtn.titleLabel.textColor = [UIColor whiteColor];
+    
     //    NSArray * networkInterfaces = [NEHotspotHelper supportedNetworkInterfaces];
 //    NSLog(@"Networks %@",networkInterfaces);
 //    self.navigationItem.rightBarButtonItem = BARBUTTON(@"Test", @selector(action:));

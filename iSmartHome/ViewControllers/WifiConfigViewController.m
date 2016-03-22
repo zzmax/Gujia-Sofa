@@ -44,7 +44,7 @@
     
     //set tool bar to dismiss the keyboard of _routerTF
     UIToolbar *textFieldToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    textFieldToolbar.barStyle = UIBarStyleDefault;
+    textFieldToolbar.barStyle = UIBarStyleBlackOpaque;
     [textFieldToolbar sizeToFit];
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
     UIBarButtonItem *flexSpace = SYSBARBUTTON(UIBarButtonSystemItemFlexibleSpace,nil);

@@ -13,5 +13,5 @@
 @property (nonatomic, strong, nullable) UIAlertController *anAlert;
 
 - (void)setAlert: (nullable NSString *)aTitle message: (nullable NSString *)aMsg;
-- (void)activeDismissableKeyboard: (nonnull UIViewController *) aViewController;
+- (void)activeDismissableKeyboard: (nullable UIViewController *) aViewController;
 @end

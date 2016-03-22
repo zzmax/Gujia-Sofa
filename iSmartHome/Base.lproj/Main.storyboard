@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="dlm-d6-OFm">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="dlm-d6-OFm">
                                 <rect key="frame" x="20" y="282" width="374" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="W1U-z2-BzK"/>
@@ -42,24 +42,8 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtg-KF-ZDU">
-                                <rect key="frame" x="42" y="636" width="330" height="50"/>
-                                <color key="backgroundColor" red="0.072587820078689386" green="0.73144642108488123" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="zX4-hR-SAA"/>
-                                </constraints>
-                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="-20" maxX="0.0" maxY="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="tintColor" red="0.072587820080000004" green="0.73144642110000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="扫描二维码登陆数据账户">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="x25-BR-Sot" kind="push" id="mIY-9v-9Q7"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-QD-X20">
-                                <rect key="frame" x="20" y="196" width="374" height="99"/>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-QD-X20">
+                                <rect key="frame" x="20" y="193" width="374" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="DAb-Nl-Ibx"/>
                                 </constraints>
@@ -77,23 +61,31 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtg-KF-ZDU">
+                                <rect key="frame" x="42" y="636" width="330" height="50"/>
+                                <inset key="insetFor6xAndEarlier" minX="0.0" minY="-20" maxX="0.0" maxY="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="image_button_blue.png"/>
+                                <connections>
+                                    <segue destination="x25-BR-Sot" kind="push" id="mIY-9v-9Q7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.88116813027033758" green="0.95260405498119094" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dlm-d6-OFm" firstAttribute="leading" secondItem="1Le-QD-X20" secondAttribute="leading" id="0PP-3b-mae"/>
-                            <constraint firstItem="3Ip-di-9i6" firstAttribute="top" secondItem="gtg-KF-ZDU" secondAttribute="bottom" constant="50" id="JIA-wW-wdM"/>
                             <constraint firstItem="dlm-d6-OFm" firstAttribute="trailing" secondItem="wnB-i0-ooc" secondAttribute="trailingMargin" id="MJ7-Gs-bdG"/>
                             <constraint firstItem="dlm-d6-OFm" firstAttribute="leading" secondItem="wnB-i0-ooc" secondAttribute="leadingMargin" id="NDm-4f-VfT"/>
                             <constraint firstItem="dlm-d6-OFm" firstAttribute="top" secondItem="1Le-QD-X20" secondAttribute="bottom" constant="-10" id="RUt-so-KeN"/>
-                            <constraint firstItem="dlm-d6-OFm" firstAttribute="centerX" secondItem="gtg-KF-ZDU" secondAttribute="centerX" id="XzZ-ne-xme"/>
                             <constraint firstItem="dlm-d6-OFm" firstAttribute="trailing" secondItem="1Le-QD-X20" secondAttribute="trailing" id="fUn-w3-l05"/>
-                            <constraint firstItem="gtg-KF-ZDU" firstAttribute="leading" secondItem="wnB-i0-ooc" secondAttribute="leadingMargin" constant="22" id="hFb-VY-RAA"/>
-                            <constraint firstItem="dlm-d6-OFm" firstAttribute="top" secondItem="row-dt-eH6" secondAttribute="bottom" constant="218" id="lVz-FR-1xH"/>
+                            <constraint firstItem="1Le-QD-X20" firstAttribute="top" secondItem="row-dt-eH6" secondAttribute="bottom" constant="129" placeholder="YES" id="hSP-B8-f81"/>
+                            <constraint firstItem="dlm-d6-OFm" firstAttribute="centerX" secondItem="wnB-i0-ooc" secondAttribute="centerX" id="iKq-bK-r7Z"/>
+                            <constraint firstItem="gtg-KF-ZDU" firstAttribute="centerX" secondItem="wnB-i0-ooc" secondAttribute="centerX" id="s7H-Lp-BQd"/>
                         </constraints>
                         <inset key="insetFor6xAndEarlier" minX="0.0" minY="-20" maxX="0.0" maxY="20"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="lVz-FR-1xH"/>
+                                <exclude reference="s7H-Lp-BQd"/>
                             </mask>
                         </variation>
                     </view>
@@ -113,6 +105,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="firstLabel" destination="1Le-QD-X20" id="5D0-al-Inq"/>
+                        <outlet property="startBtn" destination="gtg-KF-ZDU" id="2Sj-i7-o86"/>
                         <outlet property="startScanBtn" destination="gtg-KF-ZDU" id="UmX-lV-qdo"/>
                     </connections>
                 </viewController>
@@ -157,7 +150,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5n-fM-GTy">
                                 <rect key="frame" x="36" y="124" width="342" height="454"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C2a-QM-Wnx">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C2a-QM-Wnx">
                                         <rect key="frame" x="51" y="69" width="240" height="316"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="280" verticalHuggingPriority="255" misplaced="YES" text="Scanning for QR Code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="377" translatesAutoresizingMaskIntoConstraints="NO" id="rtG-9e-b0F">
@@ -172,7 +165,7 @@
                                     <constraint firstItem="rtG-9e-b0F" firstAttribute="centerX" secondItem="f5n-fM-GTy" secondAttribute="centerX" id="4rH-7X-ieF"/>
                                     <constraint firstAttribute="bottom" secondItem="C2a-QM-Wnx" secondAttribute="bottom" constant="69" id="57A-3I-wVT"/>
                                     <constraint firstItem="rtG-9e-b0F" firstAttribute="centerY" secondItem="f5n-fM-GTy" secondAttribute="centerY" id="7ci-bh-64S"/>
-                                    <constraint firstAttribute="trailing" secondItem="C2a-QM-Wnx" secondAttribute="trailing" constant="52" id="kXR-6e-bc6"/>
+                                    <constraint firstAttribute="trailing" secondItem="C2a-QM-Wnx" secondAttribute="trailing" constant="51" id="kXR-6e-bc6"/>
                                     <constraint firstItem="C2a-QM-Wnx" firstAttribute="top" secondItem="f5n-fM-GTy" secondAttribute="top" constant="69" id="sAQ-RX-D28"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="8" left="10" bottom="8" right="10"/>
@@ -182,7 +175,6 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="4xn-H5-yr5" firstAttribute="top" secondItem="eAi-ec-tAD" secondAttribute="bottom" constant="50" id="6kI-Ha-Vnn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="AUM-Zl-099" secondAttribute="trailing" constant="80" id="8AK-iH-aOG"/>
                             <constraint firstItem="f5n-fM-GTy" firstAttribute="leading" secondItem="EP7-Hc-rSS" secondAttribute="leadingMargin" constant="16" id="IX5-6D-djh"/>
                             <constraint firstItem="eAi-ec-tAD" firstAttribute="top" secondItem="f5n-fM-GTy" secondAttribute="bottom" constant="78" id="MsJ-Bu-i2b"/>
                             <constraint firstItem="4xn-H5-yr5" firstAttribute="top" secondItem="AUM-Zl-099" secondAttribute="bottom" constant="50" id="UKI-Cj-Wha"/>
