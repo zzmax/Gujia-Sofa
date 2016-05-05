@@ -159,6 +159,8 @@
 		8458E2B71C06F6D3009D0772 /* icon_temp_signal_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */; };
 		8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E2BC1C0B35AC009D0772 /* RootViewController.m */; };
 		84639E8D1C45FE23006D9064 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84639E8C1C45FE23006D9064 /* CurrentUser.m */; };
+		847D8A541CA1338D007E6243 /* HealthReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D8A521CA1338D007E6243 /* HealthReminderViewController.m */; };
+		847D8A551CA1338D007E6243 /* HealthReminderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D8A531CA1338D007E6243 /* HealthReminderViewController.xib */; };
 		8482CE0A1C29440900F9608B /* HealthExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE081C29440900F9608B /* HealthExamResultViewController.m */; };
 		8482CE0B1C29440900F9608B /* HealthExamResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8482CE091C29440900F9608B /* HealthExamResultViewController.xib */; };
 		8482CE0F1C2A720B00F9608B /* WeightResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE0D1C2A720B00F9608B /* WeightResetViewController.m */; };
@@ -496,6 +498,9 @@
 		8458E2BC1C0B35AC009D0772 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		84639E8B1C45FE23006D9064 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		84639E8C1C45FE23006D9064 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
+		847D8A511CA1338D007E6243 /* HealthReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthReminderViewController.h; sourceTree = "<group>"; };
+		847D8A521CA1338D007E6243 /* HealthReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthReminderViewController.m; sourceTree = "<group>"; };
+		847D8A531CA1338D007E6243 /* HealthReminderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthReminderViewController.xib; sourceTree = "<group>"; };
 		8482CE071C29440900F9608B /* HealthExamResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthExamResultViewController.h; sourceTree = "<group>"; };
 		8482CE081C29440900F9608B /* HealthExamResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthExamResultViewController.m; sourceTree = "<group>"; };
 		8482CE091C29440900F9608B /* HealthExamResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthExamResultViewController.xib; sourceTree = "<group>"; };
@@ -883,6 +888,9 @@
 				8425CF2B1C16A106007D964D /* UsersCreationViewController.m */,
 				84E26D6D1C0D4ADE00B2E429 /* UserInfoRegisterViewController.h */,
 				84E26D6E1C0D4B0400B2E429 /* UserInfoRegisterViewController.m */,
+				847D8A511CA1338D007E6243 /* HealthReminderViewController.h */,
+				847D8A521CA1338D007E6243 /* HealthReminderViewController.m */,
+				847D8A531CA1338D007E6243 /* HealthReminderViewController.xib */,
 				84E18DFE1C1010D000213372 /* SexSwitchCell.h */,
 				84E18DFF1C1010D000213372 /* SexSwitchCell.m */,
 				84E18E131C1014B200213372 /* SexSwitch.xib */,
@@ -1941,6 +1949,7 @@
 				840F2A201C1533A40083833B /* image_button_gray.png in Resources */,
 				8458E2781C06F6D2009D0772 /* Contents.json in Resources */,
 				840F2A111C1533A40083833B /* background_circles@3x.png in Resources */,
+				847D8A551CA1338D007E6243 /* HealthReminderViewController.xib in Resources */,
 				840F2A0D1C1533A40083833B /* background_circles-2@3x.png in Resources */,
 				8458E27F1C06F6D2009D0772 /* icon_body_temp@3x.png in Resources */,
 				840F2A261C1533A40083833B /* image_small_button_left@3x.png in Resources */,
@@ -2050,6 +2059,7 @@
 				84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */,
 				84C8BBDD1C47489E0038D4C3 /* CPTTextStylePlatformSpecific.m in Sources */,
 				84C8BBC51C47489E0038D4C3 /* CPTMutablePlotRange.m in Sources */,
+				847D8A541CA1338D007E6243 /* HealthReminderViewController.m in Sources */,
 				84C8BB991C47489E0038D4C3 /* _CPTPlainBlackTheme.m in Sources */,
 				84C8BBD31C47489E0038D4C3 /* CPTPlotGroup.m in Sources */,
 				84F070661C2246AC00832BB8 /* SofaHeatViewController.m in Sources */,

@@ -17,6 +17,7 @@
 #import "CurrentUser.h"
 #import "UserInfoRegisterViewController.h"
 #import "HealthConditionTrendencyViewController.h"
+#import "HealthReminderViewController.h"
 
 @interface NavigationViewController()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLbl;
@@ -215,9 +216,9 @@
     {
         if (indexPath.row == 0) {
             //HealthReminderView
-            //
-            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
-            ////            [self.navigationController pushViewController:module1VC animated:YES];
+            
+            HealthReminderViewController *healthReminderVC = [[HealthReminderViewController alloc]init];
+            [self.navigationController pushViewController:healthReminderVC animated:YES];
         }
         else if (indexPath.row == 1)
         {

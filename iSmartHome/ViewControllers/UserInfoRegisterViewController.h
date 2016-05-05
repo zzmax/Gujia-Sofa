@@ -7,7 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 
-@interface UserInfoRegisterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate>
+@interface UserInfoRegisterViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (strong,nonatomic)NSString *navTitle;
