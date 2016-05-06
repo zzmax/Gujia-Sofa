@@ -55,7 +55,7 @@
     _healthDayPickerArray = [[NSMutableArray alloc] init];
     _healthHourPickerArray = [[NSMutableArray alloc] init];
     
-    for (int time = 1; time<=24; time++) {
+    for (int time = 0; time<=24; time++) {
         NSString *timeString = [NSString stringWithFormat:@"%d",time];
         if(time <= 6)
             [_sedentaryTimePickerArray addObject:timeString];
@@ -123,6 +123,31 @@
     // Pass the selected object to the new view controller.
 }
 */
+//
+-(void)startLocalNotification: (NSInteger) aTime and:(NSString*) someWords{  // Bind this method to UIButton action
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
+        
+       UIUserNotificationType types = (UIUserNotificationType) (UIUserNotificationTypeBadge |
+                                                                UIUserNotificationTypeSound | UIUserNotificationTypeAlert);
+        
+        UIUserNotificationSettings *mySettings =
+        [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        
+        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    }
+    
+    NSLog(@"startLocalNotification");
+    
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:aTime];
+    notification.alertBody = someWords;
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    notification.applicationIconBadgeNumber = 10;
+    
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
+
 
 #pragma mark - Picker View Data source
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -144,6 +169,7 @@
 {
     if (pickerView.tag == 100) {
         [_sedentaryReminderTF setText: [NSString stringWithFormat:@"%@%@%@",@"  久坐 ",[_sedentaryTimePickerArray objectAtIndex:row],@" 小时后提醒"]];
+        [self startLocalNotification:row*60 and:[NSString stringWithFormat:@"%@ %li %@",@"已经坐了",(long)row,@"小时；请起来运动一会。"]];
     }
     else if (pickerView.tag == 101) {
         [_healthExamReminderDTF setText: [NSString stringWithFormat:@"%@%@%@",@"  每过 ",[_healthDayPickerArray objectAtIndex:row],@" 天提醒进行健康检测"]];

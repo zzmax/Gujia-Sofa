@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Nav1ViewController.h"
 #import "RootViewController.h"
+#import "Utility.h"
 
 @interface AppDelegate ()
 
@@ -29,6 +30,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //launch with notification
+     [launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 //    self.window.backgroundColor = [UIColor whiteColor];
 //    RootViewController *root = [[RootViewController alloc] init];
@@ -69,6 +72,19 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
 //    [self saveContext];
+}
+
+// This code block is invoked when application is in foreground (active-mode)
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    UIAlertController  *anAlert = [UIAlertController alertControllerWithTitle:@"Coucou"
+                                                   message:@"Alert test."
+                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [anAlert addAction:defaultAction];
+    [self.window.rootViewController presentViewController:anAlert animated:YES completion:nil]; // NSLog(@"didReceiveLocalNotification");
 }
 
 //set interface portrait

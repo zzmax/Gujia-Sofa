@@ -159,6 +159,7 @@
 		8458E2B71C06F6D3009D0772 /* icon_temp_signal_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */; };
 		8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E2BC1C0B35AC009D0772 /* RootViewController.m */; };
 		84639E8D1C45FE23006D9064 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84639E8C1C45FE23006D9064 /* CurrentUser.m */; };
+		8475CDD41CDCBBF300485851 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */; };
 		847D8A541CA1338D007E6243 /* HealthReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D8A521CA1338D007E6243 /* HealthReminderViewController.m */; };
 		847D8A551CA1338D007E6243 /* HealthReminderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D8A531CA1338D007E6243 /* HealthReminderViewController.xib */; };
 		8482CE0A1C29440900F9608B /* HealthExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE081C29440900F9608B /* HealthExamResultViewController.m */; };
@@ -498,6 +499,8 @@
 		8458E2BC1C0B35AC009D0772 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		84639E8B1C45FE23006D9064 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		84639E8C1C45FE23006D9064 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
+		8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		8475CDD51CDCBBF300485851 /* iSmartHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = iSmartHome.entitlements; path = iSmartHome/iSmartHome.entitlements; sourceTree = "<group>"; };
 		847D8A511CA1338D007E6243 /* HealthReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthReminderViewController.h; sourceTree = "<group>"; };
 		847D8A521CA1338D007E6243 /* HealthReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthReminderViewController.m; sourceTree = "<group>"; };
 		847D8A531CA1338D007E6243 /* HealthReminderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthReminderViewController.xib; sourceTree = "<group>"; };
@@ -781,6 +784,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8475CDD41CDCBBF300485851 /* ExternalAccessory.framework in Frameworks */,
 				8413D29B1C46886B0083CC92 /* Accelerate.framework in Frameworks */,
 				8413D2981C4687FD0083CC92 /* QuartzCore.framework in Frameworks */,
 				84AA4BB51C43A2F500EE4388 /* SystemConfiguration.framework in Frameworks */,
@@ -821,6 +825,7 @@
 		5FB56CEB1BDDFF75005D80AA = {
 			isa = PBXGroup;
 			children = (
+				8475CDD51CDCBBF300485851 /* iSmartHome.entitlements */,
 				84C8BBF21C474F760038D4C3 /* Starter Files */,
 				84639E8F1C467D07006D9064 /* CorePlot */,
 				84AA4BC21C43EE2900EE4388 /* Model */,
@@ -858,6 +863,7 @@
 		5FB56D2D1BDE0010005D80AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */,
 				8413D29A1C46886B0083CC92 /* Accelerate.framework */,
 				8413D2971C4687FD0083CC92 /* QuartzCore.framework */,
 				84AA4BB41C43A2F500EE4388 /* SystemConfiguration.framework */,
@@ -1760,6 +1766,17 @@
 					5FB56CF31BDDFF75005D80AA = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = KQ9N6VN35J;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.WAC = {
+								enabled = 1;
+							};
+						};
 					};
 					5FB56D0F1BDDFF75005D80AA = {
 						CreatedOnToolsVersion = 7.0;
@@ -2302,6 +2319,7 @@
 			baseConfigurationReference = AB4D8D820FE4772F20B66F11 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iSmartHome/iSmartHome.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
@@ -2317,7 +2335,7 @@
 					"$(PROJECT_DIR)/CorePlot",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = zzmax.iSmartHome;
+				PRODUCT_BUNDLE_IDENTIFIER = jiecang.zhejiang.iSmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2329,6 +2347,7 @@
 			baseConfigurationReference = 83CD51A38F08BCC42A55EB83 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iSmartHome/iSmartHome.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
@@ -2344,7 +2363,7 @@
 					"$(PROJECT_DIR)/CorePlot",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = zzmax.iSmartHome;
+				PRODUCT_BUNDLE_IDENTIFIER = jiecang.zhejiang.iSmartHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
