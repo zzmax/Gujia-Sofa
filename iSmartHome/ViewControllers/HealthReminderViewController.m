@@ -18,12 +18,12 @@
 @property (strong, nonatomic)IBOutlet UITextField *healthExamReminderDTF;
 
 @property (strong, nonatomic)NSMutableArray *sedentaryTimePickerArray;
-@property (strong, nonatomic)NSMutableArray *healthHourPickerArray;
-@property (strong, nonatomic)NSMutableArray *healthDayPickerArray;
+@property (strong, nonatomic)NSMutableArray *healthTimePickerArray;
+@property (strong, nonatomic)NSMutableArray *healthFreauencyPickerArray;
 
 @property (strong, nonatomic)UIPickerView *sedentaryTimePicker;
 @property (strong, nonatomic)UIPickerView *healthHourPicker;
-@property (strong, nonatomic)UIPickerView *healthDayPicker;
+@property (strong, nonatomic)UIPickerView *healthFrequencyPicker;
 @end
 
 @implementation HealthReminderViewController
@@ -52,22 +52,21 @@
     
     //
     _sedentaryTimePickerArray = [[NSMutableArray alloc] init];
-    _healthDayPickerArray = [[NSMutableArray alloc] init];
-    _healthHourPickerArray = [[NSMutableArray alloc] init];
+    _healthFreauencyPickerArray = [[NSMutableArray alloc] init];
+    _healthTimePickerArray = [[NSMutableArray alloc] init];
     
     for (int time = 0; time<=24; time++) {
         NSString *timeString = [NSString stringWithFormat:@"%d",time];
         if(time <= 6)
             [_sedentaryTimePickerArray addObject:timeString];
         if(time >= 5 && time <= 22)
-            [_healthHourPickerArray addObject:timeString];
-        if(time <= 7)
-            [_healthDayPickerArray addObject:timeString];
+            [_healthTimePickerArray addObject:timeString];
     }
+    [_healthFreauencyPickerArray addObjectsFromArray:@[@"日",@"周",@"月"]];
     
     _sedentaryTimePicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
     _healthHourPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
-    _healthDayPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    _healthFrequencyPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
     
     _sedentaryTimePicker.delegate = self;
     _sedentaryTimePicker.dataSource = self;
@@ -75,11 +74,11 @@
     _sedentaryTimePicker.tag = 100;
     _sedentaryReminderTF.inputView = _sedentaryTimePicker;
     
-    _healthDayPicker.delegate = self;
-    _healthDayPicker.dataSource = self;
-    _healthDayPicker.showsSelectionIndicator = YES;
-    _healthDayPicker.tag = 101;
-    _healthExamReminderDTF.inputView = _healthDayPicker;
+    _healthFrequencyPicker.delegate = self;
+    _healthFrequencyPicker.dataSource = self;
+    _healthFrequencyPicker.showsSelectionIndicator = YES;
+    _healthFrequencyPicker.tag = 101;
+    _healthExamReminderDTF.inputView = _healthFrequencyPicker;
 
     _healthHourPicker.delegate = self;
     _healthHourPicker.dataSource = self;
@@ -106,6 +105,10 @@
     }
     else if (self.healthExamReminderDTF.isFirstResponder)
     {
+        if (![_healthFrequencyPicker selectedRowInComponent:0]) {
+            [_healthExamReminderDTF setText: [NSString stringWithFormat:@"%@%@",@"  每 日",@" 提醒进行健康检测"]];
+            [self.healthFrequencyPicker selectRow:0 inComponent:0 animated:YES];
+        }
         [self.healthExamReminderDTF resignFirstResponder];
         [self.healthExamReminderHTF becomeFirstResponder];
     }
@@ -123,8 +126,13 @@
     // Pass the selected object to the new view controller.
 }
 */
-//
--(void)startLocalNotification: (NSInteger) aTime and:(NSString*) someWords{  // Bind this method to UIButton action
+/**
+ *  This Function is to set a notification for Sedentary or health examination reminder.
+ *
+ *  @param aTime     Time to push notification.
+ *  @param someWords Content of notification.
+ *  @param aType     Sedentary or health Examination Reminder.(1 for Sedentary, 2 for health examination reminder  */
+-(void)startLocalNotification: (NSInteger) aTime and:(NSString*) someWords forWhichTypeReminder:(NSInteger) aType{
     if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]){
         
        UIUserNotificationType types = (UIUserNotificationType) (UIUserNotificationTypeBadge |
@@ -139,11 +147,49 @@
     NSLog(@"startLocalNotification");
     
     UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:aTime];
+    if (aType == 1) {
+        //set for sedentary notification time
+        notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:aTime * 3600];//
+        notification.applicationIconBadgeNumber = 10;
+    }
+    else if(aType == 2)
+    {
+       // NSDictionary* userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:
+        //@"uid",@"TestNote", [NSNumber numberWithInteger:aTime*60],@"period" ,nil];
+       // notification.userInfo = userInfo;
+        
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSDate *now = [NSDate date];
+        NSDate *expected = [calendar dateBySettingHour:aTime minute:0 second:0 ofDate:now options:NSCalendarMatchStrictly];
+        
+        notification.fireDate = expected;
+        notification.alertAction = @"健康检测提醒";
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        notification.applicationIconBadgeNumber = 11;
+        
+        NSInteger selectedRepeatInterval = [_healthFrequencyPicker selectedRowInComponent:0];
+        switch (selectedRepeatInterval) {
+            case 0:
+                notification.repeatInterval = NSCalendarUnitDay;
+                break;
+            case 1:
+                notification.repeatInterval = NSCalendarUnitWeekOfMonth;
+                break;
+            case 2:
+                notification.repeatInterval = NSCalendarUnitMonth;
+                break;
+            default:
+                notification.repeatInterval = NSCalendarUnitDay;
+                break;
+        }
+        
+//        NSLog(@"%ld, %d, %@", (long)aTime, 0, [expected descriptionWithLocale:[NSLocale currentLocale]]);
+
+    }
+    
     notification.alertBody = someWords;
     notification.timeZone = [NSTimeZone defaultTimeZone];
     notification.soundName = UILocalNotificationDefaultSoundName;
-    notification.applicationIconBadgeNumber = 10;
     
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
@@ -158,9 +204,9 @@
         return _sedentaryTimePickerArray.count;
     }
     else if(pickerView.tag == 101)
-        return _healthDayPickerArray.count;
+        return _healthFreauencyPickerArray.count;
     else
-        return _healthHourPickerArray.count;
+        return _healthTimePickerArray.count;
 }
 
 #pragma mark- Picker View Delegate
@@ -168,16 +214,42 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component
 {
     if (pickerView.tag == 100) {
-        [_sedentaryReminderTF setText: [NSString stringWithFormat:@"%@%@%@",@"  久坐 ",[_sedentaryTimePickerArray objectAtIndex:row],@" 小时后提醒"]];
-        [self startLocalNotification:row*60 and:[NSString stringWithFormat:@"%@ %li %@",@"已经坐了",(long)row,@"小时；请起来运动一会。"]];
+        [_sedentaryReminderTF setText: [NSString stringWithFormat:
+                                        @"%@%@%@",
+                                            @"  久坐 ",
+                                            [_sedentaryTimePickerArray objectAtIndex:row],
+                                            @" 小时后提醒"]];
+        [self startLocalNotification:row*60
+                and:
+                    [NSString stringWithFormat:
+                        @"%@ %li %@",
+                            @"已经坐了",
+                            (long)row*3600,
+                            @"小时；请起来运动一会。"]
+                forWhichTypeReminder:1];
     }
     else if (pickerView.tag == 101) {
-        [_healthExamReminderDTF setText: [NSString stringWithFormat:@"%@%@%@",@"  每过 ",[_healthDayPickerArray objectAtIndex:row],@" 天提醒进行健康检测"]];
+        [_healthExamReminderDTF setText: [NSString stringWithFormat:
+                                              @"%@%@%@",
+                                                @"  每 ",
+                                                [_healthFreauencyPickerArray objectAtIndex:row],
+                                                @" 提醒进行健康检测"]];
+        //[self startLocalNotification:row and:@"请进行健康检测。" forWhichTypeReminder:2];
     }
     else
     {
-         [_healthExamReminderHTF setText: [NSString stringWithFormat:@"%@%@%@",@"  每天 ",[_healthHourPickerArray objectAtIndex:row],@" 时提醒进行健康检测"]];
-        
+         [_healthExamReminderHTF setText: [NSString stringWithFormat:
+                                                @"%@%@%@",
+                                                    @"  ",
+                                                    [_healthTimePickerArray objectAtIndex:row],
+                                                    @" 时提醒进行健康检测"
+                                           ]
+          ];
+        [self startLocalNotification:
+                    [[_healthTimePickerArray objectAtIndex:row] integerValue]
+                and: @"请进行健康检测。"
+                forWhichTypeReminder: 2
+         ];
     }
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow: (NSInteger)row forComponent:(NSInteger)component
@@ -186,11 +258,11 @@
         return [_sedentaryTimePickerArray objectAtIndex:row];
     }
     else if(pickerView.tag == 101) {
-        return [_healthDayPickerArray objectAtIndex:row];
+        return [_healthFreauencyPickerArray objectAtIndex:row];
     }
     else
     {
-        return [_healthHourPickerArray objectAtIndex:row];
+        return [_healthTimePickerArray objectAtIndex:row];
     }
 }
 

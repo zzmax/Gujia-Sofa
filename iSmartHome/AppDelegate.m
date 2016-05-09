@@ -76,8 +76,19 @@
 
 // This code block is invoked when application is in foreground (active-mode)
 -(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    UIAlertController  *anAlert = [UIAlertController alertControllerWithTitle:@"Coucou"
-                                                   message:@"Alert test."
+    
+   // NSInteger period = [[notification.userInfo objectForKey:@"period"] integerValue]; //1
+   // NSTimeInterval t= 10 * period;
+    
+//    NSDictionary *userInfo = [notification userInfo];
+//    NSInteger t = [userInfo objectForKey:@"period"];
+//    
+//    notification.fireDate =[NSDate dateWithTimeIntervalSinceNow:t]; //2
+//    [[UIApplication sharedApplication] scheduleLocalNotification:notification]; //3
+    
+    
+    UIAlertController  *anAlert = [UIAlertController alertControllerWithTitle:notification.alertTitle
+                                                   message:notification.alertBody
                                             preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -85,6 +96,7 @@
     
     [anAlert addAction:defaultAction];
     [self.window.rootViewController presentViewController:anAlert animated:YES completion:nil]; // NSLog(@"didReceiveLocalNotification");
+    
 }
 
 //set interface portrait

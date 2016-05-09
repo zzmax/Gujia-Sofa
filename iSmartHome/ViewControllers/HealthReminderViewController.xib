@@ -40,7 +40,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="  每过   天提醒进行健康检测" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJu-nn-gLA">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="  每   提醒进行健康检测" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gJu-nn-gLA">
                     <rect key="frame" x="40" y="243" width="333" height="40"/>
                     <color key="backgroundColor" red="0.97654926711385404" green="1" blue="0.97732163447343223" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -50,7 +50,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="  每天   时提醒进行健康检测" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iYD-ih-h5l">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="     时提醒进行健康检测" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iYD-ih-h5l">
                     <rect key="frame" x="40" y="308" width="333" height="40"/>
                     <color key="backgroundColor" red="0.97654926710000001" green="1" blue="0.97732163449999998" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

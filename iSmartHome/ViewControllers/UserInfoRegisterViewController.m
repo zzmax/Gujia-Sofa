@@ -234,7 +234,8 @@
             
             //set textField for birthday
             _birthdayTF = [[UITextField alloc] init];
-            _birthdayTF.frame = CGRectMake(SCREEN_WIDTH * 5/12 - 10,7, SCREEN_WIDTH * 7/12, 28);            _birthdayTF.inputView = datePicker;
+            _birthdayTF.frame = CGRectMake(SCREEN_WIDTH * 5/12 - 10,7, SCREEN_WIDTH * 7/12, 28);
+            _birthdayTF.inputView = datePicker;
             _birthdayTF.inputAccessoryView = pickerToolbar;
             _birthdayTF.textColor = [UIColor whiteColor];
             _birthdayTF.textAlignment = NSTextAlignmentRight;
