@@ -149,8 +149,8 @@
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     if (aType == 1) {
         //set for sedentary notification time
-        notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:aTime * 3600];//
-        notification.applicationIconBadgeNumber = 10;
+        notification.fireDate = [NSDate dateWithTimeIntervalSinceNow:aTime * 60];// for a minute just for test // * 3600//
+        //notification.applicationIconBadgeNumber = 1;
     }
     else if(aType == 2)
     {
@@ -165,7 +165,7 @@
         notification.fireDate = expected;
         notification.alertAction = @"健康检测提醒";
         notification.soundName = UILocalNotificationDefaultSoundName;
-        notification.applicationIconBadgeNumber = 11;
+       // notification.applicationIconBadgeNumber = 1;
         
         NSInteger selectedRepeatInterval = [_healthFrequencyPicker selectedRowInComponent:0];
         switch (selectedRepeatInterval) {
@@ -189,7 +189,7 @@
     
     notification.alertBody = someWords;
     notification.timeZone = [NSTimeZone defaultTimeZone];
-    notification.soundName = UILocalNotificationDefaultSoundName;
+    notification.soundName = @"Function.wav";
     
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
 }
@@ -219,13 +219,13 @@
                                             @"  久坐 ",
                                             [_sedentaryTimePickerArray objectAtIndex:row],
                                             @" 小时后提醒"]];
-        [self startLocalNotification:row*60
+        [self startLocalNotification:row
                 and:
                     [NSString stringWithFormat:
                         @"%@ %li %@",
                             @"已经坐了",
-                            (long)row*3600,
-                            @"小时；请起来运动一会。"]
+                            (long)row,
+                            @"小时,请起来运动一会。"]
                 forWhichTypeReminder:1];
     }
     else if (pickerView.tag == 101) {

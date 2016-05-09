@@ -199,6 +199,7 @@
 		84AA4BCD1C43EF6C00EE4388 /* HealthExamResults+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BC81C43EF6C00EE4388 /* HealthExamResults+CoreDataProperties.m */; };
 		84AA4BCE1C43EF6C00EE4388 /* HealthExamResults.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BCA1C43EF6C00EE4388 /* HealthExamResults.m */; };
 		84AA4BD11C43F0C800EE4388 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AA4BD01C43F0C800EE4388 /* CoreDataHelper.m */; };
+		84B7D2FA1CE07096001B1F39 /* Function.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84B7D2F91CE07096001B1F39 /* Function.wav */; };
 		84C8BB8A1C47489E0038D4C3 /* _CPTAnimationCGFloatPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C8BAC61C47489E0038D4C3 /* _CPTAnimationCGFloatPeriod.m */; };
 		84C8BB8B1C47489E0038D4C3 /* _CPTAnimationCGPointPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C8BAC81C47489E0038D4C3 /* _CPTAnimationCGPointPeriod.m */; };
 		84C8BB8C1C47489E0038D4C3 /* _CPTAnimationCGRectPeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C8BACA1C47489E0038D4C3 /* _CPTAnimationCGRectPeriod.m */; };
@@ -554,6 +555,7 @@
 		84AA4BCA1C43EF6C00EE4388 /* HealthExamResults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthExamResults.m; sourceTree = "<group>"; };
 		84AA4BCF1C43F0C800EE4388 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		84AA4BD01C43F0C800EE4388 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		84B7D2F91CE07096001B1F39 /* Function.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Function.wav; sourceTree = "<group>"; };
 		84C8BAC51C47489E0038D4C3 /* _CPTAnimationCGFloatPeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CPTAnimationCGFloatPeriod.h; path = framework/Source/_CPTAnimationCGFloatPeriod.h; sourceTree = "<group>"; };
 		84C8BAC61C47489E0038D4C3 /* _CPTAnimationCGFloatPeriod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = _CPTAnimationCGFloatPeriod.m; path = framework/Source/_CPTAnimationCGFloatPeriod.m; sourceTree = "<group>"; };
 		84C8BAC71C47489E0038D4C3 /* _CPTAnimationCGPointPeriod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = _CPTAnimationCGPointPeriod.h; path = framework/Source/_CPTAnimationCGPointPeriod.h; sourceTree = "<group>"; };
@@ -950,6 +952,7 @@
 		5FB56D311BDE007A005D80AA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84B7D2F91CE07096001B1F39 /* Function.wav */,
 				84A94FFA1C7EA4B30087D211 /* THProgressView */,
 				84008C9B1C22ACBF007536B4 /* GCD */,
 				84AA4BCF1C43F0C800EE4388 /* CoreDataHelper.h */,
@@ -1860,6 +1863,7 @@
 				8458E2811C06F6D2009D0772 /* icon_code.png in Resources */,
 				8458E2B41C06F6D3009D0772 /* Contents.json in Resources */,
 				848CDFAD1C196AF600265848 /* Contents.json in Resources */,
+				84B7D2FA1CE07096001B1F39 /* Function.wav in Resources */,
 				8458E2681C06F6D2009D0772 /* button_minus.png in Resources */,
 				8458E2B51C06F6D3009D0772 /* icon_temp_signal_1.png in Resources */,
 				840F2A241C1533A40083833B /* image_small_button_left.png in Resources */,
