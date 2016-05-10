@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HealthReminderViewController">
             <connections>
+                <outlet property="cancelNotification" destination="EY2-og-7cC" id="IaQ-eW-WVe"/>
                 <outlet property="healthExamReminderDTF" destination="gJu-nn-gLA" id="lcb-J9-Y1p"/>
                 <outlet property="healthExamReminderHTF" destination="iYD-ih-h5l" id="MEZ-qy-M4B"/>
                 <outlet property="sedentaryReminderTF" destination="Mnw-K8-Bdn" id="IuU-x7-aHb"/>
@@ -34,6 +35,7 @@
                     <rect key="frame" x="40" y="126" width="333" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="333" id="8P5-co-MPX"/>
                         <constraint firstAttribute="height" constant="40" id="CjZ-8a-utG"/>
                     </constraints>
                     <nil key="textColor"/>
@@ -59,6 +61,15 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EY2-og-7cC">
+                    <rect key="frame" x="23" y="424" width="368" height="50"/>
+                    <state key="normal" title="取消提醒" backgroundImage="image_button_gray.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelNotifications:" destination="-1" eventType="touchUpInside" id="i1F-JM-JAE"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.072587820080000004" green="0.73144642110000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
@@ -67,18 +78,23 @@
                 <constraint firstItem="Yes-3d-Llt" firstAttribute="top" secondItem="Mnw-K8-Bdn" secondAttribute="bottom" constant="41" id="9Tp-9B-xRr"/>
                 <constraint firstItem="vuJ-Zd-IFt" firstAttribute="leading" secondItem="Mnw-K8-Bdn" secondAttribute="leading" id="AX6-oi-zeW"/>
                 <constraint firstItem="vuJ-Zd-IFt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="AdF-VG-NyH"/>
-                <constraint firstItem="vuJ-Zd-IFt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="SfL-rz-g5W"/>
+                <constraint firstItem="EY2-og-7cC" firstAttribute="top" secondItem="iYD-ih-h5l" secondAttribute="bottom" constant="76" id="NaB-J2-sKg"/>
                 <constraint firstItem="iYD-ih-h5l" firstAttribute="leading" secondItem="gJu-nn-gLA" secondAttribute="leading" id="VWV-6C-xhS"/>
                 <constraint firstItem="gJu-nn-gLA" firstAttribute="width" secondItem="Mnw-K8-Bdn" secondAttribute="width" id="aEu-HM-1P0"/>
                 <constraint firstItem="gJu-nn-gLA" firstAttribute="leading" secondItem="Yes-3d-Llt" secondAttribute="leading" id="aeM-P2-Qsu"/>
+                <constraint firstItem="EY2-og-7cC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bKu-Cs-b8q"/>
                 <constraint firstItem="Mnw-K8-Bdn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="hNr-Di-f8u"/>
                 <constraint firstItem="gJu-nn-gLA" firstAttribute="top" secondItem="Yes-3d-Llt" secondAttribute="bottom" constant="15" id="jMX-PX-JLr"/>
                 <constraint firstItem="iYD-ih-h5l" firstAttribute="width" secondItem="gJu-nn-gLA" secondAttribute="width" id="l2g-fI-XG0"/>
                 <constraint firstItem="iYD-ih-h5l" firstAttribute="top" secondItem="gJu-nn-gLA" secondAttribute="bottom" constant="25" id="nYz-fK-ik4"/>
                 <constraint firstItem="gJu-nn-gLA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="srt-ac-tB7"/>
                 <constraint firstItem="vuJ-Zd-IFt" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="7" id="ufH-Gj-bRk"/>
+                <constraint firstItem="EY2-og-7cC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="23" id="xYC-4Z-LY1"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
         </view>
     </objects>
+    <resources>
+        <image name="image_button_gray.png" width="330" height="50"/>
+    </resources>
 </document>

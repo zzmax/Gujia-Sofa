@@ -16,6 +16,7 @@
 @property (strong, nonatomic)IBOutlet UITextField *healthExamReminderHTF;
 //For which day we launch the remind
 @property (strong, nonatomic)IBOutlet UITextField *healthExamReminderDTF;
+@property (strong, nonatomic)IBOutlet UIButton *cancelNotification;
 
 @property (strong, nonatomic)NSMutableArray *sedentaryTimePickerArray;
 @property (strong, nonatomic)NSMutableArray *healthTimePickerArray;
@@ -192,6 +193,12 @@
     notification.soundName = @"Function.wav";
     
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
+
+- (IBAction)cancelNotifications:(id)sender
+{
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 
