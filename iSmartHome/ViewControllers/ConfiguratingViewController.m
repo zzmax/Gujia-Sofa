@@ -11,16 +11,25 @@
 #import "ConstraintMacros.h"
 #import "THProgressView.h"
 #import "NavigationViewController.h"
+#import "SmartFirstConfig.h"
+#import "GlobalSocket.h"
 
 
-@interface ConfiguratingViewController ()
+@interface ConfiguratingViewController ()<SmartFirstConfigDelegate>
+{
+    NSTimer *_timer;//progressBar
+    NSTimer *_timeoutTimer;
+    NSTimer *_searchTimer;
+    SmartFirstConfig *_firstConfig;
+    NSMutableArray * _allMacArray;
+    GlobalSocket *_globalSocket;
+}
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 //The label to show which step we are : Configurate the sofa or search the device
 @property (weak, nonatomic) IBOutlet UILabel *progressDescription;
 
 @property (weak, nonatomic) IBOutlet UIView *progressBarContainer;
 @property (nonatomic) CGFloat progress;
-@property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) THProgressView *aProgressView;
 @end
 
@@ -85,18 +94,24 @@
     ALIGN_VIEW_RIGHT_CONSTANT(_cancelBtn.superview, _cancelBtn, -10);
     ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _cancelBtn, -40);
     
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO];
+    [self createTimeoutTimer];
+    _allMacArray = [[NSMutableArray alloc]initWithCapacity:0];
+    _firstConfig = [[SmartFirstConfig alloc]init];
+    _firstConfig.fristConfigDelegate = self;
+    //首次配置
+    [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
+    
+//    [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
-    [self.timer invalidate];
+    [self deallocTimer];
 }
 
 -(void) getToNextVC
 {
-    [self.timer invalidate];
+    [_timer invalidate];
     NavigationViewController *navigationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
     [self.navigationController pushViewController:navigationVC animated:YES];
 
@@ -104,7 +119,7 @@
 
 - (IBAction)cancelToConnectSofa:(id)aButton
 {
-    [self.timer invalidate];
+    [self deallocTimer];
     [self popView:self.cancelBtn];
 }
 
@@ -130,4 +145,197 @@
     else
     [_aProgressView setProgress:self.progress animated:YES];
 }
+
+- (void)deallocTimer {
+    [_timer invalidate];
+    _timer = nil;
+    [_timeoutTimer invalidate];
+    _timeoutTimer = nil;
+    [_searchTimer invalidate];
+    _searchTimer = nil;
+    [_firstConfig smartSocketClose];
+    _firstConfig = nil;
+}
+
+
+/**
+ *  第一次成功配置了沙发路由模块
+ *
+ *  @param reaMac  路由模块mac地址
+ */
+-(void)onSmartFirstConfigSuccess:(NSString *)reaMac
+{
+    [_timer invalidate];
+    _timer = nil;
+    [_timeoutTimer invalidate];
+    _timeoutTimer = nil;
+    _firstConfig.fristConfigDelegate = nil;
+    [self successConfig];
+    
+}
+-(void)onSmartFirstConfigFailure
+{
+    [_timer invalidate];
+    _timer = nil;
+    [_timeoutTimer invalidate];
+    _timeoutTimer = nil;
+    [_firstConfig smartSocketClose];
+    [self failConfig];
+}
+
+-(void)successConfig{
+    
+//    [UserDef setValue:self.wifePad forKey:self.wifiName];
+    [self startSearch];
+    
+}
+-(void)failConfig{
+    
+    UIAlertView *alterView = [[UIAlertView alloc]initWithTitle:@"消息" message:@"配置失败，是否重新配置?" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alterView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        [self createTimeoutTimer];
+        _firstConfig = [[SmartFirstConfig alloc]init];
+        _firstConfig.fristConfigDelegate = self;
+        [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
+    }else
+    {
+//        [OperationDeviceCallBack DestoryDelegate];
+        [self deallocTimer];
+        _firstConfig.fristConfigDelegate = nil;
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+}
+
+/**
+ *  开始搜索设备
+ */
+-(void)startSearch
+{
+    self.progressDescription.text = @"Wi-Fi模块已配置，正在努力搜索设备";
+    if (_timer) {
+        [_timer invalidate];
+        _timer=nil;
+    }
+    if (_timeoutTimer) {
+        [_timeoutTimer invalidate];
+        _timeoutTimer = nil;
+    }
+    if (_searchTimer) {
+        [_searchTimer invalidate];
+        _searchTimer = nil;
+    }
+    if (_firstConfig) {
+        _firstConfig.fristConfigDelegate = nil;
+        [_firstConfig smartSocketClose];
+        _firstConfig = nil;
+    }
+    if (!_timer) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+        [_timer fire];
+    }
+    if (!_searchTimer) {
+        //超时处理
+        _searchTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(searchNewMacReusult) userInfo:nil repeats:NO];
+    }
+    [_allMacArray removeAllObjects];
+    _firstConfig = [[SmartFirstConfig alloc]init];
+    _firstConfig.fristConfigDelegate = self;
+    [_firstConfig doSmartFirstConfig:nil sspwd:nil realCommandArr:nil andOperType:0];
+    
+}
+
+
+- (void)createTimeoutTimer {
+    if (_timer) {
+        [_timer invalidate];
+        _timer = nil;
+    }
+    if (_timeoutTimer) {
+        [_timeoutTimer invalidate];
+        _timeoutTimer = nil;
+    }
+    _timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(onSmartFirstConfigFailure) userInfo:nil repeats:NO];
+    if (!_timer) {
+        //制定progress bar的滚动时间间隔
+        _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+        [_timer fire];
+    }
+}
+
+/**
+ *  When we detect the device, we will enter into this function
+ *
+ *  @param allMacInfo the whole information about this device
+ */
+-(void)onSmartSearchSuccess:(NSDictionary *)allMacInfo
+{
+    NSString *codeName = [allMacInfo objectForKey:@"CodeName"];
+    if ([codeName isEqualToString:@"SearchAck"]) {
+        NSLog(@"========allMacInfo======%@",allMacInfo);
+        BOOL isHave = NO;
+        for (int i=0; i<_allMacArray.count; i++) {
+            NSDictionary * allHaveInfo = _allMacArray[i];
+            if ([MBNonEmptyString(allMacInfo[@"Mac"]) isEqualToString:MBNonEmptyString(allHaveInfo[@"Mac"])]) {
+                isHave = YES;
+                break;
+            }
+        }
+        if (!isHave) {
+            [_allMacArray addObject:allMacInfo];
+        }
+    }
+}
+
+- (void)searchNewMacReusult {
+    if (_allMacArray.count==0) {
+            if (_searchTimer) {
+                [_searchTimer invalidate];
+                _searchTimer = nil;
+            }
+            if (_timer) {
+                [_timer invalidate];
+                _timer = nil;
+            }
+            if (_timeoutTimer) {
+                [_timeoutTimer invalidate];
+                _timeoutTimer = nil;
+            }
+            if (_firstConfig) {
+                [_firstConfig smartSocketClose];
+                _firstConfig = nil;
+            }
+
+        self.progressDescription.text = @"未检测到设备";
+    }
+    else
+    {
+        self.progressDescription.text = @"已检测到设备，正在连接";
+        /**
+         *  连接Wi-Fi
+         */
+        NSString *hostipStr = [MBNonEmptyString(_allMacArray[0][@"Mip"]) componentsSeparatedByString:@"`"][1];
+        NSString *portStr = [MBNonEmptyString(_allMacArray[0][@"cInfo"]) componentsSeparatedByString:@"`"][1];
+        _globalSocket = [GlobalSocket sharedGlobalSocket];
+        
+        [_globalSocket setHost:hostipStr];
+        [_globalSocket setPort:portStr];
+        [_globalSocket initNetworkCommunication];
+
+        if ([_globalSocket.message isEqualToString:@"连接成功"]) {
+            self.progressDescription.text = @"连接成功";
+            _searchTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(getToNextVC) userInfo:nil repeats:YES];
+        }
+        else
+        {
+            self.progressDescription.text = @"连接不成功";
+            [self deallocTimer];
+        }
+    }
+}
+
 @end

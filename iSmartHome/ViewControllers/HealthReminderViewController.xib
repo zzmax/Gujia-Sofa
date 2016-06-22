@@ -62,7 +62,10 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EY2-og-7cC">
-                    <rect key="frame" x="23" y="424" width="368" height="50"/>
+                    <rect key="frame" x="23" y="424" width="368" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="wEb-fP-9Vm"/>
+                    </constraints>
                     <state key="normal" title="取消提醒" backgroundImage="image_button_gray.png">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </state>

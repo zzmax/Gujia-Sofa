@@ -26,6 +26,16 @@
 
 @implementation GlobalSocket
 
+NSString* MBNonEmptyString(id obj){
+    if (obj == nil || obj == [NSNull null] ||
+        ([obj isKindOfClass:[NSString class]] && [obj length] == 0)) {
+        return @"";
+    } else if ([obj isKindOfClass:[NSNumber class]]) {
+        return MBNonEmptyString([obj stringValue]);
+    }
+    
+    return obj;
+}
 
 - (UInt8 *)getInputBuffer
 {
@@ -41,6 +51,17 @@
 {
     return host;
 }
+
+- (void)setPort:(NSString *) aPort
+{
+    port = (uint16_t)[aPort intValue];
+}
+
+- (int)getPort
+{
+    return port;
+}
+
 
 /**
  *  set the value of inputBuffer form another class
@@ -142,9 +163,9 @@
  */
 -(void)initNetworkCommunication
 {
-//    host = @"192.168.1.250";
+//    host = @"192.168.10.250";
 //    host = @"";
-    port = (uint16_t)[@"8080" intValue];
+    //port = (uint16_t)[@"8080" intValue];
     
     //    _messageLabel.text = _host;
     socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
@@ -509,6 +530,28 @@
     [socket readDataWithTimeout:100 tag:0];
 }
 
-
+- (NSDictionary *)getWifiInfo
+{
+    
+    CFArrayRef wifiInterfaces = CNCopySupportedInterfaces();
+    
+    if (!wifiInterfaces) {
+        return nil;
+    }
+    
+    NSArray *interfaces = (__bridge NSArray *)wifiInterfaces;
+    
+    for (NSString *interfaceName in interfaces) {
+        CFDictionaryRef dictRef = CNCopyCurrentNetworkInfo((__bridge CFStringRef)(interfaceName));
+        
+        if (dictRef) {
+            NSDictionary *networkInfo = (__bridge NSDictionary *)dictRef;
+            NSLog(@"network info -> %@", networkInfo);
+            return networkInfo;
+        }
+    }
+    
+    return nil;
+}
 
 @end

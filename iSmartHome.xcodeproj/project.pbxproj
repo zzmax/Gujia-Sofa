@@ -18,7 +18,6 @@
 		5FB56D351BDE0213005D80AA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D341BDE0213005D80AA /* CoreGraphics.framework */; };
 		5FB56D371BDE0220005D80AA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D361BDE0220005D80AA /* Foundation.framework */; };
 		84008C9A1C22A0C7007536B4 /* Nav2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84008C991C22A0C7007536B4 /* Nav2ViewController.m */; };
-		84008C9E1C22ACBF007536B4 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */; };
 		840E44931C25227C0013476F /* GlobalSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E44921C25227C0013476F /* GlobalSocket.m */; };
 		840F29D91C13C9BA0083833B /* WifiConfigNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */; };
 		840F2A071C1533A40083833B /* background_big_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F29DB1C1533A40083833B /* background_big_circle.png */; };
@@ -57,6 +56,7 @@
 		840F2A281C1533A40083833B /* image_small_button_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A041C1533A40083833B /* image_small_button_right.png */; };
 		840F2A291C1533A40083833B /* image_small_button_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A051C1533A40083833B /* image_small_button_right@2x.png */; };
 		840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A061C1533A40083833B /* image_small_button_right@3x.png */; };
+		8410D8181D1967A60078F855 /* SmartMlccUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8410D8171D1967A60078F855 /* SmartMlccUtil.mm */; };
 		8413D2981C4687FD0083CC92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D2971C4687FD0083CC92 /* QuartzCore.framework */; };
 		8413D29B1C46886B0083CC92 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D29A1C46886B0083CC92 /* Accelerate.framework */; };
 		8413D2EE1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8413D2EC1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m */; };
@@ -160,6 +160,11 @@
 		8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E2BC1C0B35AC009D0772 /* RootViewController.m */; };
 		84639E8D1C45FE23006D9064 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84639E8C1C45FE23006D9064 /* CurrentUser.m */; };
 		8475CDD41CDCBBF300485851 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */; };
+		847D6A411D196D18004BF25A /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A361D196D18004BF25A /* AsyncSocket.m */; };
+		847D6A421D196D18004BF25A /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A381D196D18004BF25A /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		847D6A431D196D18004BF25A /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A3A1D196D18004BF25A /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		847D6A441D196D18004BF25A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A3C1D196D18004BF25A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		847D6A451D196D18004BF25A /* SmartFirstConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A3E1D196D18004BF25A /* SmartFirstConfig.m */; };
 		847D8A541CA1338D007E6243 /* HealthReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D8A521CA1338D007E6243 /* HealthReminderViewController.m */; };
 		847D8A551CA1338D007E6243 /* HealthReminderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847D8A531CA1338D007E6243 /* HealthReminderViewController.xib */; };
 		8482CE0A1C29440900F9608B /* HealthExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8482CE081C29440900F9608B /* HealthExamResultViewController.m */; };
@@ -351,8 +356,6 @@
 		83CD51A38F08BCC42A55EB83 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		84008C981C22A0C7007536B4 /* Nav2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Nav2ViewController.h; sourceTree = "<group>"; };
 		84008C991C22A0C7007536B4 /* Nav2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Nav2ViewController.m; sourceTree = "<group>"; };
-		84008C9C1C22ACBF007536B4 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
-		84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		840E44911C25227C0013476F /* GlobalSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalSocket.h; sourceTree = "<group>"; };
 		840E44921C25227C0013476F /* GlobalSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalSocket.m; sourceTree = "<group>"; };
 		840F29D71C13C99A0083833B /* WifiConfigNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiConfigNoteViewController.h; sourceTree = "<group>"; };
@@ -393,6 +396,8 @@
 		840F2A041C1533A40083833B /* image_small_button_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_small_button_right.png; sourceTree = "<group>"; };
 		840F2A051C1533A40083833B /* image_small_button_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_small_button_right@2x.png"; sourceTree = "<group>"; };
 		840F2A061C1533A40083833B /* image_small_button_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_small_button_right@3x.png"; sourceTree = "<group>"; };
+		8410D8161D1967A60078F855 /* SmartMlccUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartMlccUtil.h; sourceTree = "<group>"; };
+		8410D8171D1967A60078F855 /* SmartMlccUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SmartMlccUtil.mm; sourceTree = "<group>"; };
 		8413D2971C4687FD0083CC92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8413D29A1C46886B0083CC92 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8413D2EB1C468CEA0083CC92 /* HealthConditionTrendencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthConditionTrendencyViewController.h; sourceTree = "<group>"; };
@@ -502,6 +507,16 @@
 		84639E8C1C45FE23006D9064 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		8475CDD51CDCBBF300485851 /* iSmartHome.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = iSmartHome.entitlements; path = iSmartHome/iSmartHome.entitlements; sourceTree = "<group>"; };
+		847D6A351D196D18004BF25A /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		847D6A361D196D18004BF25A /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		847D6A371D196D18004BF25A /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		847D6A381D196D18004BF25A /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		847D6A391D196D18004BF25A /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		847D6A3A1D196D18004BF25A /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		847D6A3B1D196D18004BF25A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		847D6A3C1D196D18004BF25A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		847D6A3D1D196D18004BF25A /* SmartFirstConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartFirstConfig.h; sourceTree = "<group>"; };
+		847D6A3E1D196D18004BF25A /* SmartFirstConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartFirstConfig.m; sourceTree = "<group>"; };
 		847D8A511CA1338D007E6243 /* HealthReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthReminderViewController.h; sourceTree = "<group>"; };
 		847D8A521CA1338D007E6243 /* HealthReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthReminderViewController.m; sourceTree = "<group>"; };
 		847D8A531CA1338D007E6243 /* HealthReminderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HealthReminderViewController.xib; sourceTree = "<group>"; };
@@ -977,8 +992,9 @@
 		84008C9B1C22ACBF007536B4 /* GCD */ = {
 			isa = PBXGroup;
 			children = (
-				84008C9C1C22ACBF007536B4 /* GCDAsyncSocket.h */,
-				84008C9D1C22ACBF007536B4 /* GCDAsyncSocket.m */,
+				8410D8161D1967A60078F855 /* SmartMlccUtil.h */,
+				8410D8171D1967A60078F855 /* SmartMlccUtil.mm */,
+				8410D7FA1D1941440078F855 /* GCDAsyncSocket */,
 			);
 			path = GCD;
 			sourceTree = "<group>";
@@ -1080,6 +1096,23 @@
 				840F2A061C1533A40083833B /* image_small_button_right@3x.png */,
 			);
 			path = image_small_button_right.imageset;
+			sourceTree = "<group>";
+		};
+		8410D7FA1D1941440078F855 /* GCDAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				847D6A351D196D18004BF25A /* AsyncSocket.h */,
+				847D6A361D196D18004BF25A /* AsyncSocket.m */,
+				847D6A371D196D18004BF25A /* GCDAsyncSocket.h */,
+				847D6A381D196D18004BF25A /* GCDAsyncSocket.m */,
+				847D6A391D196D18004BF25A /* GCDAsyncUdpSocket.h */,
+				847D6A3A1D196D18004BF25A /* GCDAsyncUdpSocket.m */,
+				847D6A3B1D196D18004BF25A /* JSONKit.h */,
+				847D6A3C1D196D18004BF25A /* JSONKit.m */,
+				847D6A3D1D196D18004BF25A /* SmartFirstConfig.h */,
+				847D6A3E1D196D18004BF25A /* SmartFirstConfig.m */,
+			);
+			path = GCDAsyncSocket;
 			sourceTree = "<group>";
 		};
 		8425CF301C16C4FC007D964D /* Views */ = {
@@ -2106,7 +2139,9 @@
 				84C8BBDB1C47489E0038D4C3 /* CPTTextLayer.m in Sources */,
 				84C8BBB31C47489E0038D4C3 /* CPTFunctionDataSource.m in Sources */,
 				84C8BB8D1C47489E0038D4C3 /* _CPTAnimationCGSizePeriod.m in Sources */,
+				847D6A421D196D18004BF25A /* GCDAsyncSocket.m in Sources */,
 				84C8BBA11C47489E0038D4C3 /* CPTAnimationPeriod.m in Sources */,
+				847D6A431D196D18004BF25A /* GCDAsyncUdpSocket.m in Sources */,
 				84C8BBC71C47489E0038D4C3 /* CPTMutableTextStyle.m in Sources */,
 				84C8BBBD1C47489E0038D4C3 /* CPTLegend.m in Sources */,
 				84C8BB911C47489E0038D4C3 /* _CPTBorderLayer.m in Sources */,
@@ -2116,6 +2151,8 @@
 				84C8BB921C47489E0038D4C3 /* _CPTConstraintsFixed.m in Sources */,
 				84C8BBBE1C47489E0038D4C3 /* CPTLegendEntry.m in Sources */,
 				84C8BBD41C47489E0038D4C3 /* CPTPlotRange.m in Sources */,
+				847D6A441D196D18004BF25A /* JSONKit.m in Sources */,
+				847D6A411D196D18004BF25A /* AsyncSocket.m in Sources */,
 				84AA4BCB1C43EF6C00EE4388 /* User+CoreDataProperties.m in Sources */,
 				84C8BB8E1C47489E0038D4C3 /* _CPTAnimationNSDecimalPeriod.m in Sources */,
 				84C8BBD91C47489E0038D4C3 /* CPTScatterPlot.m in Sources */,
@@ -2138,12 +2175,12 @@
 				8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */,
 				84C8BBA71C47489E0038D4C3 /* CPTAxisSet.m in Sources */,
 				84C8BBB91C47489E0038D4C3 /* CPTImage.m in Sources */,
-				84008C9E1C22ACBF007536B4 /* GCDAsyncSocket.m in Sources */,
 				84C8BB9A1C47489E0038D4C3 /* _CPTPlainWhiteTheme.m in Sources */,
 				84C8BB951C47489E0038D4C3 /* _CPTFillColor.m in Sources */,
 				84C8BBA01C47489E0038D4C3 /* CPTAnimationOperation.m in Sources */,
 				84AA4BD11C43F0C800EE4388 /* CoreDataHelper.m in Sources */,
 				84C8BBC91C47489E0038D4C3 /* CPTNumericData+TypeConversion.m in Sources */,
+				8410D8181D1967A60078F855 /* SmartMlccUtil.mm in Sources */,
 				840E44931C25227C0013476F /* GlobalSocket.m in Sources */,
 				84C8BB8A1C47489E0038D4C3 /* _CPTAnimationCGFloatPeriod.m in Sources */,
 				84C8BB8B1C47489E0038D4C3 /* _CPTAnimationCGPointPeriod.m in Sources */,
@@ -2157,6 +2194,7 @@
 				84C8BBCB1C47489E0038D4C3 /* CPTPathExtensions.m in Sources */,
 				84C8BBD71C47489E0038D4C3 /* CPTPlotSymbol.m in Sources */,
 				84C8BBA41C47489E0038D4C3 /* CPTAxis.m in Sources */,
+				847D6A451D196D18004BF25A /* SmartFirstConfig.m in Sources */,
 				84C8BB971C47489E0038D4C3 /* _CPTFillImage.m in Sources */,
 				84C8BB8C1C47489E0038D4C3 /* _CPTAnimationCGRectPeriod.m in Sources */,
 				84D155861C1FFD1500405915 /* NavigationViewController.m in Sources */,

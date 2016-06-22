@@ -11,8 +11,14 @@
 #import "ConstraintMacros.h"
 #import "Utility.h"
 #import "GlobalSocket.h"
+#import "SmartFirstConfig.h"
 
-@interface WifiConfigViewController ()
+@interface WifiConfigViewController ()<SmartFirstConfigDelegate>
+{
+    NSDictionary *_wifiInfo;
+    SmartFirstConfig * _searchMacTool;
+    NSMutableArray * _allMacArray;
+}
 @property (weak, nonatomic) IBOutlet UITextField *routerTF;
 @property (weak, nonatomic) IBOutlet UITextField *codeTF;
 @property (weak, nonatomic) IBOutlet UIButton *wifiIcon;
@@ -40,7 +46,7 @@
     
     //set the keyboard of routerTextField to UIKeyboardTypeDecimalPad
     [_routerTF setKeyboardType:UIKeyboardTypeDecimalPad];
-    [_routerTF becomeFirstResponder];
+    [_codeTF becomeFirstResponder];
     
     //set tool bar to dismiss the keyboard of _routerTF
     UIToolbar *textFieldToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -70,8 +76,14 @@
     ALIGN_VIEW_TOP_CONSTANT(self.view, _startBtn, 300);
     
 //    self.navigationController.navigationItem.backBarButtonItem = nil;
-    
-   
+    _globalSocket = [GlobalSocket sharedGlobalSocket];
+    _wifiInfo = [_globalSocket getWifiInfo];
+//    _allMacArray = [[NSMutableArray alloc]initWithCapacity:0];
+//    [_allMacArray removeAllObjects];
+//    _searchMacTool = [[SmartFirstConfig alloc]init];
+//    _searchMacTool.fristConfigDelegate = self;
+//    [_searchMacTool doSmartFirstConfig:nil sspwd:nil realCommandArr:nil andOperType:0];
+    self.routerTF.text = MBNonEmptyString(_wifiInfo[@"SSID"]);
 }
 
 /**
@@ -116,6 +128,12 @@
 - (void)pushToConfigratingView
 {
     ConfiguratingViewController *configratingVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ConfiguratingViewController"];
+
+    configratingVC.wifiInfo = _wifiInfo;
+    configratingVC.wifiPad = MBNonEmptyString(self.codeTF.text);
+    configratingVC.staPwd = MBNonEmptyString(self.codeTF.text);
+    configratingVC.staId = MBNonEmptyString(_wifiInfo[@"SSID"]);
+    configratingVC.wifiName = MBNonEmptyString(self.routerTF.text);
     [self.navigationController pushViewController:configratingVC animated:YES];
 }
 

@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ConfiguratingViewController : UIViewController
+@property(nonatomic,strong)NSDictionary *wifiInfo;
+@property(nonatomic,strong)NSString *wifiName;
+@property(nonatomic,strong)NSString *wifiPad;
+
+@property(nonatomic,strong)NSString *staId;
+@property(nonatomic,strong)NSString *staPwd;
 
 @end

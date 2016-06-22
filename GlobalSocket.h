@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 #import "GCDAsyncSocket.h"
 
 @interface GlobalSocket : NSObject
@@ -26,13 +27,20 @@
 @property bool  btnS1;    //button s1
 @property bool  btnS2;    //button s2
 
+
 + (id)sharedGlobalSocket;
+
+NSString* MBNonEmptyString(id obj);
+
+- (NSDictionary *)getWifiInfo;
 
 - (GCDAsyncSocket *)getSocket;
 
 - (UInt8 *)getInputBuffer;
 
 - (void)setHost:(NSString *)aHost;
+
+- (void)setPort:(NSString *)aPort;
 
 - (void)setInputBuffer:(int)order and:(UInt8)anInputBuffer;
 

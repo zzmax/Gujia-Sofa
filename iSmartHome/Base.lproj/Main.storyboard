@@ -535,7 +535,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="KDj-6r-CYW">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnq-hE-P64">
+                                <rect key="frame" x="72" y="115" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="aKJ-7U-eZM"/>
+                                    <constraint firstAttribute="width" constant="35" id="zQb-a3-JFh"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icon_wifi.png"/>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-IX-rEu">
+                                <rect key="frame" x="72" y="191" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="8JJ-A0-da3"/>
+                                    <constraint firstAttribute="height" constant="35" id="j6h-kS-29Y"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="icon_code.png"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="KDj-6r-CYW">
                                 <rect key="frame" x="57" y="183" width="300" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FSf-eB-Hxw"/>
@@ -552,22 +568,6 @@
                                 <connections>
                                     <action selector="connectionBtn:" destination="oU2-6q-Emg" eventType="touchUpInside" id="3cY-RJ-58q"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hnq-hE-P64">
-                                <rect key="frame" x="72" y="115" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="aKJ-7U-eZM"/>
-                                    <constraint firstAttribute="width" constant="35" id="zQb-a3-JFh"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="icon_wifi.png"/>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk7-IX-rEu">
-                                <rect key="frame" x="72" y="191" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="8JJ-A0-da3"/>
-                                    <constraint firstAttribute="height" constant="35" id="j6h-kS-29Y"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="icon_code.png"/>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="沙发IP地址" textAlignment="center" minimumFontSize="17" background="image_button_gray.png" translatesAutoresizingMaskIntoConstraints="NO" id="HzU-dr-hZE">
                                 <rect key="frame" x="57" y="108" width="300" height="50"/>
