@@ -114,15 +114,15 @@
         [self presentViewController:alert animated:YES completion:nil];
     }
     
-    [_globalSocket setHost:_routerTF.text];
-    [_globalSocket initNetworkCommunication];
-    
-    
-    if ([_globalSocket.message isEqualToString:@"连接成功"]) {
-        [_startBtn setTitle:@"连接成功" forState:UIControlStateNormal];
+//    [_globalSocket setHost:_routerTF.text];
+//    [_globalSocket initNetworkCommunication];
+//    
+//    
+//    if ([_globalSocket.message isEqualToString:@"连接成功"]) {
+//        [_startBtn setTitle:@"连接成功" forState:UIControlStateNormal];
 //        After 1s, push to the view of weigh the body
         [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(pushToConfigratingView) userInfo:nil repeats:NO ];
-    }
+//    }
 }
 
 - (void)pushToConfigratingView
