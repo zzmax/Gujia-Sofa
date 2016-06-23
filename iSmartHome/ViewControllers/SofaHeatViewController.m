@@ -142,20 +142,20 @@
 - (IBAction)s3ORs4Down:(id)sender
 {
     if (!isElectricalBlanketOn) {
-        [_globalSocket initControlMessage];
-        //    inputBuffer[4]=0x04;
-        [_globalSocket setInputBuffer:4 and:0x04];
-        [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+//        [_globalSocket initControlMessage];
+//        [_globalSocket setInputBuffer:4 and:0x04];
+//        [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+        [_globalSocket sendMessageDown:@"F1F10400047E"];
         isElectricalBlanketOn = YES;
         [_stopHeatBtn setTitle:@"关闭座椅加热" forState:UIControlStateNormal];
         [self startGetTempMessageTimer];
     }
     else
     {
-        [_globalSocket initControlMessage];
-        //    inputBuffer[4]=0x08;
-        [_globalSocket setInputBuffer:4 and:0x08];
-        [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+//        [_globalSocket initControlMessage];
+//        [_globalSocket setInputBuffer:4 and:0x08];
+//        [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+        [_globalSocket sendMessageDown:@"F1F10800087E"];
         isElectricalBlanketOn = NO;
         [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
         [self stopGetTempMessageTimer];
@@ -164,8 +164,9 @@
 
 - (IBAction)s3ORs4Up:(id)sender
 {
-    [_globalSocket initControlMessage];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+//    [_globalSocket initControlMessage];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F10A000A7E"];//松手检测
 }
 
 

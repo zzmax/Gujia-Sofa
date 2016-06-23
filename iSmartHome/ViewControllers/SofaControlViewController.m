@@ -126,7 +126,8 @@
     [_globalSocket stopSendMessgeTimer];
     
     [_globalSocket initControlMessage];
-    [_globalSocket sendMessageDown:inputBuffer length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F10A000A7E"];//松手检测
+//    [_globalSocket sendMessageDown:inputBuffer length:sendDataLength];
 }
 
 /**
@@ -150,8 +151,9 @@
     _globalSocket.btnS2 = false;
     [_globalSocket stopSendMessgeTimer];
     
-    [_globalSocket initControlMessage];
-    [_globalSocket sendMessageDown:inputBuffer length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F10A000A7E"];//松手检测
+//    [_globalSocket initControlMessage];
+//    [_globalSocket sendMessageDown:inputBuffer length:sendDataLength];
 }
 
 #pragma mark - Screen set

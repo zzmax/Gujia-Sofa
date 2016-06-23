@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "GCDAsyncSocket.h"
+#import "GCDAsyncUdpSocket.h"
+#import "SmartMlccUtil.h"
 
 @interface GlobalSocket : NSObject
 {
@@ -53,6 +55,8 @@ NSString* MBNonEmptyString(id obj);
 -(void)startSendMessageTimer;
 
 -(void)stopSendMessgeTimer;
+
+-(void)sendMessageDown:(NSString *)uintSendData;
 
 -(void)sendMessageDown:(UInt8*)uintSendData length:(int)intSendDataLength;
 

@@ -8,6 +8,7 @@
 
 #import "GlobalSocket.h"
 
+
 @interface GlobalSocket ()
 {
     
@@ -19,6 +20,8 @@
     GCDAsyncSocket *socket;
     UInt8 inputBuffer[INPUTBUFFERSIZE];
     int  sendDataLength;
+    
+    BOOL isConnected;
     
 }
 
@@ -215,9 +218,23 @@ NSString* MBNonEmptyString(id obj){
  */
 -(void)sendMessageDown:(UInt8*)uintSendData length:(int)intSendDataLength
 {
-    NSData *sendData = [[NSData alloc] initWithBytes:uintSendData length:intSendDataLength];
+    
+    NSData *sendData = [[NSData alloc] initWithBytes:inputBuffer length:intSendDataLength];
     [socket writeData:sendData withTimeout:-1 tag:0];
     [socket readDataWithTimeout:socketTimeOut tag:0];
+}
+
+-(void)sendMessageDown:(NSString *)sendDataStr
+{
+//    if ([socket connectToHost:host onPort:port error:nil]) {
+        NSData *sendData = [SmartMlccUtil makeTcpCommandData:sendDataStr];
+        [socket writeData:sendData withTimeout:-1 tag:0];
+//    }
+//    else
+//        NSLog(@"Not connected...");
+//    NSString *result = [SmartMlccUtil getReturnCommand:data];
+//    NSString *command = [SmartMlccUtil parseTcpCommandData:result];
+//    [socket readDataWithTimeout:socketTimeOut tag:0];
 }
 
 /**
@@ -228,17 +245,19 @@ NSString* MBNonEmptyString(id obj){
 -(void)sendMessageInterval:(NSTimer *)paramTimer
 {
     NSLog(@"Time excute....");
-    if (_btnS1)
+    if (_btnS1)//SOFA 推杆升按键按下
     {
-        [self initControlMessage];
-        inputBuffer[4]=0x01;
-        [self sendMessageDown:inputBuffer length:sendDataLength];
+//        [self initControlMessage];
+//        inputBuffer[4]=0x01;
+//        [self sendMessageDown:inputBuffer length:sendDataLength];
+        [self sendMessageDown:@"F1F10100017E"];
     }
-    else if (_btnS2)
+    else if (_btnS2)//SOFA 推杆降按键按下
     {
-        [self initControlMessage];
-        inputBuffer[4]=0x02;
-        [self sendMessageDown:inputBuffer length:sendDataLength];
+//        [self initControlMessage];
+//        inputBuffer[4]=0x02;
+//        [self sendMessageDown:inputBuffer length:sendDataLength];
+        [self sendMessageDown:@"F1F10200027E"];
     }
     else
     {
@@ -257,6 +276,15 @@ NSString* MBNonEmptyString(id obj){
  */
 -(void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
 {
+    NSString *ip = [sock connectedHost];
+    uint16_t aPort = [sock connectedPort];
+    if ([ip isEqualToString:host] && port == aPort) {
+        NSString *result = [SmartMlccUtil getReturnCommand:data];
+        NSString *command = [SmartMlccUtil parseTcpCommandData:result];
+        NSLog(@"command=%@",command);
+    }
+    
+    [sock readDataWithTimeout:-1 tag:200];
     NSString *str=@"返回信息:";
     NSString *hexStr=@"";
     int lengthReceiveMessage=(int)[data length];
@@ -530,6 +558,11 @@ NSString* MBNonEmptyString(id obj){
     [socket readDataWithTimeout:100 tag:0];
 }
 
+/**
+ *  Get the SSID,Mac,Password,etc
+ *
+ *  @return a dictionary of info wifi
+ */
 - (NSDictionary *)getWifiInfo
 {
     
@@ -553,5 +586,19 @@ NSString* MBNonEmptyString(id obj){
     
     return nil;
 }
+
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port {
+    NSLog(@"连接成功");
+    isConnected=YES;
+    [sock readDataWithTimeout:-1 tag:200];
+}
+
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
+    NSLog(@"连接失败 %@", err);
+    // 断线重连
+    isConnected=NO;
+    [sock connectToHost:host onPort:port withTimeout:60 error:nil];
+}
+
 
 @end
