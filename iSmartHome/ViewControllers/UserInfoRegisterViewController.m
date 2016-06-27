@@ -524,7 +524,10 @@
     if ([globalSocket.message isEqualToString:@"连接成功"]) {
         [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
     }
-    
+    /**
+     *  just for test
+     */
+    [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
 }
 
 //override the methode to determine which view controller to push

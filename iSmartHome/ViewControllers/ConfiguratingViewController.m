@@ -10,7 +10,7 @@
 #import "ConfiguratingViewController.h"
 #import "ConstraintMacros.h"
 #import "THProgressView.h"
-#import "NavigationViewController.h"
+#import "UsersCreationViewController.h"
 #import "SmartFirstConfig.h"
 #import "GlobalSocket.h"
 
@@ -98,8 +98,11 @@
     _allMacArray = [[NSMutableArray alloc]initWithCapacity:0];
     _firstConfig = [[SmartFirstConfig alloc]init];
     _firstConfig.fristConfigDelegate = self;
+    
+     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO ];
+    
     //首次配置
-    [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
+//    [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
     
 //    [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO];
 }
@@ -112,8 +115,10 @@
 -(void) getToNextVC
 {
     [_timer invalidate];
-    NavigationViewController *navigationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
-    [self.navigationController pushViewController:navigationVC animated:YES];
+        UsersCreationViewController *userCreationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
+        [self.navigationController pushViewController:userCreationVC animated:YES];
+//    NavigationViewController *navigationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
+//    [self.navigationController pushViewController:navigationVC animated:YES];
 
 }
 
