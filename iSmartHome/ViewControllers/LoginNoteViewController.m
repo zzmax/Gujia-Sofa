@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RootViewController.h"
+#import "LoginNoteViewController.h"
 #import "QRCodeScanViewController.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
 //#import <NetworkExtension/NetworkExtension.h>
 
 
-@interface RootViewController ()
+@interface LoginNoteViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *startBtn;
 @property (weak, nonatomic) IBOutlet UIButton *startScanBtn;
 //the first paragraph to show the explanation
@@ -21,7 +21,7 @@
 @end
 
 
-@implementation RootViewController
+@implementation LoginNoteViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -13,6 +13,8 @@
 #import "UsersCreationViewController.h"
 #import "SmartFirstConfig.h"
 #import "GlobalSocket.h"
+#import "WifiInfo.h"
+#import "CoreDataHelper.h"
 
 
 @interface ConfiguratingViewController ()<SmartFirstConfigDelegate>
@@ -23,6 +25,7 @@
     SmartFirstConfig *_firstConfig;
     NSMutableArray * _allMacArray;
     GlobalSocket *_globalSocket;
+    CoreDataHelper *dataHelper;
 }
 @property (weak, nonatomic) IBOutlet UIButton *cancelBtn;
 //The label to show which step we are : Configurate the sofa or search the device
@@ -99,6 +102,22 @@
     _firstConfig = [[SmartFirstConfig alloc]init];
     _firstConfig.fristConfigDelegate = self;
     
+    // Establish Core Data
+    dataHelper = [[CoreDataHelper alloc] init];
+    dataHelper.entityName = @"WifiInfo";
+    dataHelper.defaultSortAttribute = @"ssid";
+    // Setup data
+    [dataHelper setupCoreData];
+
+    
+    /**
+     *  just for a test
+     *
+     *  @param getToNextVC
+     *
+     *  @return
+     */
+    [self saveWifiInfo];
      [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO ];
     
     //首次配置
@@ -333,6 +352,10 @@
 
         if ([_globalSocket.message isEqualToString:@"连接成功"]) {
             self.progressDescription.text = @"连接成功";
+            
+            //save this wifiinfo in database
+            [self saveWifiInfo];
+            
             _searchTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(getToNextVC) userInfo:nil repeats:YES];
         }
         else
@@ -341,6 +364,53 @@
             [self deallocTimer];
         }
     }
+}
+
+- (void)saveWifiInfo{
+    // Surround the "add" functionality with undo grouping
+    WifiInfo *wifiInfo = (WifiInfo *)[dataHelper newObject];
+    NSUndoManager *manager = dataHelper.context.undoManager;
+    [manager beginUndoGrouping];
+    
+    wifiInfo.ip = @"192.168.1.107";
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    wifiInfo.port = [f numberFromString:@"8080"];
+    wifiInfo.ssid = @"TP-Link107";
+    wifiInfo.psd = @"107107107";
+    wifiInfo.connectionTime = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+    wifiInfo.state = [f numberFromString:@"1"];
+    
+    // Test listing all FailedBankInfos from the store
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSError *error;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"WifiInfo"
+                                              inManagedObjectContext:dataHelper.context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [dataHelper.context executeFetchRequest:fetchRequest error:&error];
+    for (WifiInfo *res in fetchedObjects) {
+        NSLog(@"-------------------");
+        NSLog(@"ip: %@", res.ip);
+        NSLog(@"port: %@", res.port.stringValue);
+        NSLog(@"ssid: %@", res.ssid);
+        NSLog(@"psd: %@", res.psd);
+        NSLog(@"connectionTime: %@", res.connectionTime);
+        NSLog(@"state: %@", res.state);
+    }
+
+//    wifiInfo.ip = [MBNonEmptyString(_allMacArray[0][@"Mip"]) componentsSeparatedByString:@"`"][1];
+//    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+//    f.numberStyle = NSNumberFormatterDecimalStyle;
+//    wifiInfo.port = [f numberFromString: [MBNonEmptyString(_allMacArray[0][@"cInfo"]) componentsSeparatedByString:@"`"][1]];
+//    wifiInfo.ssid = self.wifiName;
+//    wifiInfo.psd = self.staPwd;
+//    wifiInfo.connectionTime = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
+//    wifiInfo.state = [f numberFromString:@"1"];
+    
+    
+    [manager endUndoGrouping];
+    [manager setActionName:@"Add"];
+    [dataHelper save];
 }
 
 @end

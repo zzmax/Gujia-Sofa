@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="i9e-ka-4D5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dQ1-eA-Rkv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Login Note View Controller-->
         <scene sceneID="PYP-LS-MnO">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="XMX-fm-BLz" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginNoteViewController" wantsFullScreenLayout="YES" id="XMX-fm-BLz" customClass="LoginNoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="row-dt-eH6"/>
                         <viewControllerLayoutGuide type="bottom" id="3Ip-di-9i6"/>
@@ -144,10 +144,10 @@
                                     <action selector="startStopReading:" destination="x25-BR-Sot" eventType="touchUpInside" id="X94-TP-Okc"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f5n-fM-GTy">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f5n-fM-GTy">
                                 <rect key="frame" x="36" y="124" width="342" height="454"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C2a-QM-Wnx">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C2a-QM-Wnx">
                                         <rect key="frame" x="51" y="69" width="240" height="316"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="280" verticalHuggingPriority="255" misplaced="YES" text="Scanning for QR Code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="377" translatesAutoresizingMaskIntoConstraints="NO" id="rtG-9e-b0F">
@@ -696,7 +696,7 @@
         <!--Nav1 View Controller-->
         <scene sceneID="R0t-xt-np7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i9e-ka-4D5" customClass="Nav1ViewController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Nav1ViewController" automaticallyAdjustsScrollViewInsets="NO" id="i9e-ka-4D5" customClass="Nav1ViewController" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Aej-s2-ikM">
@@ -706,9 +706,6 @@
                         <color key="barTintColor" red="0.072587820080000004" green="0.73144642110000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="XMX-fm-BLz" kind="relationship" relationship="rootViewController" id="PpQ-1a-rgH"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Lx-aW-w6A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -745,6 +742,6 @@
         <image name="image_button_gray.png" width="330" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="98i-MD-5yK"/>
+        <segue reference="Sd0-Rb-2Wy"/>
     </inferredMetricsTieBreakers>
 </document>

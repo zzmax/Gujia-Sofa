@@ -8,8 +8,15 @@
 
 #import "AppDelegate.h"
 #import "Nav1ViewController.h"
-#import "RootViewController.h"
+#import "Nav2ViewController.h"
+#import "LoginNoteViewController.h"
 #import "Utility.h"
+#import "CoreDataHelper.h"
+#import "WifiInfo.h"
+#import "User.h"
+#import "UsersCreationViewController.h"
+#import "CurrentUser.h"
+#import "NavigationViewController.h"
 
 @interface AppDelegate ()
 
@@ -32,12 +39,11 @@
 {
     //launch with notification
      [launchOptions valueForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.window.backgroundColor = [UIColor whiteColor];
-//    RootViewController *root = [[RootViewController alloc] init];
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:root];
-//
-//    Nav1ViewController *nav = [[Nav1ViewController alloc] initWithRootViewController:root];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [self setRootViewController];
+   
     
     // Override point for customization after application launch.
     
@@ -104,6 +110,69 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+/**
+ *  choose which view controller as the root view controller
+ */
+-(void)setRootViewController{
+
+    if ([self findDataInDataBase:@"WifiInfo" andDefaultSortAttr:@"ssid"]== 0) {
+        LoginNoteViewController *loginNoteVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginNoteViewController"];
+        
+        Nav1ViewController *nav = [[Nav1ViewController alloc]initWithRootViewController:loginNoteVC];
+        nav.navigationBarHidden = NO;
+        self.window.rootViewController = nav;
+        
+    }
+    else if([self findDataInDataBase:@"User" andDefaultSortAttr:@"userName"]== 0){
+        UsersCreationViewController *userCreationVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
+        
+        Nav1ViewController *nav = [[Nav1ViewController alloc]initWithRootViewController:userCreationVC];
+        nav.navigationBarHidden = NO;
+        self.window.rootViewController = nav;
+    }
+    else
+    {
+        [self findCurrentUserInDataBase];
+        NavigationViewController *navVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"NavigationViewController"];
+        
+        Nav2ViewController *nav = [[Nav2ViewController alloc]initWithRootViewController:navVC];
+        nav.navigationBarHidden = NO;
+        self.window.rootViewController = nav;
+
+    }
+}
+
+-(int)findDataInDataBase:(NSString *)anEntityName andDefaultSortAttr:(NSString *)anAttr {
+    // Establish Core Data
+    CoreDataHelper * dataHelper = [[CoreDataHelper alloc] init];
+    dataHelper.entityName = anEntityName;
+    dataHelper.defaultSortAttribute = anAttr;
+    // Setup data
+    [dataHelper setupCoreData];
+    
+    // Test listing all FailedBankInfos from the store
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSError *error;
+    NSEntityDescription *entity = [NSEntityDescription entityForName:anEntityName
+                                              inManagedObjectContext:dataHelper.context];
+    [fetchRequest setEntity:entity];
+     NSArray *fetchedObjects = [dataHelper.context executeFetchRequest:fetchRequest error:&error];
+    return (int)fetchedObjects.count;
+}
+
+-(void)findCurrentUserInDataBase{
+    // Establish Core Data
+    CoreDataHelper * dataHelper = [[CoreDataHelper alloc] init];
+    dataHelper.entityName = @"User";
+    dataHelper.defaultSortAttribute = @"userName";
+    // Setup data
+    [dataHelper setupCoreData];
+    
+    [dataHelper fetchItemsMatching:@"1" forAttribute:@"isCurrentUser" sortingBy:nil];
+    User *aUser = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
+    CurrentUser *_currentUser = [CurrentUser staticCurrentUser];
+    [_currentUser setCurrentUser:aUser];
+}
 
 #pragma mark - Core Data stack
 //

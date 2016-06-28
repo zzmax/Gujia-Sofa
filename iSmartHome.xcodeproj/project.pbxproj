@@ -57,6 +57,8 @@
 		840F2A291C1533A40083833B /* image_small_button_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A051C1533A40083833B /* image_small_button_right@2x.png */; };
 		840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 840F2A061C1533A40083833B /* image_small_button_right@3x.png */; };
 		8410D8181D1967A60078F855 /* SmartMlccUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8410D8171D1967A60078F855 /* SmartMlccUtil.mm */; };
+		841273C21D2140E900C29785 /* WifiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 841273C01D2140E900C29785 /* WifiInfo.m */; };
+		841273C61D220A1D00C29785 /* WifiInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 841273C51D220A1D00C29785 /* WifiInfo+CoreDataProperties.m */; };
 		8413D2981C4687FD0083CC92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D2971C4687FD0083CC92 /* QuartzCore.framework */; };
 		8413D29B1C46886B0083CC92 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D29A1C46886B0083CC92 /* Accelerate.framework */; };
 		8413D2EE1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8413D2EC1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m */; };
@@ -157,7 +159,7 @@
 		8458E2B51C06F6D3009D0772 /* icon_temp_signal_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E2591C06F6D2009D0772 /* icon_temp_signal_1.png */; };
 		8458E2B61C06F6D3009D0772 /* icon_temp_signal_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25A1C06F6D2009D0772 /* icon_temp_signal_1@2x.png */; };
 		8458E2B71C06F6D3009D0772 /* icon_temp_signal_1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */; };
-		8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E2BC1C0B35AC009D0772 /* RootViewController.m */; };
+		8458E2BD1C0B35AC009D0772 /* LoginNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E2BC1C0B35AC009D0772 /* LoginNoteViewController.m */; };
 		84639E8D1C45FE23006D9064 /* CurrentUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 84639E8C1C45FE23006D9064 /* CurrentUser.m */; };
 		8475CDD41CDCBBF300485851 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */; };
 		847D6A411D196D18004BF25A /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 847D6A361D196D18004BF25A /* AsyncSocket.m */; };
@@ -398,6 +400,12 @@
 		840F2A061C1533A40083833B /* image_small_button_right@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image_small_button_right@3x.png"; sourceTree = "<group>"; };
 		8410D8161D1967A60078F855 /* SmartMlccUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartMlccUtil.h; sourceTree = "<group>"; };
 		8410D8171D1967A60078F855 /* SmartMlccUtil.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SmartMlccUtil.mm; sourceTree = "<group>"; };
+		841273BC1D2137F300C29785 /* iSmartHome 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iSmartHome 3.xcdatamodel"; sourceTree = "<group>"; };
+		841273BF1D2140E900C29785 /* WifiInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiInfo.h; sourceTree = "<group>"; };
+		841273C01D2140E900C29785 /* WifiInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiInfo.m; sourceTree = "<group>"; };
+		841273C31D2209C500C29785 /* iSmartHome 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iSmartHome 4.xcdatamodel"; sourceTree = "<group>"; };
+		841273C41D220A1D00C29785 /* WifiInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WifiInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
+		841273C51D220A1D00C29785 /* WifiInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WifiInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
 		8413D2971C4687FD0083CC92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8413D29A1C46886B0083CC92 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8413D2EB1C468CEA0083CC92 /* HealthConditionTrendencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthConditionTrendencyViewController.h; sourceTree = "<group>"; };
@@ -502,7 +510,7 @@
 		8458E2591C06F6D2009D0772 /* icon_temp_signal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_temp_signal_1.png; sourceTree = "<group>"; };
 		8458E25A1C06F6D2009D0772 /* icon_temp_signal_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_1@2x.png"; sourceTree = "<group>"; };
 		8458E25B1C06F6D2009D0772 /* icon_temp_signal_1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_temp_signal_1@3x.png"; sourceTree = "<group>"; };
-		8458E2BC1C0B35AC009D0772 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		8458E2BC1C0B35AC009D0772 /* LoginNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginNoteViewController.m; sourceTree = "<group>"; };
 		84639E8B1C45FE23006D9064 /* CurrentUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentUser.h; sourceTree = "<group>"; };
 		84639E8C1C45FE23006D9064 /* CurrentUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentUser.m; sourceTree = "<group>"; };
 		8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
@@ -774,7 +782,7 @@
 		84D155851C1FFD1500405915 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		84E18DFE1C1010D000213372 /* SexSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SexSwitchCell.h; sourceTree = "<group>"; };
 		84E18DFF1C1010D000213372 /* SexSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SexSwitchCell.m; sourceTree = "<group>"; };
-		84E18E021C10137900213372 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		84E18E021C10137900213372 /* LoginNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginNoteViewController.h; sourceTree = "<group>"; };
 		84E18E031C10139900213372 /* FirstLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLogInViewController.h; sourceTree = "<group>"; };
 		84E18E041C10139900213372 /* QRCodeScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeScanViewController.h; sourceTree = "<group>"; };
 		84E18E051C10139900213372 /* QRCodeScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeScanViewController.m; sourceTree = "<group>"; };
@@ -905,8 +913,8 @@
 				84E18E071C10139900213372 /* RegisterFirstViewController.m */,
 				84E18E081C10139900213372 /* RegisterLastViewController.h */,
 				84E18E091C10139900213372 /* RegisterLastViewController.m */,
-				84E18E021C10137900213372 /* RootViewController.h */,
-				8458E2BC1C0B35AC009D0772 /* RootViewController.m */,
+				84E18E021C10137900213372 /* LoginNoteViewController.h */,
+				8458E2BC1C0B35AC009D0772 /* LoginNoteViewController.m */,
 				8425CF2A1C16A106007D964D /* UsersCreationViewController.h */,
 				8425CF2B1C16A106007D964D /* UsersCreationViewController.m */,
 				84E26D6D1C0D4ADE00B2E429 /* UserInfoRegisterViewController.h */,
@@ -1495,6 +1503,10 @@
 		84AA4BC21C43EE2900EE4388 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				841273C41D220A1D00C29785 /* WifiInfo+CoreDataProperties.h */,
+				841273C51D220A1D00C29785 /* WifiInfo+CoreDataProperties.m */,
+				841273BF1D2140E900C29785 /* WifiInfo.h */,
+				841273C01D2140E900C29785 /* WifiInfo.m */,
 				84AA4BC31C43EF6C00EE4388 /* User+CoreDataProperties.h */,
 				84AA4BC41C43EF6C00EE4388 /* User+CoreDataProperties.m */,
 				84AA4BC51C43EF6C00EE4388 /* User.h */,
@@ -2137,6 +2149,7 @@
 				84C8BBE11C47489E0038D4C3 /* CPTUtilities.m in Sources */,
 				84C8BBC81C47489E0038D4C3 /* CPTNumericData.m in Sources */,
 				84C8BBDB1C47489E0038D4C3 /* CPTTextLayer.m in Sources */,
+				841273C61D220A1D00C29785 /* WifiInfo+CoreDataProperties.m in Sources */,
 				84C8BBB31C47489E0038D4C3 /* CPTFunctionDataSource.m in Sources */,
 				84C8BB8D1C47489E0038D4C3 /* _CPTAnimationCGSizePeriod.m in Sources */,
 				847D6A421D196D18004BF25A /* GCDAsyncSocket.m in Sources */,
@@ -2162,6 +2175,7 @@
 				84C8BBBB1C47489E0038D4C3 /* CPTLayer.m in Sources */,
 				84C8BBBF1C47489E0038D4C3 /* CPTLimitBand.m in Sources */,
 				84C8BB9B1C47489E0038D4C3 /* _CPTSlateTheme.m in Sources */,
+				841273C21D2140E900C29785 /* WifiInfo.m in Sources */,
 				8482CE141C2A84B100F9608B /* WeightResultViewController.m in Sources */,
 				84C8BB901C47489E0038D4C3 /* _CPTAnimationTimingFunctions.m in Sources */,
 				84C8BBD21C47489E0038D4C3 /* CPTPlotAreaFrame.m in Sources */,
@@ -2184,7 +2198,7 @@
 				840E44931C25227C0013476F /* GlobalSocket.m in Sources */,
 				84C8BB8A1C47489E0038D4C3 /* _CPTAnimationCGFloatPeriod.m in Sources */,
 				84C8BB8B1C47489E0038D4C3 /* _CPTAnimationCGPointPeriod.m in Sources */,
-				8458E2BD1C0B35AC009D0772 /* RootViewController.m in Sources */,
+				8458E2BD1C0B35AC009D0772 /* LoginNoteViewController.m in Sources */,
 				84C8BBA61C47489E0038D4C3 /* CPTAxisLabelGroup.m in Sources */,
 				84C8BB8F1C47489E0038D4C3 /* _CPTAnimationPlotRangePeriod.m in Sources */,
 				84C8BB9C1C47489E0038D4C3 /* _CPTStocksTheme.m in Sources */,
@@ -2505,10 +2519,12 @@
 		5FB56D031BDDFF75005D80AA /* iSmartHome.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				841273C31D2209C500C29785 /* iSmartHome 4.xcdatamodel */,
+				841273BC1D2137F300C29785 /* iSmartHome 3.xcdatamodel */,
 				84A950091C87E2500087D211 /* iSmartHome 2.xcdatamodel */,
 				5FB56D041BDDFF75005D80AA /* iSmartHome.xcdatamodel */,
 			);
-			currentVersion = 84A950091C87E2500087D211 /* iSmartHome 2.xcdatamodel */;
+			currentVersion = 841273C31D2209C500C29785 /* iSmartHome 4.xcdatamodel */;
 			name = iSmartHome.xcdatamodeld;
 			path = iSmartHome/iSmartHome.xcdatamodeld;
 			sourceTree = "<group>";

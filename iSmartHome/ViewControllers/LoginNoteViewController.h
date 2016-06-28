@@ -10,6 +10,6 @@
 #import "Utility.h"
 #import "ConstraintMacros.h"
 
-@interface RootViewController : UIViewController
+@interface LoginNoteViewController : UIViewController
 
 @end
