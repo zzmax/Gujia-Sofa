@@ -123,7 +123,7 @@
         self.window.rootViewController = nav;
         
     }
-    else if([self findDataInDataBase:@"User" andDefaultSortAttr:@"userName"]== 0){
+    else if([self findDataInDataBase:@"User" andDefaultSortAttr:@"userName"]== 0 || [self findCurrentUserInDataBase] == 0){
         UsersCreationViewController *userCreationVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
         
         Nav1ViewController *nav = [[Nav1ViewController alloc]initWithRootViewController:userCreationVC];
@@ -132,7 +132,6 @@
     }
     else
     {
-        [self findCurrentUserInDataBase];
         NavigationViewController *navVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"NavigationViewController"];
         
         Nav2ViewController *nav = [[Nav2ViewController alloc]initWithRootViewController:navVC];
@@ -160,7 +159,7 @@
     return (int)fetchedObjects.count;
 }
 
--(void)findCurrentUserInDataBase{
+-(int)findCurrentUserInDataBase{
     // Establish Core Data
     CoreDataHelper * dataHelper = [[CoreDataHelper alloc] init];
     dataHelper.entityName = @"User";
@@ -170,8 +169,15 @@
     
     [dataHelper fetchItemsMatching:@"1" forAttribute:@"isCurrentUser" sortingBy:nil];
     User *aUser = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
-    CurrentUser *_currentUser = [CurrentUser staticCurrentUser];
-    [_currentUser setCurrentUser:aUser];
+    if (!aUser) {
+        return 0;
+    }
+    else
+    {
+        CurrentUser *_currentUser = [CurrentUser staticCurrentUser];
+        [_currentUser setCurrentUser:aUser];
+    }
+    return 1;
 }
 
 #pragma mark - Core Data stack
