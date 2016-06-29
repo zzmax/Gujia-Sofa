@@ -27,14 +27,6 @@
 
 @implementation UsersCreationViewController
 
-//-(void) viewWillAppear:(BOOL)animated
-//{
-//    if (self.navTitle == nil) {
-//        self.navTitle = @"创建用户";
-//    }
-//    self.navigationItem.title = self.navTitle;
-////    self.navigationItem.titleView
-//}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,7 +38,9 @@
     if (self.navTitle == nil) {
         self.navTitle = @"创建用户";
     }
-    self.navigationItem.title = self.navTitle;
+    [self.navigationItem setTitle: self.navTitle];
+    self.navigationItem.titleView.hidden = NO;
+    
     //set title color
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     [self.view bringSubviewToFront:self.plusUser];

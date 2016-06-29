@@ -143,19 +143,16 @@
 
 -(void)changeRootViewController:(UIViewController *)aVC
 {
-    Nav1ViewController *nav = [[Nav1ViewController alloc]initWithRootViewController:aVC];
+    Nav2ViewController *nav = [[Nav2ViewController alloc]initWithRootViewController:aVC];
     nav.navigationBarHidden = NO;
-
     if (!self.window.rootViewController) {
         self.window.rootViewController = nav;
         return;
     }
     
-    UIView *snapShot = [self.window snapshotViewAfterScreenUpdates:YES];
+    UIView *snapShot = [self.window snapshotViewAfterScreenUpdates:NO];
     
     [nav.view addSubview:snapShot];
-    
-    self.window.rootViewController = nav;
     
     [UIView animateWithDuration:0.5 animations:^{
         snapShot.layer.opacity = 0;
@@ -163,6 +160,8 @@
     } completion:^(BOOL finished) {
         [snapShot removeFromSuperview];
     }];
+    self.window.rootViewController = nav;
+    
 }
 
 -(int)findDataInDataBase:(NSString *)anEntityName andDefaultSortAttr:(NSString *)anAttr {

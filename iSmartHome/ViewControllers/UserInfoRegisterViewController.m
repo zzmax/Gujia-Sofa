@@ -87,7 +87,7 @@
     if (self.navTitle == nil) {
         self.navTitle = @"创建用户";
     }
-    self.navigationItem.title = self.navTitle;
+    [self.navigationItem setTitle: self.navTitle];
     
     //set view mode
     if (_currentUser.userName == nil || [self.navTitle isEqualToString:@"创建用户"]) {
@@ -713,7 +713,6 @@
             
             AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [app changeRootViewController:userChangeVC];
-
         }
     }else
     {
