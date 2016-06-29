@@ -601,8 +601,15 @@
 - (void)modifyCurrentUser
 {
     [dataHelper fetchItemsMatching:_userNameTF.text forAttribute:@"userName" sortingBy:nil];
+    if (!_userNameTF.text || [_userNameTF.text isEqualToString:@""])
+    {
+        [utility setAlert:@"错误" message:@"请输入名字！"];
+        [self presentViewController:utility.anAlert animated:YES completion:nil];
+        NSLog(@"Error: Input a name.");
+        
+    }
     //if we don't change the user name or if we've changed the name and after a second we changed it back
-    if (!_didUserNameChanged || [_currentUser.userName isEqualToString:_userNameTF.text]) {
+    else if (!_didUserNameChanged || [_currentUser.userName isEqualToString:_userNameTF.text]) {
         if (dataHelper.fetchedResultsController.fetchedObjects.count == 1) {
             User *user = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
             [self setupNewUser:user];
