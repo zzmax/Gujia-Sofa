@@ -36,18 +36,47 @@
 
 - (void)setAlert: (NSString *)aTitle message: (NSString *)aMsg
 {
+    
     _anAlert = [UIAlertController alertControllerWithTitle:aTitle
                                                             message:aMsg
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
+        UIAlertAction* confirmAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action)
+                                        {
+                                            if ([aTitle isEqualToString:@"删除用户"])
+                                            {
+                                                if ([self.utilityDelegateDelegate respondsToSelector:@selector(deleteUserAction:)]) {
+                                                    [self.utilityDelegateDelegate deleteUserAction:1];
+                                                }
+                                            }
+                                        }];
+        
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * action) {
+                                                                 if ([aTitle isEqualToString:@"删除用户"])
+                                                                 {
+                                                                     if ([self.utilityDelegateDelegate respondsToSelector:@selector(deleteUserAction:)])
+                                                                     {
+                                                                         [self.utilityDelegateDelegate deleteUserAction:0];
+                                                                     }
+                                                                 }
+                                                             }];
+
     
-    [_anAlert addAction:defaultAction];
+    [_anAlert addAction:confirmAction];
+    [_anAlert addAction:cancelAction];
+
 }
+
 
 - (UIImage*)loadPhotoForUser:(NSString *)aName
 {
+    if (!aName) {
+        return [UIImage imageNamed: @"background_small_white_circle"];
+    }
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                          NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
