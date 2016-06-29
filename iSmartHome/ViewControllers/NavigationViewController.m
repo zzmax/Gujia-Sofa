@@ -18,11 +18,13 @@
 #import "UserInfoRegisterViewController.h"
 #import "HealthConditionTrendencyViewController.h"
 #import "HealthReminderViewController.h"
+#import "Utility.h"
 
 @interface NavigationViewController()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLbl;
 @property (weak, nonatomic) IBOutlet UIImageView *userPhoto;
 @property CurrentUser *currentUser;
+@property Utility *utility;
 
 @end
 
@@ -50,6 +52,19 @@
     photoTapRecognizer.delegate = self;
     self.userPhoto.userInteractionEnabled = YES;
     [self.userPhoto addGestureRecognizer:photoTapRecognizer];
+    
+   
+    _currentUser = [CurrentUser staticCurrentUser];
+    _userNameLbl.text = _currentUser.userName;
+    _utility = [[Utility alloc]init];
+    _userPhoto.image = [_utility loadPhotoForUser:_currentUser.userName];
+    
+    //set image to a circle
+    self.userPhoto.layer.cornerRadius = self.userPhoto.frame.size.width/2;
+    self.userPhoto.layer.masksToBounds = YES;
+    self.userPhoto.layer.borderWidth = 3.0f;
+    self.userPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,8 +76,6 @@
     [self.navigationController.navigationBar
      setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
-    _currentUser = [CurrentUser staticCurrentUser];
-    _userNameLbl.text = _currentUser.userName;
 }
 
 #pragma mark - table view

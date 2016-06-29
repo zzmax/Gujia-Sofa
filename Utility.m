@@ -46,5 +46,21 @@
     [_anAlert addAction:defaultAction];
 }
 
+- (UIImage*)loadPhotoForUser:(NSString *)aName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSMutableString *appendString = [NSMutableString string];
+    [appendString appendString:aName];
+    [appendString appendString:@".png"];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:
+                      [NSString stringWithString: appendString] ];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    if (!image) {
+        return [UIImage imageNamed: @"background_small_white_circle"];
+    }
+    return image;
+}
 @end
 

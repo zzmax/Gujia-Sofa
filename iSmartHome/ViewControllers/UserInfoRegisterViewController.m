@@ -47,7 +47,7 @@
 //NO =>  ModificationMode
 @property BOOL isCreationMode;
 @property BOOL didUserNameChanged;
-@property UIPopoverController *photoTakeWayPopover;//照片popover
+@property UIPopoverController *photoPopover;//照片popover
 @property int indexViewControllerToPresent;
 @end
 
@@ -122,6 +122,7 @@
     }
     
     _userPhoto = [[UIImageView alloc]init];
+    _userPhoto.image = [self loadCurrentUserPhoto];
 }
 
 
@@ -173,10 +174,10 @@
        
         //set userName and it's photo
         if (indexPath.row == 0) {
-            if (!_userPhoto.image) {
-                UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
-                _userPhoto.image = image;
-            }
+//            if (!_userPhoto.image) {
+//                UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
+//                _userPhoto.image = image;
+//            }
             
             //add a tap gesture recognizer to take photo for user
             UITapGestureRecognizer *photoTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showActionSheetForTakingPicture:)];
@@ -660,24 +661,19 @@
                                                                        preferredStyle: UIAlertControllerStyleActionSheet];
     [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // Handle Take Photo here
-        if (_photoTakeWayPopover) return;
+        if (_photoPopover) return;
         _indexViewControllerToPresent = 1;
         [self presentViewController];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"从照片中选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // Handle Choose Existing Photo here
-        if (_photoTakeWayPopover) return;
+        if (_photoPopover) return;
         _indexViewControllerToPresent = 2;
         [self presentViewController];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}]];
     
     alertController.modalPresentationStyle = UIModalPresentationPopover;
-//    
-//    UIPopoverPresentationController * popover = alertController.popoverPresentationController;
-//    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
-//    popover.sourceView = self.userPhoto;
-//    popover.sourceRect = self.userPhoto.bounds;
     
     [self presentViewController: alertController animated: YES completion: nil];
 
@@ -699,9 +695,9 @@
     }
     else if(_indexViewControllerToPresent == 1)
     {
-        _photoTakeWayPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
-        _photoTakeWayPopover.delegate = self;
-        [_photoTakeWayPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        _photoPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+        _photoPopover.delegate = self;
+        [_photoPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
     else if(_indexViewControllerToPresent == 2)
     {
@@ -715,9 +711,9 @@
         
         if (authStatus == ALAuthorizationStatusAuthorized)
         {
-            _photoTakeWayPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
-            _photoTakeWayPopover.delegate = self;
-            [_photoTakeWayPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            _photoPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+            _photoPopover.delegate = self;
+            [_photoPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         }
         else if (authStatus == ALAuthorizationStatusNotDetermined)
         {
@@ -726,9 +722,9 @@
                 // If authorized, catch the final iteration and display popover
                 if (group == nil)
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        _photoTakeWayPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
-                        _photoTakeWayPopover.delegate = self;
-                        [_photoTakeWayPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                        _photoPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+                        _photoPopover.delegate = self;
+                        [_photoPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
                     });
                 *stop = YES;
             } failureBlock:nil];
@@ -781,10 +777,12 @@
     if (image)
     {
         if (_indexViewControllerToPresent == 1) {
-            // Save the image
+            // Save the image to photo library
             UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
         }
         _userPhoto.image = image;
+        //save the image as a file in app
+        [self saveImageAsAPNG:image];
         [_tableView reloadData];
     }
     
@@ -801,6 +799,29 @@
         NSLog(@"Error writing to photo album: %@", error.localizedFailureReason);
 }
 
+-(void)saveImageAsAPNG:(UIImage*)image
+{
+    if (image != nil)
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                             NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        NSMutableString *appendString = [NSMutableString string];
+        [appendString appendString:_currentUser.userName];
+        [appendString appendString:@".png"];
+        NSString* path = [documentsDirectory stringByAppendingPathComponent:
+                          [NSString stringWithString: appendString] ];
+        NSData* data = UIImagePNGRepresentation(image);
+        [data writeToFile:path atomically:YES];
+    }
+}
+
+- (UIImage*)loadCurrentUserPhoto
+{
+   return [utility loadPhotoForUser:_currentUser.userName];
+}
+
 // Dismiss picker
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
@@ -813,8 +834,8 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     else
     {
-        [_photoTakeWayPopover dismissPopoverAnimated:YES];
-        _photoTakeWayPopover = nil;
+        [_photoPopover dismissPopoverAnimated:YES];
+        _photoPopover = nil;
     }
 }
 
