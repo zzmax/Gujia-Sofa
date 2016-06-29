@@ -359,7 +359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WdJ-JF-0dJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2699" y="799"/>
+            <point key="canvasLocation" x="2698" y="633"/>
         </scene>
         <!--Wifi Config Note View Controller-->
         <scene sceneID="QQf-yB-jGM">
@@ -742,6 +742,6 @@
         <image name="image_button_gray.png" width="330" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sd0-Rb-2Wy"/>
+        <segue reference="98i-MD-5yK"/>
     </inferredMetricsTieBreakers>
 </document>

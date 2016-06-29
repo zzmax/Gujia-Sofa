@@ -16,6 +16,8 @@
 #import "UsersCreationViewController.h"
 #import "GlobalSocket.h"
 #import "Utility.h"
+@import AssetsLibrary;
+@import MobileCoreServices;
 
 
 @interface UserInfoRegisterViewController()
@@ -45,6 +47,8 @@
 //NO =>  ModificationMode
 @property BOOL isCreationMode;
 @property BOOL didUserNameChanged;
+@property UIPopoverController *photoTakeWayPopover;//照片popover
+@property int indexViewControllerToPresent;
 @end
 
 @implementation UserInfoRegisterViewController
@@ -117,6 +121,7 @@
         [deleteUserBtn addTarget:self action:@selector(deleteUser) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    _userPhoto = [[UIImageView alloc]init];
 }
 
 
@@ -168,13 +173,22 @@
        
         //set userName and it's photo
         if (indexPath.row == 0) {
+            if (!_userPhoto.image) {
+                UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
+                CGFloat widthScale = 90/image.size.width;
+                CGFloat heightScale = 90/image.size.height;
+                _userPhoto.image = image;
+                //change the size of the imageview in cell to (90,90)
+                cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+            }
             
-            UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
-            CGFloat widthScale = 90/image.size.width;
-            CGFloat heightScale = 90/image.size.height;
-            cell.imageView.image = image;
-            //change the size of the imageview in cell to (90,90)
-            cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+            //add a tap gesture recognizer to take photo for user
+            UITapGestureRecognizer *photoTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showActionSheetForTakingPicture:)];
+            photoTapRecognizer.delegate = self;
+            cell.imageView.userInteractionEnabled = YES;
+            [cell.imageView addGestureRecognizer:photoTapRecognizer];
+            
+            
             //set textField for userName
             _userNameTF = [[UITextField alloc] init];
             //set size and location
@@ -304,6 +318,7 @@
         switch (indexPath.row) {
             case 0:
                 _userNameTF.text = _currentUser.userName;
+                cell.imageView.image = _userPhoto.image;
                 break;
             case 1:
                 segmentedControl.selectedSegmentIndex = [_currentUser.sex intValue];
@@ -331,6 +346,7 @@
         switch (indexPath.row) {
             case 0:
                 _userNameTF.text = nil;
+                cell.imageView.image = _userPhoto.image;
                 break;
             case 1:
                 segmentedControl.selectedSegmentIndex = 0;
@@ -630,5 +646,172 @@
         [self.navigationController pushViewController:userChangeVC animated:YES];
     }
 }
+
+#pragma choose a picture or take a picture for user
+- (void)showActionSheetForTakingPicture:(UITapGestureRecognizer*)sender
+{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
+                                                                              message: nil
+                                                                       preferredStyle: UIAlertControllerStyleActionSheet];
+    [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // Handle Take Photo here
+        if (_photoTakeWayPopover) return;
+        _indexViewControllerToPresent = 1;
+        [self presentViewController];
+    }]];
+    [alertController addAction: [UIAlertAction actionWithTitle: @"从照片中选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // Handle Choose Existing Photo here
+        if (_photoTakeWayPopover) return;
+        _indexViewControllerToPresent = 2;
+        [self presentViewController];
+    }]];
+    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {}]];
+    
+    alertController.modalPresentationStyle = UIModalPresentationPopover;
+//    
+//    UIPopoverPresentationController * popover = alertController.popoverPresentationController;
+//    popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
+//    popover.sourceView = self.userPhoto;
+//    popover.sourceRect = self.userPhoto.bounds;
+    
+    [self presentViewController: alertController animated: YES completion: nil];
+
+}
+
+- (void)presentViewController
+{
+    // Create and initialize the picker
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.sourceType =
+                        _indexViewControllerToPresent == 1 ?UIImagePickerControllerSourceTypeCamera
+                            :UIImagePickerControllerSourceTypePhotoLibrary;
+    picker.allowsEditing = YES;
+    picker.delegate = self;
+
+    if (IS_IPHONE)
+    {
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+    else if(_indexViewControllerToPresent == 1)
+    {
+        _photoTakeWayPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+        _photoTakeWayPopover.delegate = self;
+        [_photoTakeWayPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else if(_indexViewControllerToPresent == 2)
+    {
+        // Workaround to an Apple crasher when asking for asset library authorization with a popover displayed
+        ALAssetsLibrary * assetsLibrary = [[ALAssetsLibrary alloc] init];
+        ALAuthorizationStatus authStatus;
+        if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_0)
+            authStatus = [ALAssetsLibrary authorizationStatus];
+        else
+            authStatus = ALAuthorizationStatusAuthorized;
+        
+        if (authStatus == ALAuthorizationStatusAuthorized)
+        {
+            _photoTakeWayPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+            _photoTakeWayPopover.delegate = self;
+            [_photoTakeWayPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        }
+        else if (authStatus == ALAuthorizationStatusNotDetermined)
+        {
+            // Force authorization
+            [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                // If authorized, catch the final iteration and display popover
+                if (group == nil)
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        _photoTakeWayPopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+                        _photoTakeWayPopover.delegate = self;
+                        [_photoTakeWayPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+                    });
+                *stop = YES;
+            } failureBlock:nil];
+        }
+
+    }
+}
+
+- (void)loadImageFromAssetURL:(NSURL *)assetURL into:(UIImage **)image
+{
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    
+    ALAssetsLibraryAssetForURLResultBlock resultsBlock = ^(ALAsset *asset)
+    {
+        ALAssetRepresentation *assetRepresentation = [asset defaultRepresentation];
+        CGImageRef cgImage = [assetRepresentation CGImageWithOptions:nil];
+        CFRetain(cgImage); // Thanks Oliver Drobnik
+        if (image) *image = [UIImage imageWithCGImage:cgImage];
+        CFRelease(cgImage);
+    };
+    
+    ALAssetsLibraryAccessFailureBlock failure = ^(NSError *__strong error)
+    {
+        NSLog(@"Error retrieving asset from url: %@", error.localizedFailureReason);
+    };
+    
+    [library assetForURL:assetURL resultBlock:resultsBlock failureBlock:failure];
+}
+
+// Update image and for iPhone, dismiss the controller
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    // Use the edited image if available
+    UIImage __autoreleasing *image = info[UIImagePickerControllerEditedImage];
+    
+    // If not, grab the original image
+    if (!image) image = info[UIImagePickerControllerOriginalImage];
+    
+    NSURL *assetURL = info[UIImagePickerControllerReferenceURL];
+    if (!image && !assetURL)
+    {
+        NSLog(@"Cannot retrieve an image from the selected item. Giving up.");
+    }
+    else if (!image)
+    {
+        NSLog(@"Retrieving from Assets Library");
+        [self loadImageFromAssetURL:assetURL into:&image];
+    }
+    
+    if (image)
+    {
+        if (_indexViewControllerToPresent == 1) {
+            // Save the image
+            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        }
+        _userPhoto.image = image;
+        [_tableView reloadData];
+    }
+    
+    [self performDismiss];
+}
+
+// Finished saving
+- (void)image:(UIImage *)image didFinishSavingWithError: (NSError *)error contextInfo:(void *)contextInfo
+{
+    // Handle the end of the image write process
+    if (!error)
+        NSLog(@"Image written to photo album");
+    else
+        NSLog(@"Error writing to photo album: %@", error.localizedFailureReason);
+}
+
+// Dismiss picker
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self performDismiss];
+}
+
+- (void)performDismiss
+{
+    if (IS_IPHONE)
+        [self dismissViewControllerAnimated:YES completion:nil];
+    else
+    {
+        [_photoTakeWayPopover dismissPopoverAnimated:YES];
+        _photoTakeWayPopover = nil;
+    }
+}
+
 
 @end

@@ -59,6 +59,7 @@
 		8410D8181D1967A60078F855 /* SmartMlccUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8410D8171D1967A60078F855 /* SmartMlccUtil.mm */; };
 		841273C21D2140E900C29785 /* WifiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 841273C01D2140E900C29785 /* WifiInfo.m */; };
 		841273C61D220A1D00C29785 /* WifiInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 841273C51D220A1D00C29785 /* WifiInfo+CoreDataProperties.m */; };
+		841273CB1D2283B200C29785 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841273CA1D2283B200C29785 /* AssetsLibrary.framework */; };
 		8413D2981C4687FD0083CC92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D2971C4687FD0083CC92 /* QuartzCore.framework */; };
 		8413D29B1C46886B0083CC92 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D29A1C46886B0083CC92 /* Accelerate.framework */; };
 		8413D2EE1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8413D2EC1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m */; };
@@ -406,6 +407,7 @@
 		841273C31D2209C500C29785 /* iSmartHome 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "iSmartHome 4.xcdatamodel"; sourceTree = "<group>"; };
 		841273C41D220A1D00C29785 /* WifiInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WifiInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
 		841273C51D220A1D00C29785 /* WifiInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WifiInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
+		841273CA1D2283B200C29785 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		8413D2971C4687FD0083CC92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8413D29A1C46886B0083CC92 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8413D2EB1C468CEA0083CC92 /* HealthConditionTrendencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthConditionTrendencyViewController.h; sourceTree = "<group>"; };
@@ -809,6 +811,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841273CB1D2283B200C29785 /* AssetsLibrary.framework in Frameworks */,
 				8475CDD41CDCBBF300485851 /* ExternalAccessory.framework in Frameworks */,
 				8413D29B1C46886B0083CC92 /* Accelerate.framework in Frameworks */,
 				8413D2981C4687FD0083CC92 /* QuartzCore.framework in Frameworks */,
@@ -888,6 +891,7 @@
 		5FB56D2D1BDE0010005D80AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				841273CA1D2283B200C29785 /* AssetsLibrary.framework */,
 				8475CDD31CDCBBF300485851 /* ExternalAccessory.framework */,
 				8413D29A1C46886B0083CC92 /* Accelerate.framework */,
 				8413D2971C4687FD0083CC92 /* QuartzCore.framework */,
