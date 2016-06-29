@@ -141,10 +141,7 @@
     {
         [self modifyCurrentUser];
     }
-    if (_userPhotoHasChanged) {
-        //save the image as a file in app
-        [self saveImageAsAPNG:_userPhoto.image];
-    }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -513,15 +510,32 @@
 #pragma mark - save data 
 - (IBAction)addItem: (UIButton *)sender
 {
-    //test the name if it has already been used
-    [dataHelper fetchItemsMatching:_userNameTF.text forAttribute:@"userName" sortingBy:nil];
-    if (dataHelper.fetchedResultsController.fetchedObjects.count > 0)
+    
+    if (!_userNameTF.text || [_userNameTF.text isEqualToString:@""])
     {
-        [utility setAlert:@"错误" message:@"已经有相同名字的用户。"];
+        [utility setAlert:@"错误" message:@"请输入名字！"];
         [self presentViewController:utility.anAlert animated:YES completion:nil];
-        NSLog(@"Error1: Many results for the same user.");
+        NSLog(@"Error: Input a name.");
+        
     }
+    else
+    {
+        //test the name if it has already been used
+        [dataHelper fetchItemsMatching:_userNameTF.text forAttribute:@"userName" sortingBy:nil];
+        if (dataHelper.fetchedResultsController.fetchedObjects.count > 0)
+        {
+            [utility setAlert:@"错误" message:@"已经有相同名字的用户。"];
+            [self presentViewController:utility.anAlert animated:YES completion:nil];
+            NSLog(@"Error1: Many results for the same user.");
+        }
+        else
+            [self saveUserInfo];
+    }
+    
+}
 
+-(void)saveUserInfo
+{
     
     // Surround the "add" functionality with undo grouping
     User *newUser = (User *)[dataHelper newObject];
@@ -594,6 +608,10 @@
             [self setupNewUser:user];
             [dataHelper save];
             [_currentUser setCurrentUser:user];
+            if (_userPhotoHasChanged) {
+                //save the image as a file in app
+                [self saveImageAsAPNG:_userPhoto.image];
+            }
         }
         else if (dataHelper.fetchedResultsController.fetchedObjects.count > 1)
         {
@@ -611,6 +629,10 @@
             [self setupNewUser:user];
             [dataHelper save];
             [_currentUser setCurrentUser:user];
+            if (_userPhotoHasChanged) {
+                //save the image as a file in app
+                [self saveImageAsAPNG:_userPhoto.image];
+            }
         }
         else if (dataHelper.fetchedResultsController.fetchedObjects.count > 0)
         {
