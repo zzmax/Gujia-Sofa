@@ -20,7 +20,7 @@
 @import MobileCoreServices;
 
 
-@interface UserInfoRegisterViewController()
+@interface UserInfoRegisterViewController()<UtilityDelegate>
 {
     CoreDataHelper *dataHelper;
     GlobalSocket *globalSocket;
@@ -71,6 +71,7 @@
     
     //initiate variable
     utility = [[Utility alloc]init];
+    utility.utilityDelegateDelegate = self;
     
     //add an observer to _userNameTF
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userNameDidChange:) name:UITextFieldTextDidChangeNotification object:_userNameTF];
@@ -645,11 +646,30 @@
 - (void)deleteUser
 {
 //    [dataHelper clearData];
-    [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
-    if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject]) {
+    [utility setAlert:@"删除用户" message:@"这将会删除用户所有数据，确认删除吗？"];
+    [self presentViewController:utility.anAlert animated:YES completion:nil];
+}
+
+/**
+ *  删除用户提示
+ *
+ *  @param alertView   <#alertView description#>
+ *  @param buttonIndex <#buttonIndex description#>
+ */
+-(void)deleteUserAction:(NSInteger)deleteOrNot
+{
+    if (deleteOrNot==1) {
+        [self removePhotoForCurrentUser];
+        [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
+        if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject])
+        {
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
-        userChangeVC.navTitle = @"家人健康信息";
-        [self.navigationController pushViewController:userChangeVC animated:YES];
+            userChangeVC.navTitle = @"家人健康信息";
+            [self.navigationController pushViewController:userChangeVC animated:YES];
+        }
+    }else
+    {
+        [self popView:(id)self.navigationItem.leftBarButtonItem];
     }
 }
 
@@ -820,6 +840,27 @@
 - (UIImage*)loadCurrentUserPhoto
 {
    return [utility loadPhotoForUser:_currentUser.userName];
+}
+
+- (void)removePhotoForCurrentUser
+{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
+    NSMutableString *appendString = [NSMutableString string];
+    [appendString appendString:_currentUser.userName];
+    [appendString appendString:@".png"];
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:appendString];
+    NSError *error;
+    BOOL success = [fileManager removeItemAtPath:filePath error:&error];
+    if (success) {
+//        UIAlertView *removedSuccessFullyAlert = [[UIAlertView alloc] initWithTitle:@"用户头像已移除" message:@"" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+//        [removedSuccessFullyAlert show];
+    }
+    else
+    {
+        NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
+    }
 }
 
 // Dismiss picker

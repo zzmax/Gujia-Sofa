@@ -57,7 +57,7 @@
     _currentUser = [CurrentUser staticCurrentUser];
     _userNameLbl.text = _currentUser.userName;
     _utility = [[Utility alloc]init];
-    _userPhoto.image = [_utility loadPhotoForUser:_currentUser.userName];
+    
     
     //set image to a circle
     self.userPhoto.layer.cornerRadius = self.userPhoto.frame.size.width/2;
@@ -75,7 +75,8 @@
     //set title to white color
     [self.navigationController.navigationBar
      setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    
+   
+    _userPhoto.image = [_utility loadPhotoForUser:_currentUser.userName];
 }
 
 #pragma mark - table view
