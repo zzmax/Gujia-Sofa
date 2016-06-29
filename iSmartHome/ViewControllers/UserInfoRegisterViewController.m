@@ -175,11 +175,7 @@
         if (indexPath.row == 0) {
             if (!_userPhoto.image) {
                 UIImage *image = [UIImage imageNamed: @"background_small_white_circle"];
-                CGFloat widthScale = 90/image.size.width;
-                CGFloat heightScale = 90/image.size.height;
                 _userPhoto.image = image;
-                //change the size of the imageview in cell to (90,90)
-                cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
             }
             
             //add a tap gesture recognizer to take photo for user
@@ -319,6 +315,15 @@
             case 0:
                 _userNameTF.text = _currentUser.userName;
                 cell.imageView.image = _userPhoto.image;
+                cell.imageView.layer.borderWidth = 20.0f;
+                cell.imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+                //change the size of the imageview in cell to (90,90)
+                CGFloat widthScale = 90/_userPhoto.image.size.width;
+                CGFloat heightScale = 90/_userPhoto.image.size.height;
+                cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+                //set image to a circle
+                cell.imageView.layer.cornerRadius = cell.imageView.image.size.width/2;
+                cell.imageView.layer.masksToBounds = YES;
                 break;
             case 1:
                 segmentedControl.selectedSegmentIndex = [_currentUser.sex intValue];
