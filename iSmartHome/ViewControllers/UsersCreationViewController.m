@@ -27,14 +27,22 @@
 
 @implementation UsersCreationViewController
 
-
+//-(void) viewWillAppear:(BOOL)animated
+//{
+//    if (self.navTitle == nil) {
+//        self.navTitle = @"创建用户";
+//    }
+//    self.navigationItem.title = self.navTitle;
+////    self.navigationItem.titleView
+//}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // show the naviagtion bar
-//    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBarHidden = NO;
     
     self.view.backgroundColor = BACKGROUND_COLOR;
+    
     if (self.navTitle == nil) {
         self.navTitle = @"创建用户";
     }

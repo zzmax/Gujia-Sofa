@@ -49,6 +49,7 @@
 @property BOOL didUserNameChanged;
 @property UIPopoverController *photoPopover;//照片popover
 @property int indexViewControllerToPresent;
+@property BOOL userPhotoHasChanged;
 @end
 
 @implementation UserInfoRegisterViewController
@@ -103,6 +104,7 @@
         ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
         [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
         _startBtn.titleLabel.textColor = [UIColor blackColor];
+//        _currentUser = nil;
     }
     else {
 //        _startBtn.hidden = YES;
@@ -138,6 +140,10 @@
     if (!_isCreationMode)
     {
         [self modifyCurrentUser];
+    }
+    if (_userPhotoHasChanged) {
+        //save the image as a file in app
+        [self saveImageAsAPNG:_userPhoto.image];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -316,16 +322,6 @@
         switch (indexPath.row) {
             case 0:
                 _userNameTF.text = _currentUser.userName;
-                cell.imageView.image = _userPhoto.image;
-                cell.imageView.layer.borderWidth = 20.0f;
-                cell.imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-                //change the size of the imageview in cell to (90,90)
-                CGFloat widthScale = 90/_userPhoto.image.size.width;
-                CGFloat heightScale = 90/_userPhoto.image.size.height;
-                cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-                //set image to a circle
-                cell.imageView.layer.cornerRadius = cell.imageView.image.size.width/2;
-                cell.imageView.layer.masksToBounds = YES;
                 break;
             case 1:
                 segmentedControl.selectedSegmentIndex = [_currentUser.sex intValue];
@@ -353,7 +349,6 @@
         switch (indexPath.row) {
             case 0:
                 _userNameTF.text = nil;
-                cell.imageView.image = _userPhoto.image;
                 break;
             case 1:
                 segmentedControl.selectedSegmentIndex = 0;
@@ -378,7 +373,19 @@
                 break;
         }
     }
-
+    if (indexPath.row == 0) {
+        cell.imageView.image = _userPhoto.image;
+        cell.imageView.layer.borderWidth = 20.0f;
+        cell.imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+        //change the size of the imageview in cell to (90,90)
+        CGFloat widthScale = 90/_userPhoto.image.size.width;
+        CGFloat heightScale = 90/_userPhoto.image.size.height;
+        cell.imageView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        //set image to a circle
+        cell.imageView.layer.cornerRadius = cell.imageView.image.size.width/2;
+        cell.imageView.layer.masksToBounds = YES;
+    }
+    
     return cell;
 }
 
@@ -544,6 +551,12 @@
         NSLog(@"Sex: %@", user.sex.stringValue);
         NSLog(@"isCurrentUser: %@", user.isCurrentUser);
     }
+    
+    if (_userPhotoHasChanged) {
+        //save the image as a file in app
+        [self saveImageAsAPNG:_userPhoto.image];
+    }
+    
     if ([globalSocket.message isEqualToString:@"连接成功"]) {
         [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
     }
@@ -566,6 +579,8 @@
     {
         return  YES;
     };
+    
+    
     return NO;
 }
 
@@ -666,6 +681,10 @@
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
             userChangeVC.navTitle = @"家人健康信息";
             [self.navigationController pushViewController:userChangeVC animated:YES];
+            
+            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [app changeRootViewController:userChangeVC];
+
         }
     }else
     {
@@ -801,8 +820,9 @@
             UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
         }
         _userPhoto.image = image;
-        //save the image as a file in app
-        [self saveImageAsAPNG:image];
+        //image has changed
+        _userPhotoHasChanged = YES;
+        
         [_tableView reloadData];
     }
     
@@ -828,7 +848,7 @@
         NSString *documentsDirectory = [paths objectAtIndex:0];
         
         NSMutableString *appendString = [NSMutableString string];
-        [appendString appendString:_currentUser.userName];
+        [appendString appendString:_userNameTF.text];
         [appendString appendString:@".png"];
         NSString* path = [documentsDirectory stringByAppendingPathComponent:
                           [NSString stringWithString: appendString] ];
@@ -839,8 +859,11 @@
 
 - (UIImage*)loadCurrentUserPhoto
 {
-   return [utility loadPhotoForUser:_currentUser.userName];
-}
+    if (!_isCreationMode) {
+        return [utility loadPhotoForUser:_currentUser.userName];
+    }
+    return [utility loadPhotoForUser:@""];
+   }
 
 - (void)removePhotoForCurrentUser
 {
