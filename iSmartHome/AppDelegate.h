@@ -23,6 +23,7 @@
 @property (nonatomic,strong ) User *registerUser;
 //
 -(NSDate *)stringToDate:(NSString *)inputString;
+-(void)changeRootViewController:(UIViewController *)aVC;
 //
 //- (void)saveContext;
 //- (NSURL *)applicationDocumentsDirectory;

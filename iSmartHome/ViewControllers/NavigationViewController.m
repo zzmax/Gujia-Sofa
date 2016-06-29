@@ -19,6 +19,8 @@
 #import "HealthConditionTrendencyViewController.h"
 #import "HealthReminderViewController.h"
 #import "Utility.h"
+#import "Nav1ViewController.h"
+#import "AppDelegate.h"
 
 @interface NavigationViewController()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLbl;
@@ -179,7 +181,9 @@
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
             userChangeVC.navTitle = @"家人健康信息";
             [self.navigationController pushViewController:userChangeVC animated:YES];
-
+            
+            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [app changeRootViewController:userChangeVC];
         }
         else
         {

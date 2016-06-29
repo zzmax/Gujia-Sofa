@@ -141,6 +141,30 @@
     }
 }
 
+-(void)changeRootViewController:(UIViewController *)aVC
+{
+    Nav1ViewController *nav = [[Nav1ViewController alloc]initWithRootViewController:aVC];
+    nav.navigationBarHidden = NO;
+
+    if (!self.window.rootViewController) {
+        self.window.rootViewController = nav;
+        return;
+    }
+    
+    UIView *snapShot = [self.window snapshotViewAfterScreenUpdates:YES];
+    
+    [nav.view addSubview:snapShot];
+    
+    self.window.rootViewController = nav;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        snapShot.layer.opacity = 0;
+        snapShot.layer.transform = CATransform3DMakeScale(1.5, 1.5, 1.5);
+    } completion:^(BOOL finished) {
+        [snapShot removeFromSuperview];
+    }];
+}
+
 -(int)findDataInDataBase:(NSString *)anEntityName andDefaultSortAttr:(NSString *)anAttr {
     // Establish Core Data
     CoreDataHelper * dataHelper = [[CoreDataHelper alloc] init];
