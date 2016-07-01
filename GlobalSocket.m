@@ -194,7 +194,7 @@ NSString* MBNonEmptyString(id obj){
  */
 -(void)startSendMessageTimer
 {
-    sendMessageTimer = [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(sendMessageInterval:) userInfo:nil repeats:YES ];
+    sendMessageTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(sendMessageInterval:) userInfo:nil repeats:YES ];
     
 }
 
@@ -250,14 +250,14 @@ NSString* MBNonEmptyString(id obj){
 //        [self initControlMessage];
 //        inputBuffer[4]=0x01;
 //        [self sendMessageDown:inputBuffer length:sendDataLength];
-        [self sendMessageDown:@"F1F10100017E"];
+        [self sendMessageDown:@"F1F101020100047E"];
     }
     else if (_btnS2)//SOFA 推杆降按键按下
     {
 //        [self initControlMessage];
 //        inputBuffer[4]=0x02;
 //        [self sendMessageDown:inputBuffer length:sendDataLength];
-        [self sendMessageDown:@"F1F10200027E"];
+        [self sendMessageDown:@"F1F101020200057E"];
     }
     else
     {
@@ -278,284 +278,363 @@ NSString* MBNonEmptyString(id obj){
 {
     NSString *ip = [sock connectedHost];
     uint16_t aPort = [sock connectedPort];
-    if ([ip isEqualToString:host] && port == aPort) {
+    NSString *command;
+    if ([ip isEqualToString:host] && port == aPort)
+    {
         NSString *result = [SmartMlccUtil getReturnCommand:data];
-        NSString *command = [SmartMlccUtil parseTcpCommandData:result];
-        NSLog(@"command=%@",command);
+        command = [SmartMlccUtil parseTcpCommandData:result];
+        NSLog(@"返回信息=%@",command);
     }
     
     [sock readDataWithTimeout:-1 tag:200];
-    NSString *str=@"返回信息:";
-    NSString *hexStr=@"";
-    int lengthReceiveMessage=(int)[data length];
-    unsigned char buffer[512];
-    hexStr = [NSString stringWithFormat:@"Length: %d ",lengthReceiveMessage];
-    str=[str stringByAppendingString:hexStr];
-    Byte *btemp=(Byte *)[data bytes];
     
-    for (int i =0; i<lengthReceiveMessage;i++)
-    {
-        buffer[i]=btemp[i];
-        hexStr = [NSString  stringWithFormat:@"0x%x ",buffer[i]];
-        str=[str stringByAppendingString:hexStr];
-    }
-    //    self.messageLabel.text =str;
-    self.message = str;
-    NSLog(@"%@",self.message);
-    
-    ////////////
-    NSString *strState=@"";
-    NSString *temp=@"";
-    
-    if (lengthReceiveMessage==18)
-    {
-        if((buffer[0]== 0x13) && (buffer[1]== 0x02))
-        {
-            
-            if(buffer[4] & 0x01)
-            {
-                temp=@"Yellow light On...";
-            }
-            else
-            {
-                temp=@"Yellow light Off...";
-            }
-            
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-            
-            if(buffer[4] & 0x02)
-            {
-                temp=@"Green light On...";
-            }
-            else
-            {
-                temp=@"Green light Off...";
-            }
-            
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-            
-            if(buffer[4] & 0x04)
-            {
-                temp=@"AC light On...";
-            }
-            else
-            {
-                temp=@"AC light Off...";
-            }
-            
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-            
-            if(buffer[4] & 0x08)
-            {
-                temp=@"S5 light On...";
-            }
-            else
-            {
-                temp=@"S5 light Off...";
-            }
-            
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-            
-            if(buffer[4] & 0x10)
-            {
-                temp=@"S1 POWER light On...";
-            }
-            else
-            {
-                temp=@"S1 POWER light Off...";
-            }
-            
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-            
-            if(buffer[4] & 0x20)
-            {
-                temp=@"S9 LEG LOCK light On...";
-            }
-            else
-            {
-                temp=@"S9 LEG LOCK light Off...";
-            }
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-            
-            if(buffer[4] & 0x40)
-            {
-                temp=@"S13 BACK LOCK light On...";
-            }
-            else
-            {
-                temp=@"S13 BACK LOCK light Off...";
-            }
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-            
-            if(buffer[4] & 0x80)
-            {
-                temp=@"S17 ALL LOCK light On...";
-            }
-            else
-            {
-                temp=@"S17 ALL LOCK light Off...";
-            }
-            strState = [strState stringByAppendingString:temp];
-            strState = [strState stringByAppendingString:@"\n"];
-        }
-        //        self.stateText.text=strState;
-    }
-    if(lengthReceiveMessage==9)//electric blanket state
-    {
-        if ((buffer[0]== 0x12) && (buffer[1]== 0x02) && (buffer[3]== 0x01))
-        {
-            Byte electricBlanketByte[2];
-            
+    if (command!=nil&&command.length==18) {
+        NSString *cmd=[command substringWithRange:NSMakeRange(4, 4)];
+        NSLog(@"cmd=%@",cmd);//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        if ([cmd isEqualToString:@"0103"]) {//电热毯信息
             NSString *strElectricBlanket;
-            switch (buffer[4])
+            NSString *str=[command substringWithRange:NSMakeRange(8, 2)];//电热毯开关信息
+            if([str isEqualToString:@"00"])
             {
-                case 0x00:
-                    strElectricBlanket = @"关";
-                    break;
-                case 0x01:
-                    electricBlanketByte[0]=buffer[5];
-                    electricBlanketByte[1]=buffer[6];
-                    int value=(int)electricBlanketByte[0];
-                    int value1=(int)electricBlanketByte[1];
-                    strElectricBlanket = [NSString stringWithFormat:@"开,温度%d,档位%d",value,value1];
-//                    [self.temp addObject:[NSString stringWithFormat: @"%d",value]];
-//                    [self.temp addObject:[NSString stringWithFormat: @"%d",value1]];
-                    self.sofaTemp[0] = [NSString stringWithFormat: @"%d",value];
-                    self.sofaTemp[1] = [NSString stringWithFormat: @"%d",value1];
+                strElectricBlanket = @"关";
+            }
+            else if ([str isEqualToString:@"01"]){
+                NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
+                NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
+                strElectricBlanket = [NSString stringWithFormat:@"开,温度%@,档位%@",value,value1];
+                //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value]];
+                //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value1]];
+                self.sofaTemp[0] = value;
+                self.sofaTemp[1] = value1;
+            }
+           
+        }
+        if ([cmd isEqualToString:@"0204"]) {//称重信息
+            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//重量kg高位
+            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//重量kg低位
+            NSString *value2=[command substringWithRange:NSMakeRange(14, 2)];//重量g，g的值仅发送百位和十位数，最大99，即990g
+            float fWeighting= [value floatValue] +([value1 floatValue]+[value2 floatValue])/100;
 
-                    break;
-            }
-//            self.message = strElectricBlanket;
-        }
-        
-        
-    }
-    //Measure  data
-    if(lengthReceiveMessage==11)
-    {
-        //body temperature
-        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x01))
-        {
-            Byte tempteratureByte[2];
-            tempteratureByte[0]=buffer[5];
-            tempteratureByte[1]=buffer[6];
-            int value=(int)tempteratureByte[0];
-            int value1=(int)tempteratureByte[1];
-            float fTemperature=(float)value+((float)value1)/10;
-            
-            NSString *strTemperature = [NSString stringWithFormat:@"%.1f",fTemperature];
-            self.bodyTemp = strTemperature;
-        }
-        
-        //pulse
-        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x02))
-        {
-            Byte tempteratureByte[2];
-            tempteratureByte[0]=buffer[5];
-            tempteratureByte[1]=buffer[6];
-            int value0=(int)tempteratureByte[0];
-            int value1=(int)tempteratureByte[1];
-            
-            self.bloodO2 = [NSString stringWithFormat:@"%d",value0];
-            self.heartRate = [NSString stringWithFormat:@"%d ",value1];
-            
-        }
-        
-        //Real blood pressure measure
-        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x04) && (buffer[5]== 0x01) )
-        {
-            Byte tempteratureByte[2];
-            tempteratureByte[0]=buffer[6];
-            
-            int value0=(int)tempteratureByte[0];
-//            NSString *strTemperature = [NSString stringWithFormat:@"实时压力%dmmHg",value0];
-            
-            self.bloodPressure = [NSString stringWithFormat:@"%d",value0];
-        }
-        //blood pressure
-        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x04) && (buffer[5]== 0x02) )
-        {
-            Byte tempteratureByte[2];
-            tempteratureByte[0]=buffer[6];
-            tempteratureByte[1]=buffer[7];
-            int value0=(int)tempteratureByte[0];
-            int value1=(int)tempteratureByte[1];
-            
-            NSString *strTemperature;
-            switch (buffer[8])
-            {
-                case 0x00:
-                    strTemperature = [NSString stringWithFormat:@"%d/%d",value0,value1];//收缩压/舒张压
-                    break;
-                case 0x03:
-                    strTemperature = [NSString stringWithFormat:@"%d/%d",value0,value1];
-                    // strTemperature = @"无错误";
-                    break;
-                case 0x06:
-                    strTemperature = @"袖带过松";
-                    break;
-                case 0x07:
-                    strTemperature = @"漏气";
-                    break;
-                case 0x09:
-                    strTemperature = @"若信号";
-                    break;
-                case 0x10:
-                    strTemperature = @"超范围";
-                    break;
-                case 0x11:
-                    strTemperature = @"过分运动";
-                    break;
-                case 0x12:
-                    strTemperature = @"过压";
-                    break;
-                case 0x13:
-                    strTemperature = @"信号饱和";
-                    break;
-                case 0x14:
-                    strTemperature = @"漏气";
-                    break;
-                case 0x15:
-                    strTemperature = @"系统错误";
-                    break;
-                case 0x19:
-                    strTemperature = @"超时";
-                    break;
-                    
-                default:
-                    break;
-            }
-            self.bloodPressure = strTemperature;
-        }
-    }
-    if (lengthReceiveMessage==13)
-    {
-        //weighting
-        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x01))
-        {
-            Byte weightingByte[3];
-            weightingByte[0]=buffer[5];
-            weightingByte[1]=buffer[6];
-            weightingByte[2]=buffer[7];
-            int value=(int)weightingByte[0];
-            int value1=(int)weightingByte[1];
-            int value2=(int)weightingByte[2];
-            float fWeighting=(float)value+((float)value1)+((float)value2)/100;
-            
             NSString *strWeighting = [NSString stringWithFormat:@"%.1f",fWeighting];
             self.weight = strWeighting;
         }
-    }
 
-    //    [self.stateText insertText:str];
-    [socket readDataWithTimeout:100 tag:0];
+        cmd =[command substringWithRange:NSMakeRange(6, 4)];
+        if ([cmd isEqualToString:@"0302"]) {//血氧，脉搏信息
+            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
+            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
+            
+            self.bloodO2 = value;
+            self.heartRate = value1;
+
+        }
+    
+        if ([cmd isEqualToString:@"0301"]) {//体温信息
+            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
+            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
+            
+            float fTemperature=[value floatValue]+[value1 floatValue]/10;
+            
+            NSString *strTemperature = [NSString stringWithFormat:@"%.1f",fTemperature];
+            self.bodyTemp = strTemperature;
+
+        }
+        if ([cmd isEqualToString:@"0303"]) {//血压实时测量
+            //Real blood pressure measure
+//            int value0=(int)tempteratureByte[0];
+            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
+             NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
+            self.bloodPressure = value;
+        }
+        if ([cmd isEqualToString:@"0304"]) {//血压测试完成
+            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
+            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
+            
+            NSString *strbloodPressure;
+            strbloodPressure = [NSString stringWithFormat:@"%@/%@",value,value1];//收缩压/舒张压
+            self.bloodPressure = strbloodPressure;
+            
+        }
+        if ([cmd isEqualToString:@"0305"]) {//血压测试异常
+            
+            self.bloodPressure = @"测试异常";
+            
+        }
+        
+        [socket readDataWithTimeout:100 tag:0];
+
+    }
+//    NSString *str=@"返回信息:";
+//    NSString *hexStr=@"";
+//    int lengthReceiveMessage=(int)[data length];
+//    unsigned char buffer[512];
+//    hexStr = [NSString stringWithFormat:@"Length: %d ",lengthReceiveMessage];
+//    str=[str stringByAppendingString:hexStr];
+//    Byte *btemp=(Byte *)[data bytes];
+//    
+//    for (int i =0; i<lengthReceiveMessage;i++)
+//    {
+//        buffer[i]=btemp[i];
+//        hexStr = [NSString  stringWithFormat:@"0x%x ",buffer[i]];
+//        str=[str stringByAppendingString:hexStr];
+//    }
+//    //    self.messageLabel.text =str;
+//    self.message = str;
+//    NSLog(@"%@",self.message);
+//    
+//    ////////////
+//    NSString *strState=@"";
+//    NSString *temp=@"";
+//    
+//    if (lengthReceiveMessage==18)
+//    {
+//        if((buffer[0]== 0x13) && (buffer[1]== 0x02))
+//        {
+//            
+//            if(buffer[4] & 0x01)
+//            {
+//                temp=@"Yellow light On...";
+//            }
+//            else
+//            {
+//                temp=@"Yellow light Off...";
+//            }
+//            
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//            
+//            if(buffer[4] & 0x02)
+//            {
+//                temp=@"Green light On...";
+//            }
+//            else
+//            {
+//                temp=@"Green light Off...";
+//            }
+//            
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//            
+//            if(buffer[4] & 0x04)
+//            {
+//                temp=@"AC light On...";
+//            }
+//            else
+//            {
+//                temp=@"AC light Off...";
+//            }
+//            
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//            
+//            if(buffer[4] & 0x08)
+//            {
+//                temp=@"S5 light On...";
+//            }
+//            else
+//            {
+//                temp=@"S5 light Off...";
+//            }
+//            
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//            
+//            if(buffer[4] & 0x10)
+//            {
+//                temp=@"S1 POWER light On...";
+//            }
+//            else
+//            {
+//                temp=@"S1 POWER light Off...";
+//            }
+//            
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//            
+//            if(buffer[4] & 0x20)
+//            {
+//                temp=@"S9 LEG LOCK light On...";
+//            }
+//            else
+//            {
+//                temp=@"S9 LEG LOCK light Off...";
+//            }
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//            
+//            if(buffer[4] & 0x40)
+//            {
+//                temp=@"S13 BACK LOCK light On...";
+//            }
+//            else
+//            {
+//                temp=@"S13 BACK LOCK light Off...";
+//            }
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//            
+//            if(buffer[4] & 0x80)
+//            {
+//                temp=@"S17 ALL LOCK light On...";
+//            }
+//            else
+//            {
+//                temp=@"S17 ALL LOCK light Off...";
+//            }
+//            strState = [strState stringByAppendingString:temp];
+//            strState = [strState stringByAppendingString:@"\n"];
+//        }
+//        //        self.stateText.text=strState;
+//    }
+//    if(lengthReceiveMessage==9)//electric blanket state
+//    {
+//        if ((buffer[0]== 0x12) && (buffer[1]== 0x02) && (buffer[3]== 0x01))
+//        {
+//            Byte electricBlanketByte[2];
+//            
+//            NSString *strElectricBlanket;
+//            switch (buffer[4])
+//            {
+//                case 0x00:
+//                    strElectricBlanket = @"关";
+//                    break;
+//                case 0x01:
+//                    electricBlanketByte[0]=buffer[5];
+//                    electricBlanketByte[1]=buffer[6];
+//                    int value=(int)electricBlanketByte[0];
+//                    int value1=(int)electricBlanketByte[1];
+//                    strElectricBlanket = [NSString stringWithFormat:@"开,温度%d,档位%d",value,value1];
+////                    [self.temp addObject:[NSString stringWithFormat: @"%d",value]];
+////                    [self.temp addObject:[NSString stringWithFormat: @"%d",value1]];
+//                    self.sofaTemp[0] = [NSString stringWithFormat: @"%d",value];
+//                    self.sofaTemp[1] = [NSString stringWithFormat: @"%d",value1];
+//
+//                    break;
+//            }
+////            self.message = strElectricBlanket;
+//        }
+//        
+//        
+//    }
+//    //Measure  data
+//    if(lengthReceiveMessage==11)
+//    {
+//        //body temperature
+//        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x01))
+//        {
+//            Byte tempteratureByte[2];
+//            tempteratureByte[0]=buffer[5];
+//            tempteratureByte[1]=buffer[6];
+//            int value=(int)tempteratureByte[0];
+//            int value1=(int)tempteratureByte[1];
+//            float fTemperature=(float)value+((float)value1)/10;
+//            
+//            NSString *strTemperature = [NSString stringWithFormat:@"%.1f",fTemperature];
+//            self.bodyTemp = strTemperature;
+//        }
+//        
+//        //pulse
+//        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x02))
+//        {
+//            Byte tempteratureByte[2];
+//            tempteratureByte[0]=buffer[5];
+//            tempteratureByte[1]=buffer[6];
+//            int value0=(int)tempteratureByte[0];
+//            int value1=(int)tempteratureByte[1];
+//            
+//            self.bloodO2 = [NSString stringWithFormat:@"%d",value0];
+//            self.heartRate = [NSString stringWithFormat:@"%d ",value1];
+//            
+//        }
+//        
+//        //Real blood pressure measure
+//        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x04) && (buffer[5]== 0x01) )
+//        {
+//            Byte tempteratureByte[2];
+//            tempteratureByte[0]=buffer[6];
+//            
+//            int value0=(int)tempteratureByte[0];
+////            NSString *strTemperature = [NSString stringWithFormat:@"实时压力%dmmHg",value0];
+//            
+//            self.bloodPressure = [NSString stringWithFormat:@"%d",value0];
+//        }
+//        //blood pressure
+//        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x07) &&(buffer[4]== 0x04) && (buffer[5]== 0x02) )
+//        {
+//            Byte tempteratureByte[2];
+//            tempteratureByte[0]=buffer[6];
+//            tempteratureByte[1]=buffer[7];
+//            int value0=(int)tempteratureByte[0];
+//            int value1=(int)tempteratureByte[1];
+//            
+//            NSString *strTemperature;
+//            switch (buffer[8])
+//            {
+//                case 0x00:
+//                    strTemperature = [NSString stringWithFormat:@"%d/%d",value0,value1];//收缩压/舒张压
+//                    break;
+//                case 0x03:
+//                    strTemperature = [NSString stringWithFormat:@"%d/%d",value0,value1];
+//                    // strTemperature = @"无错误";
+//                    break;
+//                case 0x06:
+//                    strTemperature = @"袖带过松";
+//                    break;
+//                case 0x07:
+//                    strTemperature = @"漏气";
+//                    break;
+//                case 0x09:
+//                    strTemperature = @"若信号";
+//                    break;
+//                case 0x10:
+//                    strTemperature = @"超范围";
+//                    break;
+//                case 0x11:
+//                    strTemperature = @"过分运动";
+//                    break;
+//                case 0x12:
+//                    strTemperature = @"过压";
+//                    break;
+//                case 0x13:
+//                    strTemperature = @"信号饱和";
+//                    break;
+//                case 0x14:
+//                    strTemperature = @"漏气";
+//                    break;
+//                case 0x15:
+//                    strTemperature = @"系统错误";
+//                    break;
+//                case 0x19:
+//                    strTemperature = @"超时";
+//                    break;
+//                    
+//                default:
+//                    break;
+//            }
+//            self.bloodPressure = strTemperature;
+//        }
+//    }
+//    if (lengthReceiveMessage==13)
+//    {
+//        //weighting
+//        if ((buffer[0]== 0x42) && (buffer[1]== 0x02) && (buffer[3]== 0x01))
+//        {
+//            Byte weightingByte[3];
+//            weightingByte[0]=buffer[5];
+//            weightingByte[1]=buffer[6];
+//            weightingByte[2]=buffer[7];
+//            int value=(int)weightingByte[0];
+//            int value1=(int)weightingByte[1];
+//            int value2=(int)weightingByte[2];
+//            float fWeighting=(float)value+((float)value1)+((float)value2)/100;
+//            
+//            NSString *strWeighting = [NSString stringWithFormat:@"%.1f",fWeighting];
+//            self.weight = strWeighting;
+//        }
+//    }
+//
+//    //    [self.stateText insertText:str];
+//    [socket readDataWithTimeout:100 tag:0];
 }
 
 /**

@@ -145,7 +145,7 @@
 //        [_globalSocket initControlMessage];
 //        [_globalSocket setInputBuffer:4 and:0x04];
 //        [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
-        [_globalSocket sendMessageDown:@"F1F10400047E"];
+        [_globalSocket sendMessageDown:@"F1F101020400077E"];
         isElectricalBlanketOn = YES;
         [_stopHeatBtn setTitle:@"关闭座椅加热" forState:UIControlStateNormal];
         [self startGetTempMessageTimer];
@@ -155,7 +155,7 @@
 //        [_globalSocket initControlMessage];
 //        [_globalSocket setInputBuffer:4 and:0x08];
 //        [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
-        [_globalSocket sendMessageDown:@"F1F10800087E"];
+        [_globalSocket sendMessageDown:@"F1F1010208000b7E"];
         isElectricalBlanketOn = NO;
         [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
         [self stopGetTempMessageTimer];
@@ -166,36 +166,41 @@
 {
 //    [_globalSocket initControlMessage];
 //    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
-    [_globalSocket sendMessageDown:@"F1F10A000A7E"];//松手检测
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
 }
 
 
 - (IBAction)s5Down:(id)sender
 {
-    [_globalSocket initControlMessage];
-//    inputBuffer[4]=0x10;
-    [_globalSocket setInputBuffer:4 and:0x10];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F101021000137E"];//温度调高
+    
+//    [_globalSocket initControlMessage];
+////    inputBuffer[4]=0x10;
+//    [_globalSocket setInputBuffer:4 and:0x10];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)s5Up:(id)sender
 {
-    [_globalSocket initControlMessage];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
+//    [_globalSocket initControlMessage];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)s6Down:(id)sender
 {
-    [_globalSocket initControlMessage];
-//    inputBuffer[4]=0x20;
-    [_globalSocket setInputBuffer:4 and:0x20];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F101022000237E"];//松手检测
+//    [_globalSocket initControlMessage];
+////    inputBuffer[4]=0x20;
+//    [_globalSocket setInputBuffer:4 and:0x20];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)s6Up:(id)sender
 {
-    [_globalSocket initControlMessage];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
+//    [_globalSocket initControlMessage];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 /**
@@ -205,7 +210,6 @@
 -(void)startGetTempMessageTimer
 {
     getMessageTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setTempLbl) userInfo:nil repeats:YES ];
-    
 }
 
 /**
@@ -221,6 +225,7 @@
 
 -(void) setTempLbl
 {
+    [_globalSocket sendMessageDown:@"F1F10200027E"];//向控制器发送获取电热毯温度信息
     CGFloat widthScale = 100/image.size.width;
     CGFloat heightScale = 100/image.size.height;
     [_tempLbl setText:_globalSocket.sofaTemp[0]];

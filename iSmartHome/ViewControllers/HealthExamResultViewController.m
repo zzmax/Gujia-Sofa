@@ -68,6 +68,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [_globalSocket sendMessageDown:@"F1F104020080867E"];//关闭检测（页面切换时发送）
     [self stopGetTempMessageTimer];
 }
 /*
@@ -97,50 +98,56 @@
 
 - (IBAction)temperatureTestDown:(id)sender
 {
-    [_globalSocket initAcquireSensorDataMessage];
+//    [_globalSocket initAcquireSensorDataMessage];
     //acquire bodyTemp data
-    [_globalSocket setInputBuffer:3 and:0x02];
-    [_globalSocket setInputBuffer:4 and:0x01];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F104020100077E"];
+//    [_globalSocket setInputBuffer:3 and:0x02];
+//    [_globalSocket setInputBuffer:4 and:0x01];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)temperatureTestUp:(id)sender
 {
-    [_globalSocket initAcquireSensorDataMessage];
-    //    inputBuffer[3]=0x02;
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
+//    [_globalSocket initAcquireSensorDataMessage];
+//    //    inputBuffer[3]=0x02;
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)pulseTestDown:(id)sender
 {
-    [_globalSocket initAcquireSensorDataMessage];
+//    [_globalSocket initAcquireSensorDataMessage];
     //acquire heartRate data
-    [_globalSocket setInputBuffer:3 and:0x02];
-    [_globalSocket setInputBuffer:4 and:0x02];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F104020200087E"];
+//    [_globalSocket setInputBuffer:3 and:0x02];
+//    [_globalSocket setInputBuffer:4 and:0x02];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)pulseTestUp:(id)sender
 {
-    [_globalSocket initAcquireSensorDataMessage];
-    //    inputBuffer[3]=0x02;
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
+//    [_globalSocket initAcquireSensorDataMessage];
+//    //    inputBuffer[3]=0x02;
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)bloodPressureTestDown:(id)sender
 {
-    [_globalSocket initAcquireSensorDataMessage];
+//    [_globalSocket initAcquireSensorDataMessage];
     //acquire bloodPressure data
-    [_globalSocket setInputBuffer:3 and:0x02];
-    [_globalSocket setInputBuffer:4 and:0x04];
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F1040204000a7E"];
+//    [_globalSocket setInputBuffer:3 and:0x02];
+//    [_globalSocket setInputBuffer:4 and:0x04];
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 - (IBAction)bloodPressureTestUp:(id)sender
 {
-    [_globalSocket initAcquireSensorDataMessage];
-    //    inputBuffer[3]=0x02;
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
+//    [_globalSocket initAcquireSensorDataMessage];
+//    //    inputBuffer[3]=0x02;
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 
@@ -151,25 +158,28 @@
     int i = [[dict objectForKey:@"key"] intValue];
     switch (i) {
         case 0:
-            [_globalSocket initAcquireSensorDataMessage];
+//            [_globalSocket initAcquireSensorDataMessage];
             //acquire bodyTemp data
-            [_globalSocket setInputBuffer:3 and:0x02];
-            [_globalSocket setInputBuffer:4 and:0x01];
-            [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+            [_globalSocket sendMessageDown:@"F1F104020100077E"];
+//            [_globalSocket setInputBuffer:3 and:0x02];
+//            [_globalSocket setInputBuffer:4 and:0x01];
+//            [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
             break;
         case 1:
-            [_globalSocket initAcquireSensorDataMessage];
+//            [_globalSocket initAcquireSensorDataMessage];
             //acquire bloodPressure data
-            [_globalSocket setInputBuffer:3 and:0x02];
-            [_globalSocket setInputBuffer:4 and:0x04];
-            [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+            [_globalSocket sendMessageDown:@"F1F1040204000a7E"];
+//            [_globalSocket setInputBuffer:3 and:0x02];
+//            [_globalSocket setInputBuffer:4 and:0x04];
+//            [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
             break;
         case 2:
-            [_globalSocket initAcquireSensorDataMessage];
-            //acquire bloodPressure data
-            [_globalSocket setInputBuffer:3 and:0x02];
-            [_globalSocket setInputBuffer:4 and:0x04];
-            [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+//            [_globalSocket initAcquireSensorDataMessage];
+            //acquire 血氧、脉率检测 data
+            [_globalSocket sendMessageDown:@"F1F104020200087E"];
+//            [_globalSocket setInputBuffer:3 and:0x02];
+//            [_globalSocket setInputBuffer:4 and:0x04];
+//            [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
             break;
         default:
             break;

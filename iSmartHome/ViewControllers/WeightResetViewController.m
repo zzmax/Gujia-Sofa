@@ -82,15 +82,17 @@
  */
 -(void)sendMEssageToResetWeight
 {
-    sendDataLength = 8;
-    [_globalSocket initAcquireSensorDataMessage];
-    //set the buffer to the value of reset weight command
-    [_globalSocket setInputBuffer:2 and:0x05];
-    [_globalSocket setInputBuffer:3 and:0x01];
-    [_globalSocket setInputBuffer:4 and:0x01];
-    [_globalSocket setInputBuffer:5 and:0x10];
-    
-    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
+    [_globalSocket sendMessageDown:@"F1F10300037E"];
+
+//    sendDataLength = 8;
+//    [_globalSocket initAcquireSensorDataMessage];
+//    //set the buffer to the value of reset weight command
+//    [_globalSocket setInputBuffer:2 and:0x05];
+//    [_globalSocket setInputBuffer:3 and:0x01];
+//    [_globalSocket setInputBuffer:4 and:0x01];
+//    [_globalSocket setInputBuffer:5 and:0x10];
+//    
+//    [_globalSocket sendMessageDown:[_globalSocket getInputBuffer] length:sendDataLength];
 }
 
 /**
@@ -117,6 +119,7 @@
         //After 1s, push to the view of weigh the body
         [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(pushToWeighView) userInfo:nil repeats:NO ];
     }
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
 }
 
 - (void)pushToWeighView

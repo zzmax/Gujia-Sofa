@@ -118,10 +118,10 @@
      *  @return
      */
     [self saveWifiInfo];
-     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO ];
-    
+//     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO ];
+//    
     //首次配置
-//    [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
+    [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
     
 //    [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO];
 }
