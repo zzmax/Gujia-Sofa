@@ -11,6 +11,8 @@
 #import "GCDAsyncSocket.h"
 #import "GCDAsyncUdpSocket.h"
 #import "SmartMlccUtil.h"
+#import "WifiInfo.h"
+#import "CoreDataHelper.h"
 
 @interface GlobalSocket : NSObject
 {

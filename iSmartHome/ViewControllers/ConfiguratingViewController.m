@@ -117,7 +117,7 @@
      *
      *  @return
      */
-    [self saveWifiInfo];
+//    [self saveWifiInfo];
 //     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO ];
 //    
     //首次配置
@@ -372,14 +372,16 @@
     NSUndoManager *manager = dataHelper.context.undoManager;
     [manager beginUndoGrouping];
     
-    wifiInfo.ip = @"192.168.1.107";
+    wifiInfo.ip =[MBNonEmptyString(_allMacArray[0][@"Mip"]) componentsSeparatedByString:@"`"][1];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     f.numberStyle = NSNumberFormatterDecimalStyle;
-    wifiInfo.port = [f numberFromString:@"8080"];
-    wifiInfo.ssid = @"TP-Link107";
-    wifiInfo.psd = @"107107107";
+    wifiInfo.port = [f numberFromString:[MBNonEmptyString(_allMacArray[0][@"cInfo"]) componentsSeparatedByString:@"`"][1]];
+        
+    wifiInfo.ssid = MBNonEmptyString(_allMacArray[0][@"StaId"]);
+    wifiInfo.psd = MBNonEmptyString(_allMacArray[0][@"StaPd"]);
     wifiInfo.connectionTime = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
     wifiInfo.state = [f numberFromString:@"1"];
+    wifiInfo.mac = MBNonEmptyString(_allMacArray[0][@"Mac"]);
     
     // Test listing all FailedBankInfos from the store
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -397,16 +399,6 @@
         NSLog(@"connectionTime: %@", res.connectionTime);
         NSLog(@"state: %@", res.state);
     }
-
-//    wifiInfo.ip = [MBNonEmptyString(_allMacArray[0][@"Mip"]) componentsSeparatedByString:@"`"][1];
-//    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-//    f.numberStyle = NSNumberFormatterDecimalStyle;
-//    wifiInfo.port = [f numberFromString: [MBNonEmptyString(_allMacArray[0][@"cInfo"]) componentsSeparatedByString:@"`"][1]];
-//    wifiInfo.ssid = self.wifiName;
-//    wifiInfo.psd = self.staPwd;
-//    wifiInfo.connectionTime = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970] * 1000];
-//    wifiInfo.state = [f numberFromString:@"1"];
-    
     
     [manager endUndoGrouping];
     [manager setActionName:@"Add"];

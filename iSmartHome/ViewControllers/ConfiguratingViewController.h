@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ConfiguratingViewController : UIViewController
 @property(nonatomic,strong)NSDictionary *wifiInfo;
 @property(nonatomic,strong)NSString *wifiName;
