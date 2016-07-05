@@ -571,8 +571,14 @@
         [self saveImageAsAPNG:_userPhoto.image];
     }
     
+    [globalSocket initNetworkCommunication];
     if ([globalSocket.message isEqualToString:@"连接成功"]) {
         [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
+    }
+    else
+    {
+        [utility setAlert:@"错误" message:@"未连接到沙发！"];
+        [self presentViewController:utility.anAlert animated:YES completion:nil];
     }
     /**
      *  just for test
