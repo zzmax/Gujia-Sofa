@@ -86,7 +86,11 @@
     fetchedUsers = [dataHelper.context executeFetchRequest:fetchRequest error:&error];
     
 //    aTap.delegate = self;
-    
+    if (numberofEntities == 0) {
+        //add icon for adding user
+        //on the top
+        [self setUserImageViewforPlace:-120 and:-120 andForUser:0];
+    }
     if (numberofEntities >= 1)
     {
         //on the left top
@@ -151,35 +155,35 @@
         if (numberofEntities == 6) {
             //add icon for adding user
             //on the bottom left
-            [self setUserImageViewforPlace:-120 and:140 andForUser:0];
+            [self setUserImageViewforPlace:-120 and:160 andForUser:0];
         }
     }
     if (numberofEntities >= 7) {
         //on the bottom left
-        [self setUserImageViewforPlace:-120 and:140 andForUser:7];
-        [self setUserNameLabelViewforPlace:-120 and:195 andForUser:7];
+        [self setUserImageViewforPlace:-120 and:160 andForUser:7];
+        [self setUserNameLabelViewforPlace:-120 and:215 andForUser:7];
         
         if (numberofEntities == 7) {
             //add icon for adding user
             //on the bottom
-            [self setUserImageViewforPlace:0 and:140 andForUser:0];
+            [self setUserImageViewforPlace:0 and:160 andForUser:0];
         }
     }
     if (numberofEntities >= 8) {
         //beneath the centre
-        [self setUserImageViewforPlace:0 and:140 andForUser:8];
-        [self setUserNameLabelViewforPlace:0 and:195 andForUser:8];
+        [self setUserImageViewforPlace:0 and:160 andForUser:8];
+        [self setUserNameLabelViewforPlace:0 and:215 andForUser:8];
         
         if (numberofEntities == 8) {
             //add icon for adding user
             //on the bottom right
-            [self setUserImageViewforPlace:120 and:140 andForUser:0];
+            [self setUserImageViewforPlace:120 and:160 andForUser:0];
         }
     }
     if (numberofEntities >= 9) {
         //on the bottom right
-        [self setUserImageViewforPlace:120 and:140 andForUser:9];
-        [self setUserNameLabelViewforPlace:120 and:195 andForUser:9];
+        [self setUserImageViewforPlace:120 and:160 andForUser:9];
+        [self setUserNameLabelViewforPlace:120 and:215 andForUser:9];
     }
 }
 
