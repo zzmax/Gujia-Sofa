@@ -257,7 +257,7 @@
     PREPCONSTRAINTS(aView);
     
     CENTER_VIEW_H_CONSTANT(self.view, aView, HCoord * screenFactor);
-    CENTER_VIEW_V_CONSTANT(self.view, aView, VCoord);
+    CENTER_VIEW_V_CONSTANT(self.view, aView, VCoord * screenFactor);
     
     //add tap gesture recognizer to each image view
     UITapGestureRecognizer *aTap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -268,44 +268,54 @@
 }
 
 -(UILabel *)setUserNameLabelViewforPlace:(int)HCoord and:(int)VCoord andForUser:(int)userOrder{
-     UILabel *aLabel = [[UILabel alloc]init];
+    UILabel *aLabel = [[UILabel alloc]init];
+    UIImageView *aView = [[UIImageView alloc]init];
     User *fetchedUser;
     switch (userOrder) {
         case 1:
             fetchedUser = [fetchedUsers firstObject];
             aLabel.tag = 301;
+            aView = (UIImageView *)[self.view viewWithTag:201];
             break;
         case 2:
             fetchedUser = [fetchedUsers objectAtIndex:1];
             aLabel.tag = 302;
+            aView = (UIImageView *)[self.view viewWithTag:202];
             break;
         case 3:
             fetchedUser = [fetchedUsers objectAtIndex:2];
             aLabel.tag = 303;
+            aView = (UIImageView *)[self.view viewWithTag:203];
             break;
         case 4:
             fetchedUser = [fetchedUsers objectAtIndex:3];
             aLabel.tag = 304;
+            aView = (UIImageView *)[self.view viewWithTag:204];
             break;
         case 5:
             fetchedUser = [fetchedUsers objectAtIndex:4];
             aLabel.tag = 305;
+            aView = (UIImageView *)[self.view viewWithTag:205];
             break;
         case 6:
             fetchedUser = [fetchedUsers objectAtIndex:5];
             aLabel.tag = 306;
+            aView = (UIImageView *)[self.view viewWithTag:206];
             break;
         case 7:
             fetchedUser = [fetchedUsers objectAtIndex:6];
             aLabel.tag = 307;
+            aView = (UIImageView *)[self.view viewWithTag:207];
             break;
         case 8:
             fetchedUser = [fetchedUsers objectAtIndex:7];
             aLabel.tag = 308;
+            aView = (UIImageView *)[self.view viewWithTag:208];
             break;
         case 9:
             fetchedUser = [fetchedUsers objectAtIndex:8];
             aLabel.tag = 309;
+            aView = (UIImageView *)[self.view viewWithTag:209];
             break;
         default:
             break;
@@ -315,7 +325,12 @@
     
     PREPCONSTRAINTS(aLabel);
     CENTER_VIEW_H_CONSTANT(self.view, aLabel, HCoord * screenFactor);
-    CENTER_VIEW_V_CONSTANT(self.view, aLabel, VCoord * screenFactor);
+//    CENTER_VIEW_V_CONSTANT(self.view, aLabel, VCoord * screenFactor);
+    int constant = 0;
+    if (aView.image.size.height > 100) {
+        constant = -325;
+    }
+    ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.view, aLabel, aView, constant);
     aLabel.text =  fetchedUser.userName;
 
     
