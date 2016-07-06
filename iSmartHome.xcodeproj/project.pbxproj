@@ -60,6 +60,10 @@
 		841273C21D2140E900C29785 /* WifiInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 841273C01D2140E900C29785 /* WifiInfo.m */; };
 		841273C61D220A1D00C29785 /* WifiInfo+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 841273C51D220A1D00C29785 /* WifiInfo+CoreDataProperties.m */; };
 		841273CB1D2283B200C29785 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841273CA1D2283B200C29785 /* AssetsLibrary.framework */; };
+		841273D11D2CED2700C29785 /* button_add_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 841273CD1D2CED2600C29785 /* button_add_user.png */; };
+		841273D21D2CED2700C29785 /* button_add_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 841273CE1D2CED2600C29785 /* button_add_user@2x.png */; };
+		841273D31D2CED2700C29785 /* button_add_user@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 841273CF1D2CED2600C29785 /* button_add_user@3x.png */; };
+		841273D41D2CED2700C29785 /* Contents.json in Resources */ = {isa = PBXBuildFile; fileRef = 841273D01D2CED2600C29785 /* Contents.json */; };
 		8413D2981C4687FD0083CC92 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D2971C4687FD0083CC92 /* QuartzCore.framework */; };
 		8413D29B1C46886B0083CC92 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8413D29A1C46886B0083CC92 /* Accelerate.framework */; };
 		8413D2EE1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8413D2EC1C468CEA0083CC92 /* HealthConditionTrendencyViewController.m */; };
@@ -408,6 +412,10 @@
 		841273C41D220A1D00C29785 /* WifiInfo+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WifiInfo+CoreDataProperties.h"; sourceTree = "<group>"; };
 		841273C51D220A1D00C29785 /* WifiInfo+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WifiInfo+CoreDataProperties.m"; sourceTree = "<group>"; };
 		841273CA1D2283B200C29785 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		841273CD1D2CED2600C29785 /* button_add_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_add_user.png; sourceTree = "<group>"; };
+		841273CE1D2CED2600C29785 /* button_add_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_add_user@2x.png"; sourceTree = "<group>"; };
+		841273CF1D2CED2600C29785 /* button_add_user@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_add_user@3x.png"; sourceTree = "<group>"; };
+		841273D01D2CED2600C29785 /* Contents.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Contents.json; sourceTree = "<group>"; };
 		8413D2971C4687FD0083CC92 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8413D29A1C46886B0083CC92 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8413D2EB1C468CEA0083CC92 /* HealthConditionTrendencyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthConditionTrendencyViewController.h; sourceTree = "<group>"; };
@@ -1127,6 +1135,17 @@
 			path = GCDAsyncSocket;
 			sourceTree = "<group>";
 		};
+		841273CC1D2CED2600C29785 /* button_add_user.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				841273CD1D2CED2600C29785 /* button_add_user.png */,
+				841273CE1D2CED2600C29785 /* button_add_user@2x.png */,
+				841273CF1D2CED2600C29785 /* button_add_user@3x.png */,
+				841273D01D2CED2600C29785 /* Contents.json */,
+			);
+			path = button_add_user.imageset;
+			sourceTree = "<group>";
+		};
 		8425CF301C16C4FC007D964D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1138,6 +1157,7 @@
 		8458E1E81C06F6D2009D0772 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				841273CC1D2CED2600C29785 /* button_add_user.imageset */,
 				84A94FFE1C8568B30087D211 /* chart_background.imageset */,
 				848CDFA81C196AF600265848 /* icon_temp_signal_2.imageset */,
 				848CDF961C196AAC00265848 /* icon_temp_signal_3.imageset */,
@@ -1886,6 +1906,7 @@
 				8458E2A61C06F6D3009D0772 /* icon_option@2x.png in Resources */,
 				848CDFA71C196AAC00265848 /* icon_weight@3x.png in Resources */,
 				8458E2691C06F6D2009D0772 /* button_minus@2x.png in Resources */,
+				841273D41D2CED2700C29785 /* Contents.json in Resources */,
 				8458E26D1C06F6D2009D0772 /* button_plus@2x.png in Resources */,
 				848CDFA51C196AAC00265848 /* icon_weight.png in Resources */,
 				840F2A081C1533A40083833B /* background_big_circle@2x.png in Resources */,
@@ -1902,6 +1923,7 @@
 				8458E28C1C06F6D2009D0772 /* Contents.json in Resources */,
 				8458E2721C06F6D2009D0772 /* icon_back@2x.png in Resources */,
 				8458E2AB1C06F6D3009D0772 /* icon_share@3x.png in Resources */,
+				841273D11D2CED2700C29785 /* button_add_user.png in Resources */,
 				5FB56D0A1BDDFF75005D80AA /* LaunchScreen.storyboard in Resources */,
 				8458E2831C06F6D2009D0772 /* icon_code@3x.png in Resources */,
 				8458E26B1C06F6D2009D0772 /* Contents.json in Resources */,
@@ -1943,6 +1965,7 @@
 				5FB56D071BDDFF75005D80AA /* Assets.xcassets in Resources */,
 				8458E25F1C06F6D2009D0772 /* Contents.json in Resources */,
 				8458E2AA1C06F6D3009D0772 /* icon_share@2x.png in Resources */,
+				841273D31D2CED2700C29785 /* button_add_user@3x.png in Resources */,
 				840F2A101C1533A40083833B /* background_circles@2x.png in Resources */,
 				840F2A251C1533A40083833B /* image_small_button_left@2x.png in Resources */,
 				8458E2741C06F6D2009D0772 /* Contents.json in Resources */,
@@ -2015,6 +2038,7 @@
 				848CDFA21C196AAC00265848 /* icon_temp_signal_3@2x.png in Resources */,
 				840F2A181C1533A40083833B /* background_small_white_circle@2x.png in Resources */,
 				8458E2851C06F6D2009D0772 /* icon_gujiaren.png in Resources */,
+				841273D21D2CED2700C29785 /* button_add_user@2x.png in Resources */,
 				8458E2B71C06F6D3009D0772 /* icon_temp_signal_1@3x.png in Resources */,
 				840F2A201C1533A40083833B /* image_button_gray.png in Resources */,
 				8458E2781C06F6D2009D0772 /* Contents.json in Resources */,

@@ -242,7 +242,7 @@
     {
         anImage = [utility loadPhotoForUser:fetchedUser.userName];
     }
-    else anImage = [UIImage imageNamed: @"background_small_white_circle"];
+    else anImage = [UIImage imageNamed: @"button_add_user"];
     
     aView.image = anImage;
     CGFloat widthScale = (90 * screenFactor)/anImage.size.width;
@@ -328,12 +328,11 @@
 //    CENTER_VIEW_V_CONSTANT(self.view, aLabel, VCoord * screenFactor);
     int constant = 0;
     if (aView.image.size.height > 100) {
-        constant = -325;
+        constant = -325;// 750/2 - 90/2
     }
     ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.view, aLabel, aView, constant);
     aLabel.text =  fetchedUser.userName;
 
-    
     return aLabel;
 }
 
