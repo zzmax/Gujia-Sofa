@@ -18,6 +18,7 @@
 #import "UserInfoRegisterViewController.h"
 #import "HealthConditionTrendencyViewController.h"
 #import "HealthReminderViewController.h"
+#import "SetViewController.h"
 #import "Utility.h"
 #import "Nav1ViewController.h"
 #import "AppDelegate.h"
@@ -249,8 +250,8 @@
         {
             //SetView
             //
-            ////            Module1ViewController *module1VC = [[Module1ViewController alloc]init];
-            ////            [self.navigationController pushViewController:module1VC animated:YES];
+            SetViewController *setVC = [[SetViewController alloc]init];
+            [self.navigationController pushViewController:setVC animated:YES];
         }
     }
 }

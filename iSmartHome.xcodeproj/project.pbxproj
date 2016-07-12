@@ -71,6 +71,8 @@
 		842422271C20271600F4D051 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB56D381BDE0229005D80AA /* UIKit.framework */; };
 		8424222A1C2050AD00F4D051 /* SofaControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 842422291C2050AD00F4D051 /* SofaControlViewController.m */; };
 		8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CF2B1C16A106007D964D /* UsersCreationViewController.m */; };
+		84459CF61D34D0D1004FFD5F /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84459CF41D34D0D1004FFD5F /* SetViewController.m */; };
+		84459CF71D34D0D1004FFD5F /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84459CF51D34D0D1004FFD5F /* SetViewController.xib */; };
 		8458E1E61C02AFA3009D0772 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E1E51C02AFA3009D0772 /* Utility.m */; };
 		8458E25C1C06F6D2009D0772 /* big_icon_sofa_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EA1C06F6D2009D0772 /* big_icon_sofa_control.png */; };
 		8458E25D1C06F6D2009D0772 /* big_icon_sofa_control@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EB1C06F6D2009D0772 /* big_icon_sofa_control@2x.png */; };
@@ -425,6 +427,9 @@
 		842422291C2050AD00F4D051 /* SofaControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SofaControlViewController.m; sourceTree = "<group>"; };
 		8425CF2A1C16A106007D964D /* UsersCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersCreationViewController.h; sourceTree = "<group>"; };
 		8425CF2B1C16A106007D964D /* UsersCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersCreationViewController.m; sourceTree = "<group>"; };
+		84459CF31D34D0D1004FFD5F /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
+		84459CF41D34D0D1004FFD5F /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
+		84459CF51D34D0D1004FFD5F /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetViewController.xib; sourceTree = "<group>"; };
 		8458E1E31C02A961009D0772 /* ConstraintMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstraintMacros.h; sourceTree = "<group>"; };
 		8458E1E41C02AF8D009D0772 /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		8458E1E51C02AFA3009D0772 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
@@ -945,6 +950,9 @@
 				84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */,
 				84D155841C1FFD1500405915 /* NavigationViewController.h */,
 				84D155851C1FFD1500405915 /* NavigationViewController.m */,
+				84459CF31D34D0D1004FFD5F /* SetViewController.h */,
+				84459CF41D34D0D1004FFD5F /* SetViewController.m */,
+				84459CF51D34D0D1004FFD5F /* SetViewController.xib */,
 				84F070601C20FDF300832BB8 /* SofaControlView.xib */,
 				842422281C2050AD00F4D051 /* SofaControlViewController.h */,
 				842422291C2050AD00F4D051 /* SofaControlViewController.m */,
@@ -2015,6 +2023,7 @@
 				848CDFAF1C196AF600265848 /* icon_temp_signal_2@2x.png in Resources */,
 				840F2A161C1533A40083833B /* Contents.json in Resources */,
 				840F2A2A1C1533A40083833B /* image_small_button_right@3x.png in Resources */,
+				84459CF71D34D0D1004FFD5F /* SetViewController.xib in Resources */,
 				84A950061C8568B30087D211 /* Contents.json in Resources */,
 				8458E2AF1C06F6D3009D0772 /* icon_sofa_control@3x.png in Resources */,
 				8458E25E1C06F6D2009D0772 /* big_icon_sofa_control@3x.png in Resources */,
@@ -2182,6 +2191,7 @@
 				84C8BB8D1C47489E0038D4C3 /* _CPTAnimationCGSizePeriod.m in Sources */,
 				847D6A421D196D18004BF25A /* GCDAsyncSocket.m in Sources */,
 				84C8BBA11C47489E0038D4C3 /* CPTAnimationPeriod.m in Sources */,
+				84459CF61D34D0D1004FFD5F /* SetViewController.m in Sources */,
 				847D6A431D196D18004BF25A /* GCDAsyncUdpSocket.m in Sources */,
 				84C8BBC71C47489E0038D4C3 /* CPTMutableTextStyle.m in Sources */,
 				84C8BBBD1C47489E0038D4C3 /* CPTLegend.m in Sources */,
