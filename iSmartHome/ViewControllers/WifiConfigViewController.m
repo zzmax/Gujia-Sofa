@@ -83,7 +83,12 @@
 //    _searchMacTool = [[SmartFirstConfig alloc]init];
 //    _searchMacTool.fristConfigDelegate = self;
 //    [_searchMacTool doSmartFirstConfig:nil sspwd:nil realCommandArr:nil andOperType:0];
-    self.routerTF.text = MBNonEmptyString(_wifiInfo[@"SSID"]);
+    if (!_wifiInfo) {
+        [self.utility setAlert:@"手机未连接Wi-Fi" message:@"请检查手机网络！"];
+        [self presentViewController:self.utility.anAlert animated:YES completion:nil];
+
+    }
+    else self.routerTF.text = MBNonEmptyString(_wifiInfo[@"SSID"]);
 }
 
 /**
