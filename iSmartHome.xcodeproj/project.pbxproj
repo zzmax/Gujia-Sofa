@@ -73,6 +73,8 @@
 		8425CF2C1C16A106007D964D /* UsersCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CF2B1C16A106007D964D /* UsersCreationViewController.m */; };
 		84459CF61D34D0D1004FFD5F /* SetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84459CF41D34D0D1004FFD5F /* SetViewController.m */; };
 		84459CF71D34D0D1004FFD5F /* SetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84459CF51D34D0D1004FFD5F /* SetViewController.xib */; };
+		84459CFB1D34E47E004FFD5F /* WifiInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84459CF91D34E47E004FFD5F /* WifiInfoViewController.m */; };
+		84459CFC1D34E47E004FFD5F /* WifiInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84459CFA1D34E47E004FFD5F /* WifiInfoViewController.xib */; };
 		8458E1E61C02AFA3009D0772 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 8458E1E51C02AFA3009D0772 /* Utility.m */; };
 		8458E25C1C06F6D2009D0772 /* big_icon_sofa_control.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EA1C06F6D2009D0772 /* big_icon_sofa_control.png */; };
 		8458E25D1C06F6D2009D0772 /* big_icon_sofa_control@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8458E1EB1C06F6D2009D0772 /* big_icon_sofa_control@2x.png */; };
@@ -430,6 +432,9 @@
 		84459CF31D34D0D1004FFD5F /* SetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetViewController.h; sourceTree = "<group>"; };
 		84459CF41D34D0D1004FFD5F /* SetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetViewController.m; sourceTree = "<group>"; };
 		84459CF51D34D0D1004FFD5F /* SetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetViewController.xib; sourceTree = "<group>"; };
+		84459CF81D34E47E004FFD5F /* WifiInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiInfoViewController.h; sourceTree = "<group>"; };
+		84459CF91D34E47E004FFD5F /* WifiInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiInfoViewController.m; sourceTree = "<group>"; };
+		84459CFA1D34E47E004FFD5F /* WifiInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WifiInfoViewController.xib; sourceTree = "<group>"; };
 		8458E1E31C02A961009D0772 /* ConstraintMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstraintMacros.h; sourceTree = "<group>"; };
 		8458E1E41C02AF8D009D0772 /* Utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		8458E1E51C02AFA3009D0772 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
@@ -946,6 +951,9 @@
 				840F29D81C13C9BA0083833B /* WifiConfigNoteViewController.m */,
 				848CC7021C19577700265848 /* WifiConfigViewController.h */,
 				848CC7031C19577700265848 /* WifiConfigViewController.m */,
+				84459CF81D34E47E004FFD5F /* WifiInfoViewController.h */,
+				84459CF91D34E47E004FFD5F /* WifiInfoViewController.m */,
+				84459CFA1D34E47E004FFD5F /* WifiInfoViewController.xib */,
 				84E593E61C1A86A600D1F89C /* ConfiguratingViewController.h */,
 				84E593E71C1A86A600D1F89C /* ConfiguratingViewController.m */,
 				84D155841C1FFD1500405915 /* NavigationViewController.h */,
@@ -953,9 +961,9 @@
 				84459CF31D34D0D1004FFD5F /* SetViewController.h */,
 				84459CF41D34D0D1004FFD5F /* SetViewController.m */,
 				84459CF51D34D0D1004FFD5F /* SetViewController.xib */,
-				84F070601C20FDF300832BB8 /* SofaControlView.xib */,
 				842422281C2050AD00F4D051 /* SofaControlViewController.h */,
 				842422291C2050AD00F4D051 /* SofaControlViewController.m */,
+				84F070601C20FDF300832BB8 /* SofaControlView.xib */,
 				84F070621C2241F300832BB8 /* SofaHeatView.xib */,
 				84F070641C2246AC00832BB8 /* SofaHeatViewController.h */,
 				84F070651C2246AC00832BB8 /* SofaHeatViewController.m */,
@@ -2012,6 +2020,7 @@
 				840F2A1E1C1533A40083833B /* image_button_blue@3x.png in Resources */,
 				8458E27D1C06F6D2009D0772 /* icon_body_temp.png in Resources */,
 				8458E2611C06F6D2009D0772 /* button_arrow_down@2x.png in Resources */,
+				84459CFC1D34E47E004FFD5F /* WifiInfoViewController.xib in Resources */,
 				840F2A271C1533A40083833B /* Contents.json in Resources */,
 				8458E27A1C06F6D2009D0772 /* icon_blood_pressure@2x.png in Resources */,
 				8458E2AC1C06F6D3009D0772 /* Contents.json in Resources */,
@@ -2161,6 +2170,7 @@
 				84C8BBE21C47489E0038D4C3 /* CPTXYAxis.m in Sources */,
 				84E18E001C1010D000213372 /* SexSwitchCell.m in Sources */,
 				84C8BBDD1C47489E0038D4C3 /* CPTTextStylePlatformSpecific.m in Sources */,
+				84459CFB1D34E47E004FFD5F /* WifiInfoViewController.m in Sources */,
 				84C8BBC51C47489E0038D4C3 /* CPTMutablePlotRange.m in Sources */,
 				847D8A541CA1338D007E6243 /* HealthReminderViewController.m in Sources */,
 				84C8BB991C47489E0038D4C3 /* _CPTPlainBlackTheme.m in Sources */,

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="dlm-d6-OFm">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="dlm-d6-OFm">
                                 <rect key="frame" x="20" y="282" width="374" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="W1U-z2-BzK"/>
@@ -42,7 +42,7 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-QD-X20">
+                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="200" translatesAutoresizingMaskIntoConstraints="NO" id="1Le-QD-X20">
                                 <rect key="frame" x="20" y="193" width="374" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="99" id="DAb-Nl-Ibx"/>
@@ -427,15 +427,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BZE-yR-tVn">
-                                <rect key="frame" x="0.0" y="101" width="414" height="599"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="ek5-Io-B3O" id="GRf-Cu-VCZ"/>
-                                    <outlet property="delegate" destination="ek5-Io-B3O" id="f23-LW-kSB"/>
-                                </connections>
-                            </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_small_white_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="GRK-h3-bgV">
                                 <rect key="frame" x="30" y="20" width="90" height="90"/>
                                 <constraints>
@@ -463,6 +454,15 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BZE-yR-tVn">
+                                <rect key="frame" x="0.0" y="113" width="414" height="500"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ek5-Io-B3O" id="GRf-Cu-VCZ"/>
+                                    <outlet property="delegate" destination="ek5-Io-B3O" id="f23-LW-kSB"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -471,16 +471,18 @@
                             <constraint firstItem="BWW-6U-QrA" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="63" id="9Qn-yw-gsh"/>
                             <constraint firstAttribute="trailing" secondItem="BZE-yR-tVn" secondAttribute="trailing" id="DXN-Pu-xtJ"/>
                             <constraint firstItem="BWW-6U-QrA" firstAttribute="leading" secondItem="GRK-h3-bgV" secondAttribute="trailing" constant="18" id="IZ3-p5-gCg"/>
-                            <constraint firstItem="BZE-yR-tVn" firstAttribute="centerX" secondItem="rKo-g5-byC" secondAttribute="centerX" id="QYC-P5-tic"/>
                             <constraint firstItem="GRK-h3-bgV" firstAttribute="top" secondItem="rKo-g5-byC" secondAttribute="topMargin" constant="20" id="YSR-7E-GJC"/>
-                            <constraint firstItem="BZE-yR-tVn" firstAttribute="leading" secondItem="rKo-g5-byC" secondAttribute="leading" id="gXf-g6-COw"/>
                             <constraint firstItem="lFc-WK-SkV" firstAttribute="leading" secondItem="GRK-h3-bgV" secondAttribute="trailing" constant="31" id="vfR-JF-3XH"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DXN-Pu-xtJ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Nbf-Yf-l1g">
                         <nil key="title"/>
                     </navigationItem>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="BZE-yR-tVn" id="73S-MI-be4"/>
                         <outlet property="userNameLbl" destination="lFc-WK-SkV" id="XaH-7P-1gk"/>
@@ -494,7 +496,7 @@
         <!--Wifi Config View Controller-->
         <scene sceneID="n25-zF-URm">
             <objects>
-                <viewController id="oU2-6q-Emg" customClass="WifiConfigViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WifiConfigViewController" id="oU2-6q-Emg" customClass="WifiConfigViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9oI-d1-i1r"/>
                         <viewControllerLayoutGuide type="bottom" id="f4A-IA-dHW"/>

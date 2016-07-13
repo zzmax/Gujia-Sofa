@@ -41,11 +41,15 @@
     self.tableView.backgroundColor = NAVIGATION_COLOR;
     //set tableview width = screen width
 //    self.tableView.transform = CGAffineTransformMakeScale(SCREEN_WIDTH/self.tableView.bounds.size.width, 1);
-    CGSize aSize = CGSizeMake(SCREEN_HEIGHT - 100, SCREEN_WIDTH);
+    
+    
+    CGSize aSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT * 3 / 4);
     CGRect aRect = self.tableView.frame;
     aRect.size = aSize;
     self.tableView.frame = aRect;
     self.tableView.scrollEnabled = YES;
+    
+    
 //    if (SCREEN_HEIGHT <= 500) {
 //        ALIGN_VIEW_BOTTOM(self.view, self.tableView);
 //    }
@@ -90,13 +94,13 @@
     
     //initiate table data
     NSMutableArray *infoTitlesSectionArray = [[NSMutableArray alloc]initWithCapacity:3];
-    NSMutableArray *infoTitlesSectionOne = [[NSMutableArray alloc]initWithCapacity:2];
+    NSMutableArray *infoTitlesSectionOne = [[NSMutableArray alloc]initWithCapacity:1];
     NSMutableArray *infoTitlesSectionTwo = [[NSMutableArray alloc]initWithCapacity:4];
     NSMutableArray *infoTitlesSectionThree = [[NSMutableArray alloc]initWithCapacity:3];
     
     //section 0
     [infoTitlesSectionOne addObject:@"顾家人"];
-    [infoTitlesSectionOne addObject:@"管理我的设备"];
+//    [infoTitlesSectionOne addObject:@"管理我的设备"];
     //section 1
     [infoTitlesSectionTwo addObject:@"升降控制"];
     [infoTitlesSectionTwo addObject:@"座椅加热"];
@@ -112,12 +116,12 @@
     [infoTitlesSectionArray addObject:infoTitlesSectionThree];
     
     NSMutableArray *imageNamesSectionArray = [[NSMutableArray alloc]initWithCapacity:3];
-    NSMutableArray *imageNamesSectionOne = [[NSMutableArray alloc]initWithCapacity:2];
+    NSMutableArray *imageNamesSectionOne = [[NSMutableArray alloc]initWithCapacity:1];
     NSMutableArray *imageNamesSectionTwo = [[NSMutableArray alloc]initWithCapacity:4];
     NSMutableArray *imageNamesSectionThree = [[NSMutableArray alloc]initWithCapacity:3];
     //section 0
     [imageNamesSectionOne addObject:@"icon_gujiaren"];
-    [imageNamesSectionOne addObject:@"icon_manage_device"];
+//    [imageNamesSectionOne addObject:@"icon_manage_device"];
     //section 1
     [imageNamesSectionTwo addObject:@"icon_sofa_control"];
     [imageNamesSectionTwo addObject:@"icon_sofa_heat"];
@@ -275,7 +279,7 @@
 {
     switch (section) {
         case 0:
-            return 2;
+            return 1;
         case 1:
             return 4;
         case 2:
