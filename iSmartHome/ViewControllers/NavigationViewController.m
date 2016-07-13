@@ -179,10 +179,6 @@
         if (indexPath.row == 0) {
             //     GujiarenView
             //     Change user
-//            UserChangeViewController *userChangeVC = [[UserChangeViewController alloc]init];
-//            userChangeVC.navigationItem.title = @"家人健康信息";
-//            [self.navigationController pushViewController:userChangeVC animated:YES];
-//            UsersCreationViewController *userChangeVC = [[UsersCreationViewController alloc]init];
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
             userChangeVC.navTitle = @"家人健康信息";
             [self.navigationController pushViewController:userChangeVC animated:YES];
@@ -208,9 +204,9 @@
         else if (indexPath.row == 1)
         {
             //SofaHeatView
-            //animation
             SofaHeatViewController *sofaHeatVC = [[SofaHeatViewController alloc]init];
             [self.navigationController pushViewController:sofaHeatVC animated:YES];
+            //animation
 //            SofaHeatViewController *nextView = [[SofaHeatViewController alloc] init];
 //            [UIView animateWithDuration:0.75
 //                             animations:^{
@@ -239,7 +235,6 @@
     {
         if (indexPath.row == 0) {
             //HealthReminderView
-            
             HealthReminderViewController *healthReminderVC = [[HealthReminderViewController alloc]init];
             [self.navigationController pushViewController:healthReminderVC animated:YES];
         }
@@ -301,7 +296,7 @@
     if (SCREEN_HEIGHT < 500) {
         return SCREEN_HEIGHT / 13;
     }
-    return SCREEN_HEIGHT/12;
+    return SCREEN_HEIGHT / 12;
 }
 
 //set the inset of the separator to zero

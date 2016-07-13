@@ -47,7 +47,7 @@
     
     //set title color
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    [self.view bringSubviewToFront:self.plusUser];
+//    [self.view bringSubviewToFront:self.plusUser];
     
     //set images
     if (IS_IPHONE_PLUS) {
@@ -89,7 +89,7 @@
     if (numberofEntities == 0) {
         //add icon for adding user
         //on the top
-        [self setUserImageViewforPlace:-120 and:-120 andForUser:0];
+        [self setAddUserButtonforPlace:-120 and:-120];
     }
     if (numberofEntities >= 1)
     {
@@ -100,7 +100,7 @@
         if (numberofEntities == 1) {
             //add icon for adding user
             //on the top
-            [self setUserImageViewforPlace:0 and:-120 andForUser:0];
+            [self setAddUserButtonforPlace:0 and:-120];
         }
    }
     if (numberofEntities >= 2) {
@@ -111,7 +111,7 @@
         if (numberofEntities == 2) {
             //add icon for adding user
             //on the top right
-            [self setUserImageViewforPlace:120 and:-120 andForUser:0];
+            [self setAddUserButtonforPlace:120 and:-120];
         }
     }
     if (numberofEntities >= 3) {
@@ -122,7 +122,7 @@
         if (numberofEntities == 3) {
             //add icon for adding user
             //on the left
-            [self setUserImageViewforPlace:-120 and:20 andForUser:0];
+            [self setAddUserButtonforPlace:-120 and:20];
         }
     }
     if (numberofEntities >= 4) {
@@ -133,7 +133,7 @@
         if (numberofEntities == 4) {
             //add icon for adding user
             //on the center
-            [self setUserImageViewforPlace:0 and:20 andForUser:0];
+            [self setAddUserButtonforPlace:0 and:20];
         }
     }
     if (numberofEntities >= 5) {
@@ -144,7 +144,7 @@
         if (numberofEntities == 5) {
             //add icon for adding user
             //on the right
-            [self setUserImageViewforPlace:120 and:20 andForUser:0];
+            [self setAddUserButtonforPlace:120 and:20];
         }
     }
     if (numberofEntities >= 6) {
@@ -155,7 +155,7 @@
         if (numberofEntities == 6) {
             //add icon for adding user
             //on the bottom left
-            [self setUserImageViewforPlace:-120 and:160 andForUser:0];
+            [self setAddUserButtonforPlace:-120 and:160];
         }
     }
     if (numberofEntities >= 7) {
@@ -166,7 +166,7 @@
         if (numberofEntities == 7) {
             //add icon for adding user
             //on the bottom
-            [self setUserImageViewforPlace:0 and:160 andForUser:0];
+            [self setAddUserButtonforPlace:0 and:160];
         }
     }
     if (numberofEntities >= 8) {
@@ -177,7 +177,7 @@
         if (numberofEntities == 8) {
             //add icon for adding user
             //on the bottom right
-            [self setUserImageViewforPlace:120 and:160 andForUser:0];
+            [self setAddUserButtonforPlace:120 and:160];
         }
     }
     if (numberofEntities >= 9) {
@@ -189,6 +189,7 @@
 
 -(UIImageView *)setUserImageViewforPlace:(int)HCoord and:(int)VCoord andForUser:(int) userOrder{
     UIImageView *aView = [[UIImageView alloc]init];
+
     
     User *fetchedUser;
     UIImage *anImage;
@@ -238,33 +239,33 @@
             break;
     }
     
-    if(aView.tag != 200)
-    {
+//    if(aView.tag != 200)
+//    {
         anImage = [utility loadPhotoForUser:fetchedUser.userName];
-    }
-    else anImage = [UIImage imageNamed: @"button_add_user"];
+        aView.image = anImage;
+        CGFloat widthScale = (90 * screenFactor)/anImage.size.width;
+        CGFloat heightScale = (90 * screenFactor)/anImage.size.height;
+        aView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        //set image to a circle
+        aView.layer.cornerRadius = aView.image.size.width/2;
+        aView.layer.masksToBounds = YES;
+        aView.layer.borderWidth = 3.0f;
+        aView.layer.borderColor = [UIColor whiteColor].CGColor;
+        [self.view addSubview:aView];
+        PREPCONSTRAINTS(aView);
+        
+        CENTER_VIEW_H_CONSTANT(self.view, aView, HCoord * screenFactor);
+        CENTER_VIEW_V_CONSTANT(self.view, aView, VCoord * screenFactor);
+        
+        //add tap gesture recognizer to each image view
+        UITapGestureRecognizer *aTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(handleTap:)];
+        [aView addGestureRecognizer:aTap];
+        aView.userInteractionEnabled = YES;
+        return aView;
+  
     
-    aView.image = anImage;
-    CGFloat widthScale = (90 * screenFactor)/anImage.size.width;
-    CGFloat heightScale = (90 * screenFactor)/anImage.size.height;
-    aView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    //set image to a circle
-    aView.layer.cornerRadius = aView.image.size.width/2;
-    aView.layer.masksToBounds = YES;
-    aView.layer.borderWidth = 3.0f;
-    aView.layer.borderColor = [UIColor whiteColor].CGColor;
-    [self.view addSubview:aView];
-    PREPCONSTRAINTS(aView);
     
-    CENTER_VIEW_H_CONSTANT(self.view, aView, HCoord * screenFactor);
-    CENTER_VIEW_V_CONSTANT(self.view, aView, VCoord * screenFactor);
-    
-    //add tap gesture recognizer to each image view
-    UITapGestureRecognizer *aTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                           action:@selector(handleTap:)];
-    [aView addGestureRecognizer:aTap];
-    aView.userInteractionEnabled = YES;
-    return aView;
 }
 
 -(UILabel *)setUserNameLabelViewforPlace:(int)HCoord and:(int)VCoord andForUser:(int)userOrder{
@@ -336,7 +337,35 @@
     return aLabel;
 }
 
+-(UIButton *)setAddUserButtonforPlace:(int)HCoord and:(int)VCoord{
 
+    UIButton *addUserBtn = [[UIButton alloc] init];
+    UIImage *anImage;
+    
+    //We will tag the view to distinguish the tap
+    addUserBtn.tag = 200;
+    [self.view addSubview:addUserBtn];
+
+    PREPCONSTRAINTS(addUserBtn);
+    CENTER_VIEW_H_CONSTANT(self.view, addUserBtn, HCoord * screenFactor);
+    CENTER_VIEW_V_CONSTANT(self.view, addUserBtn, VCoord * screenFactor);
+    CONSTRAIN_SIZE(addUserBtn, 90 * screenFactor, 90 * screenFactor);
+    
+    anImage = [UIImage imageNamed: @"button_add_user"];
+    [addUserBtn setImage:anImage forState:UIControlStateNormal];
+    
+    addUserBtn.layer.cornerRadius = 45;
+    addUserBtn.layer.masksToBounds = YES;
+//    addUserBtn.layer.borderWidth = 3.0f;
+    addUserBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+    
+    //add tap gesture recognizer to each image view
+    UITapGestureRecognizer *aTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                           action:@selector(handleTap:)];
+    [addUserBtn addGestureRecognizer:aTap];
+    addUserBtn.userInteractionEnabled = YES;
+    return addUserBtn;
+}
 
 //The event handling method
 - (void)handleTap:(UITapGestureRecognizer *)recognizer {
