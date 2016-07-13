@@ -11,6 +11,7 @@
 @protocol UtilityDelegate <NSObject>
 @optional
 -(void)deleteUserAction:(NSInteger)deleteOrNot;
+-(void)reconfigurateWifi:(NSInteger)reconfigOrNot;
 @end
 
 @interface Utility : NSObject

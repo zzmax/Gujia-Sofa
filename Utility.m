@@ -50,6 +50,13 @@
                                                     [self.utilityDelegateDelegate deleteUserAction:1];
                                                 }
                                             }
+                                            if ([aTitle isEqualToString:@"Wifi信息缺失"]
+                                                || [aTitle isEqualToString:@"重新配置WiFi"])
+                                            {
+                                                if ([self.utilityDelegateDelegate respondsToSelector:@selector(reconfigurateWifi:)]) {
+                                                    [self.utilityDelegateDelegate reconfigurateWifi:1];
+                                                }
+                                            }
                                         }];
         
         
@@ -61,6 +68,13 @@
                                                                      if ([self.utilityDelegateDelegate respondsToSelector:@selector(deleteUserAction:)])
                                                                      {
                                                                          [self.utilityDelegateDelegate deleteUserAction:0];
+                                                                     }
+                                                                 }
+                                                                 if ([aTitle isEqualToString:@"Wifi信息缺失"]
+                                                                     || [aTitle isEqualToString:@"重新配置WiFi"])
+                                                                 {
+                                                                     if ([self.utilityDelegateDelegate respondsToSelector:@selector(reconfigurateWifi:)]) {
+                                                                         [self.utilityDelegateDelegate reconfigurateWifi:0];
                                                                      }
                                                                  }
                                                              }];

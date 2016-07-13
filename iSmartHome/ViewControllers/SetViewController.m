@@ -8,6 +8,7 @@
 
 #import "SetViewController.h"
 #import "ConstraintMacros.h"
+#import "WifiInfoViewController.h"
 
 @interface SetViewController ()
 
@@ -99,9 +100,8 @@
     if(indexPath.section == 0)
     {
         if (indexPath.row == 0) {
-            //     GujiarenView
-            //     Change user
-            //            UserChangeViewController *userChangeVC = [[UserChangeViewController alloc]init];
+            WifiInfoViewController *wifiInfoVC = [[WifiInfoViewController alloc] init];
+            [self.navigationController pushViewController:wifiInfoVC animated:YES];
             //            userChangeVC.navigationItem.title = @"家人健康信息";
             //            [self.navigationController pushViewController:userChangeVC animated:YES];
             //            UsersCreationViewController *userChangeVC = [[UsersCreationViewController alloc]init];
