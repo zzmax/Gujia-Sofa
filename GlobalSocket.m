@@ -118,35 +118,35 @@ NSString* MBNonEmptyString(id obj){
 #pragma mark - socket part to send and recieve msg from server
 /**
  *  This method is to intiate the message array that we will send to control part
- */
--(void)initControlMessage
-{
-    sendDataLength=8;
-    inputBuffer[0]=0x21;    //message ID
-    inputBuffer[1]=0x02;    //?
-    inputBuffer[2]=0x03;    //?
-    inputBuffer[3]=0x01;    //data that control the sofa
-    inputBuffer[4]=0x00;
-    inputBuffer[5]=0x00;
-    inputBuffer[6]=0x0d;
-    inputBuffer[7]=0x0a;
-}
-
-/**
- *  This method is to intiate the message array that we will send to sensors to aquire data
- */
--(void)initAcquireSensorDataMessage
-{
-    sendDataLength=8;
-    inputBuffer[0]=0x24;
-    inputBuffer[1]=0x02;
-    inputBuffer[2]=0x03;
-    inputBuffer[3]=0x02;
-    inputBuffer[4]=0x00;
-    inputBuffer[5]=0x00;
-    inputBuffer[6]=0x0d;
-    inputBuffer[7]=0x0a;
-}
+// */
+//-(void)initControlMessage
+//{
+//    sendDataLength=8;
+//    inputBuffer[0]=0x21;    //message ID
+//    inputBuffer[1]=0x02;    //?
+//    inputBuffer[2]=0x03;    //?
+//    inputBuffer[3]=0x01;    //data that control the sofa
+//    inputBuffer[4]=0x00;
+//    inputBuffer[5]=0x00;
+//    inputBuffer[6]=0x0d;
+//    inputBuffer[7]=0x0a;
+//}
+//
+///**
+// *  This method is to intiate the message array that we will send to sensors to aquire data
+// */
+//-(void)initAcquireSensorDataMessage
+//{
+//    sendDataLength=8;
+//    inputBuffer[0]=0x24;
+//    inputBuffer[1]=0x02;
+//    inputBuffer[2]=0x03;
+//    inputBuffer[3]=0x02;
+//    inputBuffer[4]=0x00;
+//    inputBuffer[5]=0x00;
+//    inputBuffer[6]=0x0d;
+//    inputBuffer[7]=0x0a;
+//}
 
 /**
  *  Connect to the server
@@ -313,112 +313,124 @@ NSString* MBNonEmptyString(id obj){
 {
     NSString *ip = [sock connectedHost];
     uint16_t aPort = [sock connectedPort];
-    NSString *command;
+    NSString *commands;
     if ([ip isEqualToString:host] && port == aPort)
     {
         NSString *result = [SmartMlccUtil getReturnCommand:data];
-        command = [SmartMlccUtil parseTcpCommandData:result];
-        NSLog(@"返回信息=%@",command);
+        commands = [SmartMlccUtil parseTcpCommandData:result];
+        NSLog(@"返回信息=%@",commands);
     }
     
     [sock readDataWithTimeout:-1 tag:200];
     
-    if (command!=nil&&command.length==18) {
-        NSString *cmd=[command substringWithRange:NSMakeRange(4, 4)];
-        NSLog(@"cmd=%@",cmd);//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        if ([cmd isEqualToString:@"0103"]) {//电热毯信息
-            NSString *strElectricBlanket;
-            NSString *str=[command substringWithRange:NSMakeRange(8, 2)];//电热毯开关信息
-            if([str isEqualToString:@"00"])
-            {
-                strElectricBlanket = @"关";
+    NSArray* cmdsWithoutStart = [commands componentsSeparatedByString: @"f2f2"];//split the msg by the start "f2f2"
+    
+    
+    for (NSString *aCmd in cmdsWithoutStart) {
+        if ( [aCmd length] != 0  &&
+                            ([[aCmd substringWithRange:NSMakeRange(12, 2)] isEqualToString:@"7e"]
+                                ||
+                             [[aCmd substringWithRange:NSMakeRange(14, 2)] isEqualToString:@"7e"]//称重
+                             )
+            )
+        {
+            NSLog(@"Bit=%@",aCmd);
+            NSString *cmdCode=[aCmd substringWithRange:NSMakeRange(0, 4)];
+            NSLog(@"cmdCode=%@",cmdCode);
+            if ([cmdCode isEqualToString:@"0103"]) {//电热毯信息
+                NSString *strElectricBlanket;
+                NSString *str=[aCmd substringWithRange:NSMakeRange(4, 2)];//电热毯开关信息
+                if([str isEqualToString:@"00"])
+                {
+                    strElectricBlanket = @"关";
+                }
+                else if ([str isEqualToString:@"01"]){
+                    NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
+                    NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
+                    
+                    int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
+                    int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
+                    
+                    strElectricBlanket = [NSString stringWithFormat:@"开,温度%d,档位%d",value2,value3];
+                    //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value]];
+                    //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value1]];
+                    self.sofaTemp[0] = value;
+                    self.sofaTemp[1] = value1;
+                }
+                
             }
-            else if ([str isEqualToString:@"01"]){
-                NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
-                NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
+            if ([cmdCode isEqualToString:@"0204"]) {//称重信息
+                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//重量kg高位
+                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//重量kg低位
+                NSString *value2=[aCmd substringWithRange:NSMakeRange(10, 2)];//重量g，g的值仅发送百位和十位数，最大99，即990g
+                
+                float value4=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] floatValue];
+                float value5=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] floatValue];
+                float value6=[[NSString stringWithFormat:@"%lu",strtoul([value2 UTF8String],0,16)] floatValue];
+                
+                float fWeighting= value4 + (value5 + value6)/100;
+                
+                NSString *strWeighting = [NSString stringWithFormat:@"%.1f",fWeighting];
+                self.weight = strWeighting;
+            }
+            
+            cmdCode =[aCmd substringWithRange:NSMakeRange(2, 4)];
+            if ([cmdCode isEqualToString:@"0302"]) {//血氧，脉搏信息
+                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
+                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
                 
                 int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
                 int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
                 
-                strElectricBlanket = [NSString stringWithFormat:@"开,温度%d,档位%d",value2,value3];
-                //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value]];
-                //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value1]];
-                self.sofaTemp[0] = value;
-                self.sofaTemp[1] = value1;
+                self.bloodO2 = [NSString stringWithFormat:@"%d", value2];
+                self.heartRate = [NSString stringWithFormat:@"%d", value3];
+                
             }
-           
-        }
-        if ([cmd isEqualToString:@"0204"]) {//称重信息
-            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//重量kg高位
-            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//重量kg低位
-            NSString *value2=[command substringWithRange:NSMakeRange(14, 2)];//重量g，g的值仅发送百位和十位数，最大99，即990g
             
-            float value4=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] floatValue];
-            float value5=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] floatValue];
-            float value6=[[NSString stringWithFormat:@"%lu",strtoul([value2 UTF8String],0,16)] floatValue];
+            if ([cmdCode isEqualToString:@"0301"]) {//体温信息
+                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
+                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
+                
+                float value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] floatValue];
+                float value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] floatValue];
+                
+                
+                float fTemperature= value2 + value3/10;
+                
+                NSString *strTemperature = [NSString stringWithFormat:@"%.1f",fTemperature];
+                self.bodyTemp = strTemperature;
+                
+            }
+            //        if ([cmd isEqualToString:@"0303"]) {//血压实时测量
+            //            //Real blood pressure measure
+            //
+            //            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
+            //             NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
+            //
+            //            self.bloodPressure = value;
+            //        }
+            if ([cmdCode isEqualToString:@"0303"] || [cmdCode isEqualToString:@"0304"]) {//血压实时测量 || 血压测试完成
+                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
+                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
+                
+                int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
+                int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
+                
+                
+                NSString *strbloodPressure;
+                strbloodPressure = [NSString stringWithFormat:@"%d/%d",value2,value3];//收缩压/舒张压
+                self.bloodPressure = strbloodPressure;
+                
+            }
+            if ([cmdCode isEqualToString:@"0305"]) {//血压测试异常
+                
+                self.bloodPressure = @"测试异常";
+                
+            }
             
-            float fWeighting= value4 + (value5 + value6)/100;
-
-            NSString *strWeighting = [NSString stringWithFormat:@"%.1f",fWeighting];
-            self.weight = strWeighting;
-        }
-
-        cmd =[command substringWithRange:NSMakeRange(6, 4)];
-        if ([cmd isEqualToString:@"0302"]) {//血氧，脉搏信息
-            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
-            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
-            
-            int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
-            int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
-            
-            self.bloodO2 = [NSString stringWithFormat:@"%d", value2];
-            self.heartRate = [NSString stringWithFormat:@"%d", value3];
-
-        }
-    
-        if ([cmd isEqualToString:@"0301"]) {//体温信息
-            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
-            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
-            
-            float value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] floatValue];
-            float value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] floatValue];
-
-            
-            float fTemperature= value2 + value3/10;
-            
-            NSString *strTemperature = [NSString stringWithFormat:@"%.1f",fTemperature];
-            self.bodyTemp = strTemperature;
-
-        }
-//        if ([cmd isEqualToString:@"0303"]) {//血压实时测量
-//            //Real blood pressure measure
-//
-//            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
-//             NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
-//            
-//            self.bloodPressure = value;
-//        }
-        if ([cmd isEqualToString:@"0303"] || [cmd isEqualToString:@"0304"]) {//血压实时测量 || 血压测试完成
-            NSString *value=[command substringWithRange:NSMakeRange(10, 2)];//电热毯温度值信息
-            NSString *value1=[command substringWithRange:NSMakeRange(12, 2)];//电热毯档位信息
-            
-            int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
-            int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
-
-            
-            NSString *strbloodPressure;
-            strbloodPressure = [NSString stringWithFormat:@"%d/%d",value2,value3];//收缩压/舒张压
-            self.bloodPressure = strbloodPressure;
+            [socket readDataWithTimeout:100 tag:0];
             
         }
-        if ([cmd isEqualToString:@"0305"]) {//血压测试异常
-            
-            self.bloodPressure = @"测试异常";
-            
-        }
-        
-        [socket readDataWithTimeout:100 tag:0];
-
     }
 //    NSString *str=@"返回信息:";
 //    NSString *hexStr=@"";
