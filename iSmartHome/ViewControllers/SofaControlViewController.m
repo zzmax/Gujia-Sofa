@@ -125,7 +125,7 @@
     _globalSocket.btnS1 = false;
     [_globalSocket stopSendMessgeTimer];
     
-    [_globalSocket initControlMessage];
+//    [_globalSocket initControlMessage];
     [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
 //    [_globalSocket sendMessageDown:inputBuffer length:sendDataLength];
 }

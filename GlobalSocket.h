@@ -48,9 +48,9 @@ NSString* MBNonEmptyString(id obj);
 
 - (void)setInputBuffer:(int)order and:(UInt8)anInputBuffer;
 
--(void)initControlMessage;
+//-(void)initControlMessage;
 
--(void)initAcquireSensorDataMessage;
+//-(void)initAcquireSensorDataMessage;
 
 -(void)initNetworkCommunication;
 
