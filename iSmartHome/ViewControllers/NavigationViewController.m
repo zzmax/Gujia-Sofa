@@ -26,6 +26,7 @@
 @interface NavigationViewController()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLbl;
 @property (weak, nonatomic) IBOutlet UIImageView *userPhoto;
+@property (weak, nonatomic) IBOutlet UIButton *changeUserLbl;
 @property CurrentUser *currentUser;
 @property Utility *utility;
 
@@ -182,9 +183,6 @@
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
             userChangeVC.navTitle = @"家人健康信息";
             [self.navigationController pushViewController:userChangeVC animated:YES];
-            
-            AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [app changeRootViewController:userChangeVC];
         }
         else
         {
@@ -329,5 +327,16 @@
     userInfoRegisterVC.navTitle = @"修改用户信息";
     [self.navigationController pushViewController:userInfoRegisterVC animated:YES];
 }
+- (IBAction)changeUser:(id)sender
+{
+    //     GujiarenView
+    //     Change user
+    UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
+    userChangeVC.navTitle = @"用户";
+    [self.navigationController pushViewController:userChangeVC animated:YES];
+    
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app changeRootViewController:userChangeVC];
 
+}
 @end

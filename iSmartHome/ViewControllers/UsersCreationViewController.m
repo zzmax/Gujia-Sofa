@@ -15,6 +15,7 @@
 #import "CurrentUser.h"
 #import "Utility.h"
 #import "UserInfoRegisterViewController.h"
+#import "HealthConditionTrendencyViewController.h"
 
 @interface UsersCreationViewController()
 {
@@ -24,9 +25,12 @@
     CGFloat screenFactor;
     Utility *utility;
     NSArray *fetchedUsers;
+    //if it is the view to change user or to add user,
+    //we will show the plus user button and other titles
+    BOOL isChangingUserView;
 }
 
-@property (nonatomic,weak)IBOutlet UIButton *plusUser;
+@property (nonatomic,weak)IBOutlet UILabel *plusUserNote;
 @end
 
 @implementation UsersCreationViewController
@@ -44,6 +48,15 @@
     }
     [self.navigationItem setTitle: self.navTitle];
     self.navigationItem.titleView.hidden = NO;
+    
+    if (![self.navigationItem.title isEqualToString:@"家人健康信息"]) {
+        isChangingUserView = YES;
+    }
+    else
+    {
+        isChangingUserView = NO;
+        [_plusUserNote setHidden:YES];
+    }
     
     //set title color
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
@@ -344,8 +357,9 @@
     
     //We will tag the view to distinguish the tap
     addUserBtn.tag = 200;
+    if (isChangingUserView) {
+    
     [self.view addSubview:addUserBtn];
-
     PREPCONSTRAINTS(addUserBtn);
     CENTER_VIEW_H_CONSTANT(self.view, addUserBtn, HCoord * screenFactor);
     CENTER_VIEW_V_CONSTANT(self.view, addUserBtn, VCoord * screenFactor);
@@ -364,6 +378,8 @@
                                                                            action:@selector(handleTap:)];
     [addUserBtn addGestureRecognizer:aTap];
     addUserBtn.userInteractionEnabled = YES;
+    }
+    
     return addUserBtn;
 }
 
@@ -410,26 +426,37 @@
     }
     else
     {
+        //if isChangingUser == YES;
         //change current user to a normal user
-        [dataHelper fetchItemsMatching:@"1" forAttribute:@"isCurrentUser" sortingBy:nil];
-        if (dataHelper.fetchedResultsController.fetchedObjects.count > 1)
-        {
-            [NSException raise:@"系统错误" format:@"Too many current user : %lu", dataHelper.fetchedResultsController.fetchedObjects.count];
+        if (isChangingUserView) {
+            [dataHelper fetchItemsMatching:@"1" forAttribute:@"isCurrentUser" sortingBy:nil];
+            if (dataHelper.fetchedResultsController.fetchedObjects.count > 1)
+            {
+                [NSException raise:@"系统错误" format:@"Too many current user : %lu", dataHelper.fetchedResultsController.fetchedObjects.count];
+            }
+            User *oldUser = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
+            oldUser.isCurrentUser = [NSNumber numberWithInteger:0];
+            
+            currentUser = [CurrentUser staticCurrentUser];
+            
+            // we fetch the tapped user and set to current user
+            [dataHelper fetchItemsMatching:aLabel.text forAttribute:@"userName" sortingBy:nil];
+            User *userWantChangeTo = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
+            [currentUser setCurrentUser:userWantChangeTo];
+            userWantChangeTo.isCurrentUser = [NSNumber numberWithInteger:1];
+            [dataHelper save];
+            
+            NavigationViewController *navigationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
+            [self.navigationController pushViewController:navigationVC animated:YES];
+
         }
-        User *oldUser = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
-        oldUser.isCurrentUser = [NSNumber numberWithInteger:0];
-        
-        currentUser = [CurrentUser staticCurrentUser];
-        
-        // we fetch the tapped user and set to current user
-        [dataHelper fetchItemsMatching:aLabel.text forAttribute:@"userName" sortingBy:nil];
-        User *userWantChangeTo = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
-        [currentUser setCurrentUser:userWantChangeTo];
-        userWantChangeTo.isCurrentUser = [NSNumber numberWithInteger:1];
-        [dataHelper save];
-        
-        NavigationViewController *navigationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
-        [self.navigationController pushViewController:navigationVC animated:YES];
+        else
+        {
+            //HealthConditionTrendencyView
+            //
+            HealthConditionTrendencyViewController *healthConditionTrendencyVC = [[HealthConditionTrendencyViewController alloc]init];
+            [self.navigationController pushViewController:healthConditionTrendencyVC animated:YES];
+        }
     }
 }
 @end

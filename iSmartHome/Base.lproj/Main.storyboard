@@ -228,6 +228,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="esm-Dx-m9h">
+                                <rect key="frame" x="0.0" y="20" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="点击中间“＋”增加用户" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hM0-dj-iDq">
                                 <rect key="frame" x="210" y="86" width="180" height="21"/>
                                 <constraints>
@@ -238,9 +241,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="background_circles-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="esm-Dx-m9h">
-                                <rect key="frame" x="0.0" y="20" width="600" height="600"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -253,6 +253,9 @@
                     <navigationItem key="navigationItem" id="8FH-CP-Ccc">
                         <nil key="title"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="plusUserNote" destination="hM0-dj-iDq" id="mdm-qW-dLe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mOH-2d-86E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -443,6 +446,9 @@
                                 <state key="normal" title="切换用户">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="changeUser:" destination="ek5-Io-B3O" eventType="touchUpInside" id="pDm-wQ-y1l"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="父亲" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFc-WK-SkV">
                                 <rect key="frame" x="151" y="43" width="100" height="21"/>
@@ -484,6 +490,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="changeUserLbl" destination="BWW-6U-QrA" id="esD-DG-fmw"/>
                         <outlet property="tableView" destination="BZE-yR-tVn" id="73S-MI-be4"/>
                         <outlet property="userNameLbl" destination="lFc-WK-SkV" id="XaH-7P-1gk"/>
                         <outlet property="userPhoto" destination="GRK-h3-bgV" id="s6F-hu-yLF"/>
