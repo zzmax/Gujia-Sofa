@@ -12,7 +12,7 @@
 #import "SofaControlViewController.h"
 #import "SofaHeatViewController.h"
 #import "HealthExamResultViewController.h"
-#import "WeightResetViewController.h"
+#import "WeightResultViewController.h"
 #import "UsersCreationViewController.h"
 #import "CurrentUser.h"
 #import "UserInfoRegisterViewController.h"
@@ -225,10 +225,10 @@
         }
         else if (indexPath.row == 3)
         {
-            //WeightResetView
+            //WeightResultView
             //
-            WeightResetViewController *weightResetVC = [[WeightResetViewController alloc]init];
-            [self.navigationController pushViewController:weightResetVC animated:YES];
+            WeightResultViewController *weightResultVC = [[WeightResultViewController alloc]init];
+            [self.navigationController pushViewController:weightResultVC animated:YES];
         }
     }
     else if (indexPath.section == 2)
