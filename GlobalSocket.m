@@ -90,7 +90,7 @@ NSString* MBNonEmptyString(id obj){
         socketTimeOut = 100;
         _sofaTemp = [[NSMutableArray alloc]initWithCapacity:3];
         [self initNetworkCommunication];
-        [self initControlMessage];
+//        [self initControlMessage];
         [self sendMessageDown:inputBuffer length:sendDataLength];
     }
     return self;
@@ -296,7 +296,7 @@ NSString* MBNonEmptyString(id obj){
     }
     else
     {
-        [self initControlMessage];
+//        [self initControlMessage];
         [self sendMessageDown:inputBuffer length:sendDataLength];
     }
 }
@@ -334,7 +334,7 @@ NSString* MBNonEmptyString(id obj){
                              )
             )
         {
-            NSLog(@"Bit=%@",aCmd);
+            NSLog(@"one command = %@",aCmd);
             NSString *cmdCode=[aCmd substringWithRange:NSMakeRange(0, 4)];
             NSLog(@"cmdCode=%@",cmdCode);
             if ([cmdCode isEqualToString:@"0103"]) {//电热毯信息
@@ -348,13 +348,13 @@ NSString* MBNonEmptyString(id obj){
                     NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
                     NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
                     
-                    int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
+                    NSString *value2=[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)];
                     int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
                     
-                    strElectricBlanket = [NSString stringWithFormat:@"开,温度%d,档位%d",value2,value3];
+                    strElectricBlanket = [NSString stringWithFormat:@"开,温度%@,档位%d",value2,value3];
                     //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value]];
                     //                    [self.temp addObject:[NSString stringWithFormat: @"%d",value1]];
-                    self.sofaTemp[0] = value;
+                    self.sofaTemp[0] = value2;
                     self.sofaTemp[1] = value1;
                 }
                 
@@ -374,10 +374,10 @@ NSString* MBNonEmptyString(id obj){
                 self.weight = strWeighting;
             }
             
-            cmdCode =[aCmd substringWithRange:NSMakeRange(2, 4)];
-            if ([cmdCode isEqualToString:@"0302"]) {//血氧，脉搏信息
-                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
-                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
+            cmdCode =[aCmd substringWithRange:NSMakeRange(0, 6)];
+            if ([cmdCode isEqualToString:@"030302"]) {//血氧，脉搏信息
+                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//
+                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//
                 
                 int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
                 int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
@@ -387,9 +387,9 @@ NSString* MBNonEmptyString(id obj){
                 
             }
             
-            if ([cmdCode isEqualToString:@"0301"]) {//体温信息
-                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
-                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
+            if ([cmdCode isEqualToString:@"030301"]) {//体温信息
+                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//
+                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//
                 
                 float value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] floatValue];
                 float value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] floatValue];
@@ -409,9 +409,9 @@ NSString* MBNonEmptyString(id obj){
             //
             //            self.bloodPressure = value;
             //        }
-            if ([cmdCode isEqualToString:@"0303"] || [cmdCode isEqualToString:@"0304"]) {//血压实时测量 || 血压测试完成
-                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息
-                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//电热毯档位信息
+            if ([cmdCode isEqualToString:@"030303"] || [cmdCode isEqualToString:@"030304"]) {//血压实时测量 || 血压测试完成
+                NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//
+                NSString *value1=[aCmd substringWithRange:NSMakeRange(8, 2)];//
                 
                 int value2=[[NSString stringWithFormat:@"%lu",strtoul([value UTF8String],0,16)] intValue];
                 int value3=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] intValue];
@@ -422,7 +422,7 @@ NSString* MBNonEmptyString(id obj){
                 self.bloodPressure = strbloodPressure;
                 
             }
-            if ([cmdCode isEqualToString:@"0305"]) {//血压测试异常
+            if ([cmdCode isEqualToString:@"030305"]) {//血压测试异常
                 
                 self.bloodPressure = @"测试异常";
                 

@@ -95,9 +95,9 @@
     CENTER_VIEW_H(self.sofaHeatView, self.minusBtn);
     
     _globalSocket = [GlobalSocket sharedGlobalSocket];
-    [self initControlMessage];
-    [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
-    isElectricalBlanketOn = NO;
+    
+//    [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
+//    isElectricalBlanketOn = NO;
     
     sofaHeatImgs = [[NSMutableArray alloc]initWithCapacity:3];
     [sofaHeatImgs addObject:@"icon_temp_signal_1"];
@@ -107,6 +107,12 @@
     widthScale = 100/image.size.width;
     heightScale = 100/image.size.height;
     _sofaHeatImg.image = image;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [_tempLbl setText:@""];
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setTempLbl) userInfo:nil repeats:NO ];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -221,6 +227,9 @@
     {
         [getMessageTimer invalidate];
     }
+    [_tempLbl setText:@""];
+    image = [UIImage imageNamed: sofaHeatImgs[0]];
+    _sofaHeatImg.image = image;
 }
 
 -(void) setTempLbl
@@ -228,23 +237,36 @@
     [_globalSocket sendMessageDown:@"F1F10200027E"];//向控制器发送获取电热毯温度信息
     CGFloat widthScale = 100/image.size.width;
     CGFloat heightScale = 100/image.size.height;
-    [_tempLbl setText:_globalSocket.sofaTemp[0]];
-    //identify the gear of blanket: 1, 2 or 3 to change the image of the sofa
-    if ([_globalSocket.sofaTemp[1] isEqualToString:@"1"]) {
+    if ([_globalSocket.sofaTemp count] == 0) {
+        [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
+        isElectricalBlanketOn = NO;
+        [_tempLbl setText:@""];
         image = [UIImage imageNamed: sofaHeatImgs[0]];
         _sofaHeatImg.image = image;
         _sofaHeatImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
     }
-    else if([_globalSocket.sofaTemp[1] isEqualToString:@"2"])
+    else
     {
-        image = [UIImage imageNamed: sofaHeatImgs[1]];
-        _sofaHeatImg.image = image;
-        _sofaHeatImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    }
-    else{
-        image = [UIImage imageNamed: sofaHeatImgs[2]];
-        _sofaHeatImg.image = image;
-        _sofaHeatImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        isElectricalBlanketOn = YES;
+        [_tempLbl setText:_globalSocket.sofaTemp[0]];
+        //identify the gear of blanket: 1, 2 or 3 to change the image of the sofa
+        if ([_globalSocket.sofaTemp[1] isEqualToString:@"01"]) {
+            image = [UIImage imageNamed: sofaHeatImgs[0]];
+            _sofaHeatImg.image = image;
+            _sofaHeatImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        }
+        else if([_globalSocket.sofaTemp[1] isEqualToString:@"02"])
+        {
+            image = [UIImage imageNamed: sofaHeatImgs[1]];
+            _sofaHeatImg.image = image;
+            _sofaHeatImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        }
+        else if([_globalSocket.sofaTemp[1] isEqualToString:@"03"])
+        {
+            image = [UIImage imageNamed: sofaHeatImgs[2]];
+            _sofaHeatImg.image = image;
+            _sofaHeatImg.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        }
     }
 }
 
