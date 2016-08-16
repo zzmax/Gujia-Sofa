@@ -323,7 +323,7 @@ NSString* MBNonEmptyString(id obj){
     
     [sock readDataWithTimeout:-1 tag:200];
     
-    NSArray* cmdsWithoutStart = [commands componentsSeparatedByString: @"f2f2"];//split the msg by the start "f2f2"
+    NSArray* cmdsWithoutStart = [commands componentsSeparatedByString: @"f2f2"];//split the msg by the start "f2f2" and throw away the "f2f2"
     
     
     for (NSString *aCmd in cmdsWithoutStart) {
@@ -368,7 +368,7 @@ NSString* MBNonEmptyString(id obj){
                 float value5=[[NSString stringWithFormat:@"%lu",strtoul([value1 UTF8String],0,16)] floatValue];
                 float value6=[[NSString stringWithFormat:@"%lu",strtoul([value2 UTF8String],0,16)] floatValue];
                 
-                float fWeighting= value4 + (value5 + value6)/100;
+                float fWeighting= value4 * 100 + value5 + value6 / 100;
                 
                 NSString *strWeighting = [NSString stringWithFormat:@"%.1f",fWeighting];
                 self.weight = strWeighting;
