@@ -63,4 +63,6 @@ NSString* MBNonEmptyString(id obj);
 -(void)sendMessageDown:(UInt8*)uintSendData length:(int)intSendDataLength;
 
 -(void)sendMessageInterval:(NSTimer *)paramTimer;
+
+-(void)disconnect;
 @end

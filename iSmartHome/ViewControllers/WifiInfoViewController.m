@@ -111,6 +111,8 @@
 -(void)reconfigurateWifi:(NSInteger)reconfigOrNot
 {
     if (reconfigOrNot == 1) {
+        [globalSocket setHost:@""];
+        [globalSocket disconnect];
         [dataHelper fetchItemsMatching:[wifiInfos objectAtIndex:0] forAttribute:@"ssid" sortingBy:nil];
         if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject])
         {

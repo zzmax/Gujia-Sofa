@@ -747,5 +747,9 @@ NSString* MBNonEmptyString(id obj){
     [sock connectToHost:host onPort:port withTimeout:60 error:nil];
 }
 
+- (void) disconnect
+{
+    [socket disconnect];
+}
 
 @end
