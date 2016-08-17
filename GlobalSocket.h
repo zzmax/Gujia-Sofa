@@ -65,4 +65,6 @@ NSString* MBNonEmptyString(id obj);
 -(void)sendMessageInterval:(NSTimer *)paramTimer;
 
 -(void)disconnect;
+
+-(void)initHealthMsg;
 @end

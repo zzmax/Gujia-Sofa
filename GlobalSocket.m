@@ -160,6 +160,14 @@ NSString* MBNonEmptyString(id obj){
 //    [self sendMessageDown:inputBuffer length:_sendDataLength];
 //}
 
+- (void) initHealthMsg
+{
+    self.bloodO2 = @"";
+    self.bloodPressure = @"";
+    self.bodyTemp = @"";
+    self.heartRate = @"";
+    self.weight = @"";
+}
 /**
  *  This method is to intiate the communication between the server and the
  terminator via socket.
