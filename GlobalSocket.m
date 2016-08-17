@@ -350,7 +350,7 @@ NSString* MBNonEmptyString(id obj){
                 NSString *str=[aCmd substringWithRange:NSMakeRange(4, 2)];//电热毯开关信息
                 if([str isEqualToString:@"00"])
                 {
-                    strElectricBlanket = @"关";
+                    self.sofaTemp[0] = @"关";
                 }
                 else if ([str isEqualToString:@"01"]){
                     NSString *value=[aCmd substringWithRange:NSMakeRange(6, 2)];//电热毯温度值信息

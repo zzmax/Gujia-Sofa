@@ -112,7 +112,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [_tempLbl setText:@""];
-    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setTempLbl) userInfo:nil repeats:NO ];
+//    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setTempLbl) userInfo:nil repeats:NO ];
+    [self startGetTempMessageTimer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -195,7 +196,7 @@
 
 - (IBAction)s6Down:(id)sender
 {
-    [_globalSocket sendMessageDown:@"F1F101022000237E"];//松手检测
+    [_globalSocket sendMessageDown:@"F1F101022000237E"];//温度调低
 //    [_globalSocket initControlMessage];
 ////    inputBuffer[4]=0x20;
 //    [_globalSocket setInputBuffer:4 and:0x20];
@@ -237,7 +238,7 @@
     [_globalSocket sendMessageDown:@"F1F10200027E"];//向控制器发送获取电热毯温度信息
     CGFloat widthScale = 100/image.size.width;
     CGFloat heightScale = 100/image.size.height;
-    if ([_globalSocket.sofaTemp count] == 0) {
+    if ([_globalSocket.sofaTemp[0] isEqualToString:@"关"]) {
         [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
         isElectricalBlanketOn = NO;
         [_tempLbl setText:@""];
@@ -248,6 +249,7 @@
     else
     {
         isElectricalBlanketOn = YES;
+        [_stopHeatBtn setTitle:@"关闭座椅加热" forState:UIControlStateNormal];
         [_tempLbl setText:_globalSocket.sofaTemp[0]];
         //identify the gear of blanket: 1, 2 or 3 to change the image of the sofa
         if ([_globalSocket.sofaTemp[1] isEqualToString:@"01"]) {
