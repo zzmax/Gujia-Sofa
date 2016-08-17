@@ -14,6 +14,7 @@
 {
     int   sendDataLength;
     NSTimer *getMessageTimer;
+    NSTimer *stopExamTimer;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel  *bloodPressureLbl;
@@ -56,7 +57,7 @@
     //set data
     _globalSocket = [GlobalSocket sharedGlobalSocket];
     sendDataLength = 8;
-    [self initAcquireSensorDataMessage];
+//    [self initAcquireSensorDataMessage];
     
     [self startGetTempMessageTimer];
 }
@@ -68,8 +69,20 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [_globalSocket sendMessageDown:@"F1F104020080867E"];//关闭检测（页面切换时发送）
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(stopExam) userInfo:nil repeats:NO ];
+    stopExamTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(sendMessageToStopExam) userInfo:nil repeats:YES ];
+
     [self stopGetTempMessageTimer];
+}
+-(void)stopExam
+{
+    [stopExamTimer invalidate];
+}
+-(void)sendMessageToStopExam
+{
+    [_globalSocket initHealthMsg];
+    [_globalSocket sendMessageDown:@"F1F104020080867E"];//关闭检测（页面切换时发送）
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
 }
 /*
 #pragma mark - Navigation
