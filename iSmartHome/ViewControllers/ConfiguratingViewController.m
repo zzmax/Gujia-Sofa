@@ -119,9 +119,10 @@
      */
 //    [self saveWifiInfo];
 //     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO ];
-//    
-    //首次配置
-    [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
+//
+    //
+    [self startSearch];
+    
     
 //    [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO];
 }
@@ -240,7 +241,7 @@
  */
 -(void)startSearch
 {
-    self.progressDescription.text = @"Wi-Fi模块已配置，正在努力搜索设备";
+    self.progressDescription.text = @"正在努力搜索设备...";
     if (_timer) {
         [_timer invalidate];
         _timer=nil;
@@ -334,7 +335,13 @@
                 _firstConfig = nil;
             }
 
-        self.progressDescription.text = @"未检测到设备";
+        self.progressDescription.text = @"未检测到设备,正在配置路由器...";
+        _firstConfig = [[SmartFirstConfig alloc]init];
+        _firstConfig.fristConfigDelegate = self;
+        [self createTimeoutTimer];
+        //首次配置
+        [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
+
     }
     else
     {
