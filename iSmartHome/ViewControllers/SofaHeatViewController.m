@@ -107,6 +107,10 @@
     widthScale = 100/image.size.width;
     heightScale = 100/image.size.height;
     _sofaHeatImg.image = image;
+    
+    [_plusBtn setExclusiveTouch:YES];
+    [_minusBtn setExclusiveTouch:YES];
+    [_stopHeatBtn setExclusiveTouch:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -148,6 +152,7 @@
  */
 - (IBAction)s3ORs4Down:(id)sender
 {
+    _stopHeatBtn.userInteractionEnabled = NO;
     if (!isElectricalBlanketOn) {
 //        [_globalSocket initControlMessage];
 //        [_globalSocket setInputBuffer:4 and:0x04];
@@ -216,6 +221,8 @@
  */
 -(void)startGetTempMessageTimer
 {
+    [_globalSocket sendMessageDown:@"F1F10200027E"];//向控制器发送获取电热毯温度信息
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
     getMessageTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(setTempLbl) userInfo:nil repeats:YES ];
 }
 
@@ -240,6 +247,7 @@
     CGFloat heightScale = 100/image.size.height;
     if ([_globalSocket.sofaTemp[0] isEqualToString:@"关"]) {
         [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
+        _stopHeatBtn.userInteractionEnabled = YES;
         isElectricalBlanketOn = NO;
         [_tempLbl setText:@""];
         image = [UIImage imageNamed: sofaHeatImgs[0]];
@@ -249,6 +257,7 @@
     else
     {
         isElectricalBlanketOn = YES;
+        _stopHeatBtn.userInteractionEnabled = YES;
         [_stopHeatBtn setTitle:@"关闭座椅加热" forState:UIControlStateNormal];
         [_tempLbl setText:_globalSocket.sofaTemp[0]];
         //identify the gear of blanket: 1, 2 or 3 to change the image of the sofa
