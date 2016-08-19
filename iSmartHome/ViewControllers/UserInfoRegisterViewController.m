@@ -142,6 +142,8 @@
         [self modifyCurrentUser];
     }
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"UITextFieldTextDidChangeNotification" object:_userNameTF];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -210,6 +212,8 @@
             _userNameTF.returnKeyType = UIReturnKeyDone;
             _userNameTF.clearButtonMode = UITextFieldViewModeWhileEditing;
             _userNameTF.placeholder = @"张三";
+            _userNameTF.tag = 1000;
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(limitTextField:) name:@"UITextFieldTextDidChangeNotification" object:_userNameTF];
             [cell.contentView addSubview:_userNameTF];
         }
         //sex select line in table view
@@ -935,6 +939,14 @@
     {
         [_photoPopover dismissPopoverAnimated:YES];
         _photoPopover = nil;
+    }
+}
+
+//limit the length of user name
+- (void)limitTextField:(NSNotification *)note {
+    int limit = 5;
+    if ([[_userNameTF text] length] > limit) {
+        [_userNameTF setText:[[_userNameTF text] substringToIndex:limit]];
     }
 }
 
