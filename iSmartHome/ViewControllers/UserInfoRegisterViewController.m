@@ -571,19 +571,20 @@
         [self saveImageAsAPNG:_userPhoto.image];
     }
     
-    [globalSocket initNetworkCommunication];
-    if ([globalSocket.message isEqualToString:@"连接成功"]) {
-        [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
-    }
-    else
-    {
-        [utility setAlert:@"错误" message:@"未连接到沙发！"];
-        [self presentViewController:utility.anAlert animated:YES completion:nil];
-    }
+    //应该在生命检测时再考虑检查是否连接到沙发
+//    [globalSocket initNetworkCommunication];
+//    if ([globalSocket.message isEqualToString:@"连接成功"]) {
+//        [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
+//    }
+//    else
+//    {
+//        [utility setAlert:@"错误" message:@"未连接到沙发！"];
+//        [self presentViewController:utility.anAlert animated:YES completion:nil];
+//    }
     /**
      *  just for test
      */
-//    [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
+    [self performSegueWithIdentifier:@"toNavigationViewController" sender:self];
 }
 
 //override the methode to determine which view controller to push
@@ -714,7 +715,7 @@
         if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject])
         {
             UsersCreationViewController *userChangeVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
-            userChangeVC.navTitle = @"家人健康信息";
+            userChangeVC.navTitle = @"用户";
             [self.navigationController pushViewController:userChangeVC animated:YES];
             
             AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
