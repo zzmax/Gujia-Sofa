@@ -626,10 +626,8 @@
             [self setupNewUser:user];
             [dataHelper save];
             [_currentUser setCurrentUser:user];
-            if (_userPhotoHasChanged) {
-                //save the image as a file in app
-                [self saveImageAsAPNG:_userPhoto.image];
-            }
+            //save the image as a file in app
+            [self saveImageAsAPNG:_userPhoto.image];
         }
         else if (dataHelper.fetchedResultsController.fetchedObjects.count > 1)
         {
@@ -647,10 +645,8 @@
             [self setupNewUser:user];
             [dataHelper save];
             [_currentUser setCurrentUser:user];
-            if (_userPhotoHasChanged) {
-                //save the image as a file in app
-                [self saveImageAsAPNG:_userPhoto.image];
-            }
+            //save the image as a file in app with a new name
+            [self saveImageAsAPNG:_userPhoto.image];
         }
         else if (dataHelper.fetchedResultsController.fetchedObjects.count > 0)
         {

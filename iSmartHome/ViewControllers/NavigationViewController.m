@@ -61,9 +61,6 @@
     self.userPhoto.userInteractionEnabled = YES;
     [self.userPhoto addGestureRecognizer:photoTapRecognizer];
     
-   
-    _currentUser = [CurrentUser staticCurrentUser];
-    _userNameLbl.text = _currentUser.userName;
     _utility = [[Utility alloc]init];
     
     
@@ -85,6 +82,9 @@
      setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]}];
    
     _userPhoto.image = [_utility loadPhotoForUser:_currentUser.userName];
+    _currentUser = [CurrentUser staticCurrentUser];
+    _userNameLbl.text = _currentUser.userName;
+    [self reloadInputViews];
 }
 
 #pragma mark - table view
