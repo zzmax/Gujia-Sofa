@@ -109,6 +109,7 @@
  */
 - (IBAction)resetWeightDown:(id)sender
 {
+    _weightResetBtn.userInteractionEnabled = NO;
     [_weightResetBtn setTitle:@"清零中..." forState:UIControlStateNormal];
     [_globalSocket addObserver:self forKeyPath:@"weight" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
     [self startSendMessageTimer];
@@ -151,6 +152,7 @@
     if ([keyPath isEqualToString:@"weight"]) {
         if ([_globalSocket.weight intValue] == 0) {
             [_weightResetBtn setTitle:@"清零成功" forState:UIControlStateNormal];
+            _weightResetBtn.userInteractionEnabled = YES;
             [_globalSocket removeObserver:self forKeyPath:@"weight"];
             [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(resetBtnTitle) userInfo:nil repeats:NO ];
             [self stopSendMessgeTimer];
