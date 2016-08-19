@@ -60,6 +60,11 @@
 //    [self initAcquireSensorDataMessage];
     
     [self startGetTempMessageTimer];
+    
+    [_bloodPressureBtn setExclusiveTouch:YES];
+    [_bloodO2Btn setExclusiveTouch:YES];
+    [_heartRateBtn setExclusiveTouch:YES];
+    [_bodyTempBtn setExclusiveTouch:YES];
 }
 
 - (void)didReceiveMemoryWarning {
