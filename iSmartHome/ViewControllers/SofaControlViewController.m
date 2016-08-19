@@ -85,6 +85,8 @@
     _globalSocket = [GlobalSocket sharedGlobalSocket];
     [self initControlMessage];
     
+    [_liftBtn setExclusiveTouch:YES];
+    [_downBtn setExclusiveTouch:YES];
 }
 
 #pragma mark - sofa control part
