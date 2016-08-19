@@ -266,7 +266,7 @@
         {
             _heightPickerArray = [[NSMutableArray alloc] init];
             
-            for (int height = 150; height<=200; height++) {
+            for (int height = 50; height<=250; height++) {
                 NSString *heightString = [NSString stringWithFormat:@"%d",height];
                 [_heightPickerArray addObject:heightString];
             }
@@ -289,7 +289,7 @@
         {
             _weightPickerArray = [[NSMutableArray alloc] init];
             
-            for (int weight = 40; weight <= 140; weight++) {
+            for (int weight = 20; weight <= 200; weight++) {
                 NSString *weightString = [NSString stringWithFormat:@"%d", weight];
                 [_weightPickerArray addObject:weightString];
             }
@@ -360,14 +360,14 @@
                 [self updateTextField:(id)_birthdayTF];
                 break;
             case 3:
-                [self pickerView:heightPicker didSelectRow:20 inComponent:0];
+                [self pickerView:heightPicker didSelectRow:120 inComponent:0];
                 //Set the default value to 170cm
-                [heightPicker selectRow:20 inComponent:0 animated:YES];
+                [heightPicker selectRow:120 inComponent:0 animated:YES];
                 break;
             case 4:
-                [self pickerView:weightPicker didSelectRow:20 inComponent:0];
+                [self pickerView:weightPicker didSelectRow:40 inComponent:0];
                 //Set the default value to 60kg
-                [weightPicker selectRow:20 inComponent:0 animated:YES];
+                [weightPicker selectRow:40 inComponent:0 animated:YES];
                 break;
                 
             default:
