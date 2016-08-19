@@ -30,7 +30,9 @@
                     <state key="normal" image="button_arrow_up.png"/>
                     <connections>
                         <action selector="s1Down:" destination="-1" eventType="touchDown" id="3Pn-LD-eW1"/>
-                        <action selector="s1Up:" destination="-1" eventType="touchUpInside" id="EAj-gb-cNC"/>
+                        <action selector="s1Up:" destination="-1" eventType="touchUpInside" id="915-0f-nqy"/>
+                        <action selector="s1Up:" destination="-1" eventType="touchDragExit" id="QuQ-pF-rq4"/>
+                        <action selector="s1Up:" destination="-1" eventType="touchCancel" id="m6x-0A-I2Z"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPT-RS-kSZ">
@@ -41,6 +43,8 @@
                     <connections>
                         <action selector="s2Down:" destination="-1" eventType="touchDown" id="Uyl-Uy-fru"/>
                         <action selector="s2Up:" destination="-1" eventType="touchUpInside" id="iCk-7S-l1y"/>
+                        <action selector="s2Up:" destination="-1" eventType="touchDragExit" id="k3w-7q-vc6"/>
+                        <action selector="s2Up:" destination="-1" eventType="touchCancel" id="nu4-5g-CI6"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_icon_sofa_control.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-r0-fAy">

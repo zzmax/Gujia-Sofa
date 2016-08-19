@@ -124,11 +124,12 @@
  */
 - (IBAction)s1Up:(id)sender
 {
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
     _globalSocket.btnS1 = false;
     [_globalSocket stopSendMessgeTimer];
     
 //    [_globalSocket initControlMessage];
-    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
+    
 //    [_globalSocket sendMessageDown:inputBuffer length:sendDataLength];
 }
 
@@ -150,10 +151,10 @@
  */
 - (IBAction)s2Up:(id)sender
 {
+    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
     _globalSocket.btnS2 = false;
     [_globalSocket stopSendMessgeTimer];
     
-    [_globalSocket sendMessageDown:@"F1F101020000037E"];//松手检测
 //    [_globalSocket initControlMessage];
 //    [_globalSocket sendMessageDown:inputBuffer length:sendDataLength];
 }
