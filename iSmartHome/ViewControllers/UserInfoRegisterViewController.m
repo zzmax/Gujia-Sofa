@@ -622,12 +622,19 @@
     //if we don't change the user name or if we've changed the name and after a second we changed it back
     else if (!_didUserNameChanged || [_currentUser.userName isEqualToString:_userNameTF.text]) {
         if (dataHelper.fetchedResultsController.fetchedObjects.count == 1) {
+            
             User *user = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
             [self setupNewUser:user];
             [dataHelper save];
-            [_currentUser setCurrentUser:user];
+            
             //save the image as a file in app
             [self saveImageAsAPNG:_userPhoto.image];
+            
+            //delete old user's photo
+            [self deletePhotoForUser:_currentUser.userName];
+            
+            //set new current user
+            [_currentUser setCurrentUser:user];
         }
         else if (dataHelper.fetchedResultsController.fetchedObjects.count > 1)
         {
@@ -640,13 +647,21 @@
     else
     {
         if (dataHelper.fetchedResultsController.fetchedObjects.count == 0) {
+            
             [dataHelper fetchItemsMatching:_currentUser.userName forAttribute:@"userName" sortingBy:nil];
             User *user = dataHelper.fetchedResultsController.fetchedObjects.firstObject;
             [self setupNewUser:user];
+            [dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject];
             [dataHelper save];
-            [_currentUser setCurrentUser:user];
+            
             //save the image as a file in app with a new name
             [self saveImageAsAPNG:_userPhoto.image];
+            
+            //delete old user's photo
+            [self deletePhotoForUser:_currentUser.userName];
+            
+            //set new current user
+            [_currentUser setCurrentUser:user];
         }
         else if (dataHelper.fetchedResultsController.fetchedObjects.count > 0)
         {
@@ -900,25 +915,31 @@
     return [utility loadPhotoForUser:@""];
    }
 
-- (void)removePhotoForCurrentUser
+- (void)deletePhotoForUser:(NSString *)aName
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     
     NSMutableString *appendString = [NSMutableString string];
-    [appendString appendString:_currentUser.userName];
+    [appendString appendString:aName];
     [appendString appendString:@".png"];
     NSString *filePath = [documentsPath stringByAppendingPathComponent:appendString];
     NSError *error;
     BOOL success = [fileManager removeItemAtPath:filePath error:&error];
     if (success) {
-//        UIAlertView *removedSuccessFullyAlert = [[UIAlertView alloc] initWithTitle:@"用户头像已移除" message:@"" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];
-//        [removedSuccessFullyAlert show];
+        //        UIAlertView *removedSuccessFullyAlert = [[UIAlertView alloc] initWithTitle:@"用户头像已移除" message:@"" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+        //        [removedSuccessFullyAlert show];
     }
     else
     {
         NSLog(@"Could not delete file -:%@ ",[error localizedDescription]);
     }
+
+}
+
+- (void)removePhotoForCurrentUser
+{
+    [self deletePhotoForUser:_currentUser.userName];
 }
 
 // Dismiss picker

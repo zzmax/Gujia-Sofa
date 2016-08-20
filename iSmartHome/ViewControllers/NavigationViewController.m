@@ -74,6 +74,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    _currentUser = [CurrentUser staticCurrentUser];
+
     self.navigationController.navigationBarHidden = YES;
     //set back button to white color
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -82,7 +84,6 @@
      setTitleTextAttributes: @{NSForegroundColorAttributeName : [UIColor whiteColor]}];
    
     _userPhoto.image = [_utility loadPhotoForUser:_currentUser.userName];
-    _currentUser = [CurrentUser staticCurrentUser];
     _userNameLbl.text = _currentUser.userName;
     [self reloadInputViews];
 }
