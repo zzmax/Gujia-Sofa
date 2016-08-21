@@ -44,7 +44,7 @@
     self.view.backgroundColor = BACKGROUND_COLOR;
     
     if (self.navTitle == nil) {
-        self.navTitle = @"创建用户";
+        self.navTitle = @"用户";
     }
     [self.navigationItem setTitle: self.navTitle];
     self.navigationItem.titleView.hidden = NO;
@@ -266,7 +266,7 @@
         aView.layer.borderColor = [UIColor whiteColor].CGColor;
         [self.view addSubview:aView];
         PREPCONSTRAINTS(aView);
-        
+    
         CENTER_VIEW_H_CONSTANT(self.view, aView, HCoord * screenFactor);
         CENTER_VIEW_V_CONSTANT(self.view, aView, VCoord * screenFactor);
         
@@ -341,8 +341,13 @@
     CENTER_VIEW_H_CONSTANT(self.view, aLabel, HCoord * screenFactor);
 //    CENTER_VIEW_V_CONSTANT(self.view, aLabel, VCoord * screenFactor);
     int constant = 0;
-    if (aView.image.size.height > 100) {
+    //for photo user saved in the phone
+    if (aView.image.size.height == 750) {
         constant = -325;// 750/2 - 90/2
+    }
+    //for the default saved photo (200x200)
+    else if(aView.image.size.height == 200){
+        constant = -50;// 200/2 - 90/2
     }
     ALIGN_VIEW1_TOP_TO_VIEW2_BOTTOM_CONSTANT(self.view, aLabel, aView, constant);
     aLabel.text =  fetchedUser.userName;
