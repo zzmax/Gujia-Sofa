@@ -276,9 +276,6 @@
         [aView addGestureRecognizer:aTap];
         aView.userInteractionEnabled = YES;
         return aView;
-  
-    
-    
 }
 
 -(UILabel *)setUserNameLabelViewforPlace:(int)HCoord and:(int)VCoord andForUser:(int)userOrder{
@@ -368,12 +365,16 @@
     PREPCONSTRAINTS(addUserBtn);
     CENTER_VIEW_H_CONSTANT(self.view, addUserBtn, HCoord * screenFactor);
     CENTER_VIEW_V_CONSTANT(self.view, addUserBtn, VCoord * screenFactor);
-    CONSTRAIN_SIZE(addUserBtn, 90 * screenFactor, 90 * screenFactor);
-    
+        
     anImage = [UIImage imageNamed: @"button_add_user"];
     [addUserBtn setImage:anImage forState:UIControlStateNormal];
-    
-    addUserBtn.layer.cornerRadius = 45;
+        
+    CGFloat widthScale = (90 * screenFactor)/anImage.size.width;
+    CGFloat heightScale = (90 * screenFactor)/anImage.size.height;
+    addUserBtn.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+    //set image to a circle
+    addUserBtn.layer.cornerRadius = addUserBtn.imageView.image.size.width/2;
+
     addUserBtn.layer.masksToBounds = YES;
 //    addUserBtn.layer.borderWidth = 3.0f;
     addUserBtn.layer.borderColor = [UIColor whiteColor].CGColor;
