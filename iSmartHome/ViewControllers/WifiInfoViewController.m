@@ -56,7 +56,7 @@
     CGRect aRect = self.tableView.frame;
     aRect.size = aSize;
     self.tableView.frame = aRect;
-    self.tableView.scrollEnabled = YES;
+    self.tableView.scrollEnabled = NO;
     
     
     // set title
@@ -158,6 +158,7 @@
     cellTF.textAlignment = NSTextAlignmentRight;
     cellTF.text = [wifiInfos objectAtIndex: indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cellTF.userInteractionEnabled = NO;
     [cell.contentView addSubview:cellTF];
 
     
