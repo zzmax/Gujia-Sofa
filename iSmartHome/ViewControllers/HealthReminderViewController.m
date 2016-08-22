@@ -102,6 +102,9 @@
     _sedentaryReminderTF.layer.cornerRadius = 5;
     
     [_cancelNotification setExclusiveTouch: YES];
+    [_healthExamReminderDTF setExclusiveTouch:YES];
+    [_healthExamReminderHTF setExclusiveTouch:YES];
+    [_sedentaryReminderTF setExclusiveTouch:YES];
 }
 
 - (void)didReceiveMemoryWarning {
