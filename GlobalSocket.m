@@ -272,6 +272,7 @@ NSString* MBNonEmptyString(id obj){
 //    if ([socket connectToHost:host onPort:port error:nil]) {
         NSData *sendData = [SmartMlccUtil makeTcpCommandData:sendDataStr];
         [socket writeData:sendData withTimeout:-1 tag:0];
+     NSLog(@"发送的信息：%@",sendDataStr);
 //    }
 //    else
 //        NSLog(@"Not connected...");
@@ -750,6 +751,7 @@ NSString* MBNonEmptyString(id obj){
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err {
     NSLog(@"连接失败 %@", err);
+    _message = @"连接失败";
     // 断线重连
     isConnected=NO;
     [sock connectToHost:host onPort:port withTimeout:60 error:nil];

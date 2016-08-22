@@ -91,6 +91,11 @@
     else self.routerTF.text = MBNonEmptyString(_wifiInfo[@"SSID"]);
 }
 
+- (IBAction)popView:(id) sender
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 /**
  *  Connect to the server
  *
@@ -139,6 +144,7 @@
     configratingVC.staPwd = MBNonEmptyString(self.codeTF.text);
     configratingVC.staId = MBNonEmptyString(_wifiInfo[@"SSID"]);
     configratingVC.wifiName = MBNonEmptyString(self.routerTF.text);
+    configratingVC.isConfigurateDeviceMode = YES;
     [self.navigationController pushViewController:configratingVC animated:YES];
 }
 

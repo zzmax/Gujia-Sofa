@@ -16,6 +16,7 @@
 #import "WifiInfo.h"
 #import "AppDelegate.h"
 #import "CoreDataHelper.h"
+#import "WifiConfigViewController.h"
 
 
 @interface ConfiguratingViewController ()<SmartFirstConfigDelegate>
@@ -122,7 +123,10 @@
 //     [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO ];
 //
     //
-    [self startSearch];
+    if (_isConfigurateDeviceMode) {
+        [self searchNewMacReusult];
+    }
+    else [self startSearch];
     
     
 //    [NSTimer scheduledTimerWithTimeInterval:120 target:self selector:@selector(getToNextVC) userInfo:nil repeats:NO];
@@ -156,6 +160,20 @@
 - (IBAction)popView:(id) sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)pushToWifiConfigView
+{
+    self.progressDescription.text = @"未搜索到设备，请配置路由器...";
+    
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(getToWifiConfigVC) userInfo:nil repeats:NO];
+}
+
+- (void)getToWifiConfigVC
+{
+    WifiConfigViewController *wifiConfigVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"WifiConfigViewController"];
+
+    [self.navigationController pushViewController:wifiConfigVC animated:YES];
 }
 
 - (void)updateProgress
@@ -322,6 +340,7 @@
 
 - (void)searchNewMacReusult {
     if (_allMacArray.count==0) {
+        if (_isConfigurateDeviceMode) {
             if (_searchTimer) {
                 [_searchTimer invalidate];
                 _searchTimer = nil;
@@ -338,14 +357,17 @@
                 [_firstConfig smartSocketClose];
                 _firstConfig = nil;
             }
-
-        self.progressDescription.text = @"未检测到设备,正在配置路由器...";
-        _firstConfig = [[SmartFirstConfig alloc]init];
-        _firstConfig.fristConfigDelegate = self;
-        [self createTimeoutTimer];
-        //首次配置
-        [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
-
+            self.progressDescription.text = @"正在配置路由器...";
+            _firstConfig = [[SmartFirstConfig alloc]init];
+            _firstConfig.fristConfigDelegate = self;
+            [self createTimeoutTimer];
+            //首次配置
+            [_firstConfig doSmartFirstConfig:self.staId sspwd:self.staPwd realCommandArr:nil andOperType:4];
+        }
+        else
+        {
+            [self pushToWifiConfigView];
+        }
     }
     else
     {

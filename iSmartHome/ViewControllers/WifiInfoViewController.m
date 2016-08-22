@@ -11,7 +11,7 @@
 #import "Utility.h"
 #import "CoreDataHelper.h"
 #import "GlobalSocket.h"
-#import "WifiConfigViewController.h"
+#import "ConfiguratingViewController.h"
 #import "AppDelegate.h"
 
 @interface WifiInfoViewController ()<UtilityDelegate>
@@ -123,12 +123,13 @@
         [dataHelper fetchItemsMatching:[wifiInfos objectAtIndex:0] forAttribute:@"ssid" sortingBy:nil];
         if ([dataHelper deleteObject:dataHelper.fetchedResultsController.fetchedObjects.firstObject])
         {
-            WifiConfigViewController *wifiConfigVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"WifiConfigViewController"];
-            [self.navigationController pushViewController:wifiConfigVC animated:YES];
+            ConfiguratingViewController *configVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"ConfiguratingViewController"];
+            configVC.isConfigurateDeviceMode = NO;
+            [self.navigationController pushViewController:configVC animated:YES];
             
             
             AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [app changeRootViewController:wifiConfigVC];
+            [app changeRootViewController:configVC];
         
         }
 

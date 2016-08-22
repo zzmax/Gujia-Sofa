@@ -16,5 +16,7 @@
 
 @property(nonatomic,strong)NSString *staId;
 @property(nonatomic,strong)NSString *staPwd;
+//YES for configurating router, NO for search device
+@property(nonatomic)BOOL isConfigurateDeviceMode;
 
 @end

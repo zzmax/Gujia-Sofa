@@ -354,7 +354,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="oU2-6q-Emg" kind="push" id="dGE-M8-4ry"/>
+                                    <segue destination="vkA-f7-K9f" kind="push" id="MPQ-gs-RaR"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibn-a1-nGU">
@@ -416,7 +416,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZV-B4-N9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="-10"/>
+            <point key="canvasLocation" x="1173" y="-28"/>
         </scene>
         <!--Navigation View Controller-->
         <scene sceneID="NXU-nu-oA6">
@@ -566,12 +566,22 @@
                             <constraint firstItem="HzU-dr-hZE" firstAttribute="centerX" secondItem="r4c-le-7Tn" secondAttribute="centerX" id="zdO-h1-x7e"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="q0e-dg-LKT">
+                    <navigationItem key="navigationItem" id="E5E-4e-XWX">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JF8-IS-x0M">
-                            <rect key="frame" x="124.5" y="7" width="165" height="30"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="KZM-iw-HMz">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SWA-x5-hcb">
+                                <rect key="frame" x="20" y="2" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="icon_back.png"/>
+                                <connections>
+                                    <action selector="popView:" destination="vkA-f7-K9f" eventType="touchUpInside" id="iPT-WQ-axU"/>
+                                    <action selector="popView:" destination="oU2-6q-Emg" eventType="touchUpInside" id="sxJ-7d-ztL"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ehk-t5-kcd">
+                            <rect key="frame" x="125" y="7" width="165" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <state key="normal" title="配置">
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
@@ -588,7 +598,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYd-Az-MFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1660" y="-10"/>
+            <point key="canvasLocation" x="2076" y="-40"/>
         </scene>
         <!--Configurating View Controller-->
         <scene sceneID="w60-1r-QdG">
@@ -671,7 +681,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2q0-Pz-esB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168" y="-10"/>
+            <point key="canvasLocation" x="1630" y="-28"/>
         </scene>
         <!--Nav1 View Controller-->
         <scene sceneID="R0t-xt-np7">
