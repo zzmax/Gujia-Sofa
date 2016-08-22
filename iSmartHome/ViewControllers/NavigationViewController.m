@@ -22,6 +22,7 @@
 #import "Utility.h"
 #import "Nav1ViewController.h"
 #import "AppDelegate.h"
+#import "GlobalSocket.h"
 
 @interface NavigationViewController()
 @property (weak, nonatomic) IBOutlet UILabel *userNameLbl;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *changeUserLbl;
 @property CurrentUser *currentUser;
 @property Utility *utility;
+@property GlobalSocket *globalSocket;
 
 @end
 
@@ -62,7 +64,7 @@
     [self.userPhoto addGestureRecognizer:photoTapRecognizer];
     
     _utility = [[Utility alloc]init];
-    
+    _globalSocket = [GlobalSocket sharedGlobalSocket];
     
     //set image to a circle
     self.userPhoto.layer.cornerRadius = self.userPhoto.frame.size.width/2;
@@ -195,39 +197,46 @@
     }
     else if (indexPath.section == 1)
     {
-        if (indexPath.row == 0) {
-            //SofaControlView
-            SofaControlViewController *sofaConttrolVC = [[SofaControlViewController alloc] init];
-            [self.navigationController pushViewController:sofaConttrolVC animated:YES];
+        [_globalSocket initNetworkCommunication];
+        if ([_globalSocket.message isEqualToString:@"连接成功"]) {
+            if (indexPath.row == 0) {
+                //SofaControlView
+                SofaControlViewController *sofaConttrolVC = [[SofaControlViewController alloc] init];
+                [self.navigationController pushViewController:sofaConttrolVC animated:YES];
+            }
+            else if (indexPath.row == 1)
+            {
+                //SofaHeatView
+                SofaHeatViewController *sofaHeatVC = [[SofaHeatViewController alloc]init];
+                [self.navigationController pushViewController:sofaHeatVC animated:YES];
+                //animation
+                    //            SofaHeatViewController *nextView = [[SofaHeatViewController alloc] init];
+                    //            [UIView animateWithDuration:0.75
+                    //                             animations:^{
+                    //                                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+                    //                                 [self.navigationController pushViewController:nextView animated:NO];
+                    //                                 [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+                    //                             }];
+                    //
+            }
+            else if (indexPath.row == 2)
+            {
+                //HealthExamView
+                HealthExamResultViewController *healthExamResultVC = [[HealthExamResultViewController alloc]init];
+                [self.navigationController pushViewController:healthExamResultVC animated:YES];
+            }
+            else if (indexPath.row == 3)
+            {
+                //WeightResultView
+                //
+                WeightResultViewController *weightResultVC = [[WeightResultViewController alloc]init];
+                [self.navigationController pushViewController:weightResultVC animated:YES];
+            }
         }
-        else if (indexPath.row == 1)
+        else
         {
-            //SofaHeatView
-            SofaHeatViewController *sofaHeatVC = [[SofaHeatViewController alloc]init];
-            [self.navigationController pushViewController:sofaHeatVC animated:YES];
-            //animation
-//            SofaHeatViewController *nextView = [[SofaHeatViewController alloc] init];
-//            [UIView animateWithDuration:0.75
-//                             animations:^{
-//                                 [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//                                 [self.navigationController pushViewController:nextView animated:NO];
-//                                 [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
-//                             }];
-//
-            
-        }
-        else if (indexPath.row == 2)
-        {
-            //HealthExamView
-            HealthExamResultViewController *healthExamResultVC = [[HealthExamResultViewController alloc]init];
-            [self.navigationController pushViewController:healthExamResultVC animated:YES];
-        }
-        else if (indexPath.row == 3)
-        {
-            //WeightResultView
-            //
-            WeightResultViewController *weightResultVC = [[WeightResultViewController alloc]init];
-            [self.navigationController pushViewController:weightResultVC animated:YES];
+            [_utility setAlert:@"错误" message:@"连接沙发不成功！"];
+            [self presentViewController:_utility.anAlert animated:YES completion:nil];
         }
     }
     else if (indexPath.section == 2)

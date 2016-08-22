@@ -245,7 +245,7 @@
     [_globalSocket sendMessageDown:@"F1F10200027E"];//向控制器发送获取电热毯温度信息
     CGFloat widthScale = 100/image.size.width;
     CGFloat heightScale = 100/image.size.height;
-    if ([_globalSocket.sofaTemp[0] isEqualToString:@"关"]) {
+    if ([_globalSocket.sofaTemp count] == 0 || [_globalSocket.sofaTemp[0] isEqualToString:@"关"]) {
         [_stopHeatBtn setTitle:@"打开座椅加热" forState:UIControlStateNormal];
         _stopHeatBtn.userInteractionEnabled = YES;
         isElectricalBlanketOn = NO;
