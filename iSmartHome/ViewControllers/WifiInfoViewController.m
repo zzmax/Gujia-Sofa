@@ -61,6 +61,11 @@
     
     // set title
     self.navigationItem.title = @"沙发连接Wifi信息";
+    
+    //set back button
+//    UIBarButtonItem *newBackButton =
+//    [[UIBarButtonItem alloc] initWithCustomView:[utility transformAnImageAndReturnAView:@"icon_back" width:40 heigt:40]];
+//    [[self navigationItem] setLeftBarButtonItem:newBackButton];
 
     //initiate table data
     infoTitles = [NSArray arrayWithObjects:@"Wifi名称：",@"沙发MAC地址：", @"IP：", @"端口：", @"上次连接状态：",nil];
@@ -92,6 +97,8 @@
     
     [_reconfigBtn setTitle:@"重新配置沙发" forState:UIControlStateNormal];
     _reconfigBtn.titleLabel.textColor = [UIColor blackColor];
+    
+    [_reconfigBtn setExclusiveTouch:YES];
 }
 
 - (void)didReceiveMemoryWarning {

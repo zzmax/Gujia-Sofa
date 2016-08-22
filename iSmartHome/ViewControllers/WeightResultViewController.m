@@ -49,6 +49,7 @@
 //    [self initAcquireSensorDataMessage];
     
     [self startGetTempMessageTimer];
+    [_weightResetBtn setExclusiveTouch:YES];
 }
 
 - (void)didReceiveMemoryWarning {

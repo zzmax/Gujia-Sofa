@@ -71,7 +71,9 @@
     self.userPhoto.layer.masksToBounds = YES;
     self.userPhoto.layer.borderWidth = 3.0f;
     self.userPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
-
+    
+    [self.userPhoto setExclusiveTouch:YES];
+    [self.changeUserLbl setExclusiveTouch:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated

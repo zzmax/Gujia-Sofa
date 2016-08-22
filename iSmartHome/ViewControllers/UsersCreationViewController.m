@@ -275,6 +275,7 @@
                                                                                action:@selector(handleTap:)];
         [aView addGestureRecognizer:aTap];
         aView.userInteractionEnabled = YES;
+        [aView setExclusiveTouch:YES];
         return aView;
 }
 
@@ -361,29 +362,30 @@
     addUserBtn.tag = 200;
     if (isChangingUserView) {
     
-    [self.view addSubview:addUserBtn];
-    PREPCONSTRAINTS(addUserBtn);
-    CENTER_VIEW_H_CONSTANT(self.view, addUserBtn, HCoord * screenFactor);
-    CENTER_VIEW_V_CONSTANT(self.view, addUserBtn, VCoord * screenFactor);
-        
-    anImage = [UIImage imageNamed: @"button_add_user"];
-    [addUserBtn setImage:anImage forState:UIControlStateNormal];
-        
-    CGFloat widthScale = (90 * screenFactor)/anImage.size.width;
-    CGFloat heightScale = (90 * screenFactor)/anImage.size.height;
-    addUserBtn.transform = CGAffineTransformMakeScale(widthScale, heightScale);
-    //set image to a circle
-    addUserBtn.layer.cornerRadius = addUserBtn.imageView.image.size.width/2;
+        [self.view addSubview:addUserBtn];
+        PREPCONSTRAINTS(addUserBtn);
+        CENTER_VIEW_H_CONSTANT(self.view, addUserBtn, HCoord * screenFactor);
+        CENTER_VIEW_V_CONSTANT(self.view, addUserBtn, VCoord * screenFactor);
+            
+        anImage = [UIImage imageNamed: @"button_add_user"];
+        [addUserBtn setImage:anImage forState:UIControlStateNormal];
+            
+        CGFloat widthScale = (90 * screenFactor)/anImage.size.width;
+        CGFloat heightScale = (90 * screenFactor)/anImage.size.height;
+        addUserBtn.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+        //set image to a circle
+        addUserBtn.layer.cornerRadius = addUserBtn.imageView.image.size.width/2;
 
-    addUserBtn.layer.masksToBounds = YES;
-//    addUserBtn.layer.borderWidth = 3.0f;
-    addUserBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    
-    //add tap gesture recognizer to each image view
-    UITapGestureRecognizer *aTap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                           action:@selector(handleTap:)];
-    [addUserBtn addGestureRecognizer:aTap];
-    addUserBtn.userInteractionEnabled = YES;
+        addUserBtn.layer.masksToBounds = YES;
+    //    addUserBtn.layer.borderWidth = 3.0f;
+        addUserBtn.layer.borderColor = [UIColor whiteColor].CGColor;
+        
+        //add tap gesture recognizer to each image view
+        UITapGestureRecognizer *aTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                               action:@selector(handleTap:)];
+        [addUserBtn addGestureRecognizer:aTap];
+        addUserBtn.userInteractionEnabled = YES;
+        [addUserBtn setExclusiveTouch:YES];
     }
     
     return addUserBtn;

@@ -104,6 +104,7 @@
         ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
         [_startBtn setTitle:@"开始使用" forState:UIControlStateNormal];
         _startBtn.titleLabel.textColor = [UIColor blackColor];
+        [_startBtn setExclusiveTouch:YES];
 //        _currentUser = nil;
     }
     else {
@@ -122,10 +123,18 @@
         deleteUserBtn.layer.cornerRadius = 5;
         CONSTRAIN_SIZE(deleteUserBtn, SCREEN_HEIGHT / 12, SCREEN_WIDTH - 40);
         [deleteUserBtn addTarget:self action:@selector(deleteUser) forControlEvents:UIControlEventTouchUpInside];
+        [deleteUserBtn setExclusiveTouch:YES];
     }
     
     _userPhoto = [[UIImageView alloc]init];
     _userPhoto.image = [self loadCurrentUserPhoto];
+    [_userPhoto setExclusiveTouch:YES];
+    
+    [_userNameTF setExclusiveTouch:YES];
+    [_heightTF setExclusiveTouch:YES];
+    [_weightTF setExclusiveTouch:YES];
+    [_birthdayTF setExclusiveTouch:YES];
+    [_userNameTF setExclusiveTouch:YES];
 }
 
 
@@ -246,7 +255,7 @@
                                             forState: UIControlStateSelected];
             
           [UISegmentedControl appearance].backgroundColor = [UIColor colorWithRed:0.85882f green:0.85882f blue:0.85882f alpha:0.5f];//set backgroundcolor to lightgray color
-
+            [segmentedControl setExclusiveTouch:YES];
         }
         //birthday choose line
         else if (indexPath.row == 2)

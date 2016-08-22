@@ -35,7 +35,7 @@
     ALIGN_VIEW_BOTTOM_CONSTANT(self.view, _startBtn, -40);
     [_startBtn setTitle:@"扫描二维码登陆数据账户" forState:UIControlStateNormal];
     _startBtn.titleLabel.textColor = [UIColor whiteColor];
-    
+    [_startBtn setExclusiveTouch:YES];
     //    NSArray * networkInterfaces = [NEHotspotHelper supportedNetworkInterfaces];
 //    NSLog(@"Networks %@",networkInterfaces);
 //    self.navigationItem.rightBarButtonItem = BARBUTTON(@"Test", @selector(action:));
