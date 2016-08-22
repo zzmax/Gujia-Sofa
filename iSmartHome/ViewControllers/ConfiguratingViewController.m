@@ -14,6 +14,7 @@
 #import "SmartFirstConfig.h"
 #import "GlobalSocket.h"
 #import "WifiInfo.h"
+#import "AppDelegate.h"
 #import "CoreDataHelper.h"
 
 
@@ -137,6 +138,9 @@
     [_timer invalidate];
         UsersCreationViewController *userCreationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"UsersCreationViewController"];
         [self.navigationController pushViewController:userCreationVC animated:YES];
+    
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app changeRootViewController:userCreationVC];
 //    NavigationViewController *navigationVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationViewController"];
 //    [self.navigationController pushViewController:navigationVC animated:YES];
 
