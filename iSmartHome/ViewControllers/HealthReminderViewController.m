@@ -25,7 +25,9 @@
 @property (strong, nonatomic)UIPickerView *sedentaryTimePicker;
 @property (strong, nonatomic)UIPickerView *healthHourPicker;
 @property (strong, nonatomic)UIPickerView *healthFrequencyPicker;
+@property Utility *utility;
 @end
+
 
 @implementation HealthReminderViewController
 
@@ -36,17 +38,22 @@
     PREPCONSTRAINTS(_sedentaryReminderTF);
     CONSTRAIN_WIDTH(_sedentaryReminderTF, 330 * SCREENFACTOR);
     
+    _utility = [[Utility alloc]init];
+    // set title
+    self.navigationItem.title = @"健康提醒";
     //set tool bar to dismiss datepicker
     UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     pickerToolbar.barStyle = UIBarStyleBlackOpaque;
     [pickerToolbar sizeToFit];
     
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *cancelbtn = BARBUTTON(@"取消",@selector(cancelButtonPressed:));
+    [barItems addObject:cancelbtn];
     
     UIBarButtonItem *flexSpace = SYSBARBUTTON(UIBarButtonSystemItemFlexibleSpace,nil);
     [barItems addObject:flexSpace];
     
-    UIBarButtonItem *doneBtn = SYSBARBUTTON(UIBarButtonSystemItemDone, @selector(doneButtonPressed:));
+    UIBarButtonItem *doneBtn = BARBUTTON(@"完成", @selector(doneButtonPressed:));
     [barItems addObject:doneBtn];
     [pickerToolbar setItems:barItems animated:YES];
     
@@ -100,6 +107,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)cancelButtonPressed:(id)sender
+{
+    [self.sedentaryReminderTF resignFirstResponder];
+    [self.healthExamReminderDTF resignFirstResponder];
+    [self.healthExamReminderHTF resignFirstResponder];
+}
+
 
 -(void)doneButtonPressed:(id)sender
 {

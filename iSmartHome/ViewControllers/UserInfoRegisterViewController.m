@@ -170,11 +170,14 @@
         [pickerToolbar sizeToFit];
         
         NSMutableArray *barItems = [[NSMutableArray alloc] init];
+       
+        UIBarButtonItem *cancelbtn = BARBUTTON(@"取消",@selector(cancelButtonPressed:));
+        [barItems addObject:cancelbtn];
         
         UIBarButtonItem *flexSpace = SYSBARBUTTON(UIBarButtonSystemItemFlexibleSpace,nil);
         [barItems addObject:flexSpace];
         
-        UIBarButtonItem *doneBtn = SYSBARBUTTON(UIBarButtonSystemItemDone, @selector(doneButtonPressed:));
+        UIBarButtonItem *doneBtn = BARBUTTON(@"完成", @selector(doneButtonPressed:));
         [barItems addObject:doneBtn];
         [pickerToolbar setItems:barItems animated:YES];
        
@@ -451,6 +454,14 @@
     self.birthdayTF.text = [dateFormatter stringFromDate:[(UIDatePicker*)self.birthdayTF.inputView date]];
 }
 
+-(void)cancelButtonPressed:(id)sender
+{
+    
+    [self.birthdayTF resignFirstResponder];
+    [self.heightTF resignFirstResponder];
+    [self.weightTF resignFirstResponder];
+}
+
 -(void)doneButtonPressed:(id)sender
 {
     if (self.birthdayTF.isFirstResponder) {
@@ -629,9 +640,9 @@
             
             //save the image as a file in app
             [self saveImageAsAPNG:_userPhoto.image];
-            
-            //delete old user's photo
-            [self deletePhotoForUser:_currentUser.userName];
+//            
+//            //delete old user's photo
+//            [self deletePhotoForUser:_currentUser.userName];
             
             //set new current user
             [_currentUser setCurrentUser:user];
