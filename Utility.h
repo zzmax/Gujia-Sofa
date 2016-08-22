@@ -23,5 +23,5 @@
 - (void)setAlert: (nullable NSString *)aTitle message: (nullable NSString *)aMsg;
 - (void)activeDismissableKeyboard: (nullable UIViewController *) aViewController;
 - (nullable UIImage*)loadPhotoForUser:(nonnull NSString *)aName;
-
+- (nonnull UIImageView *)transformAnImageAndReturnAView:(nonnull NSString *)imageName width:(NSInteger)width heigt:(NSInteger)heigt;
 @end

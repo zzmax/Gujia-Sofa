@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Utility.h"
+#import "ConstraintMacros.h"
 
 @implementation Utility
 
@@ -104,6 +105,18 @@
         return [UIImage imageNamed: @"background_small_white_circle"];
     }
     return image;
+}
+
+-(UIImageView *)transformAnImageAndReturnAView:(NSString *)imageName width:(NSInteger)width heigt:(NSInteger)heigt
+{
+    UIImage *image = [UIImage imageNamed: imageName];
+    UIImageView *aView = [[UIImageView alloc]initWithImage:image];
+    
+    CGFloat widthScale = (width * SCREENFACTOR)/image.size.width;
+    CGFloat heightScale = (heigt * SCREENFACTOR)/image.size.height;
+    aView.transform = CGAffineTransformMakeScale(widthScale, heightScale);
+    
+    return aView;
 }
 @end
 
