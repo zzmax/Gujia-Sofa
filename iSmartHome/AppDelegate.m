@@ -17,6 +17,7 @@
 #import "UsersCreationViewController.h"
 #import "CurrentUser.h"
 #import "NavigationViewController.h"
+#import "HealthReminderViewController.h"
 
 @interface AppDelegate ()
 
@@ -44,7 +45,16 @@
     
     [self setRootViewController];
    
+//    [UINavigationBar appearance].backItem.backBarButtonItem.customView = [utility transformAnImageAndReturnAView:@"icon_back" width:40 heigt:40] ;
     
+    // Change the appearance of back button
+//    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
+//    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+//    [UINavigationBar appearance].backIndicatorImage = [[UIImage imageNamed:@"icon_back"]resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1) resizingMode:UIImageResizingModeStretch ];
+//    [UINavigationBar appearance].backIndicatorTransitionMaskImage = [[UIImage imageNamed:@"icon_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1) resizingMode:UIImageResizingModeStretch ];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-400.f, 0)
+                                                         forBarMetrics:UIBarMetricsDefault];
     // Override point for customization after application launch.
     
 //    NSManagedObject *object = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.managedObjectContext];
