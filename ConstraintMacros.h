@@ -25,6 +25,8 @@
 #define IS_IPHONE_6 (SCREEN_WIDTH == 375)
 // < 5; 4s, 4 or before 4
 #define IS_IPHONE_SMALL (SCREEN_HEIGHT <= 480)
+#define SCREENFACTOR (IS_IPHONE_PLUS ? 1.1 : IS_IPHONE_6 ? 1 :0.83)
+
 
 #define ESTABLISH_WEAK_SELF __weak typeof(self) weakSelf = self
 #define ESTABLISH_STRONG_SELF __strong typeof(self) strongSelf = weakSelf;

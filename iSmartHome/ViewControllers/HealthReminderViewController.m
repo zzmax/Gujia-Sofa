@@ -33,6 +33,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    PREPCONSTRAINTS(_sedentaryReminderTF);
+    CONSTRAIN_WIDTH(_sedentaryReminderTF, 330 * SCREENFACTOR);
+    
     //set tool bar to dismiss datepicker
     UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     pickerToolbar.barStyle = UIBarStyleBlackOpaque;
