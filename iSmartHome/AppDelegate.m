@@ -44,15 +44,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self setRootViewController];
-   
-//    [UINavigationBar appearance].backItem.backBarButtonItem.customView = [utility transformAnImageAndReturnAView:@"icon_back" width:40 heigt:40] ;
     
     // Change the appearance of back button
-//    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0) resizingMode:UIImageResizingModeStretch];
-//    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-//    [UINavigationBar appearance].backIndicatorImage = [[UIImage imageNamed:@"icon_back"]resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1) resizingMode:UIImageResizingModeStretch ];
-//    [UINavigationBar appearance].backIndicatorTransitionMaskImage = [[UIImage imageNamed:@"icon_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1) resizingMode:UIImageResizingModeStretch ];
+    UIImage *backButtonImage = [[UIImage imageNamed:@"icon_back"] resizableImageWithCapInsets:UIEdgeInsetsMake(0,40, 0, 40) resizingMode:UIImageResizingModeStretch];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-400.f, 0)
                                                          forBarMetrics:UIBarMetricsDefault];
     // Override point for customization after application launch.
@@ -124,6 +119,12 @@
  *  choose which view controller as the root view controller
  */
 -(void)setRootViewController{
+//    NavigationViewController *navVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"NavigationViewController"];
+//    
+//    Nav2ViewController *nav = [[Nav2ViewController alloc]initWithRootViewController:navVC];
+//    nav.navigationBarHidden = NO;
+//    self.window.rootViewController = nav;
+//    
 
     if ([self findDataInDataBase:@"WifiInfo" andDefaultSortAttr:@"ssid"]== 0) {
         LoginNoteViewController *loginNoteVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginNoteViewController"];
