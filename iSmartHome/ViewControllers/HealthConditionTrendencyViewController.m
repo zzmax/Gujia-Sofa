@@ -44,8 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-//    // set title
-    self.navigationItem.title = @"健康结果趋势";
+
     self.view.backgroundColor = BACKGROUND_COLOR;
     self.firstView.backgroundColor = BACKGROUND_COLOR;
     self.secondView.backgroundColor = BACKGROUND_COLOR;
@@ -74,6 +73,19 @@
     self.pageControl.numberOfPages = 3;
     [self.pageControl addTarget:self action:@selector(pageChange:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.pageControl];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    // set title
+    self.navigationItem.title = @"健康结果趋势";
+    UIImage* cancelIcon = [UIImage imageNamed:@"icon_back"];
+     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:cancelIcon style:UIBarButtonItemStylePlain target:self action:@selector(popView:)];
+}
+
+- (void)popView:(UIButton *) sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
