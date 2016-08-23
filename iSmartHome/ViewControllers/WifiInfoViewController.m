@@ -57,10 +57,7 @@
     aRect.size = aSize;
     self.tableView.frame = aRect;
     self.tableView.scrollEnabled = NO;
-    
-    
-    // set title
-    self.navigationItem.title = @"沙发连接Wifi信息";
+
     
     //set back button
 //    UIBarButtonItem *newBackButton =
@@ -104,6 +101,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    // set title
+    self.navigationItem.title = @"沙发连接Wifi信息";
+    [self reloadInputViews];
 }
 
 /*

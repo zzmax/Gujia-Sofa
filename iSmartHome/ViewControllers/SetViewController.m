@@ -101,6 +101,7 @@
     {
         if (indexPath.row == 0) {
             WifiInfoViewController *wifiInfoVC = [[WifiInfoViewController alloc] init];
+            wifiInfoVC.navigationItem.title = @"沙发连接Wifi信息";
             [self.navigationController pushViewController:wifiInfoVC animated:YES];
             //            userChangeVC.navigationItem.title = @"家人健康信息";
             //            [self.navigationController pushViewController:userChangeVC animated:YES];
