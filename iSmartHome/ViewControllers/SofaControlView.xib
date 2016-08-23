@@ -47,18 +47,18 @@
                         <action selector="s2Up:" destination="-1" eventType="touchCancel" id="nu4-5g-CI6"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_icon_sofa_control.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-r0-fAy">
-                    <rect key="frame" x="132" y="313" width="150" height="150"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="0YS-Pr-YjO"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XOg-Nv-Xyx"/>
-                    </constraints>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_big_circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Nb-ZS-azk">
                     <rect key="frame" x="57" y="238" width="300" height="300"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="GqM-Ce-9JK"/>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="300" id="SgF-Fz-8rT"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="big_icon_sofa_control.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Cv-r0-fAy">
+                    <rect key="frame" x="132" y="313" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="0YS-Pr-YjO"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="XOg-Nv-Xyx"/>
                     </constraints>
                 </imageView>
             </subviews>
