@@ -12,6 +12,8 @@
 #import "Utility.h"
 #import "GlobalSocket.h"
 #import "SmartFirstConfig.h"
+#import "LoginNoteViewController.h"
+#import "AppDelegate.h"
 
 @interface WifiConfigViewController ()<SmartFirstConfigDelegate>
 {
@@ -93,7 +95,10 @@
 
 - (IBAction)popView:(id) sender
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    LoginNoteViewController *loginNoteVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginNoteViewController"];
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app changeRootViewController:loginNoteVC];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 /**

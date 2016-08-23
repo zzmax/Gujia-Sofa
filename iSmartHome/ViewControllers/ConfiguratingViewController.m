@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "CoreDataHelper.h"
 #import "WifiConfigViewController.h"
+#import "LoginNoteViewController.h"
 
 
 @interface ConfiguratingViewController ()<SmartFirstConfigDelegate>
@@ -159,7 +160,9 @@
 
 - (IBAction)popView:(id) sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    LoginNoteViewController *loginNoteVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"LoginNoteViewController"];
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [app changeRootViewController:loginNoteVC];
 }
 
 - (void)pushToWifiConfigView
